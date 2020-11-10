@@ -46,6 +46,8 @@ social:
 
 permalink: "/:title"
 
+google_analytics: UA-164140784-2
+
 # SEO tag useful info
 # https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 
