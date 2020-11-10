@@ -28,8 +28,15 @@ layout: default
         <span class="post-meta">{{ post.date | date: date_format }}</span>
         <h3>
           <a class="post-link" href="{{ post.url | relative_url }}">
+            {%- if post.thumbnail -%}
+              <img src="{{ post.thumbnail }}" style="width:25px;height:25px;">
+            {%- endif -%}
+            &#160;
             {{ post.title | escape }}
           </a>
+          <small>
+            {{ post.tags | array_to_sentence_string }}
+          </small>
         </h3>
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
