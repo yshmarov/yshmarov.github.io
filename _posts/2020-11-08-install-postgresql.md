@@ -1,7 +1,13 @@
 ---
 layout: post
-title:  "Ruby on Rails: Install Postgresql on Ubuntu: TLDR"
+title:  "Ruby on Rails: Install Postgresql"
 author: Yaroslav Shmarov
+tags:
+- ubuntu
+- postgres
+- pg
+- postgresql
+- ruby on rails
 ---
 # 1. gemfile:
 
@@ -25,7 +31,7 @@ rails s
 
 # That's it 🥳 !
 
-Useful links:
+# **Relevant links**
 
 * [install/update postgresql script](https://www.postgresql.org/download/linux/ubuntu/)
 

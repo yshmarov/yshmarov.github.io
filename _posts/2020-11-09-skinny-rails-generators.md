@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Skinny Rails Generators"
+title:  Skinny Rails Generators
 author: Yaroslav Shmarov
 tags: ruby-on-rails
 ---
@@ -87,6 +87,8 @@ That produces only:
 
 Much cleaner, and does not create mess that you will likely not be using!
 
-# **Useful links**
+****
 
-[Official docs - Creating and Customizing Rails Generators & Templates](https://guides.rubyonrails.org/generators.html)
+# **Relevant links**
+
+* [Official docs - Creating and Customizing Rails Generators & Templates](https://guides.rubyonrails.org/generators.html)
