@@ -39,6 +39,8 @@ social:
     - https://www.linkedin.com/in/yshmarov
     - https://github.com/yshmarov
 
+permalink: "/:title"
+
 # SEO tag useful info
 # https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 
