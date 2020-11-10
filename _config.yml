@@ -17,7 +17,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Blog about Ruby on Rails (courses, tutorials, tips).
   Also my adventures in hackathons, startups, teaching online.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://jekyll.corsego.com"
+url: "https://blog.corsego.com"
 twitter_username: yaro_the_slav
 github_username:  yshmarov
 
