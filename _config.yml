@@ -28,6 +28,20 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
+tagline: Ruby on Rails and Indie Hacking
+author: Corsego team
+logo: /assets/corsego-saas-tree-logo.png
+social:
+  name: Yaroslav Shmarov
+  links:
+    - https://twitter.com/yaro_the_slav
+    - https://www.facebook.com/yshmarov
+    - https://www.linkedin.com/in/yshmarov
+    - https://github.com/yshmarov
+
+# SEO tag useful info
+# https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
