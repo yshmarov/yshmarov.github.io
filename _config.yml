@@ -23,6 +23,11 @@ github_username:  yshmarov
 
 # Build settings
 theme: minima
+minima:
+  skin: dark
+  #skin: solarized-dark
+  #date_format: "%b %-d, %Y"
+
 plugins:
   - jekyll-feed
   - jekyll-sitemap
