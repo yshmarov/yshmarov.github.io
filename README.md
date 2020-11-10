@@ -19,3 +19,6 @@ ruby -r rubygems -e 'require "jekyll-import";
       "replace-internal-link" => false,
     })'
 ```
+
+To check for errors
+`jekyll build --trace`

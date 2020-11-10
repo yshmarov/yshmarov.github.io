@@ -35,7 +35,7 @@ produces:
 * Stylesheets
 * jbuilder
 
-![dirty scaffold](/assets/skinny-rails-generators/dirty scaffold.png)
+![dirty scaffold](/assets/2020-11-09-skinny-rails-generators/dirty scaffold.png)
 
 That's a lot! However you won't be needing most of these in most hobby applications. 
 
@@ -51,7 +51,7 @@ that produces:
 * View
 * Controller
 
-![clean scaffold](/assets/skinny-rails-generators/clean scaffold.png)
+![clean scaffold](/assets/2020-11-09-skinny-rails-generators/clean scaffold.png)
 
 Much cleaner! Bravo!
 
@@ -69,7 +69,7 @@ produces:
 * Stylesheet
 * Tests
 
-![dirty controller generator](/assets/skinny-rails-generators/dirty controller generator.png)
+![dirty controller generator](/assets/2020-11-09-skinny-rails-generators/dirty controller generator.png)
 
 That's a lot! And you won't need most of it for a basic hobby app! 
 
@@ -83,7 +83,7 @@ That produces only:
 * Controller
 * Views
 
-![clean controller generator](/assets/skinny-rails-generators/clean controller generator.png)
+![clean controller generator](/assets/2020-11-09-skinny-rails-generators/clean controller generator.png)
 
 Much cleaner, and does not create mess that you will likely not be using!
 
@@ -91,4 +91,9 @@ Much cleaner, and does not create mess that you will likely not be using!
 
 # **Relevant links**
 
-* [Official docs - Creating and Customizing Rails Generators & Templates](https://guides.rubyonrails.org/generators.html)
+* [Official docs - Creating and Customizing Rails Generators & Templates](https://guides.rubyonrails.org/generators.html){:target="blank"}
+
+`rails g scaffold product name description:text`
+
+`rails g scaffold product name description:text --no-helper --no-assets --no-controller-specs --no-view-specs --no-test-framework --no-jbuilder `
+

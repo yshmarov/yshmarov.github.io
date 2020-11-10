@@ -4,4 +4,10 @@
 
 layout: home
 ---
-Welcome to the blog!
+Ruby on Rails TLDR articles based on my everyday exprience. 
+
+New post every Monday.
+
+Total posts: {{ site.posts.size }}
+
+****

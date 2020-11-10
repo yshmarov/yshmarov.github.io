@@ -1,14 +1,17 @@
 ---
 layout: post
-title: 'Rails 6: Install Bootstrap with Yarn and Webpacker'
+title: 'Rails 6: Install Bootstrap with Yarn and Webpacker: TLDR'
 author: Yaroslav Shmarov
 tags:
 - webpacker
 - yarn
 - bootstrap
 - ruby on rails 6
+- ruby on rails
 - tldr
 ---
+
+[See complete version of this article]({% post_url 2020-10-12-rails-6-install-bootstrap-with-webpacker %})
 
 # **1. console:**
 ```
@@ -47,4 +50,5 @@ That's it!😊
 
 # **Relevant links**
 
-* [see the official Bootstrap docs here](getbootstrap.com/)
+* [see the official Bootstrap docs here](getbootstrap.com/){:target="blank"}
+* [Bootstrap yarn package](https://classic.yarnpkg.com/en/package/bootstrap){:target="blank"}

@@ -3,6 +3,9 @@ layout: post
 title: 'Rails 6: Install FontAwesome with Yarn and Webpacker'
 author: Yaroslav Shmarov
 tags: 
+- fontawesome
+- webpacker
+- ruby on rails 6
 ---
 
 # **1. console:**
@@ -31,6 +34,5 @@ That's it!😊
 
 # **Relevant links:** 
 
-[see all FontAwesome Icons here](https://fontawesome.com/icons?d=gallery&m=free)
-
-[Yarn package](https://yarnpkg.com/package/@fortawesome/fontawesome-free)
+* [see all FontAwesome Icons here](https://fontawesome.com/icons?d=gallery&m=free){:target="blank"}
+* [Yarn package](https://yarnpkg.com/package/@fortawesome/fontawesome-free){:target="blank"}
