@@ -30,8 +30,8 @@ layout: default
           <a class="post-link" href="{{ post.url | relative_url }}">
             {%- if post.thumbnail -%}
               <img src="{{ post.thumbnail }}" style="width:25px;height:25px;">
+              &#160;
             {%- endif -%}
-            &#160;
             {{ post.title | escape }}
           </a>
           <small>
