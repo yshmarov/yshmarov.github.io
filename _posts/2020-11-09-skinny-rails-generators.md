@@ -3,6 +3,7 @@ layout: post
 title:  Skinny Rails Generators
 author: Yaroslav Shmarov
 tags: ruby-on-rails
+thumbnail: https://previews.123rf.com/images/dmitrymoi/dmitrymoi1609/dmitrymoi160900126/63675567-man-before-and-after-sports-cartoon-vector-illustration-diet-and-sport-fat-and-strong-character-fitn.jpg
 ---
 
 **TLDR:** add a few `--no` tags to your rails generators to produce only the crucial files:

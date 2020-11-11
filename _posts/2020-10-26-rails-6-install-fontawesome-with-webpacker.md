@@ -6,6 +6,7 @@ tags:
 - fontawesome
 - webpacker
 - ruby on rails 6
+thumbnail: https://www.drupal.org/files/project-images/font_awesome_logo.png
 ---
 
 # **1. console:**

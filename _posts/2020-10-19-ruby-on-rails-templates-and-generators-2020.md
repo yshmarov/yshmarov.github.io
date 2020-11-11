@@ -7,7 +7,7 @@ tags:
 - templates
 - generators
 - boilerplates
-thumbnail: https://1.bp.blogspot.com/-UD5ig7ZpK74/X5CsBlm5eqI/AAAAAAACFDA/1rrE9DfdFVYQLrH8OyGGiCLtMt1Ipt49ACLcBGAsYHQ/s72-w400-c-h228/ruby-on-rails-templates-generators.png
+thumbnail: /assets/2020-10-21-ruby-on-rails-templates-and-generators-2020/templates-generators-logo.png
 ---
 
 ![templates-generators-logo.png](/assets/2020-10-21-ruby-on-rails-templates-and-generators-2020/templates-generators-logo.png)

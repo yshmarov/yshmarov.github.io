@@ -8,7 +8,7 @@ tags:
 - bootstrap
 - ruby on rails 6
 - ruby on rails
-thumbnail: https://1.bp.blogspot.com/-EaYJ93ej2y8/X4iiLtw7hOI/AAAAAAACEtw/hrdxDWfUGwAMzLdp5ng-EGmXg8ZnESzdACLcBGAsYHQ/s72-c/ruby-on-rails-bootstrap-combined.png
+thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/768px-Bootstrap_logo.svg.png
 ---
 
 [See TLDR version of this article]({% post_url 2020-10-12-rails-6-install-bootstrap-with-webpacker %})

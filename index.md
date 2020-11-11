@@ -6,8 +6,6 @@ layout: home
 ---
 Ruby on Rails TLDR articles based on my everyday exprience. 
 
-New post every Monday.
-
-Total posts: {{ site.posts.size }}
+New post every Monday. Total posts: {{ site.posts.size }}
 
 ****

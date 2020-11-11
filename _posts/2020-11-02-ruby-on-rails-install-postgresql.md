@@ -8,6 +8,7 @@ tags:
 - pg
 - postgresql
 - ruby on rails
+thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png
 ---
 # 1. gemfile:
 
