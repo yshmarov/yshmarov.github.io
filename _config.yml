@@ -22,8 +22,8 @@ twitter_username: yaro_the_slav
 github_username:  yshmarov
 
 # Build settings
-theme: minima
-#remote_theme: jekyll/minima
+#theme: minima
+remote_theme: jekyll/minima
 
 minima:
   skin: dark
