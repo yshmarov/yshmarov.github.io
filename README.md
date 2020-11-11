@@ -22,3 +22,6 @@ ruby -r rubygems -e 'require "jekyll-import";
 
 To check for errors
 `jekyll build --trace`
+
+git remote set-url origin git@github.com:yshmarov/yshmarov.github.io.git
+git remote set-url origin https://github.com/yshmarov/yshmarov.github.io

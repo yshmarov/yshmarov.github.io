@@ -21,6 +21,6 @@ Now, that's not a lot but it's always nice to find ways to spend less. So I bump
 
 When I logged into the AWS billing dashboard, this was already there:
 
-![aws-activate-credits-received](/assets/2020-06-16-1000-in-aws-credits-for-startups/2020-06-16-1000-in-aws-credits-for-startups-received.png)
+![aws-activate-credits-received](/assets/2020-06-16-1000-in-aws-credits-for-startups/aws-activate-credits-received.png)
 
-Well, $1000 is a very pleasant bonus!
+Well, $1000+$350 is a very pleasant bonus!
