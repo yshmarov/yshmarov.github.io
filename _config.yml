@@ -21,8 +21,10 @@ twitter_username: yaro_the_slav
 github_username:  yshmarov
 
 # Build settings
-theme: minima
-#remote_theme: jekyll/minima
+#development
+#theme: minima
+#production
+remote_theme: jekyll/minima
 
 disqus:
   shortname: corsego
