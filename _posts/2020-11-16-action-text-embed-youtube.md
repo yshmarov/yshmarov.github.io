@@ -206,7 +206,6 @@ document.addEventListener("trix-initialize", function(event) {
 })
 {% endhighlight %} 
 
-
-* [gist with this solution](https://gist.github.com/yshmarov/90377ba51f14df09df03e6442cd7412e)
-* [Original Youtube video where it was introduced by Chris Oliver](https://www.youtube.com/watch?v=2iGBuLQ3S0c)
-* [this question on Stackoverflow](https://stackoverflow.com/questions/61867995/how-to-embed-an-iframe-with-actiontext-trix-on-ruby-on-rails/62407131?noredirect=1#comment114555980_62407131)
+* [gist with this solution](https://gist.github.com/yshmarov/90377ba51f14df09df03e6442cd7412e){:target="blank"}
+* [Original Youtube video where it was introduced by Chris Oliver](https://www.youtube.com/watch?v=2iGBuLQ3S0c){:target="blank"}
+* [this question on Stackoverflow](https://stackoverflow.com/questions/61867995/how-to-embed-an-iframe-with-actiontext-trix-on-ruby-on-rails/62407131?noredirect=1#comment114555980_62407131){:target="blank"}
