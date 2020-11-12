@@ -33,6 +33,11 @@ minima:
   skin: dark
   #skin: solarized-dark
   #date_format: "%b %-d, %Y"
+  social_links:
+    twitter: yaro_the_slav
+    github: yshmarov
+    linkedin: yshmarov
+    facebook: yshmarov
 
 plugins:
   - jekyll-feed
@@ -45,14 +50,7 @@ author:
   name: Yaroslav Shmarov
   email: hello@corsego.com
 
-logo: /assets/corsego-saas-tree-logo.png
-social:
-  name: Yaroslav Shmarov
-  links:
-    - https://twitter.com/yaro_the_slav
-    - https://www.facebook.com/yshmarov
-    - https://www.linkedin.com/in/yshmarov
-    - https://github.com/yshmarov
+#logo: /assets/corsego-saas-tree-logo.png
 
 permalink: "/:title"
 
