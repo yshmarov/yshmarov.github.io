@@ -62,13 +62,13 @@ https://[github]/USERNAME/REPOSITORY.git
 If you're updating to use SSH, your URL might look like:
 
 ```
-git@github:USERNAME/REPOSITORY.git
+git@github.com:USERNAME/REPOSITORY.git
 ```
 
 To switch remote URLs from HTTPS to SSH type:
 
 ```
-git remote set-url origin git@github:USERNAME/REPOSITORY.git.
+git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
 ```
 
 When creating a remote, make sure you "clone with SSH" instead of "clone with HTTPS".
