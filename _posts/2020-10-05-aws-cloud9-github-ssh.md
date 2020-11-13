@@ -20,9 +20,10 @@ You don't have to type in a password. Just press `Enter`
 
 ![1 generate ssh](assets/2020-10-05-aws-cloud9-github-ssh/1 generate ssh.png)
 
-* ### 2 "Use" the generated key (in my case `id_ed25519`):
+* ### 2 Start ssh agent, "Use" the generated key (in my case `id_ed25519`):
 
 ```
+eval `ssh-agent -s`
 ssh-add ~/.ssh/id_ed25519.pub
 ```
 
