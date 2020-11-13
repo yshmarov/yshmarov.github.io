@@ -4,6 +4,7 @@ title:  Add custom error pages in a Rails app
 author: Yaroslav Shmarov
 tags: 
 - ruby on rails
+- error pages
 thumbnail: https://previews.123rf.com/images/arcady31/arcady311011/arcady31101100012/8157731-404-error-sign.jpg
 ---
 
@@ -26,6 +27,20 @@ routes.rb
 ```
 match "/404", via: :all, to: "errors#not_found"
 match "/500", via: :all, to: "errors#internal_server_error"
+```
+
+errors_controller.rb
+
+```
+class ErrorsController < ApplicationController
+  def not_found
+    render status: 404
+  end
+
+  def internal_server_error
+    render status: 500
+  end
+end
 ```
 
 layouts/errors.html.erb
@@ -55,20 +70,6 @@ layouts/errors.html.erb
     <%= yield %>
   </body>
 </html>
-```
-
-errors_controller.rb
-
-```
-class ErrorsController < ApplicationController
-  def not_found
-    render status: 404
-  end
-
-  def internal_server_error
-    render status: 500
-  end
-end
 ```
 
 internal_server_error.html.erb
@@ -109,4 +110,4 @@ not_found.html.erb
 </center>
 ```
 
-[Another good article on the topic](http://www.hoxton-digital.com/posts/dynamic-404-422-amp-500-error-pages-with-rails-internationalization-i18n){:target="blank"}
+[More detailed article on the topic](http://www.hoxton-digital.com/posts/dynamic-404-422-amp-500-error-pages-with-rails-internationalization-i18n){:target="blank"}

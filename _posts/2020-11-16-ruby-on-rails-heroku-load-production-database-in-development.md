@@ -31,7 +31,6 @@ heroku pg:backups:download --app myappname
 rails db:drop
 rails db:drop DISABLE_DATABASE_ENVIRONMENT_CHECK=1
 rails db:create
-rails db:migrate
 ```
 
 * 4 Populate local database from heroku download
@@ -40,6 +39,12 @@ rails db:migrate
 
 ```
 pg_restore -h localhost -d myappname_development latest.dump
+```
+
+* 5 run migrations
+
+```
+rails db:migrate
 ```
 
 * 6 Remove downloaded database from app repository:
@@ -64,22 +69,28 @@ yaro
 pass
 ```
 
-* Specify newly created postgresql user for restoring database
+* Specify newly created postgresql user for restoring database and restore
 
 ```
 pg_restore -h localhost -U yaro -d myappname_development latest.dump
 pass
 ```
 
+or 
+
+```
+PGPASSWORD=pass pg_restore -h localhost -U yaro -d myappname_development latest.dump
+```
+
+or
+
+```
+set "PGPASSWORD=pass"
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -U yaro -d myappname_development latest.dump
+```
+
 ****
 
-To try:
-```
-set "PGPASSWORD=123"
-pg_restore --verbose --clean --no-acl --no-owner -h localhost -U username -d myappname_development latest.dump
-pg_restore --verbose --clean --no-acl --no-owner -h localhost -U yaro -d corsego_development latest.dump
-PGPASSWORD=pass pg_dump -Fc --no-acl --no-owner -h localhost -U username myappname_development > latest.dump
-```
 My case:
 ```
 pg_restore --verbose --clean --no-acl --no-owner -h localhost -U yaro -d saas_development latest.dump

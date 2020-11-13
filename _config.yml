@@ -1,15 +1,5 @@
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you: 
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
 
 title: Corsego blog
 description: >- # this means to ignore newlines until "baseurl:"
@@ -17,13 +7,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Also my adventures in hackathons, startups, teaching online.
 #baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://blog.corsego.com"
-twitter_username: yaro_the_slav
-github_username:  yshmarov
 
-# Build settings
-#development
-#theme: minima
-#production
 remote_theme: jekyll/minima
 
 disqus:
@@ -32,7 +16,7 @@ disqus:
 minima:
   skin: dark
   #skin: solarized-dark
-  #date_format: "%b %-d, %Y"
+  date_format: "%a, %b %-d, %Y (week %V)"
   social_links:
     twitter: yaro_the_slav
     github: yshmarov
