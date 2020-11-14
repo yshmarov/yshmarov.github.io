@@ -30,19 +30,9 @@ layout: default
     {{ content }}
   </div>
 
-  <hr>
-  <div class="post-nav" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-    <p style="flex: 1 1 0; width: 45%; padding-right: 0.5em;">
-      {% if page.previous.url %}
-      <a href="{{page.previous.url}}">&#8672;&nbsp;{{page.previous.title}}</a>
-      {% endif %}
-    </p>
-    <p style="flex: 1 1 0; width: 45%; padding-left: 0.5em; text-align: right">
-      {% if page.next.url %}
-      <a href="{{page.next.url}}">{{page.next.title}}&nbsp;&#8674;</a>
-      {% endif %}
-    </p>
-  </div>
+  {%- if site.links_to_prev_next -%}
+    {%- include links_to_prev_next.html -%}
+  {%- endif -%}
 
   {%- if site.disqus.shortname -%}
     {%- include disqus_comments.html -%}

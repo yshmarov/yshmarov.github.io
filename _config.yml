@@ -13,6 +13,8 @@ remote_theme: jekyll/minima
 disqus:
   shortname: corsego
 
+links_to_prev_next: false
+
 minima:
   skin: dark
   #skin: solarized-dark
