@@ -12,7 +12,7 @@ tags:
 thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/768px-Bootstrap_logo.svg.png
 ---
 
-[See complete version of this article]({% post_url 2020-10-12-rails-6-install-bootstrap-with-webpacker %})
+[See complete version of this article]({% post_url 2020-10-12-rails-6-install-bootstrap-with-webpacker-full %})
 
 # **1. console:**
 ```

@@ -20,7 +20,7 @@ permalink: /about/
 
 ****
 
-* 🎥 [Ruby on Rails 6: Learn 25+ gems and build a Startup MVP 2020](https://www.udemy.com/course/2519558/?referralCode=4721E9D437DEE1734159){:target="blank"} - Udemy Course. Build an e-learning platform step-by-step. 19 hours of video, 18 chapters and 200 lectures. **500+ students already enrolled!**
+* 🎥 [Ruby on Rails 6: Learn 25+ gems and build a Startup MVP 2020](https://www.udemy.com/course/2519558/?referralCode=4721E9D437DEE1734159){:target="blank"} - Udemy Course. Build an e-learning platform step-by-step. 19 hours of video, 18 chapters and 200 lectures. **600+ students already enrolled!**
 
 ****
 

@@ -11,7 +11,7 @@ tags:
 thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/768px-Bootstrap_logo.svg.png
 ---
 
-[See TLDR version of this article]({% post_url 2020-10-12-rails-6-install-bootstrap-with-webpacker %})
+[See TLDR version of this article]({% post_url 2020-10-12-rails-6-install-bootstrap-with-webpacker-tldr %})
 
 There are many guides and many paths to make bootstrap available in Rails 6.
 

@@ -4,8 +4,10 @@
 
 layout: home
 ---
-Ruby on Rails TLDR articles based on my everyday exprience. 
+Ruby on Rails TLDR articles, Tips & Tricks.
 
 New post every Monday. Total posts: {{ site.posts.size }}
+
+Join the mailing list and don't miss the good stuff!
 
 ****
