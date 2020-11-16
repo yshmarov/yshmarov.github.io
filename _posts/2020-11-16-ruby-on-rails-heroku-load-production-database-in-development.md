@@ -4,6 +4,8 @@ title: "Load your Heroku production database in development"
 author: Yaroslav Shmarov
 tags: 
 - ruby on rails
+- heroku
+- postgresql
 thumbnail: https://res-3.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco/v1491420676/cenlvst0fgs8ejx12n8u.png
 youtube_id: qSYLJhe2nO4
 ---
