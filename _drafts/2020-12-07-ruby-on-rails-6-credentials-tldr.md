@@ -19,6 +19,19 @@ rails credentials:edit
 EDITOR=vim rails credentials:edit
 ```
 
+* EXAMPLE OF HOW CREDENTIALS.YML can look:
+
+```
+development:
+   github:
+      client: acascascsacascascasc
+      secret: vdsvsvg34g34g
+production:
+   github:
+      client: 34g3rvv
+      secret: erberb43
+```
+
 * WORKING WITH VIM
 
 To enable editing press `i`
@@ -41,3 +54,5 @@ Rails.application.credentials[Rails.env.to_sym][:aws][:access_key_id]
 heroku config:set RAILS_MASTER_KEY=123456789
 heroku config:set RAILS_MASTER_KEY=`cat config/master.key
 ```
+
+[this question on stackoverflow](https://stackoverflow.com/questions/62011541/using-credentials-yml-with-heroku-on-rails-5-2/62011825#62011825){:target="blank"}
