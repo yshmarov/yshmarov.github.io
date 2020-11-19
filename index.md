@@ -4,7 +4,8 @@
 
 layout: home
 ---
-Ruby on Rails TLDR articles, Tips & Tricks.
+
+{{ site.description }}
 
 New post every Monday. Total posts: {{ site.posts.size }}
 

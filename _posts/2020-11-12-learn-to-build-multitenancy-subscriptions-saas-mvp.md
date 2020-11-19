@@ -17,15 +17,15 @@ tags:
 thumbnail: https://www.strattic.com/wp-content/uploads/2019/05/gumroad.jpg
 ---
 
-| Course name  | [Ruby on Rails 6: Learn to Build a Multitenancy Subscriptions SaaS app MVP](https://gumroad.com/l/ror6saas/presale50){:target="blank"}  |
+| Course name  | [Ruby on Rails 6: Learn to Build a Multitenancy Subscriptions SaaS app MVP](https://gumroad.com/l/ror6saas/){:target="blank"}  |
 |--|--|
-| Discount coupon  | presale50  |
+| Discount coupon  | presale20  |
 |--|--|
-| Price with coupon  | $74.50  |
+| Price with coupon  | $149.00 - %20.00 = $119.20 |
 |--|--|
 | Expires  |  N/A  |
 |--|--|
 | Coupon limit |  N/A  |
 |--|--|
-| Link  | [https://gumroad.com/l/ror6saas/presale50](https://gumroad.com/l/ror6saas/presale50){:target="blank"}  |
+| Link  | [https://gumroad.com/l/ror6saas/presale50](https://gumroad.com/l/ror6saas/presale20){:target="blank"}  |
 

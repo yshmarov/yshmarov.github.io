@@ -3,7 +3,7 @@
 
 title: Corsego blog
 description: >- # this means to ignore newlines until "baseurl:"
-  Blog about Ruby on Rails (courses, tutorials, tips).
+  Ruby on Rails TLDR articles, Courses, Tutorials, Tips & Tricks.
   Also my adventures in hackathons, startups, teaching online.
 #baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://blog.corsego.com"
