@@ -14,6 +14,8 @@ thumbnail: https://i.pinimg.com/originals/0e/0a/1b/0e0a1ba222b86afd23b1a8a5b3530
 # Final result:
 ![embed youtube actiontext](/assets/2020-11-16-action-text-embed-youtube/embed youtube actiontext.gif)
 
+[Original Youtube video where it is introduced by Chris Oliver](https://www.youtube.com/watch?v=2iGBuLQ3S0c){:target="blank"}
+
 app/views/youtubes/_thumbnail.html.erb
 {% highlight ruby %}
 <div>
@@ -208,5 +210,4 @@ document.addEventListener("trix-initialize", function(event) {
 {% endhighlight %} 
 
 * [gist with this solution](https://gist.github.com/yshmarov/90377ba51f14df09df03e6442cd7412e){:target="blank"}
-* [Original Youtube video where it was introduced by Chris Oliver](https://www.youtube.com/watch?v=2iGBuLQ3S0c){:target="blank"}
 * [this question on Stackoverflow](https://stackoverflow.com/questions/61867995/how-to-embed-an-iframe-with-actiontext-trix-on-ruby-on-rails/62407131?noredirect=1#comment114555980_62407131){:target="blank"}
