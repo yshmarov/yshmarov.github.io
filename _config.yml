@@ -57,6 +57,14 @@ pwa:
     - sw-register.js
     - "fonts/**/*"
 
+#jekyll_admin:
+#  hidden_links:
+#    - posts
+#    - pages
+#    - staticfiles
+#    - datafiles
+#    - configuration
+
 # SEO tag useful info
 # https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 
