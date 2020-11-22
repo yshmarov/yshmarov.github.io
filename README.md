@@ -6,6 +6,7 @@ jekyll new my-awesome-site
 jekyll new corsego-blog
 cd corsego-blog
 bundle exec jekyll serve --port=8080
+bundle exec jekyll serve --port=8080 --drafts
 jekyll serve --port=8080
 ```
 
