@@ -1,13 +1,14 @@
 ---
 layout: post
 title: "Quick tip: Footer on the bottom of the page: TLDR"
-date: '2020-11-06T13:55:00.007+01:00'
-author: yaro_the_slav
+author: Yaroslav Shmarov
 tags: 
+- ruby on rails
+- tldr
 - footer
 - html
 - css
-- ruby on rails
+thumbnail: https://www.iconspng.com/uploads/down-arrow/down-arrow.png
 ---
 
 Here's a simple way to keep the footer on the bottom of the page with minimum modifications.
@@ -19,6 +20,8 @@ Here's a simple way to keep the footer on the bottom of the page with minimum mo
 👍 responsive
 
 👍 not sticky
+
+We are keeping `footer` outside `body`:
 
 ```
 # application.html
