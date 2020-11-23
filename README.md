@@ -10,6 +10,8 @@ bundle exec jekyll serve --port=8080 --drafts
 jekyll serve --port=8080
 ```
 
+{:target="blank"}
+
 To import the XML downloaded from blogger into the main folder, just run
 
 ```
