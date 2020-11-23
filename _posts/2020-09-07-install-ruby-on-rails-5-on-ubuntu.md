@@ -12,6 +12,8 @@ tags:
 thumbnail: https://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png
 ---
 
+Maybe you want to install a newer version? [Install Ruby on Rails 6]({% post_url 2020-09-07-install-ruby-on-rails-6-on-ubuntu %})
+
 * Install Ruby on Rails 5:
 
 ```
@@ -31,3 +33,5 @@ ubuntu
 y 
 exit
 ```
+
+Extended Tutorial on [installing Postgresql]({% post_url 2020-11-02-ruby-on-rails-install-postgresql %})

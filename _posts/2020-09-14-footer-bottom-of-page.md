@@ -8,7 +8,7 @@ tags:
 - footer
 - html
 - css
-thumbnail: https://www.iconspng.com/uploads/down-arrow/down-arrow.png
+thumbnail: https://icon-library.com/images/white-down-arrow-icon/white-down-arrow-icon-5.jpg
 ---
 
 Here's a simple way to keep the footer on the bottom of the page with minimum modifications.

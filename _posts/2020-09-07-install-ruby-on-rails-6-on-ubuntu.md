@@ -37,20 +37,7 @@ rails -v
 pg_config --version
 ```
 
-Install Rails 5
+Next Step - 
+[install Postgresql]({% post_url 2020-11-02-ruby-on-rails-install-postgresql %})
 
-#Ruby on Rails
-rvm install ruby-2.7.1
-rvm --default use 2.7.1
-rvm uninstall 2.6.5
-rvm uninstall 2.6.6
-rvm uninstall 2.6.3
-gem install rails -v 5.2.4.3
-
-#Postgresql
-sudo apt install postgresql libpq-dev
-sudo su postgres
-createuser --interactive
-ubuntu
-y 
-exit
+Oldschool? Try to [install Ruby on Rails 5]({% post_url 2020-09-07-install-ruby-on-rails-5-on-ubuntu %})
