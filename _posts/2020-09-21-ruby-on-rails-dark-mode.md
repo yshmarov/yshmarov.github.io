@@ -71,4 +71,5 @@ body.dark {
 }
 ```
 
-[Stackoverflow: Editing your css for dark mode](https://stackoverflow.com/questions/64960915/change-css-colors-based-on-body-class-dark-mode/64960981#64960981){:target="blank"}
+Next step - 
+[Editing your css for dark mode (Stackoverflow)](https://stackoverflow.com/questions/64960915/change-css-colors-based-on-body-class-dark-mode/64960981#64960981){:target="blank"}

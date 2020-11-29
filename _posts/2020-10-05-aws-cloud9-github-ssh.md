@@ -33,7 +33,7 @@ ssh-add ~/.ssh/id_ed25519.pub
 
 ![3 open generated ssh key](assets/2020-10-05-aws-cloud9-github-ssh/3 open generated ssh key.png)
 
-* ### 4 Copy everything in the file
+* ### 4 Copy everything from the file
 
 ![4 copy generated ssh](assets/2020-10-05-aws-cloud9-github-ssh/4 copy generated ssh.png)
 

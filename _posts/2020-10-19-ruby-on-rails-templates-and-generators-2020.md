@@ -145,7 +145,7 @@ very fresh Rails 6 boilerplate with Stimulus, Tailwind and more.
 
 ****
 
-# 2020 is a being a very rich year for the development of competitive Ruby on Rails boilerplates and generators. What can I say, it's a great community!
+### 2020 is a being a very rich year for the development of competitive Ruby on Rails boilerplates and generators. What can I say, it's a great community!
 
 Special thanks to the authors of the above projects:
 * [TrinityTakei](https://twitter.com/TrinityTakei){:target="blank"}

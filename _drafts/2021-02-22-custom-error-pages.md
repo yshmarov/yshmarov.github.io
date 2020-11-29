@@ -47,25 +47,17 @@ layouts/errors.html.erb
 
 ```
 <!DOCTYPE html>
-<html class="h-full antialiased">
+<html>
   <head>
-    <title>
-      <% if content_for?(:title) %>
-        <%= yield :title %> |
-      <% end %>
-      <%= Rails.application.class.parent_name %>
-    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= Rails.application.class.parent_name %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-    <%= yield :head %>
   </head>
-
   <body>
     <%= yield %>
   </body>

@@ -144,6 +144,8 @@ self.addEventListener('fetch', function(event) {
 
 * add `public/service-worker.js*` to ``.gitignore`
 
+![add-to-gitignore](/assets/2021-01-11-ruby-on-rails-6-make-a-progressive-web-app-pwa/add-to-gitignore.png)
+
 * run `bin/webpack` to see if it is working
 
 ****
