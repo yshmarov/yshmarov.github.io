@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "User status online: TLDR"
+title: "See if User is online: TLDR"
 author: Yaroslav Shmarov
 tags: 
 - ruby on rails
