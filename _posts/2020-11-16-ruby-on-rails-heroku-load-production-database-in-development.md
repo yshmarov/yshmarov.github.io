@@ -102,3 +102,9 @@ My case:
 pg_restore --verbose --clean --no-acl --no-owner -h localhost -U yaro -d saas_development latest.dump
 pg_restore --verbose --clean --no-acl --no-owner -h localhost -U yaro -d corsego_development latest.dump
 ```
+
+Adding `latest.dump` to gitignore: 
+
+```
+echo 'latest.dump*' >> .gitignore
+```
