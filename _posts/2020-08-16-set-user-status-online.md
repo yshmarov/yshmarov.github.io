@@ -10,7 +10,7 @@ tags:
 - saas
 - mvp
 - startup
-thumbnail: https://ps.w.org/cbxuseronline/assets/icon-256x256.png?rev=2284897
+thumbnail: https://upload.wikimedia.org/wikipedia/commons/9/9a/Green_circle.png
 ---
 
 * Whenever the `current_user` does any action, his `updated_at` will be set as `Time.now`.
@@ -18,11 +18,11 @@ thumbnail: https://ps.w.org/cbxuseronline/assets/icon-256x256.png?rev=2284897
 application_controller.rb
 
 ```
-after_action :user_activity, if: :user_signed_in?
+after_action :update_user_online, if: :user_signed_in?
 
 private
 
-def user_activity
+def update_user_online
   current_user.try :touch
 end
 ```
