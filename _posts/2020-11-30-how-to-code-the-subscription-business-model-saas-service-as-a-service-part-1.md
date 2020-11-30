@@ -92,6 +92,3 @@ That's it! 🤠
 The SaaS business model can usually have 2 `collection_methods`:
 * `charge_automatically` 
 * `send_invoice` 
-
-Next step:
-[creating an advanced subscription engine]({% post_url 2020-11-19-how-to-code-the-subscription-business-model-saas-service-as-a-service-part-2 %}){:target="blank"} 
