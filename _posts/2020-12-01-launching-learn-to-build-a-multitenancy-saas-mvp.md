@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Launching course: "Ruby on Rails 6: Learn to Build a Multitenancy Subscriptions SaaS app"'
+title: "Launching course: Ruby on Rails 6: Learn to Build a Multitenancy Subscriptions SaaS app"
 author: Yaroslav Shmarov
 tags: 
 - gumroad
@@ -17,6 +17,7 @@ tags:
 - boilerplate
 thumbnail: https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/facebook/158/fire_1f525.png
 cover_image: /assets/launching-learn-to-build-a-multitenancy-saas-mvp/saas-book-cover.png
+description: Launching Course and Black Friday sale
 ---
 
 After 6 months of work, ressearch and trials **I'm officially launching the course**!
