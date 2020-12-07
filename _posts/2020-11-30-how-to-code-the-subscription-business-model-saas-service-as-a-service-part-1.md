@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "SaaS: How to code the subscriptions business model. Elementary level"
+title: "SaaS: How to code the subscriptions business model?"
 author: Yaroslav Shmarov
 tags: 
 - ruby on rails

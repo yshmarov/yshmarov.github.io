@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ruby on Rails 6 Credentials: TLDR'
+title: 'How to use Credentials in Ruby on Rails 6? TLDR'
 author: Yaroslav Shmarov
 tags: 
 - ruby on rails

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ruby on Rails 6 Credentials: Full guide'
+title: 'How to use Credentials in Ruby on Rails 6? Full guide'
 author: Yaroslav Shmarov
 tags: 
 - ruby on rails

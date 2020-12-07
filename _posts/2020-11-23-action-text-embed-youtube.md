@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Embed Youtube videos with ActionText: TLDR"
+title:  "How to Embed Youtube videos with ActionText? TLDR"
 author: Yaroslav Shmarov
 tags: 
 - ruby-on-rails

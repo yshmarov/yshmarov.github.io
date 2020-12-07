@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Ruby on Rails: Install Postgresql"
+title:  "Ruby on Rails: How to setup Postgresql? TLDR"
 author: Yaroslav Shmarov
 tags:
 - ubuntu

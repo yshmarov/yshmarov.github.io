@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Skinny Rails Generators
+title:  How to write better Rails generators?
 author: Yaroslav Shmarov
 tags: ruby-on-rails
 thumbnail: https://previews.123rf.com/images/dmitrymoi/dmitrymoi1609/dmitrymoi160900126/63675567-man-before-and-after-sports-cartoon-vector-illustration-diet-and-sport-fat-and-strong-character-fitn.jpg

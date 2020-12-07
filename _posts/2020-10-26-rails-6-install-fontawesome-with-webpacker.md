@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Rails 6: Install FontAwesome with Yarn and Webpacker'
+title: 'How to Install FontAwesome with Yarn and Webpacker in Rails 6?'
 author: Yaroslav Shmarov
 tags: 
 - fontawesome

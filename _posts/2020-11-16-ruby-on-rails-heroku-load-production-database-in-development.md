@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Load your Heroku production database in development"
+title: "How to load Heroku production database in development?"
 author: Yaroslav Shmarov
 tags: 
 - ruby on rails
