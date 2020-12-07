@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ruby on Rails 6 Credentials: Quick guide'
+title: 'Ruby on Rails 6 Credentials: Full guide'
 author: Yaroslav Shmarov
 tags: 
 - ruby on rails
