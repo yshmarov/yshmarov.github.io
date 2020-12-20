@@ -8,6 +8,10 @@ tags:
 thumbnail: https://previews.123rf.com/images/arcady31/arcady311011/arcady31101100012/8157731-404-error-sign.jpg
 ---
 
+When you create a new rails app, error pages like `404` and `500` are automatically created and kept in `public` folder.
+
+At some point of time, you will what to integrate these pages into your app and style them. Here's how you can integrate them into your MVC structure:
+
 console
 
 ```

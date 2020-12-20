@@ -73,7 +73,7 @@ Rails.application.credentials[Rails.env.to_sym][:aws][:access_key_id]
 
 ```
 heroku config:set RAILS_MASTER_KEY=123456789
-heroku config:set RAILS_MASTER_KEY=`cat config/master.key
+heroku config:set RAILS_MASTER_KEY=`cat config/master.key`
 ```
 
 The `config/credentials.yml` file should NOT be in gitignore.
