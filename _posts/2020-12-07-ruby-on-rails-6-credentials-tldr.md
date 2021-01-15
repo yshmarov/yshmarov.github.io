@@ -63,6 +63,8 @@ For exiting without saving press `Esc` + `:q!` + `Enter`
 
 * find a credential
 
+To make Ctrl+V work properly `Esc` + `:set paste` + `Ctrl` + `V`
+
 ```
 rails c
 Rails.application.credentials.dig(:aws, :access_key_id)
