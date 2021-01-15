@@ -14,6 +14,7 @@ Workaround: SSH connection!
 
 ```
 ssh-keygen -t ed25519 -C "yourgithubemail@gmail.com"
+ssh-keygen -t ed25519 -C "yshmarov@gmail.com"
 ```
 
 You don't have to type in a password. Just press `Enter`
@@ -69,6 +70,7 @@ To switch remote URLs from HTTPS to SSH type:
 
 ```
 git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
+git remote set-url origin git@github.com:yshmarov/REPOSITORY.git
 ```
 
 When creating a remote, make sure you "clone with SSH" instead of "clone with HTTPS".
