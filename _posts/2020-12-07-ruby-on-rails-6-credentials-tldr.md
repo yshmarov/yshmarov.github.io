@@ -65,6 +65,13 @@ For exiting without saving press `Esc` + `:q!` + `Enter`
 
 To make Ctrl+V work properly `Esc` + `:set paste` + `Ctrl` + `V`
 
+Example of using credentials in `devise.rb`:
+
+```
+config.omniauth :github, (Rails.application.credentials[:github][Rails.env.to_sym][:id]).to_s, (Rails.application.credentials[:github][Rails.env.to_sym][:secret]).to_s
+config.omniauth :google_oauth2, (Rails.application.credentials[:google][:id]).to_s, (Rails.application.credentials[:google][:secret]).to_s
+```
+
 ```
 rails c
 Rails.application.credentials.dig(:aws, :access_key_id)
