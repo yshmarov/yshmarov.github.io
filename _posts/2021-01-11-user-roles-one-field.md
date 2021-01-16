@@ -1,17 +1,14 @@
 ---
 layout: post
-title: Adding multiple roles to a user in one field
+title: One hash field to manage all user roles
 author: Yaroslav Shmarov
-tags: 
+tags: ruby-on-rails jsonb store_accessor
 ---
 
-This method was partially extracted from Jumpstart app
+You can use a gem like `rolify` or try to add a few `role` fields to the `users` table, 
+** but there is a better way **:
 
-Helpful materials:
-* [https://melvinchng.github.io/rails/RailsJSONB.html#43-use-jsonb-column-to-in-form](https://melvinchng.github.io/rails/RailsJSONB.html#43-use-jsonb-column-to-in-form)
-* [https://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails](https://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails)
-* [https://guides.rubyonrails.org/active_record_postgresql.html#json-and-jsonb](https://guides.rubyonrails.org/active_record_postgresql.html#json-and-jsonb)
-* [https://ruby-doc.org/core-2.5.1/Hash.html](https://ruby-doc.org/core-2.5.1/Hash.html)
+![user-roles-one-field](/assets/2021-01-11-user-roles-one-field/user-roles-one-field.PNG)
 
 migration:
 ```
@@ -152,3 +149,10 @@ controller validation for authorization:
     end
   end
 ```
+
+Helpful materials:
+* [https://melvinchng.github.io/rails/RailsJSONB.html#43-use-jsonb-column-to-in-form](https://melvinchng.github.io/rails/RailsJSONB.html#43-use-jsonb-column-to-in-form)
+* [https://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails](https://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails)
+* [https://guides.rubyonrails.org/active_record_postgresql.html#json-and-jsonb](https://guides.rubyonrails.org/active_record_postgresql.html#json-and-jsonb)
+* [https://ruby-doc.org/core-2.5.1/Hash.html](https://ruby-doc.org/core-2.5.1/Hash.html)
+* This method was partially inspired by Jumpstart app
