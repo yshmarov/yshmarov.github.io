@@ -8,10 +8,10 @@ tags:
 This method was partially extracted from Jumpstart app
 
 Helpful materials:
-* [](https://melvinchng.github.io/rails/RailsJSONB.html#43-use-jsonb-column-to-in-form)
-* [](https://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails)
-* [](https://guides.rubyonrails.org/active_record_postgresql.html#json-and-jsonb)
-* [rails hash](https://ruby-doc.org/core-2.5.1/Hash.html)
+* [https://melvinchng.github.io/rails/RailsJSONB.html#43-use-jsonb-column-to-in-form](https://melvinchng.github.io/rails/RailsJSONB.html#43-use-jsonb-column-to-in-form)
+* [https://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails](https://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails)
+* [https://guides.rubyonrails.org/active_record_postgresql.html#json-and-jsonb](https://guides.rubyonrails.org/active_record_postgresql.html#json-and-jsonb)
+* [https://ruby-doc.org/core-2.5.1/Hash.html](https://ruby-doc.org/core-2.5.1/Hash.html)
 
 migration:
 ```
@@ -25,7 +25,7 @@ class AddRolesToUsers < ActiveRecord::Migration[6.0]
   end
 end
 ```
-app/models/concerns/roleable.rb
+app/models/concerns/roleable.rb:
 ```
 module Roleable
 
@@ -76,9 +76,25 @@ app/models/user.rb:
 ```
 whitelist editing roles in the controller: 
 ```
-    def user_params
-      params.require(:user).permit(*User::ROLES)
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    if @user.update(user_params)
+      redirect_to @user, notice: "User was successfully updated."
+    else
+      render :edit
     end
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(*User::ROLES)
+  end
 ```
 app/views/users/edit.html.erb:
 ```
