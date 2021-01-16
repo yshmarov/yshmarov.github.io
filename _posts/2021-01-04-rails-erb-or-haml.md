@@ -13,7 +13,7 @@ I'm often asked why I use HAML for my projects.
 * easier to write than HTML.ERB
 * wide adoption: some time ago [I did a poll on **r/rails**](https://www.reddit.com/r/rails/comments/gs0x4b/htmlerb_vs_htmlhaml_vs_htmlslim_which_one_do_you/) to see it's pupularity. Results:
 
-![haml-vs-erb](/assets/2021-01-04-rails-erb-or-haml/haml-vs-erb.png.gif)
+![haml-vs-erb](/assets/2021-01-04-rails-erb-or-haml/haml-vs-erb.png)
 
 Clearly, HAML is a modern and popular choice for web development with Ruby on Rails 6.
 
