@@ -3,6 +3,7 @@ layout: post
 title: One hash field to manage all user roles
 author: Yaroslav Shmarov
 tags: ruby-on-rails jsonb store_accessor
+thumbnail: /assets/thumbnails/curlybrackets.png
 ---
 
 You can use a gem like `rolify` or try to add a few `role` fields to the `users` table, 

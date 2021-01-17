@@ -3,7 +3,7 @@ layout: post
 title: HAML or ERB for Ruby on Rails development in 2021?
 author: Yaroslav Shmarov
 tags: haml erb ruby rails
-thumbnail: https://tanarizm.com/wp-content/uploads/2019/07/d7b4b0a8c78b4030c147de8a4f3c3739.jpg
+thumbnail: /assets/thumbnails/haml.png
 ---
 
 I'm often asked why I use HAML for my projects.

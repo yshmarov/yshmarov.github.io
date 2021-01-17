@@ -3,6 +3,7 @@ layout: post
 title: styling for true false values
 author: Yaroslav Shmarov
 tags: ruby-on-rails helpers bootstrap
+thumbnail: /assets/thumbnails/truefalse.png
 ---
 
 ![final-result](/assets/2021-01-25-styling-for-true-false-values/boolean-colors.PNG)
