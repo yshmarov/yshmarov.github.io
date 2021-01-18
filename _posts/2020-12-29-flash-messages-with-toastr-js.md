@@ -9,7 +9,7 @@ thumbnail: /assets/thumbnails/notification.png
 ![flash-message-example](/assets/2020-12-29-flash-messages-with-toastr-js/flash-message-example.png)
 
 Source: 
-[https://github.com/CodeSeven/toastr](https://github.com/CodeSeven/toastr)
+[https://github.com/CodeSeven/toastr](https://github.com/CodeSeven/toastr){:target="blank"}
 
 console:
 ```

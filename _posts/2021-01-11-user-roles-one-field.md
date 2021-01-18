@@ -152,8 +152,8 @@ controller validation for authorization:
 ```
 
 Helpful materials:
-* [https://melvinchng.github.io/rails/RailsJSONB.html#43-use-jsonb-column-to-in-form](https://melvinchng.github.io/rails/RailsJSONB.html#43-use-jsonb-column-to-in-form)
-* [https://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails](https://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails)
-* [https://guides.rubyonrails.org/active_record_postgresql.html#json-and-jsonb](https://guides.rubyonrails.org/active_record_postgresql.html#json-and-jsonb)
-* [https://ruby-doc.org/core-2.5.1/Hash.html](https://ruby-doc.org/core-2.5.1/Hash.html)
+* [https://melvinchng.github.io/rails/RailsJSONB.html#43-use-jsonb-column-to-in-form](https://melvinchng.github.io/rails/RailsJSONB.html#43-use-jsonb-column-to-in-form){:target="blank"}
+* [https://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails](https://nandovieira.com/using-postgresql-and-jsonb-with-ruby-on-rails){:target="blank"}
+* [https://guides.rubyonrails.org/active_record_postgresql.html#json-and-jsonb](https://guides.rubyonrails.org/active_record_postgresql.html#json-and-jsonb){:target="blank"}
+* [https://ruby-doc.org/core-2.5.1/Hash.html](https://ruby-doc.org/core-2.5.1/Hash.html){:target="blank"}
 * This method was partially inspired by Jumpstart app

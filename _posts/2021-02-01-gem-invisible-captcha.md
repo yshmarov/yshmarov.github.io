@@ -6,7 +6,7 @@ tags: ruby-on-rails devise invisible_captcha
 thumbnail: /assets/thumbnails/invisiblecaptcha.png
 ---
 
-Quick guide to add [gem invisible_captcha](https://github.com/markets/invisible_captcha) to your devise registrations.
+Quick guide to add [gem invisible_captcha](https://github.com/markets/invisible_captcha){:target="blank"} to your devise registrations.
 
 Why? For fewer bots to sign up!
 
@@ -35,4 +35,4 @@ app/views/devise/registrations/new.html.erb, inside the form:
 <%= invisible_captcha %>
 ```
 
-[Alternative wiki to install Google REcaptcha gem](https://github.com/heartcombo/devise/wiki/How-To:-Use-Recaptcha-with-Devise)
+[Alternative wiki to install Google REcaptcha gem](https://github.com/heartcombo/devise/wiki/How-To:-Use-Recaptcha-with-Devise){:target="blank"}
