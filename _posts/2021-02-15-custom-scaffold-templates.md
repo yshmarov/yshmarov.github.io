@@ -10,6 +10,8 @@ dependencies: `simple_form`, `bootstrap`
 
 run this [script](/script-custom-scaffold-templates.txt) in your terminal to add bootstrap scaffold templates to your app:
 ```
+rm ./lib/templates/erb/scaffold/_form.html.erb
+
 rails app:template LOCATION="{{ site.url }}/script-custom-scaffold-templates.txt"
 ```
 regenerate scaffold views for existing model based on attributes:
