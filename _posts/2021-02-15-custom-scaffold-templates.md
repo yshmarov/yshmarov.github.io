@@ -3,13 +3,14 @@ layout: post
 title: "Custom scaffold templates"
 author: Yaroslav Shmarov
 tags: railsbytes rubidium generators templates scaffolds rails ruby-on-rails-6
+thumbnail: /assets/thumbnails/script.png
 ---
 
 dependencies: `simple_form`, `bootstrap`
 
-run this [script](/custom-scaffold-templates-script.txt) in your terminal to add bootstrap scaffold templates to your app:
+run this [script](/script-custom-scaffold-templates.txt) in your terminal to add bootstrap scaffold templates to your app:
 ```
-rails app:template LOCATION="{{ site.baseurl }}/custom-scaffold-templates-script.txt"
+rails app:template LOCATION="{{ site.baseurl }}/script-custom-scaffold-templates.txt"
 ```
 regenerate scaffold views for existing model based on attributes:
 ```
