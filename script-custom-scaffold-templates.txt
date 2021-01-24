@@ -1,3 +1,5 @@
+rm ./lib/templates/erb/scaffold/_form.html.erb
+
 file 'lib/templates/erb/scaffold/_form.html.erb.tt', <<-CODE
 <%# frozen_string_literal: true %>
 <%%= simple_form_for(@<%= singular_table_name %>) do |f| %>
