@@ -6,7 +6,11 @@ tags: railsbytes rubidium generators templates scaffolds rails ruby-on-rails-6
 thumbnail: /assets/thumbnails/script.png
 ---
 
-dependencies: `simple_form`, `bootstrap`
+Add sexy `simple_form` & `bootstrap` styling for your scaffolds by default.
+
+Example of final result:
+
+![custom-scaffold-templates-result.png](/assets/custom-scaffold-templates/custom-scaffold-templates-result.png)
 
 run this [script](/script-custom-scaffold-templates.txt) in your terminal to add bootstrap scaffold templates to your app:
 ```
@@ -14,9 +18,12 @@ rm ./lib/templates/erb/scaffold/_form.html.erb
 
 rails app:template LOCATION="{{ site.url }}/script-custom-scaffold-templates.txt"
 ```
-regenerate scaffold views for existing model based on attributes:
+
+***
+
+Regenerating scaffold views for existing model based on attributes:
 ```
-rails g erb:scaffold User firstname lastname
+rails g erb:scaffold Post title content
 ```
 
 Here's how bootstrap scaffold templates erb files can look:
