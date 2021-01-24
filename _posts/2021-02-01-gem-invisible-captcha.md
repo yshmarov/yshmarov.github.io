@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Install gem invisible_captcha with devise"
+title: "Install and use gem invisible_captcha with devise"
 author: Yaroslav Shmarov
 tags: ruby-on-rails devise invisible_captcha
 thumbnail: /assets/thumbnails/invisiblecaptcha.png

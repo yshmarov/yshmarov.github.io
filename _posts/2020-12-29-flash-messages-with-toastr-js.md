@@ -44,8 +44,8 @@ customizing the flash:
   <script type="text/javascript">
     <% flash.each do |f| %>
         <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
-        toastr['<%= type %>']('<%= f[1] %>', '', {"closeButton": false,
-                                                  "positionClass": "toast-bottom-right", 
+        toastr['<%= type %>']('<%= f[1] %>', '', {"closeButton": true,
+                                                  "positionClass": "toast-top-center", 
                                                   "onclick": null, 
                                                   "showDuration": "300", 
                                                   "hideDuration": "1000", 
