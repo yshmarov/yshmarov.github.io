@@ -28,24 +28,6 @@ rails g erb:scaffold Post title content
 
 Here's how bootstrap scaffold templates erb files can look:
 
-lib/templates/erb/scaffold/_form.html.erb
-```
-<%# frozen_string_literal: true %>
-<%%= simple_form_for(@<%= singular_table_name %>) do |f| %>
-  <%%= f.error_notification %>
-  <%%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-  <%- attributes.each do |attribute| -%>
-    <%%= f.<%= attribute.reference? ? :association : :input %> :<%= attribute.name %> %>
-  <%- end -%>
-  </div>
-
-  <div class="form-actions">
-    <%%= f.button :submit %>
-  </div>
-<%% end %>
-```
 lib/templates/erb/scaffold/index.html.erb
 ```
 <h3>
@@ -85,64 +67,10 @@ lib/templates/erb/scaffold/index.html.erb
   </table>
 </div>
 ```
-lib/templates/erb/scaffold/show.html.erb
-```
-<div class="card shadow">
-  <div class="card-header">
-    <h4>
-      <%= singular_table_name.capitalize %>
-    </h4>
-  </div>
-  <div class="card-body">
-    <% attributes.each do |attribute| %>
-        <strong><%= attribute.human_name %>:</strong>
-        <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
-    <% end %>
-  </div>
-  <div class="card-footer">
-    <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %> |
-    <%%= link_to 'Back', <%= index_helper %>_path %>
-  </div>
-</div>
-```
-lib/templates/erb/scaffold/new.html.erb
-```
-<div class="card shadow">
-  <div class="card-header">
-    <h4>
-      New
-      <%= singular_table_name.capitalize %>
-    </h4>
-  </div>
-  <div class="card-body">
-    <%%= render 'form', <%= singular_table_name %>: @<%= singular_table_name %> %>
-  </div>
-  <div class="card-footer">
-    <%%= link_to 'Back', <%= index_helper %>_path %>
-  </div>
-</div>
-```
-lib/templates/erb/scaffold/edit.html.erb
-```
-<div class="card shadow">
-  <div class="card-header">
-    <h4>
-      Edit
-      <%= singular_table_name.capitalize %>
-    </h4>
-  </div>
-  <div class="card-body">
-    <%%= render 'form', <%= singular_table_name %>: @<%= singular_table_name %> %>
-  </div>
-  <div class="card-footer">
-    <%%= link_to 'Show', @<%= singular_table_name %> %> |
-    <%%= link_to 'Back', <%= index_helper %>_path %>
-  </div>
-</div>
-```
 
 Inspiration: 
 
+* [official rails docs](https://github.com/rails/rails/blob/main/railties/lib/rails/generators/erb/scaffold/templates/index.html.erb.tt)
 * [railsbytes.com](https://railsbytes.com/public/templates/VqqsG8)
 * [web-crunch.com](https://web-crunch.com/posts/how-to-create-custom-scaffold-templates-in-ruby-on-rails)
 * [stackoverflow.com](https://stackoverflow.com/questions/8114866/create-ruby-on-rails-views-only-after-controllers-and-models-are-already-creat)

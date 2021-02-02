@@ -63,14 +63,15 @@ file 'lib/templates/erb/scaffold/show.html.erb.tt', <<-CODE
     </h4>
   </div>
   <div class="card-body">
-    <% attributes.each do |attribute| %>
-        <strong><%= attribute.human_name %>:</strong>
-        <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
-    <% end %>
+  <% attributes.each do |attribute| %>
+    <b><%= attribute.human_name %>:</b>
+    <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+    <br>
+  <% end %>
   </div>
   <div class="card-footer">
-    <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %> |
-    <%%= link_to 'Back', <%= index_helper %>_path %>
+    <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-sm btn-warning' %>
+    <%%= link_to 'Destroy', @<%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
   </div>
 </div>
 CODE
@@ -87,7 +88,7 @@ file 'lib/templates/erb/scaffold/new.html.erb.tt', <<-CODE
     <%%= render 'form', <%= singular_table_name %>: @<%= singular_table_name %> %>
   </div>
   <div class="card-footer">
-    <%%= link_to 'Back', <%= index_helper %>_path %>
+    <%%= link_to 'Cancel', <%= index_helper %>_path %>
   </div>
 </div>
 CODE
@@ -104,8 +105,7 @@ file 'lib/templates/erb/scaffold/edit.html.erb.tt', <<-CODE
     <%%= render 'form', <%= singular_table_name %>: @<%= singular_table_name %> %>
   </div>
   <div class="card-footer">
-    <%%= link_to 'Show', @<%= singular_table_name %> %> |
-    <%%= link_to 'Back', <%= index_helper %>_path %>
+    <%%= link_to 'Cancel', @<%= singular_table_name %> %>
   </div>
 </div>
 CODE
