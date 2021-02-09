@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Polymorphysm 101. Part 2 of 3. Polymorphyc Payments inside-out."
+title: "Polymorphism 101. Part 2 of 3. Polymorphic Payments inside-out."
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails polymorphism polymorphic-associations
 thumbnail: /assets/thumbnails/polymorphism-sign.png

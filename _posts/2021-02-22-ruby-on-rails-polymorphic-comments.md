@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Polymorphysm 101. Part 1 of 3. Polymorphyc Comments."
+title: "Polymorphism 101. Part 1 of 3. Polymorphic Comments."
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails polymorphism polymorphic-associations
 thumbnail: /assets/thumbnails/polymorphism-sign.png
