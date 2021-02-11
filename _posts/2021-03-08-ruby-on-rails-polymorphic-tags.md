@@ -2,7 +2,7 @@
 layout: post
 title: "Polymorphism 101. Part 3 of 3. ActsAsTaggable without a gem."
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails polymorphism polymorphic-associations
+tags: ruby rails ruby-on-rails polymorphism polymorphic-associations tags
 thumbnail: /assets/thumbnails/polymorphism-sign.png
 ---
 
