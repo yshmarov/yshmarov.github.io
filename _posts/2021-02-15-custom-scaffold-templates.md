@@ -12,7 +12,7 @@ Example of final result:
 
 ![custom-scaffold-templates-result.png](/assets/custom-scaffold-templates/custom-scaffold-templates-result.png)
 
-run this [script](/script-custom-scaffold-templates.txt) in your terminal to add bootstrap scaffold templates to your app:
+run this [script](/script-custom-scaffold-templates.txt){:target="blank"} in your terminal to add bootstrap scaffold templates to your app:
 ```
 rm ./lib/templates/erb/scaffold/_form.html.erb
 
@@ -70,7 +70,7 @@ lib/templates/erb/scaffold/index.html.erb
 
 Inspiration: 
 
-* [official rails docs](https://github.com/rails/rails/blob/main/railties/lib/rails/generators/erb/scaffold/templates/index.html.erb.tt)
-* [railsbytes.com](https://railsbytes.com/public/templates/VqqsG8)
-* [web-crunch.com](https://web-crunch.com/posts/how-to-create-custom-scaffold-templates-in-ruby-on-rails)
-* [stackoverflow.com](https://stackoverflow.com/questions/8114866/create-ruby-on-rails-views-only-after-controllers-and-models-are-already-creat)
+* [official rails docs](https://github.com/rails/rails/blob/main/railties/lib/rails/generators/erb/scaffold/templates/index.html.erb.tt){:target="blank"}
+* [railsbytes.com](https://railsbytes.com/public/templates/VqqsG8){:target="blank"}
+* [web-crunch.com](https://web-crunch.com/posts/how-to-create-custom-scaffold-templates-in-ruby-on-rails){:target="blank"}
+* [stackoverflow.com](https://stackoverflow.com/questions/8114866/create-ruby-on-rails-views-only-after-controllers-and-models-are-already-creat){:target="blank"}

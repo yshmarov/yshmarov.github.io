@@ -6,7 +6,7 @@ tags: ruby rails ruby-on-rails polymorphism polymorphic-associations tags
 thumbnail: /assets/thumbnails/polymorphism-sign.png
 ---
 
-[ActsAsTaggable](https://github.com/mbleigh/acts-as-taggable-on) is a great gem, however you don't always need a swiss-army-knife heavy solution.
+[ActsAsTaggable](https://github.com/mbleigh/acts-as-taggable-on){:target="blank"} is a great gem, however you don't always need a swiss-army-knife heavy solution.
 Let's build a lightweight solution on our own!
 
 ![polymorphic-tags.gif](/assets/images/polymorphic-tags.gif)
@@ -65,8 +65,8 @@ taggings_controller.rb - not needed
 
 To select multiple tags we will use `selectize.js`.
 
-* [official docs](https://selectize.github.io/selectize.js/)
-* [Selectize Yarn package](https://yarnpkg.com/package/selectize)
+* [official docs](https://selectize.github.io/selectize.js/){:target="blank"}
+* [Selectize Yarn package](https://yarnpkg.com/package/selectize){:target="blank"}
 
 console
 ```
