@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Button to send group message via Telegram"
+title: "Telegram Part 1. Button to send group messages"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails telegram bots httparty
 thumbnail: /assets/thumbnails/telegram.png

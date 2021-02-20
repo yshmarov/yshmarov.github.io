@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Telegram Notification for CRUD actions"
+title: "Telegram Part 2. Notification for CRUD actions"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails telegram bots httparty
 thumbnail: /assets/thumbnails/telegram.png
@@ -8,11 +8,8 @@ thumbnail: /assets/thumbnails/telegram.png
 
 ### TODO: Telegram bot notifies group chat whenever a new post is created.
 
-requirements:
-* read the [previous post]({% post_url 2021-03-22-ruby-on-rails-telegram-bot %})
-* create a telegram bot
-* create a group chat where this telegram bot is granted admin role
-* gem HTTParty
+prerequisites:
+* [Telegram Part 1]({% post_url 2021-03-22-ruby-on-rails-telegram-api-send-message %})
 
 console:
 ```
