@@ -17,4 +17,4 @@ permalink: /about/
 
 ****
 
-💬 You can DM me on Twitter [@yaro_the_slav](https://twitter.com/yaro_the_slav){:target="blank"}
+💬 You can DM me on Twitter [@yarotheslav](https://twitter.com/yarotheslav){:target="blank"}

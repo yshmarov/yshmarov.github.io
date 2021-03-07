@@ -1,0 +1,3 @@
+
+```
+rails g scaffold
