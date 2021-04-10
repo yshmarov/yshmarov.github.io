@@ -13,6 +13,15 @@ Final result:
 
 ## HOWTO:
 
+routes.rb
+```
+  resources :posts do
+    member do
+      patch "upvote", to: "posts#upvote"
+      patch "downvote", to: "posts#downvote"
+    end
+  end
+```
 posts/posts_controller.rb
 ```
 class PostsController < ApplicationController
