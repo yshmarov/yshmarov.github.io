@@ -17,6 +17,7 @@ gem 'mysql2', '~> 0.5.2'
 ```
 
 3. database.yml
+
 ```
 default: &default
   adapter: mysql2
@@ -43,7 +44,7 @@ production:
 
 note that above we set a password `root` - we need it to make it work correctly
 
-4. set mysql passwort to be `root`. [source](https://stackoverflow.com/questions/41645309/mysql-error-access-denied-for-user-rootlocalhost)
+4. set mysql passwort to be `root`. [source on stackoverflow](https://stackoverflow.com/questions/41645309/mysql-error-access-denied-for-user-rootlocalhost)
 
 console
 ```
