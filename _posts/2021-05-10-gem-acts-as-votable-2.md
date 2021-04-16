@@ -6,7 +6,7 @@ tags: ruby rails ruby-on-rails acts_as_votable
 thumbnail: /assets/thumbnails/like.png
 ---
 
-Also see [part 1 of this post]({% post_url 2021-05-03-gem-acts-as-votable %})
+Also see [part 1 of this post]({% post_url 2021-05-03-gem-acts-as-votable %}){:target="blank"}
 
 Final result:
 ![f](/assets/gem-acts-as-votable/reddit-votable-gif-2.gif)

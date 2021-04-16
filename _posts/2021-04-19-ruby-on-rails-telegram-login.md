@@ -12,13 +12,13 @@ thumbnail: /assets/thumbnails/telegram.png
 3. Send CRUD notifications to user via telegram.
 
 prerequisites:
-* [Telegram Part 1]({% post_url 2021-03-22-ruby-on-rails-telegram-api-send-message %})
-* [Telegram Part 2]({% post_url 2021-04-12-ruby-on-rails-telegram-notifications %})
+* [Telegram Part 1]({% post_url 2021-03-22-ruby-on-rails-telegram-api-send-message %}){:target="blank"}
+* [Telegram Part 2]({% post_url 2021-04-12-ruby-on-rails-telegram-notifications %}){:target="blank"}
 
 ### 1. Button to log in with telegram
 
 Create a widget:
-[https://core.telegram.org/widgets/login](https://core.telegram.org/widgets/login)
+[https://core.telegram.org/widgets/login](https://core.telegram.org/widgets/login){:target="blank"}
 
 Example result that can be added to any view:
 ```

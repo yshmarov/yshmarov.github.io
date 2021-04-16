@@ -19,7 +19,7 @@ NO jQuery. ONLY vanilla JS
 1. scaffold posts title
 2. gem devise, create users
 
-## 2. Install [gem acts_as_votable](https://github.com/ryanto/acts_as_votable)
+## 2. Install [gem acts_as_votable](https://github.com/ryanto/acts_as_votable){:target="blank"}
 
 gemfile:
 ```

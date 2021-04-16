@@ -9,7 +9,7 @@ thumbnail: /assets/thumbnails/telegram.png
 ### TODO: Telegram bot notifies group chat whenever a new post is created.
 
 prerequisites:
-* [Telegram Part 1]({% post_url 2021-03-22-ruby-on-rails-telegram-api-send-message %})
+* [Telegram Part 1]({% post_url 2021-03-22-ruby-on-rails-telegram-api-send-message %}){:target="blank"}
 
 console:
 ```
