@@ -21,7 +21,7 @@ users_controller.rb
     end
   end
 ```
-any view (users/index.html.erb or in a **bootstrap** navbar)
+any view (users/index.html.haml or in a **bootstrap** navbar)
 ```
 .form-inline.my-2.my-lg-0
   = form_tag(courses_path, method: :get) do
@@ -31,7 +31,7 @@ any view (users/index.html.erb or in a **bootstrap** navbar)
         %button.btn.btn-primary.btn-sm{:type => "submit"}
           %span.fa.fa-search{"aria-hidden" => "true"}
 ```
-without bootstrap
+.html.erb without bootstrap
 ```
 <%= form_tag(users_path, method: :get) do %>
   <%= text_field_tag :email, params[:email], autocomplete: 'off', placeholder: "user email" %>
