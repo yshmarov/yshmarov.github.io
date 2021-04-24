@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Generate PDF with gem wicked_pdf 
+title: Complete guide to generating PDFs with gem wicked_pdf
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails pdf
 thumbnail: /assets/thumbnails/pdf.png
