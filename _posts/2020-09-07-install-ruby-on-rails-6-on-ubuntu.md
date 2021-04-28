@@ -19,14 +19,17 @@ Install latest version of Ruby, Rails, Postgresql, Yarn, Webpacker
 rails -v
 ruby -v
 rvm list
-rvm install ruby-3.0.0
-rvm install ruby-2.7.2
-rvm --default use 2.7.2
+rvm get head
+rvm install ruby-2.7.3
+rvm --default use 2.7.3
+rvm install ruby-3.0.1
+rvm --default use 3.0.1
+rvm uninstall 2.7.2
 rvm uninstall 2.7.1
 rvm uninstall 2.7.0
 rvm uninstall 2.6.3
 rvm uninstall 2.6.5
-gem install rails -v 6.1.0
+gem install rails -v 6.1.3.1
 gem update rails
 gem update --system
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
