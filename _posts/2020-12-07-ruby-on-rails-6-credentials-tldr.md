@@ -99,7 +99,12 @@ git diff config/credentials.yml.enc
 ### Credentials for different environments
 
 ```
-bin/rails credentials:edit --environment development
+EDITOR=vim bin/rails credentials:edit --environment development
+```
+
+will generate
+
+```
 config/credentials/development.yml.enc
 config/credentials/development.key
 ```
