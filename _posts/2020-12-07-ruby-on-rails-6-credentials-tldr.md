@@ -14,14 +14,14 @@ description: Quickest guide to credentials and secrets for Rails 6
 
 [See complete version of this article]({% post_url 2020-12-07-ruby-on-rails-6-credentials-full %}){:target="blank"}
 
-* create credentials & edit:
+### create credentials & edit:
 
 ```
 rails credentials:edit 
 EDITOR=vim rails credentials:edit
 ```
 
-* `config/credentials.yml` example:
+### `config/credentials.yml` example:
 
 ```
 awss3:
@@ -53,32 +53,60 @@ facebook:
   secret: YOUR_CODE_FOR_OAUTH
 ```
 
-* working with VIM
+### working with VIM
 
 To enable editing press `i`
 
-For exiting with saving press `Esc` + `:wq` + `Enter`
+For exiting with saving press `Esc` & `:wq` & `Enter`
 
-For exiting without saving press `Esc` + `:q!` + `Enter`
+For exiting without saving press `Esc` & `:q!` & `Enter`
 
-To make Ctrl+V work properly `Esc` + `:set paste` + `Ctrl` + `V`
+To make Ctrl+V work properly `Esc` & `:set paste` & `i` & Ctrl` + `V`
 
 * Example of using credentials in `devise.rb`:
 
 ```
-config.omniauth :github, (Rails.application.credentials[:github][Rails.env.to_sym][:id]).to_s, (Rails.application.credentials[:github][Rails.env.to_sym][:secret]).to_s
-config.omniauth :google_oauth2, (Rails.application.credentials[:google][:id]).to_s, (Rails.application.credentials[:google][:secret]).to_s
+if Rails.application.credentials[Rails.env.to_sym].present? && Rails.application.credentials[Rails.env.to_sym][:github].present?
+  config.omniauth :github, Rails.application.credentials[Rails.env.to_sym][:github][:id], Rails.application.credentials[Rails.env.to_sym][:github][:secret]
+end
 ```
 
-* find a credential
+### Example of using credentials in `stripe.rb`:
+
+```
+if Rails.application.credentials[:stripe].present? && Rails.application.credentials[:stripe][:secret].present?
+  Stripe.api_key = Rails.application.credentials[:stripe][:secret]
+end
+```
+
+### find a credential
 
 ```
 rails c
 Rails.application.credentials.dig(:aws, :access_key_id)
 Rails.application.credentials[Rails.env.to_sym][:aws][:access_key_id]
+Rails.application.credentials.some_variable
+Rails.application.credentials[:production][:aws][:id]
+Rails.application.credentials.production[:aws][:id]
 ```
 
-* Set `master.key` in production (heroku):
+### See credentials changes in local git:
+```
+rails credentials:diff --enroll
+git diff config/credentials.yml.enc
+```
+
+### Credentials for different environments
+
+```
+bin/rails credentials:edit --environment development
+config/credentials/development.yml.enc
+config/credentials/development.key
+```
+
+### Set `master.key` in production (heroku):
+
+By default `master.key` is in `.gitignore`
 
 ```
 heroku config:set RAILS_MASTER_KEY=123456789
