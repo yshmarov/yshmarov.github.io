@@ -23,8 +23,8 @@ minima:
   social_links:
     twitter: yarotheslav
     github: yshmarov
-    linkedin: yshmarov
-    facebook: yshmarov
+    # linkedin: yshmarov
+    # facebook: yshmarov
 
 plugins:
   - jekyll-feed
