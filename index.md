@@ -7,11 +7,12 @@ layout: home
 
 {{ site.description }}
 
+* 📕 [Video course: Ruby on Rails 6: Learn to Build a Multitenancy Subscriptions SaaS app MVP](https://gumroad.com/l/ror6saas/presale33){:target="blank"}
+* 📕 [Video course: Ruby on Rails 6: Learn 25+ gems and build a Startup MVP](https://www.udemy.com/course/ruby-on-rails-6-learn-20-gems-build-an-e-learning-platform/?referralCode=4721E9D437DEE1734159){:target="blank"}
 * 📺 [SupeRails Youtube channel](https://www.youtube.com/channel/UCyr6ZTmztFW3FB4qG_97FoA){:target="blank"}
-* 📕 [Discount coupon: Ruby on Rails: Learn to Build a Multitenancy Subscriptions SaaS app MVP]({% post_url 2021-04-16-learn-to-build-multitenancy-subscriptions-saas-mvp %}){:target="blank"}
 
-Total posts: {{ site.posts.size }}
-
-Join the mailing list and don't miss the good stuff!
+[Join the mailing list](/mailing-list/)
 
 ****
+
+## Total posts: {{ site.posts.size }}

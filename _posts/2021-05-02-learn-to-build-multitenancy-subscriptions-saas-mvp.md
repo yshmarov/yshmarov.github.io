@@ -21,7 +21,7 @@ thumbnail: https://www.strattic.com/wp-content/uploads/2019/05/gumroad.jpg
 |--|--|
 | Discount coupon  | presale33  |
 |--|--|
-| Price with coupon  | %99.00 - %33.00 = $66.33 |
+| Price with coupon  | $150.00 - %33.00 = $99.00 |
 |--|--|
 | Expires  |  N/A  |
 |--|--|
