@@ -66,6 +66,10 @@ To make Ctrl+V work properly `Esc` & `:set paste` & `i` & Ctrl` + `V`
 * Example of using credentials in `devise.rb`:
 
 ```
+config.omniauth :github, Rails.application.credentials.dig(Rails.env.to_sym, :github, :id), Rails.application.credentials.dig(Rails.env.to_sym, :github, :secret)
+```
+or
+```
 if Rails.application.credentials[Rails.env.to_sym].present? && Rails.application.credentials[Rails.env.to_sym][:github].present?
   config.omniauth :github, Rails.application.credentials[Rails.env.to_sym][:github][:id], Rails.application.credentials[Rails.env.to_sym][:github][:secret]
 end
@@ -74,10 +78,10 @@ end
 ### Example of using credentials in `stripe.rb`:
 
 ```
-if Rails.application.credentials[:stripe].present? && Rails.application.credentials[:stripe][:secret].present?
-  Stripe.api_key = Rails.application.credentials[:stripe][:secret]
-end
+Stripe.api_key = Rails.application.credentials.dig(:stripe, :secret)
 ```
+
+### HINT: using `.dig` is safer
 
 ### find a credential
 
