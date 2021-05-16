@@ -6,10 +6,6 @@ tags: ruby-on-rails action_mailer amazon-ses aws sendgrid
 thumbnail: /assets/thumbnails/aws.png
 ---
 
-useful links:
-*	[https://hixonrails.com/ruby-on-rails-tutorials/ruby-on-rails-action-mailer-configuration/](https://hixonrails.com/ruby-on-rails-tutorials/ruby-on-rails-action-mailer-configuration/){:target="blank"}
-*	[https://www.sitepoint.com/rubymine-code-insight-for-ruby-and-rails/](https://www.sitepoint.com/rubymine-code-insight-for-ruby-and-rails/){:target="blank"}
-
 get the API keys here:
 
 [https://eu-central-1.console.aws.amazon.com/ses/home?region=eu-central-1#smtp-settings:](https://eu-central-1.console.aws.amazon.com/ses/home?region=eu-central-1#smtp-settings:){:target="blank"}
@@ -46,3 +42,6 @@ app/mailers/application_mailer.rb:
 ```
 default from: "Corsego <hello@corsego.com>"
 ```
+
+useful links:
+*	[https://hixonrails.com/ruby-on-rails-tutorials/ruby-on-rails-action-mailer-configuration/](https://hixonrails.com/ruby-on-rails-tutorials/ruby-on-rails-action-mailer-configuration/){:target="blank"}
