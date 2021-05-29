@@ -19,6 +19,7 @@ description: Quickest guide to credentials and secrets for Rails 6
 ```
 rails credentials:edit 
 EDITOR=vim rails credentials:edit
+rails credentials:show
 ```
 
 ### `config/credentials.yml` example:
@@ -120,7 +121,10 @@ By default `master.key` is in `.gitignore`
 ```
 heroku config:set RAILS_MASTER_KEY=123456789
 heroku config:set RAILS_MASTER_KEY=`cat config/master.key`
+heroku config:set RAILS_MASTER_KEY=`cat config/credentials/production.key`
 ```
+
+Bonus: in config/environments/production.rb uncomment `config.require_master_key = true`
 
 The `config/credentials.yml` file should NOT be in gitignore.
 

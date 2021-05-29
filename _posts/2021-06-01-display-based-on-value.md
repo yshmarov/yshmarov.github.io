@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Display data conditionally with basic javascript"
+title: "Display div based on field input (RoR + JS)"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails javascript
 thumbnail: /assets/thumbnails/javascript.png
@@ -9,6 +9,8 @@ thumbnail: /assets/thumbnails/javascript.png
 ## Problem:
 
 Display something only when a specific value is selected in a form
+
+![unhide-based-on-input.gif](/assets/images/unhide-based-on-input.gif)
 
 ## Solution:
 
@@ -38,6 +40,7 @@ application.scss
 
 The above form generates HTML like this:
 
+```
 <form action="/bookings" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="xxx">
   <div class="field">
     <label for="booking_title">Kids</label>
@@ -55,6 +58,7 @@ The above form generates HTML like this:
     </div>
   </div>
 </form>
+```
 
 application.js:
 
@@ -74,6 +78,11 @@ document.addEventListener("turbolinks:load", () => {
 });
 ```
 
+****
+
+Bonus - more sophisticated select fields:
+
+```
 f.select :score, [['horrible', 1], ['poor', 2], ['mediocre', 3], ['good', 4], ['great', 5]]
-You would use collection_select if you had a model for the scores. Something like:
 f.collection_select :score_id, Score.all, :id, :name
+```
