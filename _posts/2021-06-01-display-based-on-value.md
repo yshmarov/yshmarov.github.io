@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Display div based on field input (RoR + JS)"
+title: "Display or hide div based on field input (RoR + JS)"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails javascript
 thumbnail: /assets/thumbnails/javascript.png
