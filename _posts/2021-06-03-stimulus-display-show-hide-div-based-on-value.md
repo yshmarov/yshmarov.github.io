@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Display or hide div based on field input (RoR + Stimulus)"
+title: "Stimulus Rails - Display or hide div based on field input"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails stimulus bootstrap5
 thumbnail: /assets/thumbnails/stimulus-logo.png
