@@ -6,6 +6,8 @@ tags: ruby rails ruby-on-rails stimulus bootstrap5
 thumbnail: /assets/thumbnails/stimulus-logo.png
 ---
 
+** Disclaimer: I'm still experimenting with Stimulus and this might not be the best way to do things **
+
 Prerequisites:
 * rails 6
 * stimulus 2

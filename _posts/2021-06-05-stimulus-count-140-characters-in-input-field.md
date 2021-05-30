@@ -6,6 +6,8 @@ tags: ruby rails ruby-on-rails stimulus
 thumbnail: /assets/thumbnails/stimulus-logo.png
 ---
 
+** Disclaimer: I'm still experimenting with Stimulus and this might not be the best way to do things **
+
 Prerequisites:
 * rails 6
 * stimulus 2
@@ -52,4 +54,4 @@ export default class extends Controller {
 }
 ```
 
-Disclaimer: This is 99% based on a go rails episode
+Disclaimer 2: This particular code is 99% based on a go rails episode
