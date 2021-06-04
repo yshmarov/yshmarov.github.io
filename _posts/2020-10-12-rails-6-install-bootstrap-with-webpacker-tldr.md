@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Rails 6: Install Bootstrap with Yarn and Webpacker: TLDR'
+title: 'Rails 6: Install Bootstrap 4 with Yarn and Webpacker: TLDR'
 author: Yaroslav Shmarov
 tags:
 - webpacker
