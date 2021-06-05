@@ -1,19 +1,16 @@
 ---
 layout: post
-title:  How to write better Rails generators?
+title:  Write skinny scaffolds and generators
 author: Yaroslav Shmarov
 tags: ruby-on-rails
 thumbnail: https://previews.123rf.com/images/dmitrymoi/dmitrymoi1609/dmitrymoi160900126/63675567-man-before-and-after-sports-cartoon-vector-illustration-diet-and-sport-fat-and-strong-character-fitn.jpg
 ---
 
 **TLDR:** add a few `--no` tags to your rails generators to produce only the crucial files:
-```
-rails g controller home index --no-helper --no-assets --no-controller-specs --no-view-specs --no-test-framework
-```
 
-```
-rails g scaffold product name description:text --no-helper --no-assets --no-controller-specs --no-view-specs --no-test-framework --no-jbuilder 
-```
+`rails g controller home index --no-helper --no-assets --no-controller-specs --no-view-specs --no-test-framework`
+
+`rails g scaffold product name description:text --no-helper --no-assets --no-controller-specs --no-view-specs --no-test-framework --no-jbuilder`
 
 ****
 

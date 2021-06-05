@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Memo on navigation links when using gem devise
+title:  Navbar with Devise and Bootstrap (4, 5) 
 author: Yaroslav Shmarov
 tags: 
 - ruby on rails
@@ -10,7 +10,7 @@ thumbnail: https://2.bp.blogspot.com/-zLeLuzX5ux0/WTUO8RYuiNI/AAAAAAAABAs/eDXmy0
 
 When installing `gem devise` for a `User` model, add these links to your application:
 
-Basic navigation links:
+# Basic navigation:
 ```
 <% if current_user %>
   <%= link_to current_user.email, edit_user_registration_path %>
@@ -21,7 +21,7 @@ Basic navigation links:
 <% end %>
 ```
 
-or a Navbar with bootstrap 4:
+# bootstrap 4 Navbar:
 ```
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/">
@@ -65,7 +65,7 @@ or a Navbar with bootstrap 4:
 </nav>
 ```
 
-or a Navbar with bootstrap 5:
+# bootstrap 5 Navbar:
 ```
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
@@ -78,7 +78,7 @@ or a Navbar with bootstrap 5:
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <%= link_to root_path, class: "nav-link #{'active font-weight-bold' if current_page?(root_path)}" do %>
+        <%= link_to root_path, class: "nav-link #{'active fw-bold' if current_page?(root_path)}" do %>
           <div class="fa fa-home"></div>
           Home
         <% end %>
@@ -91,7 +91,7 @@ or a Navbar with bootstrap 5:
               <b><%= current_user.email %></b>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <%= link_to edit_user_registration_path, class: "dropdown-item #{'active font-weight-bold' if current_page?(edit_user_registration_path)}" do %>
+              <%= link_to edit_user_registration_path, class: "dropdown-item #{'active fw-bold' if current_page?(edit_user_registration_path)}" do %>
                 <div class="fa fa-cog"></div>
                 <b>Account settings</b>
               <% end %>
@@ -102,8 +102,8 @@ or a Navbar with bootstrap 5:
             </ul>
           </li>
         <% else %>
-          <%= link_to "Log in", new_user_session_path, class: "nav-link #{'active font-weight-bold' if current_page?(new_user_session_path)}" %>
-          <%= link_to "Sign up", new_user_registration_path, class: "nav-link #{'active font-weight-bold' if current_page?(new_user_registration_path)}" %>
+          <%= link_to "Log in", new_user_session_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_session_path)}" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_registration_path)}" %>
         <% end %>
       </ul>
     </div>
