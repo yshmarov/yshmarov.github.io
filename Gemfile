@@ -6,7 +6,7 @@ group :jekyll_plugins do
   gem 'jekyll-sitemap'
   gem 'jekyll-seo-tag'
   gem 'jekyll-remote-theme'
-  gem 'jekyll-pwa-plugin' # https://github.com/lavas-project/jekyll-pwa
+  gem 'jekyll-pwa-plugin', "= 2.2.3" # https://github.com/lavas-project/jekyll-pwa
   gem 'jekyll-admin'
 end
 

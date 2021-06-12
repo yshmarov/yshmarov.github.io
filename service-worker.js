@@ -1,32 +1,38 @@
 // set names for both precache & runtime cache
 workbox.core.setCacheNameDetails({
     prefix: 'my-blog',
-    suffix: 'v1',
+    suffix: 'v1.0',
     precache: 'precache',
     runtime: 'runtime-cache'
 });
 
 // let Service Worker take control of pages ASAP
-workbox.skipWaiting();
-workbox.clientsClaim();
+workbox.core.skipWaiting();
+workbox.core.clientsClaim();
 
 // let Workbox handle our precache list
 workbox.precaching.precacheAndRoute(self.__precacheManifest);
 
-// use `networkFirst` strategy for `*.html`, like all my posts
+// use `NetworkFirst` strategy for html
 workbox.routing.registerRoute(
     /\.html$/,
-    workbox.strategies.networkFirst()
+    new workbox.strategies.NetworkFirst()
 );
 
-// use `cacheFirst` strategy for images
+// use `NetworkFirst` strategy for css and js
+workbox.routing.registerRoute(
+    /\.(?:js|css)$/,
+    new workbox.strategies.NetworkFirst()
+);
+
+// use `CacheFirst` strategy for images
 workbox.routing.registerRoute(
     /assets\/(img|icons)/,
-    workbox.strategies.cacheFirst()
+    new workbox.strategies.CacheFirst()
 );
 
-// third party files
+// use `StaleWhileRevalidate` third party files
 workbox.routing.registerRoute(
     /^https?:\/\/cdn.staticfile.org/,
-    workbox.strategies.staleWhileRevalidate()
+    new workbox.strategies.StaleWhileRevalidate()
 );
