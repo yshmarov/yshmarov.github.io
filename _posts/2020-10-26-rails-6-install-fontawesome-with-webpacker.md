@@ -29,6 +29,18 @@ Add couple of icons in any .html.erb (view) file:
 <i class="fab fa-github"></i>
 ```
 
+# Tips and tricks
+
+* Use smth like `fa-3x` for font size.
+* Use `fa-spin` to make any icon spin. [Animating Icons](https://fontawesome.com/v5.15/how-to-use/on-the-web/styling/animating-icons)
+* Use it in a link with a block
+```
+<%= link_to root_path do %>
+  <i class="far fa-gem fa-spin fa-3x"></i>
+  Home
+<% end %>
+```
+
 That's it!😊
 
 ****
