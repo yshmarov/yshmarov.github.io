@@ -8,7 +8,7 @@ cd corsego-blog
 bundle exec jekyll serve --port=8080
 bundle exec jekyll serve --port=8080 --drafts --unpublished --future
 bundle exec jekyll serve --port=8080 --unpublished
-bundle exec jekyll serve --port=8080 --future
+bundle exec jekyll serve --trace --port=8080 --future
 jekyll serve --port=8080
 ```
 

@@ -34,6 +34,9 @@ plugins:
 
 tagline: Ruby on Rails and Indie Hacking
 
+feed:
+  posts_limit: 100
+
 author:
   name: Yaroslav Shmarov
   email: hello@corsego.com
