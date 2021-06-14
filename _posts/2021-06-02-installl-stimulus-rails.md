@@ -16,6 +16,12 @@ mkdir app/javascript/controllers
 touch app/javascript/controllers/index.js
 ```
 
+#app/javascript/packs/application.js
+
+```
+import 'controllers'
+```
+
 #app/javascript/controllers/index.js
 
 ```

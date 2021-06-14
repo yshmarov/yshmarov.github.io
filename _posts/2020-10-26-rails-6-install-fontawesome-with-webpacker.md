@@ -9,6 +9,8 @@ tags:
 thumbnail: https://www.drupal.org/files/project-images/font_awesome_logo.png
 ---
 
+[Using FontAwesome yarn package manager](https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/using-package-managers){:target="blank"}
+
 # **1. console:**
 
 ```
@@ -32,7 +34,7 @@ Add couple of icons in any .html.erb (view) file:
 # Tips and tricks
 
 * Use smth like `fa-3x` for font size.
-* Use `fa-spin` to make any icon spin. [Animating Icons](https://fontawesome.com/v5.15/how-to-use/on-the-web/styling/animating-icons)
+* Use `fa-spin` to make any icon spin. [Animating Icons](https://fontawesome.com/v5.15/how-to-use/on-the-web/styling/animating-icons){:target="blank"}
 * Use it in a link with a block
 ```
 <%= link_to root_path do %>
