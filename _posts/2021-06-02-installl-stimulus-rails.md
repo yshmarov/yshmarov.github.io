@@ -6,6 +6,8 @@ tags: ruby rails ruby-on-rails stimulus yarn webpacker
 thumbnail: /assets/thumbnails/stimulus-logo.png
 ---
 
+[Official Docs](https://stimulus.hotwire.dev/)
+
 # 1. Install
 
 console
@@ -35,8 +37,12 @@ application.load(definitionsFromContext(context))
 
 # 2. See if it works
 
-#app/javascript/controllers/hello_controller.js
+console
+```
+touch app/javascript/controllers/hello_controller.js
+```
 
+#app/javascript/controllers/hello_controller.js
 ```
 import { Controller } from 'stimulus'; 
 export default class extends Controller {
@@ -51,6 +57,24 @@ in a view:
 ```
 <div data-controller="hello">
   Anything
+</div>
+```
+
+# 3. Log an action on a click
+
+#app/javascript/controllers/hello_controller.js
+
+```
+  welcome() {
+    console.log("click")
+  }
+```
+
+in a view:
+
+```
+<div data-controller="hello">
+  <div class="btn btn-primary" data-action="click->hello#welcome">log a click in console</div>
 </div>
 ```
 
