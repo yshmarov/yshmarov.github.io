@@ -8,18 +8,25 @@ thumbnail: /assets/thumbnails/bootstrap.png
 
 ## Important: use `@popperjs/core`, not `popper.js`
 
+## Option 1
+
 console
+
 ```
 yarn add bootstrap
 yarn add @popperjs/core
 mkdir app/javascript/stylesheets
 echo > app/javascript/stylesheets/application.scss
 ```
+
 application.html.erb
+
 ```
 <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 ```
+
 app/javascript/packs/application.js
+
 ```
 import 'bootstrap/dist/js/bootstrap'
 import "bootstrap/dist/css/bootstrap";
@@ -35,7 +42,13 @@ Example:
 body { background-color: #ede3d5; }
 ```
 
-## Alternative
+## Option 2
+
+app/views/layouts/application.html.erb
+
+```
+<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+```
 
 app/javascript/packs/application.js
 ```
@@ -46,6 +59,27 @@ import "../stylesheets/application"
 /superdemo/app/javascript/stylesheets/application.scss
 ```
 @import "bootstrap";
+```
+
+## Option 3
+
+app/views/layouts/application.html.erb
+
+```
+<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+```
+
+app/javascript/packs/application.js
+
+```
+import * as bootstrap from 'bootstrap'
+import "../stylesheets/application"
+```
+
+app/javascript/stylesheets/application.scss
+
+```
+@import "bootstrap"
 ```
 
 ## Bonus: Remove jQuery (needed for B4 but not B5)
