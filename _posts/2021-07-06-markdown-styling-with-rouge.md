@@ -16,14 +16,14 @@ Add [gem rouge](https://github.com/rouge-ruby/rouge) to add some styling to your
 
 Gemfile
 
-```
+```ruby
 gem "redcarpet"
 gem 'rouge'
 ```
 
 application_helper.rb
 
-```
+```ruby
   require 'redcarpet'
   require 'rouge'
   require 'rouge/plugins/redcarpet'
@@ -64,7 +64,7 @@ application_helper.rb
 
 app/assets/stylesheets/rouge.scss.erb - add one of [10+ available themes](https://github.com/rouge-ruby/rouge/tree/master/lib/rouge/themes)
 
-```
+```ruby
 <%= Rouge::Themes::Base16.mode(:light).render(scope: '.highlight') %>
 <%= Rouge::Themes::ThankfulEyes.render %>
 <%= Rouge::Themes::Base16.mode(:dark).render %>
@@ -72,7 +72,7 @@ app/assets/stylesheets/rouge.scss.erb - add one of [10+ available themes](https:
 
 app/assets/stylesheets/application.scss
 
-```
+```ruby
 @import "rouge";
 ```
 
@@ -82,7 +82,7 @@ app/assets/stylesheets/application.scss
 
 app/assets/stylesheets/rouge.scss.erb
 
-```
+```ruby
 <%= Rouge::Themes::Base16.mode(:dark).render %>
 
 div.highlight {
@@ -106,6 +106,6 @@ rougify style github > app/assets/stylesheets/github.css
 
 app/assets/stylesheets/application.scss
 
-```
+```ruby
 @import "github";
 ```

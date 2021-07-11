@@ -12,7 +12,7 @@ Scenario: restrict users with different roles to modifying specific data inside 
 
 users_controller.rb:
 
-```
+```ruby
   def user_params
     list_allowed_params = []
     list_allowed_params += [:name] if current_user == @user || current_user.admin?
@@ -25,7 +25,7 @@ users_controller.rb:
 
 users_controller.rb:
 
-```
+```ruby
   ADMIN_ATTRIBUTES = [:a, :b, :c, :d]
   MANAGER_ATTRIBUTES = [:a, :c, :d]
   EDITOR_ATTRIBUTES = [:b, :d]

@@ -11,14 +11,15 @@ Let's say you assing User roles via Ransack.
 Example code for editing user roles:
 
 app/controllers/users_controller.rb
-```
-def user_params
-  params.require(:user).permit({role_ids: []})
-end
+```ruby
+  def user_params
+    params.require(:user).permit({role_ids: []})
+  end
 ```
 
 app/views/users/edit.html.haml
-```
+
+```ruby
 = simple_form_for @user do |f|
   = f.collection_check_boxes :role_ids, Role.all, :id, :name
   = f.error :roles
@@ -26,13 +27,15 @@ app/views/users/edit.html.haml
 ```
 
 display all user roles in a view:
-```
+
+```ruby
 - @user.roles.each do |role|
   = role.name
 ```
 
 app/models/user.rb
-```
+
+```ruby
 private
 
 def must_have_a_role
