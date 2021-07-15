@@ -22,7 +22,7 @@ By the end of the post we will be able to:
 
 Gemfile
 
-```
+```ruby
 gem 'wicked_pdf'
 gem "wkhtmltopdf-binary", group: :development
 gem "wkhtmltopdf-heroku", group: :production
@@ -40,7 +40,7 @@ Now you can test the installation by running something like `wkhtmltopdf http://
 
 (If it is set up this way, it will work correctly on heroku) config/initializers/wicked_pdf.rb
 
-```
+```ruby
 WickedPdf.config ||= {}
 WickedPdf.config.merge!({
   layout: "pdf.html.erb",
@@ -49,13 +49,13 @@ WickedPdf.config.merge!({
 
 config/initializers/mime_types.rb
 
-```
+```ruby
 Mime::Type.register "application/pdf", :pdf
 ```
 
 app/views/layouts/pdf.html.erb
 
-```
+```ruby
 <!DOCTYPE html>
 <html>
   <head>
@@ -76,7 +76,7 @@ app/views/layouts/pdf.html.erb
 
 app/controllers/posts_controller.rb
 
-```
+```ruby
   def index
     @posts = Post.all
     respond_to do |format|
@@ -91,7 +91,7 @@ app/controllers/posts_controller.rb
 
 app/views/posts/index.html.erb
 
-```
+```ruby
 <%= link_to "PDF", posts_path(format: :pdf) %>
 ```
 
@@ -117,7 +117,7 @@ You might want to REMOVE this line from application.scss
 ## Level 3. Customize your PDF generations
 
 config/initializers/wicked_pdf.rb
-```
+```ruby
 WickedPdf.config ||= {}
 WickedPdf.config.merge!({
   layout: "pdf.html.erb",
@@ -137,7 +137,7 @@ WickedPdf.config.merge!({
 ## Level 4. Generate PDF from posts/show.html.erb
 
 app/controllers/posts_controller.rb
-```
+```ruby
   def show
     respond_to do |format|
       format.html
@@ -150,7 +150,7 @@ app/controllers/posts_controller.rb
 ```
 
 app/views/posts/index.html.erb
-```
+```ruby
 <%= link_to 'This post in PDF', post_path(post, format: :pdf) %>
 ```
 
@@ -165,12 +165,12 @@ rails g mailer PostMailer new_post
 ```
 
 action to trigger the mailer (in any controller, for example posts#show)
-```
+```ruby
 PostMailer.new_post.deliver_later
 ```
 
 app/mailers/post_mailer.rb
-```
+```ruby
   # def pdf_attachment_method(post_id)
   def new_post
     # post = Post.find(post_id)

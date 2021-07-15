@@ -17,24 +17,24 @@ Here are some example relationship scopes that you can add to your models and fi
 ### Scoping
 
 user.rb
-```
+```ruby
 has_many :posts, through: :roles, source: :resource, source_type: :Post
 has_many :moderated_posts, -> { where(roles: {name: :moderator}) }, through: :roles, source: :resource, source_type: :Post
 ```
 let's you do
-```
+```ruby
 @user.posts 
 # => [ all the posts where the @user has a role ]
 @user.moderated_posts
 # => [ all the posts where the @user has a moderator ]
 ```
 post.rb
-```
+```ruby
 has_many :users, through: :roles, class_name: 'User', source: :users
 has_many :moderators, -> { where(:roles => {name: :moderator}) }, through: :roles, class_name: 'User', source: :users
 ```
 let's you do
-```
+```ruby
 @post.users
 # => [ all the users that have a role in this post ]
 @post.moderators

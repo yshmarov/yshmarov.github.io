@@ -17,20 +17,20 @@ example callback url: `https://superails.com/users/auth/github/callback`
 ![creating a github oauth app](/assets/devise-omniauth-github/create-git-app.png)
 
 /Gemfile
-```
+```ruby
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem "omniauth-rails_csrf_protection" # for omniauth 2.0
 ```
 /config/initializers/devise.rb
-```
+```ruby
   config.omniauth :github, 'APP_ID', 'APP_SECRET'
 ```
 /config/routes.rb
-```
+```ruby
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
 ```
 /app/controllers/users/omniauth_callbacks_controller.rb
-```
+```ruby
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def github
     handle_auth "Github"
@@ -53,7 +53,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 end
 ```
 /app/models/user.rb
-```
+```ruby
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
@@ -83,7 +83,7 @@ console
 rails g migration add_omniauth_data_to_users
 ```
 migration
-```
+```ruby
 class AddOmniauthDataToUsers < ActiveRecord::Migration[6.1]
   def change
     add_column :users, :name, :string
@@ -94,7 +94,7 @@ class AddOmniauthDataToUsers < ActiveRecord::Migration[6.1]
 end
 ```
 views
-```
+```ruby
 <% if user_signed_in? %>
   <%= image_tag current_user.image, size: '30x30', alt: "#{current_user.email}" if current_user.image? %>
   <%= current_user.name %>

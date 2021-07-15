@@ -18,7 +18,7 @@ Final solution demo:
 
 HOWTO:
 
-```
+```ruby
 <%= form_with(model: post) do |form| %>
   <%= content_tag :div, nil, data: { controller: "tweet", tweet_character_count_value: 140, tweet_over_limit_class: "text-danger" } do %>
     <%= form.text_area :content, data: { controller: "textarea-autogrow", tweet_target: "field", action: "keyup->tweet#change" } %>
@@ -28,7 +28,7 @@ HOWTO:
 ```
 
 tweet_controller.js
-```
+```ruby
 import { Controller } from "stimulus"
 export default class extends Controller {
   static targets = [ "field", "output" ]
