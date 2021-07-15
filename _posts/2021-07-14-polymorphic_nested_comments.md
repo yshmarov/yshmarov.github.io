@@ -7,14 +7,12 @@ thumbnail: /assets/thumbnails/polymorphism-sign.png
 ---
 
 1 console
-
-```
+```ruby
 rails generate model Comment user:references body:text commentable:references{polymorphic}
 ```
 
 2 db/migrate/20210711135608_create_comments.rb
-
-```
+```ruby
 class CreateComments < ActiveRecord::Migration[6.1]
   def change
     create_table :comments do |t|
@@ -30,8 +28,7 @@ end
 ```
 
 3 app/models/comment.rb
-
-```
+```ruby
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :commentable, polymorphic: true
@@ -46,7 +43,7 @@ end
 ```
 
 4 config/routes.rb
-```
+```ruby
   resources :posts, except: :index do
     resources :comments,  only: %i[new create destroy], module: :posts
   end
@@ -57,7 +54,7 @@ end
 ```
 
 5 app/controllers/comments_controller.rb
-```
+```ruby
 class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params)
@@ -75,7 +72,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = @commentable.comments.find(params[:id])
-    @comment.destroy # update(user: nil, content: nil)
+    @comment.destroy # update(deleted_at: Time.zone.now)
     redirect_back(fallback_location: root_url)
   end
 
@@ -88,7 +85,7 @@ end
 ```
 
 6 app/controllers/comments/comments_controller.rb
-```
+```ruby
 class Comments::CommentsController < CommentsController
   before_action :set_commentable
 
@@ -105,7 +102,7 @@ end
 ```
 
 7 app/controllers/posts/comments_controller.rb
-```
+```ruby
 class Posts::CommentsController < CommentsController
   before_action :set_commentable
 
@@ -118,14 +115,13 @@ end
 ```
 
 8 app/controllers/posts_controller.rb
-```
+```ruby
 def show
   @post = Post.includes(:comments).friendly.find(params[:id])
 end
 ```
 
-app/javascript/stylesheets/application.scss
-
+9 app/javascript/stylesheets/application.scss
 ```
 .display-none {
   display: none;
@@ -138,18 +134,15 @@ app/javascript/stylesheets/application.scss
 }
 ```
 
-app/models/post.rb
-
-```
+10 app/models/post.rb
+```ruby
 class Post < ApplicationRecord
-  belongs_to :user, counter_cache: true
   has_many :comments, as: :commentable
 end
 ```
 
-app/views/comments/_comment.html.erb
-
-```
+11 app/views/comments/_comment.html.erb
+```ruby
 <%= content_tag :div, id: dom_id(comment), class: 'comment' do %>
   <% if comment.deleted_at? %>
     <strong>[deleted]</strong>
@@ -170,23 +163,16 @@ app/views/comments/_comment.html.erb
 <% end %>
 ```
 
-app/views/comments/_form.html.erb
-
-```
+12 app/views/comments/_form.html.erb
+```ruby
 <%= form_with model: [commentable, comment], id: dom_id(commentable, 'form'), class: 'display-none' do |form| %>
-  <div class='field'>
-    <%= form.text_area :content, placeholder: 'Add a comment', class: 'form-control', rows: 10, required: true %>
-  </div>
-
-  <div class='field'>
-    <%= form.submit class: 'btn btn-primary' %>
-  </div>
+  <%= form.text_area :content, placeholder: 'Add a comment', style: "width: 100%", rows: 5, required: true %>
+  <%= form.submit %>
 <% end %>
 ```
 
-app/views/comments/create.js.erb
-
-```
+13 app/views/comments/create.js.erb
+```ruby
 var form = document.querySelector("#<%= dom_id(@commentable, 'form') %>")
 if (form != null) {
   form.classList.toggle("display-none")
@@ -199,16 +185,14 @@ if (comments == null) {
 comments.insertAdjacentHTML('beforeend', '<%= j render 'comments/comment', commentable: @commentable, comment: @comment %>')
 ```
 
-app/views/comments/new.js.erb
-
-```
+14 app/views/comments/new.js.erb
+```ruby
 var form = document.querySelector('#<%= dom_id(@commentable, 'form') %>')
 form.classList.toggle('display-none')
 ```
 
-app/views/posts/show.html.erb
-
-```
+15 app/views/posts/show.html.erb
+```ruby
 <p><%= render 'comments/form', commentable: @post, comment: Comment.new %></p>
 <%= link_to "Add Comment", [:new, @post, :comment], remote: true %> 
 
