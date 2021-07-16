@@ -3,8 +3,11 @@ layout: post
 title: "REVISED: Polymorphism 101. Part 4 of 3. Polymorphic Comments."
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails polymorphism polymorphic-associations comments
-thumbnail: /assets/thumbnails/polymorphism-sign.png
+thumbnail: /assets/thumbnails/cog.png
 ---
+
+Final result example:
+![polymorphic nested commits](/assets/polymorphic_nested_comments/nested_comments.png)
 
 1 console
 ```ruby
