@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "REVISED: Polymorphism 101. Part 4 of 3. Polymorphic Comments."
+title: "settings.yml, config.yml."
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails settings config_for config yml
 thumbnail: /assets/thumbnails/polymorphism-sign.png
