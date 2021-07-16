@@ -8,9 +8,9 @@ thumbnail: /assets/thumbnails/cog.png
 
 **config/settings** - approach to set default values and collections in a Rails application. Good for storing business logic default values, collections, texts
 
-[config_for docs](https://api.rubyonrails.org/classes/Rails/Application.html#method-i-config_for)
+[config_for docs](https://api.rubyonrails.org/classes/Rails/Application.html#method-i-config_for){:target="blank"}
 
-alternatively you can use [gem config](https://github.com/rubyconfig/config)
+alternatively you can use [gem config](https://github.com/rubyconfig/config){:target="blank"}
 
 create `/config/settings.yml`:
 ```
