@@ -3,7 +3,7 @@ layout: post
 title: "settings.yml, config.yml."
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails settings config_for config yml
-thumbnail: /assets/thumbnails/polymorphism-sign.png
+thumbnail: /assets/thumbnails/cog.png
 ---
 
 **config/settings** - approach to set default values and collections in a Rails application. Good for storing business logic default values, collections, texts
