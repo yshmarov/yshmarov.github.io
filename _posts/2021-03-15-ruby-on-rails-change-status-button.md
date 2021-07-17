@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: pask
 title: "Button to update status attribute of a table"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails polymorphism polymorphic-associations
@@ -47,6 +47,9 @@ tasks/show.html.erb
     <% end %>
   <% end %>
 ```
-
-
-
+or with a block
+```
+  <% Task::STATUSES.each do |status| %>
+    <%= link_to_unless pask.status.eql?(status.to_s), status, change_status_pask_path(pask, status: status), method: :patch %>
+  <% end %>
+```
