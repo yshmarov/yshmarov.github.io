@@ -1,5 +1,5 @@
 ---
-layout: pask
+layout: post
 title: "Button to update status attribute of a table"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails polymorphism polymorphic-associations
