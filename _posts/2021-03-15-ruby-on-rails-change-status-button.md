@@ -50,6 +50,6 @@ tasks/show.html.erb
 or with a block
 ```
   <% Task::STATUSES.each do |status| %>
-    <%= link_to_unless pask.status.eql?(status.to_s), status, change_status_pask_path(pask, status: status), method: :patch %>
+    <%= link_to_unless task.status.eql?(status.to_s), status, change_status_task_path(task, status: status), method: :patch %>
   <% end %>
 ```
