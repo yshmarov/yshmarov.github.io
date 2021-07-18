@@ -65,10 +65,11 @@ display all user roles in a view:
 
 @user.roles.pluck(:name)
 ```
-
 app/models/user.rb
 
 ```ruby
+validate :must_have_a_role, on: :update
+
 private
 
 def must_have_a_role
