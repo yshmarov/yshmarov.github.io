@@ -57,7 +57,7 @@ layouts/errors.html.erb
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= Rails.application.class.parent_name %></title>
+    <title><%= Rails.application.class.module_parent_name %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
