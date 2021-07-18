@@ -53,7 +53,8 @@ OR app/views/users/edit.html.haml
     <%= role.resource_type %>
     <%= role.resource %>
   <% end %>
-  = f.button :submit
+  <%= f.button :submit %>
+<% end %>
 ```
 
 display all user roles in a view:
