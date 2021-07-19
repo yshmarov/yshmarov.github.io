@@ -24,10 +24,10 @@ post.rb
 a view:
 
 ```ruby
-<%= Post.my_voted(current_user).count %>
-<%= Post.my_un_voted(current_user).count %>
-<%= Post.my_up_voted(current_user).count %>
-<%= Post.my_down_voted(current_user).count %>
+<%= Post.my_voted(current_user).pluck(:id) %>
+<%= Post.my_un_voted(current_user).pluck(:id) %>
+<%= Post.my_up_voted(current_user).pluck(:id) %>
+<%= Post.my_down_voted(current_user).pluck(:id) %>
 ```
 
 ## Scopes - which Users voted for a Post
