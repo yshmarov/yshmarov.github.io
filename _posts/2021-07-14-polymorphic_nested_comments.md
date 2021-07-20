@@ -9,9 +9,11 @@ thumbnail: /assets/thumbnails/polymorphism-sign.png
 Final result example:
 ![polymorphic nested commits](/assets/polymorphic_nested_comments/nested_comments.png)
 
+### 1. migration
+
 1 console
 ```ruby
-rails generate model Comment user:references body:text commentable:references{polymorphic}
+rails generate model Comment user:references body:text commentable:references{polymorphic} deleted_at:datetime:index
 ```
 
 2 db/migrate/20210711135608_create_comments.rb
@@ -21,7 +23,7 @@ class CreateComments < ActiveRecord::Migration[6.1]
     create_table :comments do |t|
       t.references :user, null: false, foreign_key: true
       t.references :commentable, polymorphic: true, null: false
-      t.text :content
+      t.text :body
       t.datetime :deleted_at
       t.timestamps
     end
@@ -30,14 +32,16 @@ class CreateComments < ActiveRecord::Migration[6.1]
 end
 ```
 
+### 2. models
+
 3 app/models/comment.rb
 ```ruby
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable
-  validates :content, presence: true
-  validates :content, length: { minimum: 5 }
+  validates :body, presence: true
+  validates :body, length: { minimum: 5 }
 
   def destroy
     update(deleted_at: Time.zone.now)
@@ -45,7 +49,16 @@ class Comment < ApplicationRecord
 end
 ```
 
-4 config/routes.rb
+4 app/models/post.rb
+```ruby
+class Post < ApplicationRecord
+  has_many :comments, as: :commentable
+end
+```
+
+### 3. controllers
+
+5 config/routes.rb
 ```ruby
   resources :posts, except: :index do
     resources :comments,  only: %i[new create destroy], module: :posts
@@ -56,7 +69,7 @@ end
   end
 ```
 
-5 app/controllers/comments_controller.rb
+6 app/controllers/comments_controller.rb
 ```ruby
 class CommentsController < ApplicationController
   def create
@@ -82,12 +95,12 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:body)
   end
 end
 ```
 
-6 app/controllers/comments/comments_controller.rb
+7 app/controllers/comments/comments_controller.rb
 ```ruby
 class Comments::CommentsController < CommentsController
   before_action :set_commentable
@@ -104,7 +117,7 @@ class Comments::CommentsController < CommentsController
 end
 ```
 
-7 app/controllers/posts/comments_controller.rb
+8 app/controllers/posts/comments_controller.rb
 ```ruby
 class Posts::CommentsController < CommentsController
   before_action :set_commentable
@@ -117,14 +130,16 @@ class Posts::CommentsController < CommentsController
 end
 ```
 
-8 app/controllers/posts_controller.rb
+9 app/controllers/posts_controller.rb
 ```ruby
 def show
   @post = Post.includes(:comments).friendly.find(params[:id])
 end
 ```
 
-9 app/javascript/stylesheets/application.scss
+### 4.views
+
+10 app/javascript/stylesheets/application.scss
 ```
 .display-none {
   display: none;
@@ -137,13 +152,6 @@ end
 }
 ```
 
-10 app/models/post.rb
-```ruby
-class Post < ApplicationRecord
-  has_many :comments, as: :commentable
-end
-```
-
 11 app/views/comments/_comment.html.erb
 ```ruby
 <%= content_tag :div, id: dom_id(comment), class: 'comment' do %>
@@ -151,7 +159,7 @@ end
     <strong>[deleted]</strong>
   <% else %>
     <strong><%= comment.user.email %></strong>
-    <p><%= comment.content %></p>
+    <p><%= comment.body %></p>
   <% end %>
 
   <div class='links'><small>
@@ -169,7 +177,7 @@ end
 12 app/views/comments/_form.html.erb
 ```ruby
 <%= form_with model: [commentable, comment], id: dom_id(commentable, 'form'), class: 'display-none' do |form| %>
-  <%= form.text_area :content, placeholder: 'Add a comment', style: "width: 100%", rows: 5, required: true %>
+  <%= form.text_area :body, placeholder: 'Add a comment', style: "width: 100%", rows: 5, required: true %>
   <%= form.submit %>
 <% end %>
 ```
