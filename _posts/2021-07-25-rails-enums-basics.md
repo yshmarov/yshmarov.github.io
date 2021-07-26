@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Rails enums basics."
+title: "Rails enums - different approaches"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails enums
 thumbnail: /assets/thumbnails/select-options.png
