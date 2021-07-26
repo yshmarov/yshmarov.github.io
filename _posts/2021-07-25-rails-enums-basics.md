@@ -3,7 +3,7 @@ layout: post
 title: "Rails enums basics."
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails enums
-thumbnail: /assets/thumbnails/polymorphism-sign.png
+thumbnail: /assets/thumbnails/select-options.png
 ---
 
 Other good posts on the topic:
