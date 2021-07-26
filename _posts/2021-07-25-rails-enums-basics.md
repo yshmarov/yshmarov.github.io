@@ -42,7 +42,7 @@ post.rb
   enum status: { draft: 2, reviewed: 1, published: 0 }
 ```
 
-## Option 3 - map enum to strings
+## Option 3 - map enum to strings (the best)
 
 post.rb
 ```
