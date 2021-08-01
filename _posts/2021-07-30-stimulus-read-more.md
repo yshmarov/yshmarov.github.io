@@ -8,6 +8,10 @@ thumbnail: /assets/thumbnails/stimulus-logo.png
 
 I did not find an easy Stimulus solution to this, so here is mine. Works. Easy. quite Light.
 
+![stimulus-read-more](/assets/images/stimulus-read-more.gif)
+
+## HOWTO:
+
 read_more_controller.js
 ```
 import { Controller } from "stimulus"
