@@ -7,8 +7,8 @@ thumbnail: /assets/thumbnails/rubocop.png
 ---
 
 Resources:
-* [https://docs.rubocop.org/rubocop-rails/index.html](https://docs.rubocop.org/rubocop-rails/index.html)
-* [https://github.com/rubocop/rubocop-rails](https://github.com/rubocop/rubocop-rails)
+* [https://docs.rubocop.org/rubocop-rails/index.html](https://docs.rubocop.org/rubocop-rails/index.html){:target="blank"}
+* [https://github.com/rubocop/rubocop-rails](https://github.com/rubocop/rubocop-rails){:target="blank"}
 
 ## Installation
 

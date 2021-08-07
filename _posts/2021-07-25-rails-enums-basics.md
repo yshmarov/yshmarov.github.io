@@ -7,9 +7,9 @@ thumbnail: /assets/thumbnails/select-options.png
 ---
 
 Other good posts on the topic:
-* [https://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html](https://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html)
-* [https://sipsandbits.com/2018/04/30/using-database-native-enums-with-rails/](https://sipsandbits.com/2018/04/30/using-database-native-enums-with-rails/)
-* [https://naturaily.com/blog/ruby-on-rails-enum](https://naturaily.com/blog/ruby-on-rails-enum)
+* [https://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html](https://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html){:target="blank"}
+* [https://sipsandbits.com/2018/04/30/using-database-native-enums-with-rails/](https://sipsandbits.com/2018/04/30/using-database-native-enums-with-rails/){:target="blank"}
+* [https://naturaily.com/blog/ruby-on-rails-enum](https://naturaily.com/blog/ruby-on-rails-enum){:target="blank"}
 
 Enums are a Rails feature, not a Ruby feature.
 
