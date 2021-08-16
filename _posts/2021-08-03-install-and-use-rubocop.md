@@ -64,6 +64,11 @@ rubocop - A
 rubocop --auto-correct-all
 ```
 
+console - autocorrect a single specific cop
+```
+bundle exec rubocop -A --only Style/FrozenStringLiteralComment
+```
+
 generate comments for uncorrected problems and stop flagging them as TODO:
 ```
 rubocop --auto-correct --disable-uncorrectable
