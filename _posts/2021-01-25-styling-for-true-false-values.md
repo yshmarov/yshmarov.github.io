@@ -13,15 +13,18 @@ Add the helper below, and you will be able to style `true`/`false` values like t
 app/helpers/application_helper.rb:
 ```
 # boolean green or red
-def boolean_label(value)
-  case value
+
+  def boolean_label(value)
+    case value
     when true
-      # content_tag(:span, "Yes", class: "badge badge-success")
-      content_tag(:span, value, class: "badge badge-success")
+      text = 'Yes'
+      badge_color = 'badge bg-success text-light'
     when false
-      content_tag(:span, value, class: "badge badge-danger")
+      text = 'No'
+      badge_color = 'badge bg-danger text-light'
+    end
+    tag.span(text, class: badge_color)
   end
-end
 ```
 your view:
 ```
