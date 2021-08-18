@@ -12,7 +12,7 @@ Here's a quick easy way to do it:
 
 app/helpers/greetings_helper.rb
 
-```
+```ruby
 module GreetingsHelper
   def greeting
     now = Time.zone.now
@@ -29,7 +29,7 @@ end
 
 Will display as follows:
 
-```
+```ruby
 # Time.zone.now = 07:00
 # greeting
 # => Good Morning
@@ -47,7 +47,7 @@ Test it:
 
 spec/helpers/greetings_helper_spec.rb
 
-```
+```ruby
 # frozen_string_literal: true
 
 require 'rails_helper'
