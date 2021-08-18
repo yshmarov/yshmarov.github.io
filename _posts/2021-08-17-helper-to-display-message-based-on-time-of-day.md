@@ -3,7 +3,7 @@ layout: post
 title: "Quick tip: Helper to display different text based on time of day"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails helpers rspec
-thumbnail: /assets/thumbnails/hello.png
+thumbnail: /assets/thumbnails/clock.png
 ---
 
 Sometimes in the application views or emails you will want to display a different message to users based on time of day. 
