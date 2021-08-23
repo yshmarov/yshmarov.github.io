@@ -31,6 +31,13 @@ migration:
   add_column :posts, :status, :integer, default: 0
 ```
 
+### inclusion validation works automatically with enums!
+
+```
+  # this is automatic!!!
+  validates :status, inclusion: { in: Post.statuses.keys }
+```
+
 In this case, the order of enums is very important:
 
 0 = draft
@@ -38,6 +45,24 @@ In this case, the order of enums is very important:
 2 = published
 
 If we add new values - add at the end of the array!
+
+### to get keys/values
+
+```
+Post.statuses.keys
+=> ["draft", "published"] 
+Post.statuses.values
+=> [0, 1] 
+```
+
+### to select an enum in a form
+
+```
+# basic
+<%= form.select :status, Post.statuses.keys %>
+# advanced
+<%= form.select :status, options_for_select(Post.statuses.keys, { selected: @post.status || Post.new.status }), include_blank: true %>
+```
 
 ## Option 2 - fix integer values to specific strings (better)
 
@@ -79,6 +104,12 @@ you can better do it in the model
 ```ruby
   enum status: %i[draft reviewed published], _default: 'draft'
   enum category: { rails: 'Rails', ruby: 'Ruby' }, _default: 'Rails'
+```
+
+to get the default value
+
+```
+Post.new.status # => "draft"
 ```
 
 ## a few methods that can be called when using enums:
