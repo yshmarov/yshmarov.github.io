@@ -13,35 +13,58 @@ Resources:
 ## Installation
 
 Gemfile
+
+```ruby
+group :development, :test do
+  gem 'rubocop-rails', require: false
+end
 ```
-gem 'rubocop-rails', require: false
-```
+
 console
+
 ```
 bundle
 echo > .rubocop.yml
 ```
-.rubocop.yml
+
+.rubocop.yml - basic setup example
+
 ```
 require: 
-  rubocop-rails
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 3.0.1
+  Exclude:
+    - 'vendor/**/*'
+    - '**/db/schema.rb'
+    - '**/node_modules/**/*'
+    - '**/db/**/*'
+    - 'bin/*'
+
+Style/Documentation:
+  Enabled: false
 ```
 
 ## Commands
 
 console - run check
+
 ```
-rubocop --require rubocop-rails
+rubocop
 ```
+
 console - run check on specific file/folder:
+
 ```
-rubocop app spec app/models/user.rb
+rubocop app/models/user.rb
 ```
 
 ## Disable check on code snipped
 
 user.rb
-```
+
+```ruby
   # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
   def full_name
     ...
@@ -52,12 +75,15 @@ user.rb
 ## AutoCorrect
 
 console - safe auto correct
+
 ```
 rubocop -a
 # or
 rubocop --auto-correct
 ```
+
 console - dangerous auto correct
+
 ```
 rubocop - A
 # or
@@ -65,11 +91,14 @@ rubocop --auto-correct-all
 ```
 
 console - autocorrect a single specific cop
+
 ```
 bundle exec rubocop -A --only Style/FrozenStringLiteralComment
+bundle exec rubocop -A --only Layout/EmptyLineAfterMagicComment
 ```
 
 generate comments for uncorrected problems and stop flagging them as TODO:
+
 ```
 rubocop --auto-correct --disable-uncorrectable
 ```
@@ -85,7 +114,7 @@ require:
   - rubocop-performance
 
 AllCops:
-  TargetRubyVersion: 2.6.5
+  TargetRubyVersion: 2.7.3
   Exclude:
     - 'vendor/**/*'
     - '**/db/schema.rb'
