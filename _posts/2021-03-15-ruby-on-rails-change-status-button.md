@@ -13,15 +13,21 @@ Mission: add buttons to change the `status` of a `post`
 HOWTO:
 
 migration - add `status` column to `posts`
+
 ```
 add_column :posts, :status, :string, null: false, default: "planned"
 ```
+
 post.rb - list available statuses
-```
+
+```ruby
   validates :status, presence: true
-  STATUSES = [:planned, :progress, :done]
+  STATUSES = %i[planned progress done].map(&:to_s).freeze
+  validates :quote_requestor, inclusion: { in: Post::STATUSES }
 ```
+
 posts_controller.rb - add action to change status
+
 ```
   def change_status
     @post = Post.find(params[:id])
