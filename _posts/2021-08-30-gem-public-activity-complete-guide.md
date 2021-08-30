@@ -10,6 +10,10 @@ A gem to track any activity in your application and record it to the database.
 
 [Gem Source Code](https://github.com/chaps-io/public_activity)
 
+Example:
+
+![public activity list of activities](/assets/images/activity-list.png)
+
 ### basic setup
 
 Gemfile
