@@ -7,21 +7,21 @@ tags: ruby rails ruby-on-rails search
 thumbnail: /assets/thumbnails/search.png
 ---
 
-### MISSION: field to search for user email that **contains** characters
+### MISSION: field to search for `post.title` that **contains** characters
 
 ![search-field.png](/assets/ruby-on-rails-search-field-without-gems/search-field.png)
 
-users_controller.rb
+posts_controller.rb
 ```
   def index
-    if params[:email]
-      @users = User.where('email ILIKE ?', "%#{params[:email]}%").order(created_at: :desc) #case-insensitive
+    if params[:title]
+      @posts = Post.where('title ILIKE ?', "%#{params[:title]}%").order(created_at: :desc) #case-insensitive
     else
-      @users = User.all.order(created_at: :desc)
+      @posts = Post.all.order(created_at: :desc)
     end
   end
 ```
-any view (users/index.html.haml or in a **bootstrap** navbar)
+any view (posts/index.html.haml or in a **bootstrap** navbar)
 ```
 .form-inline.my-2.my-lg-0
   = form_tag(courses_path, method: :get) do
@@ -33,8 +33,8 @@ any view (users/index.html.haml or in a **bootstrap** navbar)
 ```
 .html.erb without bootstrap
 ```
-<%= form_tag(users_path, method: :get) do %>
-  <%= text_field_tag :email, params[:email], autocomplete: 'off', placeholder: "user email" %>
+<%= form_tag(posts_path, method: :get) do %>
+  <%= text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "post title" %>
   <%= submit_tag "Search" %>
 <% end %>
 ```
