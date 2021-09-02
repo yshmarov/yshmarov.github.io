@@ -1,7 +1,7 @@
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 
-title: Corsego blog
+title: SupeRails blog
 description: >- # this means to ignore newlines until "baseurl:"
   Ruby on Rails TLDR articles, Courses, Tutorials, Tips & Tricks.
   Also my adventures in hackathons, startups, teaching online.
@@ -39,7 +39,7 @@ feed:
 
 author:
   name: Yaroslav Shmarov
-  email: hello@corsego.com
+  email: yashm@outlook.com
 
 #logo: /assets/corsego-saas-tree-logo.png
 
