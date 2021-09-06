@@ -64,8 +64,8 @@ class CommentsController < ApplicationController
   def set_commentable
     if params[:user_id].present?
       @commentable = User.find_by_id(params[:user_id])
-    elsif params[:lesson_id].present?
-      @commentable = Lesson.find_by_id(params[:lesson_id])
+    elsif params[:post_id].present?
+      @commentable = Post.find_by_id(params[:post_id])
     end
   end
 end
@@ -105,30 +105,30 @@ New Comment for:
 ```
 routes.rb
 ```
-  resources :lessons do
+  resources :posts do
     resources :comments, only: [:new, :create, :destroy]
   end
 ```
 
-# Step 2. Add polymorphic comments to a model. For example `lesson`
+# Step 2. Add polymorphic comments to a model. For example `post`
 
-app/controllers/lessons_controller.rb
+app/controllers/posts_controller.rb
 ```
   def show
-    @commentable = @lesson
+    @commentable = @post
     @comment = Comment.new
   end
 ```
-app/models/lesson.rb
+app/models/post.rb
 ```
    has_many :comments, as: :commentable, dependent: :destroy
 ```
-app/views/lessons/show.html.erb - with a link to create a comment
+app/views/posts/show.html.erb - with a link to create a comment
 ```
-<%= link_to "New Comment", new_lesson_comment_path(@commentable, @comment) %>
+<%= link_to "New Comment", new_post_comment_path(@commentable, @comment) %>
 <%= render partial: "comments/index", locals: {commentable: @commentable} %>
 ```
-app/views/lessons/show.html.erb - alternative - with a comments form in the view
+app/views/posts/show.html.erb - alternative - with a comments form in the view
 ```
 <%= render template: "comments/new" %>
 <%= render partial: "comments/index", locals: {commentable: @commentable} %>
@@ -139,7 +139,7 @@ app/views/lessons/show.html.erb - alternative - with a comments form in the view
 In `comments_controller` you have to update the action `set_commentable` with each model that you want to make commentable.
 This is better than creating a separate `comments_controller` for each commentable model.
 
-To add polymorphic to one more model, repeat `step 2` by replacing the word `lesson` with whatever model you want.
+To add polymorphic to one more model, repeat `step 2` by replacing the word `post` with whatever model you want.
 
 # Bonus: Save which user created a comment
 
