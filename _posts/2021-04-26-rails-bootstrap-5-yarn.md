@@ -29,8 +29,8 @@ app/javascript/packs/application.js
 
 ```
 import 'bootstrap/dist/js/bootstrap'
-import "bootstrap/dist/css/bootstrap";
-import "stylesheets/application"
+import 'bootstrap/dist/css/bootstrap'
+import 'stylesheets/application'
 ```
 
 Serve all your stylesheets via webpacker. Keep styles inside the /javascript folder.
