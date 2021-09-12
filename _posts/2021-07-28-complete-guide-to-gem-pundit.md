@@ -119,3 +119,18 @@ views:
 
 <%= link_to 'Edit user roles', edit_user_path(user) if policy(User).edit? %>
 ```
+
+# 4. Advanced controller setup
+
+Instead of adding `authorize @posts` or `authorize @post` to each controller action,
+just list the actions that you want to authorize either in a before_action:
+
+app/controllers/posts_controller.rb
+```
+  before_action :authorize_valuations, only: %i[edit update destroy]
+  # after_action :authorize_valuations, except: %i[create report_quotes]
+
+  def authorize_valuations
+    authorize(@valuations || @valuation)
+  end
+```
