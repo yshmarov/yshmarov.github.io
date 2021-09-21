@@ -36,22 +36,39 @@ require:
 AllCops:
   TargetRubyVersion: 3.0.1
   Exclude:
-    - 'vendor/**/*'
     - '**/db/schema.rb'
-    - '**/node_modules/**/*'
     - '**/db/**/*'
+    - 'config/**/*'
     - 'bin/*'
 
 Style/Documentation:
   Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Rails/Output:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+  
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+Layout/FirstHashElementIndentation:
+  Enabled: false
 ```
 
-## Commands
+## Run the cops
 
-console - run check
+console - run check:
 
 ```
-rubocop
+bundle exec rubocop
 ```
 
 console - run check on specific file/folder:
@@ -60,9 +77,11 @@ console - run check on specific file/folder:
 rubocop app/models/user.rb
 ```
 
-## Disable check on code snipped
+## Disable cops
 
-user.rb
+1. in a file, for a method:
+
+app/models/user.rb
 
 ```ruby
   # rubocop: disable Metrics/AbcSize, Metrics/MethodLength
@@ -72,28 +91,36 @@ user.rb
   # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
 ```  
 
+2. on a whole file:
+
+.rubocop.yml
+
+```
+Metrics/ClassLength:
+  Exclude:
+    - 'app/models/user.rb'
+    - 'app/controllers/users_controller.rb'
+```
+
+
 ## AutoCorrect
 
 console - safe auto correct
 
 ```
 rubocop -a
-# or
-rubocop --auto-correct
 ```
 
 console - dangerous auto correct
 
 ```
 rubocop - A
-# or
-rubocop --auto-correct-all
 ```
 
 console - autocorrect a single specific cop
 
 ```
-bundle exec rubocop -A --only Style/FrozenStringLiteralComment
+bundle exec rubocop -a --only Style/FrozenStringLiteralComment
 bundle exec rubocop -A --only Layout/EmptyLineAfterMagicComment
 ```
 
@@ -102,102 +129,3 @@ generate comments for uncorrected problems and stop flagging them as TODO:
 ```
 rubocop --auto-correct --disable-uncorrectable
 ```
-
-## Advanced Setup
-
-`.rubocop.yml` - PRO configuration example:
-
-```
-require:
-  - rubocop-rails
-  - rubocop-rspec
-  - rubocop-performance
-
-AllCops:
-  TargetRubyVersion: 2.7.3
-  Exclude:
-    - 'vendor/**/*'
-    - '**/db/schema.rb'
-    - '**/node_modules/**/*'
-    - '**/db/**/*' # FIXME: go back through and fix up errors
-    - 'bin/*'
-
-Metrics/BlockLength:
-  ExcludedMethods:
-    - describe
-    - context
-    - aasm
-    - configure
-    - before
-    - setup
-    - draw
-    - resources
-    - define
-    - included
-  Exclude:
-    - '**/lib/tasks/**/*'
-    - '**/spec/**/*'
-    - '**/db/migrate/*'
-
-Metrics/MethodLength:
-  CountAsOne: ['array', 'heredoc', 'hash']
-  Exclude:
-    - 'app/decorators/user_decorator.rb'
-    - '**/db/migrate/**/*'
-
-Metrics/ClassLength:
-  Exclude:
-    - 'app/decorators/user_decorator.rb'
-
-Metrics/AbcSize:
-  Exclude:
-    - 'app/decorators/user_decorator.rb'
-    - 'app/helpers/welcome_helper.rb'
-    - 'app/controllers/welcome_controller.rb'
-
-Metrics/LineLength:
-  IgnoredPatterns: ['(\A|\s)#']
-  Exclude:
-    - '**/db/**/*'
-
-Rails/UnknownEnv:
-  Environments:
-    - production
-    - uat
-    - review
-    - test
-    - development
-
-Rails/HasAndBelongsToMany:
-  Enabled: false
-
-Layout/EmptyLineAfterMagicComment:
-  Exclude:
-    - 'app/models/**/*'
-    - 'spec/factories/*'
-    - 'spec/models/*'
-    - 'app/serializers/*'
-
-RSpec/ExampleLength:
-  Enabled: false
-
-RSpec/MultipleExpectations:
-  Enabled: false
-
-RSpec/MultipleMemoizedHelpers:
-  Enabled: false
-
-RSpec/NestedGroups:
-  Enabled: false
-
-Style/TrailingCommaInArguments:
-  Enabled: false
-
-Rails/HelperInstanceVariable:
-  Enabled: false
-
-Performance/RegexpMatch:
-  Enabled: false
-```
-
-
