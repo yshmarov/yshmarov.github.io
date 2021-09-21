@@ -2,7 +2,7 @@
 layout: post
 title: "Install and use Rubocop - TLDR"
 author: Yaroslav Shmarov
-tags: ruby rails rubyonrails rubocop
+tags: ruby rails rubyonrails rubocop code-quality
 thumbnail: /assets/thumbnails/rubocop.png
 ---
 
