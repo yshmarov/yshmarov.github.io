@@ -58,9 +58,6 @@ Bundler/OrderedGems:
   
 Lint/UnusedMethodArgument:
   Enabled: false
-
-Layout/FirstHashElementIndentation:
-  Enabled: false
 ```
 
 ## Run the cops
