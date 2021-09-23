@@ -1,1 +1,0 @@
-https://selectize.github.io/selectize.js/

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Polymorphism 101. Part 3 of 3. ActsAsTaggable without a gem."
+title: "Polymorphism 101. Part 3 of 3. ActsAsTaggable without a gem. SelectizeJS"
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails polymorphism polymorphic-associations tags
+tags: ruby rails ruby-on-rails polymorphism polymorphic-associations tags selectize-js jquery
 thumbnail: /assets/thumbnails/polymorphism-sign.png
 ---
 
