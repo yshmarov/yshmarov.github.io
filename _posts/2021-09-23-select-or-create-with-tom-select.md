@@ -25,6 +25,10 @@ app/javascript/stylesheets/application.scss
 ```
 @import "tom-select/dist/css/tom-select.bootstrap5";
 ```
+or
+```
+@import 'tom-select/dist/css/tom-select.css';
+```
 app/controllers/tags_controller.rb
 ```
 class TagsController < ApplicationController
@@ -146,6 +150,12 @@ app/views/posts/_form.html.erb
 ```
 
 app/javascript/controllers/tom_select_controller.js
+
+IN THIS CASE YOU CAN SKIP THE TURBOLINKS RELOAD LINE HERE!
+
+`document.addEventListener("turbolinks:load", () => {``
+
+app/javascript/controllers/tom_select_controller.js
 ```
 import { Controller } from "stimulus"
 
@@ -158,6 +168,14 @@ export default class extends Controller {
 
     ...
 
+    const selectInput = document.getElementById('select-tags')
+    if (selectInput) {
+      new TomSelect(selectInput, {
+
+    ...
+
   }
 }
 ```
+
+That's it!
