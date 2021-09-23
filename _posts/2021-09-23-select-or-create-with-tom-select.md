@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Tom-Select"
+title: "Select or Create Tags with Tom-Select without jQuery (VanillaJS)"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails vanilla-js no-jquery stimulus
 thumbnail: /assets/thumbnails/javascript.png
@@ -64,6 +64,9 @@ app/javascript/packs/application.js
 ```
 require("utilities/tom_select")
 ```
+
+### The only tricky thing - creating tags. We need to POST to tags#create and get back the json result
+
 app/javascript/utilities/tom_select.js
 ```
 import 'tom-select'
