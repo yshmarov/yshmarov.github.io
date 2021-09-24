@@ -21,7 +21,7 @@ Tools:
 * Storage & Temp files
 * Service Objects
 
-### STEP 1. Create Posts, Install ActiveStorage, Gem Rqrcode
+### STEP 1. Create Products, Install ActiveStorage, Gem Rqrcode
 
 console
 ```
@@ -31,9 +31,9 @@ bin/rails db:migrate
 bundle add rqrcode
 ```
 
-### STEP 2. Post has one attached QR, generate QR when Post is created
+### STEP 2. Product has one attached QR, generate QR when Product is created
 
-app/models/post.rb
+app/models/product.rb
 ```
   # store qr code in ActiveStorage
   has_one_attached :qr_code
@@ -58,10 +58,10 @@ end
 app/services/generate_qr.rb
 ```
 class GenerateQr < ApplicationService
-  attr_reader :post
+  attr_reader :product
 
-  def initialize(post)
-    @post = post
+  def initialize(product)
+    @product = product
   end
 
   # url_for helper
@@ -71,10 +71,10 @@ class GenerateQr < ApplicationService
   require "rqrcode"
 
   def call
-    # https://superails.com/posts/5?abc=d+e+f
-    qr_url = url_for(controller: 'posts',
+    # https://superails.com/products/5?abc=d+e+f
+    qr_url = url_for(controller: 'product',
                      action: 'show',
-                     id: post.id,
+                     id: product.id,
                      host: 'superails.com',
                      only_path: false,
                      abc: 'd e f'
@@ -110,17 +110,17 @@ class GenerateQr < ApplicationService
       content_type: 'png'
     )
 
-    # attach ActiveStorage::Blob to the post
-    post.qr_code.attach(blob)
+    # attach ActiveStorage::Blob to the product
+    product.qr_code.attach(blob)
   end
 end
 ```
 
 ### STEP 4. Display the QR code
 
-app/views/posts/_post.html.erb
+app/views/products/_product.html.erb
 ```
-  <%= image_tag(post.qr_code) if post.qr_code.attached? %>
+  <%= image_tag(product.qr_code) if product.qr_code.attached? %>
 ```
 
 ### OTHER THOUGHTS & NOTES
@@ -131,7 +131,7 @@ What if we write not to `tmp/storage/..`, but to Tempfile?
 file = Tempfile.new(['hello', '.jpg'])
 file.path  # => something like: "/tmp/foo2843-8392-92849382--0.jpg"
 
-post.qr_code.attach(io: File.open("/path/to/face.jpg"), filename: "face.jpg", content_type: "image/jpg")
+product.qr_code.attach(io: File.open("/path/to/face.jpg"), filename: "face.jpg", content_type: "image/jpg")
 
 blob = ActiveStorage::Blob.create_after_upload!(
   io: File.open("tmp/storage/04755c23b32185f09bb1a20aabcc823c.png"),
