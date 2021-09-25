@@ -46,6 +46,13 @@ app/models/product.rb
 
 ### STEP 3. ServiceObject - perfect place to store the logic of generating and attaching a QR
 
+console
+```
+mkdir app/services
+echo > app/services/application_service.rb
+app/services/generate_qr.rb
+```
+
 app/services/application_service.rb
 ```
 class ApplicationService
@@ -72,7 +79,7 @@ class GenerateQr < ApplicationService
 
   def call
     # https://superails.com/products/5?abc=d+e+f
-    qr_url = url_for(controller: 'product',
+    qr_url = url_for(controller: 'products',
                      action: 'show',
                      id: product.id,
                      host: 'superails.com',
