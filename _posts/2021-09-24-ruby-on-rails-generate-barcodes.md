@@ -20,28 +20,59 @@ But for Barcodes we will use another gem - [https://github.com/toretore/barby](h
 console
 ```
 bundle add barby
-```
-
-generate a barcode, [source](https://github.com/toretore/barby#example)
-```
-require 'barby'
-require 'barby/barcode/code_128'
-require 'barby/outputter/ascii_outputter'
-
-barcode = Barby::Code128B.new('BARBY')
-puts barcode.to_ascii
-```
-
-save the barcode as an image, [source](https://github.com/toretore/barby/wiki/Outputters)
-
-```
 bundle add chunky_png
 ```
 
+app/models/post.rb
 ```
-require 'barby/outputter/png_outputter'
-blob = Barby::PngOutputter.new(barcode).to_png #Raw PNG data
-IO.binwrite("tmp/storage/#{SecureRandom.hex}.png", blob.to_s)
+  has_one_attached :barcode
+
+  after_create :generate_code
+  def generate_code
+    GenerateBarcode.call(self)
+  end
 ```
 
-You can use a ServiceObject to generate barcodes, just as we did in the previous post with PR.
+app/services/application_service.rb
+```
+class ApplicationService
+  def self.call(*args, &block)
+    new(*args, &block).call
+  end
+end
+```
+
+app/services/generate_barcode.rb
+```
+class GenerateBarcode < ApplicationService
+  attr_reader :post
+
+  def initialize(post)
+    @post = post
+  end
+
+  require 'barby'
+  require 'barby/barcode/code_128'
+  require 'barby/outputter/ascii_outputter'
+  require 'barby/outputter/png_outputter'
+
+  def call
+    barcode = Barby::Code128B.new(post.title)
+
+    # chunky_png required for THIS action
+    png = Barby::PngOutputter.new(barcode).to_png
+
+    image_name = SecureRandom.hex
+
+    IO.binwrite("tmp/#{image_name}.png", png.to_s)
+
+    blob = ActiveStorage::Blob.create_after_upload!(
+      io: File.open("tmp/#{image_name}.png"),
+      filename: image_name,
+      content_type: 'png'
+    )
+
+    post.barcode.attach(blob)
+  end
+end
+```
