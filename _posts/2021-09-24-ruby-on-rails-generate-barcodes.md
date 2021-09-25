@@ -8,7 +8,7 @@ thumbnail: /assets/thumbnails/barcode.png
 
 Imagine if you could generate a barcode for each of your products... Well, that's easy!
 
-[The previous post]({% post_url 2021-09-24-2021-09-24-qr-code-generation-active-storage-service-objects %})
+[The previous post]({% post_url 2021-09-24-qr-code-generation-active-storage-service-objects %})
 focused on QR codes.
 
 **There difference between generating QRcodes and BARcodes is very minor.**
