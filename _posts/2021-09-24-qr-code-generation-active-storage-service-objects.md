@@ -24,7 +24,7 @@ Tools:
 ### STEP 1. Create Products, Install ActiveStorage, Gem Rqrcode
 
 console
-```
+```ruby
 rails g scaffold Product name
 bin/rails active_storage:install
 bin/rails db:migrate
@@ -34,7 +34,7 @@ bundle add rqrcode
 ### STEP 2. Product has one attached QR, generate QR when Product is created
 
 app/models/product.rb
-```
+```ruby
   # store qr code in ActiveStorage
   has_one_attached :qr_code
 
@@ -47,14 +47,14 @@ app/models/product.rb
 ### STEP 3. ServiceObject - perfect place to store the logic of generating and attaching a QR
 
 console
-```
+```ruby
 mkdir app/services
 echo > app/services/application_service.rb
-app/services/generate_qr.rb
+echo > app/services/generate_qr.rb
 ```
 
 app/services/application_service.rb
-```
+```ruby
 class ApplicationService
   def self.call(*args, &block)
     new(*args, &block).call
@@ -63,7 +63,7 @@ end
 ```
 
 app/services/generate_qr.rb
-```
+```ruby
 class GenerateQr < ApplicationService
   attr_reader :product
 
@@ -126,9 +126,11 @@ end
 ### STEP 4. Display the QR code
 
 app/views/products/_product.html.erb
-```
+```ruby
   <%= image_tag(product.qr_code) if product.qr_code.attached? %>
 ```
+
+****
 
 ### OTHER THOUGHTS & NOTES
 

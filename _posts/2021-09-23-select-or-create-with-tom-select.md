@@ -30,7 +30,7 @@ or
 @import 'tom-select/dist/css/tom-select.css';
 ```
 app/controllers/tags_controller.rb
-```
+```ruby
 class TagsController < ApplicationController
   def create
     tag = Tag.new(tag_params)
@@ -48,31 +48,31 @@ class TagsController < ApplicationController
 end
 ```
 config/routes.rb
-```
+```ruby
   resources :tags, only: :create
 ```
 app/views/posts/_form.html.erb
-```
+```ruby
   <div class="field">
     <%= form.label :tags %>
     <%= form.select :tag_ids, Tag.all.pluck(:name, :id), {}, { multiple: true, id: "select-tags" } %>
   </div>
 ```
 app/views/layouts/application.html.erb
-```
+```ruby
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 ```
 app/javascript/packs/application.js
-```
+```ruby
 require("utilities/tom_select")
 ```
 
 ### The only tricky thing - creating tags. We need to POST to tags#create and get back the json result
 
 app/javascript/utilities/tom_select.js
-```
+```ruby
 import 'tom-select'
 import TomSelect from "tom-select"
 
@@ -120,7 +120,7 @@ document.addEventListener("turbolinks:load", () => {
 ### ALTERNATIVE - async/await variant for `create`
 
 app/javascript/utilities/tom_select.js
-```
+```ruby
       create: async function(input, callback) {
         const data = { name: input }
         const token = document.querySelector('meta[name="csrf-token"]').content
@@ -142,7 +142,7 @@ app/javascript/utilities/tom_select.js
 ### ALTERNATIVE - Stimulus variant
 
 app/views/posts/_form.html.erb
-```
+```ruby
   <div class="field" data-controller="tom-select">
     <%= form.label :tags %>
     <%= form.select :tag_ids, Tag.all.pluck(:name, :id), {}, { multiple: true, id: "select-tags" } %>
@@ -156,7 +156,7 @@ IN THIS CASE YOU CAN SKIP THE TURBOLINKS RELOAD LINE HERE!
 `document.addEventListener("turbolinks:load", () => {``
 
 app/javascript/controllers/tom_select_controller.js
-```
+```ruby
 import { Controller } from "stimulus"
 
 import 'tom-select'

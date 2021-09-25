@@ -18,13 +18,13 @@ But for Barcodes we will use another gem - [https://github.com/toretore/barby](h
 ### Installation
 
 console
-```
+```ruby
 bundle add barby
 bundle add chunky_png
 ```
 
 app/models/post.rb
-```
+```ruby
   has_one_attached :barcode
 
   after_create :generate_code
@@ -34,7 +34,7 @@ app/models/post.rb
 ```
 
 app/services/application_service.rb
-```
+```ruby
 class ApplicationService
   def self.call(*args, &block)
     new(*args, &block).call
@@ -43,7 +43,7 @@ end
 ```
 
 app/services/generate_barcode.rb
-```
+```ruby
 class GenerateBarcode < ApplicationService
   attr_reader :post
 
