@@ -11,9 +11,14 @@ Imagine if you could generate a barcode for each of your products... Well, that'
 [The previous post]({% post_url 2021-09-24-qr-code-generation-active-storage-service-objects %})
 focused on QR codes.
 
+Final result with both Barcodes and QR for each product:
+![barcode and qr in a rails app](/assets/images/barcode-and-qr.png)
+
 **There difference between generating QRcodes and BARcodes is very minor.**
 
 But for Barcodes we will use another gem - [https://github.com/toretore/barby](https://github.com/toretore/barby).
+
+We generated QR codes for the product URL. We will generate Barcodes for the product name.
 
 ### Installation
 
@@ -23,7 +28,7 @@ bundle add barby
 bundle add chunky_png
 ```
 
-app/models/post.rb
+app/models/product.rb
 ```ruby
   has_one_attached :barcode
 
@@ -45,10 +50,10 @@ end
 app/services/generate_barcode.rb
 ```ruby
 class GenerateBarcode < ApplicationService
-  attr_reader :post
+  attr_reader :product
 
-  def initialize(post)
-    @post = post
+  def initialize(product)
+    @product = product
   end
 
   require 'barby'
@@ -57,7 +62,7 @@ class GenerateBarcode < ApplicationService
   require 'barby/outputter/png_outputter'
 
   def call
-    barcode = Barby::Code128B.new(post.title)
+    barcode = Barby::Code128B.new(product.title)
 
     # chunky_png required for THIS action
     png = Barby::PngOutputter.new(barcode).to_png
@@ -72,7 +77,7 @@ class GenerateBarcode < ApplicationService
       content_type: 'png'
     )
 
-    post.barcode.attach(blob)
+    product.barcode.attach(blob)
   end
 end
 ```
