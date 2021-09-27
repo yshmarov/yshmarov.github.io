@@ -3,7 +3,7 @@ layout: post
 title: "HTTP Basic authentication"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails http-authentication
-thumbnail: /assets/thumbnails/http-basic-auth-example.png
+thumbnail: /assets/thumbnails/lock.png
 ---
 
 ![http-authentication-example](assets/images/http-basic-auth-example.png)
