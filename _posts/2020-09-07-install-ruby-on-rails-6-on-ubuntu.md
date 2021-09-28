@@ -22,7 +22,7 @@ rvm get head
 rvm install ruby-3.0.1
 rvm --default use 3.0.1
 rvm uninstall 2.7.3
-gem install rails -v 6.1.3.2
+gem install rails -v 6.1.4
 gem install rails -v 7.0.0.alpha2 
 gem update rails
 gem update --system
