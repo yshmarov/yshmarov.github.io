@@ -59,6 +59,10 @@ This will:
 * add app/admin folder
 * adds ActiveAdminComments for internal notes
 
+Now you login to `localhost:3000/admin` with:
+login: `admin@example.com`
+password: `password`
+
 ### 4. Create CRUD views for resources in ActiveAdmin
 
 ```sh
