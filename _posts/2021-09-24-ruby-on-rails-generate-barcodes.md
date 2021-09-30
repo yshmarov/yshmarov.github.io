@@ -2,7 +2,7 @@
 layout: post
 title: "Generate a BARCODE for a Product"
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails active-storage barcode
+tags: ruby rails ruby-on-rails active-storage barcode service-objects
 thumbnail: /assets/thumbnails/barcode.png
 ---
 

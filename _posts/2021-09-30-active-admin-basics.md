@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "ActiveAdmin basics"
+title: "Install and use ActiveAdmin in 13 steps"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails active-admin
-thumbnail: /assets/thumbnails/activeadmin.png
+thumbnail: /assets/thumbnails/admin.png
 ---
 
 ### 1. Create a few models
