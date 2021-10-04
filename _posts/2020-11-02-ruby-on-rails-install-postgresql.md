@@ -13,16 +13,17 @@ thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_
 
 # 1. gemfile:
 
-add `gem "pg"``
+add `gem "pg"`
 
-remove `gem "sqlite"``
+remove `gem "sqlite"`
 
 # 2. console:
 
+[SCRIPT TO INSTALL LATEST VERSION OF POSTGRESQL](https://www.postgresql.org/download/linux/ubuntu/){:target="blank"}
 
 Install Postgresql and create a user:
 
-```
+```sh
 sudo apt install postgresql libpq-dev
 sudo su postgres
 createuser --interactive
@@ -31,9 +32,14 @@ y
 exit
 ```
 
+check version of postgresql
+```sh
+pg_config --version
+```
+
 To create another user with a password:
 
-```
+```sh
 sudo su postgres
 createuser --interactive --pwprompt
 username
@@ -44,7 +50,7 @@ exit
 
 Now you can install the gem and run migrations:
 
-```
+```sh
 bundle
 rails db:create db:migrate
 rails s
