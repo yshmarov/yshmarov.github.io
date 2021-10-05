@@ -16,7 +16,33 @@ Rails 7 app boilerplate for exprimenting with hotwire -> [HERE](https://github.c
 
 ![hotwire-demo](/assets/images/hotwire-demo-1.gif)
 
-#### #1. Turbo streams - stream [create, destroy, update] messages to inbox
+### 0. Initial setup
+
+My setup:
+* Rails 7
+* Ruby 3.0.1
+* Hotwire (Stimulus + Turbo), pre-installed in Rails 7
+* postgresql
+
+Some options to create new Rails 7 app:
+```sh
+rails new superails -d=postgresql
+rails new superails --main --d=postgresql --css=bulma
+rails new superails -d=postgresql --skip-javascript
+rails new superails -d=postgresql --css tailwind
+rails new superails -d=postgresql --css bootstrap
+rails new superails -d=postgresql --javascript esbuild --css bootstrap
+```
+
+Basic views and models:
+```sh
+rails g controller static_pages landing_page pricing privacy terms --no-helper --no-assets --no-controller-specs --no-view-specs --no-test-framework
+rails g scaffold Inbox name:string --no-helper --no-assets --no-controller-specs --no-view-specs --no-test-framework --no-jbuilder
+rails g scaffold Message body:text inbox:references --no-helper --no-assets --no-controller-specs --no-view-specs --no-test-framework --no-jbuilder
+rails db:migrate
+```
+
+#### #1. Turbo stream - stream [create, destroy, update] messages to inbox
 
 #app/models/message.rb
 ```ruby
@@ -34,7 +60,9 @@ Rails 7 app boilerplate for exprimenting with hotwire -> [HERE](https://github.c
   after_update_commit { broadcast_update_to [inbox, :messages], target: "#{dom_id(self)}" }
 ```
 
-[Turbo Broadcastable options](https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb)
+[Turbo Broadcastable options - GIT](https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb)
+
+[Turbo Broadcastable options - Rubydoc](https://www.rubydoc.info/gems/turbo-rails/0.5.2/Turbo/Broadcastable)
 
 #app/views/inboxes/show.html.erb
 ```ruby
@@ -53,12 +81,13 @@ Rails 7 app boilerplate for exprimenting with hotwire -> [HERE](https://github.c
 
 Test in console
 ```sh
-Inboxes.first.messages << Message.create(body: Faker::Lorem.sentence(word_count: 3))
-Inboxes.first.messages.first.update(body: SecureRandom.hex)
-Inboxes.first.messages.first.destroy
+Inbox.create(name: Faker::Lorem.sentence(word_count: 3))
+Inbox.first.messages << Message.create(body: Faker::Lorem.sentence(word_count: 3))
+Inbox.first.messages.first.update(body: SecureRandom.hex)
+Inbox.first.messages.first.destroy
 ```
 
-#### #2. Turbo streams - form to create messages. Error - form with errors. Success - new form.
+#### #2. Turbo stream - form to create messages. Error - form with errors. Success - new form.
 
 #config/routes.rb
 ```ruby
