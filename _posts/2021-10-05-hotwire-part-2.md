@@ -6,7 +6,11 @@ tags: ruby rails ruby-on-rails hotwire turbo
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
-### 1. Turbo stream - new inboxes to inboxes index without refreshing the page
+### TASK 2: Lazy load form, stream new inboxes to index without refresh
+
+![hotwire-demo-2](/assets/images/hotwire-demo-2.gif)
+
+### 2.1. Turbo stream - new inboxes to inboxes index without refreshing the page
 
 #app/models/inbox.rb
 ```ruby
@@ -45,7 +49,9 @@ Inbox.first.update(name: SecureRandom.hex)
 Inbox.first.destroy
 ```
 
-### 2. Turbo Frame - form to create inboxes in inboxes/index
+### 2.2. Turbo Frame - form to create inboxes in inboxes/index
+
+* frame searches for `turbo_frame_tag` in inboxes/new.html.erb (and should find it in the partial)
 
 #app/views/inboxes/index.html.erb
 ```ruby
@@ -54,12 +60,13 @@ Inbox.first.destroy
 <% end %>
 ```
 
-* go to show page that has a form partial, find the `turbo_frame_tag`
+* wrap the form into a turbo frame
 
 #app/views/inboxes/_form.html.erb
 ```ruby
 <%= turbo_frame_tag 'inbox_form' do %>
   <%= form_with(model: inbox) do |form| %>
+    ...
   <% end %>
 <% end %>
 ```
@@ -81,3 +88,7 @@ def create
   end
 end
 ```
+
+Resources:
+* [Rails 7 alpha app boilerplate for exprimenting with hotwire](https://github.com/yshmarov/askdemos)
+* [GITHUB: PR with changes from post #2](https://github.com/yshmarov/askdemos/pull/1)

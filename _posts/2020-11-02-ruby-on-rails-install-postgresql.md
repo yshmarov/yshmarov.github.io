@@ -48,6 +48,14 @@ y
 exit
 ```
 
+Set default password for a postgresql user: in this case we set password `myPassword` for user `postgres`
+
+```sh
+sudo -u postgres psql
+ALTER USER postgres PASSWORD 'myPassword';
+\q
+```
+
 Now you can install the gem and run migrations:
 
 ```sh

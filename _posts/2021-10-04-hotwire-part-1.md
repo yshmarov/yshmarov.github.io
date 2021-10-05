@@ -6,15 +6,9 @@ tags: ruby rails ruby-on-rails hotwire turbo
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
-Rails 7 app boilerplate for exprimenting with hotwire -> [HERE](https://github.com/yshmarov/askdemos)
+### TASK 1: Create messages inside an inbox without refresh. Render form errors.
 
-[PR with changes from this post](https://github.com/yshmarov/askdemos/pull/1)
-
-[This post](https://dev.to/davidcolbyatx/using-hotwire-and-rails-to-build-a-live-commenting-system-aj9) inspired me for #1 and #2
-
-### TASK: Create messages inside an inbox without refresh. Render form errors.
-
-![hotwire-demo](/assets/images/hotwire-demo-1.gif)
+![hotwire-demo-1](/assets/images/hotwire-demo-1.gif)
 
 ### 0. Initial setup
 
@@ -23,6 +17,7 @@ My setup:
 * Ruby 3.0.1
 * Hotwire (Stimulus + Turbo), pre-installed in Rails 7
 * postgresql
+* [=> My boilerplate app](https://github.com/yshmarov/askdemos)
 
 Some options to create new Rails 7 app:
 ```sh
@@ -42,7 +37,7 @@ rails g scaffold Message body:text inbox:references --no-helper --no-assets --no
 rails db:migrate
 ```
 
-#### #1. Turbo stream - stream [create, destroy, update] messages to inbox
+#### 1.1. Turbo stream - stream [create, destroy, update] messages to inbox
 
 #app/models/message.rb
 ```ruby
@@ -59,10 +54,6 @@ rails db:migrate
 
   after_update_commit { broadcast_update_to [inbox, :messages], target: "#{dom_id(self)}" }
 ```
-
-[Turbo Broadcastable options - GIT](https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb)
-
-[Turbo Broadcastable options - Rubydoc](https://www.rubydoc.info/gems/turbo-rails/0.5.2/Turbo/Broadcastable)
 
 #app/views/inboxes/show.html.erb
 ```ruby
@@ -87,7 +78,9 @@ Inbox.first.messages.first.update(body: SecureRandom.hex)
 Inbox.first.messages.first.destroy
 ```
 
-#### #2. Turbo stream - form to create messages. Error - form with errors. Success - new form.
+#### 1.2. Turbo stream - form to create messages. Error - form with errors. Success - new form.
+
+* nested resources
 
 #config/routes.rb
 ```ruby
@@ -96,10 +89,14 @@ Inbox.first.messages.first.destroy
   end
 ```
 
+* render form to create a new message inside an inbox
+
 #app/views/inboxes/show.html.erb
 ```ruby
 <%= render partial: "messages/form", locals: { message: Message.new } %>
 ```
+
+* wrap the form into a turbo frame
 
 #app/views/messages/_form.html.erb
 ```ruby
@@ -109,6 +106,8 @@ Inbox.first.messages.first.destroy
   <% end %>
 <% end %>
 ```
+
+* send responce with `format.turbo_stream` to replace turbo frame with id `message_form` with partial `messages/form`
 
 #app/controllers/messages_controller.rb
 ```ruby
@@ -139,3 +138,10 @@ Inbox.first.messages.first.destroy
     end
   end
 ```
+
+Resources:
+* [Rails 7 alpha app boilerplate for exprimenting with hotwire](https://github.com/yshmarov/askdemos)
+* [GITHUB: PR with changes from post #1](https://github.com/yshmarov/askdemos/pull/1)
+* [Turbo Broadcastable options - GIT](https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb)
+* [Turbo Broadcastable options - Rubydoc](https://www.rubydoc.info/gems/turbo-rails/0.5.2/Turbo/Broadcastable)
+* [post by @davidcolbyatx](https://dev.to/davidcolbyatx/using-hotwire-and-rails-to-build-a-live-commenting-system-aj9)
