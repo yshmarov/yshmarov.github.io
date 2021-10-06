@@ -8,6 +8,8 @@ thumbnail: /assets/thumbnails/turbo.png
 
 Task: when you switch the page the audio should be still playing like here [https://www.rework.fm/](https://www.rework.fm/)
 
+![turbo-steam-music](/assets/images/turbo-steam-music.gif)
+
 * obviously you should store the audio partial in a layout file that is shared across pages:
 
 #app/views/layouts/application.html.erb
