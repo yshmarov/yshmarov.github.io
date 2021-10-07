@@ -5,7 +5,7 @@ author: Yaroslav Shmarov
 tags: 
 - ruby on rails
 - devise
-thumbnail: https://2.bp.blogspot.com/-zLeLuzX5ux0/WTUO8RYuiNI/AAAAAAAABAs/eDXmy0SxobYLVmrrQU_jytpYTlaByyrzwCLcB/s400/authentication-crash-course-with-devise.png
+thumbnail: /assets/thumbnails/devise.png
 ---
 
 When installing `gem devise` for a `User` model, add these links to your application:
