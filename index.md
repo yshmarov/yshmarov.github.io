@@ -11,7 +11,7 @@ layout: home
 * 📕 [Video course: Ruby on Rails 6: Learn 25+ gems and build a Startup MVP](https://www.udemy.com/course/ruby-on-rails-6-learn-20-gems-build-an-e-learning-platform/?referralCode=4721E9D437DEE1734159){:target="blank"}
 * 📺 [SupeRails Youtube channel](https://www.youtube.com/channel/UCyr6ZTmztFW3FB4qG_97FoA){:target="blank"}
 
-[Join the mailing list](/mailing-list/)
+[Join the mailing list](/mailing-list)
 
 ****
 
