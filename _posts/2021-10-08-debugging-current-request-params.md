@@ -6,7 +6,7 @@ tags: ruby rails ruby-on-rails devise
 thumbnail: /assets/thumbnails/ladybug.png
 ---
 
-![rails-debug-request-params](/assets/images/rails-debug-request-params.gif)
+![rails-debug-request-params](/assets/images/rails-debug-request-params.png)
 
 * Trying to understand how a legacy app is set up?
 * Don't know what you are looking at?
