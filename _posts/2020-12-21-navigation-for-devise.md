@@ -66,7 +66,7 @@ When installing `gem devise` for a `User` model, add these links to your applica
 ```
 
 # bootstrap 5 Navbar:
-```
+```ruby
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
@@ -104,6 +104,35 @@ When installing `gem devise` for a `User` model, add these links to your applica
         <% else %>
           <%= link_to "Log in", new_user_session_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_session_path)}" %>
           <%= link_to "Sign up", new_user_registration_path, class: "nav-link #{'active fw-bold' if current_page?(new_user_registration_path)}" %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+```
+
+Other good Bootstrap 5 navbar:
+```ruby
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <%= link_to "Brand", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <%= link_to "Posts", posts_path, class: "nav-item nav-link" %>
+        <%= link_to "Categories", categories_path, class: "nav-item nav-link" %>
+        <%= link_to "Notifications", notifications_path, class: "nav-item nav-link" %>
+      </ul>
+
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <% if user_signed_in? %>
+          <%= link_to current_user.email, edit_user_registration_path, class: "nav-item nav-link" %>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-item nav-link" %>
+          <%= link_to "Login", new_user_session_path, class: "nav-item nav-link" %>
         <% end %>
       </ul>
     </div>
