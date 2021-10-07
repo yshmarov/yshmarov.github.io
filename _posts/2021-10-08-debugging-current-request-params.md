@@ -3,7 +3,7 @@ layout: post
 title: "Tip: Debugging current request"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails devise
-thumbnail: /assets/thumbnails/devise.png
+thumbnail: /assets/thumbnails/ladybug.png
 ---
 
 ![rails-debug-request-params](/assets/images/rails-debug-request-params.gif)
