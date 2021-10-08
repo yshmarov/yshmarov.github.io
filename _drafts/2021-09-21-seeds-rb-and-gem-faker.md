@@ -10,6 +10,11 @@ rails db:reset
 rails db:setup
 
 config/seeds.rb
+```
+Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
+  load seed
+end if Rails.env.development?
+```
 
 ```
 puts "Seeding..."
@@ -92,3 +97,42 @@ rails c --sandbox
                 storyline: "Storyline #{index}",
                 watched_on: index.days.ago)
 end
+
+
+
+
+
+****
+
+Sometimes you want to have some generic, dynamic fake data in your views (that does not persist in the database). Gem Faker to the rescue!
+
+#app/controllers/static_pages_controller.rb
+```ruby
+def landing_page
+  @faker_array = []
+  5.times do |n|
+    @faker_array.push(name: Faker::Movies::HarryPotter.character, email: Faker::Internet.email)
+  end
+end
+```
+
+#app/views/static_pages/landing_page.html.erb
+```ruby
+<%= @faker_array %>
+
+<% @faker_array.each do |x| %>
+  <br>
+  <%= x[:name] %>
+  <%= x[:email] %>
+<% end %>
+```
+
+
+
+
+
+  @results = []
+  5.times do |n|
+    @results.push(component: Faker::Movies::HarryPotter.character, status: [:good, :bad].sample, )
+  end
+
