@@ -87,7 +87,7 @@ end
 <% end %>
 ```
 
-* ALTERNATIVE (not so good?) wrap the form into a turbo frame
+* ALTERNATIVE (**not so good?**) wrap the form into a turbo frame
 
 #app/views/inboxes/_form.html.erb
 ```ruby
@@ -96,6 +96,31 @@ end
     ...
   <% end %>
 <% end %>
+```
+
+### 2.3. Stimulus to definitely reset input in the form on submit
+
+* there can be a glitch with input from the form not being removed on form submit. A stimulus controller can help:
+
+#app/views/inboxes/_form.html.erb
+```ruby
+<%= form_with(model: inbox, data: { controller: 'reset-form', action: 'turbo:submit-end->reset_form#reset'}) do |form| %>
+
+...
+```
+
+#app/javascript/controllers/reset_form_controller.js
+```js
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  connect() {
+    console.log("Reset Form Stimulus Controller connected")
+  }
+  reset() {
+    this.element.reset()
+  }
+}
 ```
 
 Resources:
