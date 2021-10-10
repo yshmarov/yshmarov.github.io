@@ -52,9 +52,8 @@ end
 #app/views/inboxes/_inbox.html.erb
 ```ruby
 <div id="<%= dom_id inbox %>">
-  <h1>
-    <%= link_to inbox.name, inbox, data: { turbo_frame: '_top' } %>
-  </h1>
+  <h1><%= link_to inbox.name, inbox %></h1>
+
   <%= render partial: 'inboxes/likes', locals: { inbox: inbox } %>
   <%= button_to 'Like!',
         like_inbox_path(inbox),
