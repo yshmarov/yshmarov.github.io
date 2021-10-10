@@ -17,7 +17,7 @@ My setup:
 * Ruby 3.0.1
 * Hotwire (Stimulus + Turbo), pre-installed in Rails 7
 * postgresql
-* [=> My boilerplate app](https://github.com/yshmarov/askdemos)
+* [=> My boilerplate app](https://github.com/yshmarov/turbo-playground)
 
 Some options to create new Rails 7 app:
 ```sh
@@ -140,8 +140,8 @@ Inbox.first.messages.first.destroy
 ```
 
 Resources:
-* [Rails 7 alpha app boilerplate for exprimenting with hotwire](https://github.com/yshmarov/askdemos)
-* [GITHUB: PR with changes from post #1](https://github.com/yshmarov/askdemos/pull/1)
+* [Rails 7 alpha app boilerplate for exprimenting with hotwire](https://github.com/yshmarov/turbo-playground)
+* [GITHUB: PR with changes from post #1](https://github.com/yshmarov/turbo-playground/pull/1)
 * [Turbo Broadcastable options - GIT](https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb)
 * [Turbo Broadcastable options - Rubydoc](https://www.rubydoc.info/gems/turbo-rails/0.5.2/Turbo/Broadcastable)
 * [post by @davidcolbyatx](https://dev.to/davidcolbyatx/using-hotwire-and-rails-to-build-a-live-commenting-system-aj9)
