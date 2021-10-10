@@ -1,10 +1,12 @@
 ---
 layout: post
-title: "Turbo Frame search. Sorting records without a gem. Request params."
+title: "Turbo Frame - Sort records without page refresh. Sorting without a gem."
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails request-params hotwire turbo
 thumbnail: /assets/thumbnails/turbo.png
 ---
+
+![turbo frame sort withot any gems](/assets/images/turbo-sort-without-gem.gif)
 
 ### URL params are mighty! Use them! Some helpers:
 
