@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "#1 Turbo Stream messages to inbox"
+title: "#1 Turbo Stream messages to inbox. Render errors"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo
 thumbnail: /assets/thumbnails/turbo.png
