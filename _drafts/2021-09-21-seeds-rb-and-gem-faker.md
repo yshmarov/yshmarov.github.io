@@ -16,6 +16,11 @@ Dir[File.join(Rails.root, 'db', 'seeds', '*.rb')].sort.each do |seed|
 end if Rails.env.development?
 ```
 
+* add this on top to prevent seeds in production
+```ruby
+return unless Rails.env.development?
+```
+
 ```
 puts "Seeding..."
 

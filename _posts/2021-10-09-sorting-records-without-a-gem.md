@@ -27,36 +27,44 @@ thumbnail: /assets/thumbnails/url.png
 params.key?(:messages_count)
 ```
 
-* display the value of a param
+* display the value of a param (if present)
 
 ```ruby
-params[:messages_count]
+params[:messages_count].presence
 ```
 
 ### Sorting records
 
-* Link to same index page, but with some params, with all the conditional views:
+* add helper to create sort_links that will pass search params
 
-#app/views/inboxes/index.html.erb
+#app/helpers/search_helper.rb
 ```ruby
+module SearchHelper
+  def sort_link(attribute)
+    @attribute = attribute
+    if params[attribute].eql?('desc')
+      link_to "▼ #{attribute.to_s.humanize}",
+              url_for(controller: controller_name, action: action_name, @attribute => :asc),
+              data: { turbo_frame: 'search' }
+    elsif params[attribute].eql?('asc')
+      link_to "▲ #{attribute.to_s.humanize}",
+              url_for(controller: controller_name, action: action_name, @attribute => :desc),
+              data: { turbo_frame: 'search' }
+    elsif !params.key?(attribute)
+      link_to attribute.to_s.humanize,
+              url_for(controller: controller_name, action: action_name, @attribute => :asc),
+              data: { turbo_frame: 'search' }
+    end
+  end
 
-<% unless params.key?(:messages_count) %>
-  <%= link_to '▼ Message count', inboxes_path(messages_count: :desc) %>
-<% end %>
-<% if params[:messages_count].eql?('desc') %>
-  ▼
-  <%= link_to '▲ Message count', inboxes_path(messages_count: :asc) %>
-<% elsif params[:messages_count].eql?('asc') %>
-  ▲
-  <%= link_to '▼ Message count', inboxes_path(messages_count: :desc) %>
-<% end %>
-<% if (params.keys - ['controller'] - ['action']).present? %>
-  <%= link_to 'Clear filters', inboxes_path %>
-<% end %>
-
-<div id="inboxes">
-  <%= render @inboxes %>
-</div>
+  def link_back_if_params
+    if (params.keys - ['controller'] - ['action']).present?
+      link_to 'Clear filters',
+              url_for(controller: controller_name, action: action_name),
+              data: { turbo_frame: 'search' }
+    end
+  end
+end
 ```
 
 * Override collection based on params from request
@@ -64,26 +72,28 @@ params[:messages_count]
 #app/controllers/inboxes_controller.rb
 ```ruby
   def index
-    # @inboxes = Inbox.order(created_at: :desc)
-    if params[:messages_count].present?
-      @inboxes = Inbox.order(messages_count: params[:messages_count].to_sym)
-    else
-      @inboxes = Inbox.order(created_at: :desc)
-    end
-  end
-```
-
-* same as above, with better code style:
-
-```ruby
-  def index
-    # @inboxes = Inbox.order(created_at: :desc)
-    @inboxes = if params[:messages_count].present?
-                 Inbox.order(messages_count: params[:messages_count].to_sym)
+    @search_param = params.keys - ['controller'] - ['action']
+    @search_param = @search_param[0]
+    @inboxes = if params[@search_param].present?
+                 Inbox.order(@search_param => params[@search_param])
                else
                  Inbox.order(created_at: :desc)
                end
   end
+```
+
+* Link to same index page, but with some params, with all the conditional views:
+
+#app/views/inboxes/index.html.erb
+```ruby
+
+<%= sort_link(:messages_count) %>
+<%= sort_link(:created_at) %>
+<%= link_back_if_params %>
+
+<div id="inboxes">
+  <%= render @inboxes %>
+</div>
 ```
 
 ### Surely, this approach can be improved a lot, but works well for something simple.
