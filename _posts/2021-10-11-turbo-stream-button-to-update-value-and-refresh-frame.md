@@ -78,6 +78,7 @@ inbox.rb
 
 * add the controller action
 * respond with turbo! find the turbo frame and replace it with `turbo_stream.replace`
+* In this case we will replace the whole `_inbox` partial.
 
 #app/controllers/inboxes_controller.rb
 ```ruby
