@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hotwire usecases. Part 2. Turbo stream inboxes to index. Lazy load form"
+title: "Turbo stream inboxes to inboxes/index. Lazy load form. Replace form on submit."
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo
 thumbnail: /assets/thumbnails/turbo.png

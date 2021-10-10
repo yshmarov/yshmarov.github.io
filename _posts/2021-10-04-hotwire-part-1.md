@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hotwire usecases. Part 1. Turbo stream messages to inbox"
+title: "Turbo Stream messages to inbox"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo
 thumbnail: /assets/thumbnails/turbo.png

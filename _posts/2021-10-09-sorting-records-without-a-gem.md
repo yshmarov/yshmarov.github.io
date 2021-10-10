@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Sorting records without a gem. Request params"
+title: "Turbo Frame search. Sorting records without a gem. Request params."
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails request-params
-thumbnail: /assets/thumbnails/url.png
+tags: ruby rails ruby-on-rails request-params hotwire turbo
+thumbnail: /assets/thumbnails/turbo.png
 ---
 
 ### URL params are mighty! Use them! Some helpers:
@@ -33,9 +33,10 @@ params.key?(:messages_count)
 params[:messages_count].presence
 ```
 
-### Sorting records
+### 1. Basic sorting for records
 
 * add helper to create sort_links that will pass search params
+* add `data: { turbo_frame: 'search' }` to the links to act WITHIN a trubo frame `search`
 
 #app/helpers/search_helper.rb
 ```ruby
@@ -82,18 +83,21 @@ end
   end
 ```
 
-* Link to same index page, but with some params, with all the conditional views:
+### 2. Turbo search
+
+* Wrap search and inboxes into a `turbo_frame_tag` with the same ID as the sort links: 
 
 #app/views/inboxes/index.html.erb
 ```ruby
 
-<%= sort_link(:messages_count) %>
-<%= sort_link(:created_at) %>
-<%= link_back_if_params %>
+<%= turbo_frame_tag 'search', target: '_top' do %>
 
-<div id="inboxes">
-  <%= render @inboxes %>
-</div>
+  <%= sort_link(:messages_count) %>
+  <%= sort_link(:created_at) %>
+  <%= link_back_if_params %>
+
+  <div id="inboxes">
+    <%= render @inboxes %>
+  </div>
+<% end %>
 ```
-
-### Surely, this approach can be improved a lot, but works well for something simple.
