@@ -13,9 +13,9 @@ thumbnail: /assets/thumbnails/turbo.png
 * add helper to create sort_links that will pass search params
 * add `data: { turbo_frame: 'search' }` to the links to act WITHIN a trubo frame `search`
 
-#app/helpers/search_helper.rb
+#app/helpers/sort_helper.rb
 ```ruby
-module SearchHelper
+module SortHelper
   def sort_link(attribute)
     @attribute = attribute
     if params[attribute].eql?('desc')
