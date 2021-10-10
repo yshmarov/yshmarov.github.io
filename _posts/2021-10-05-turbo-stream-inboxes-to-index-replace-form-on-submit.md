@@ -69,7 +69,7 @@ def create
   respond_to do |format|
     if @inbox.save
       format.turbo_stream { render turbo_stream: turbo_stream.replace(
-        'new_inbox', 
+        'inbox_form', 
         partial: 'inboxes/form', 
         locals: { inbox: Inbox.new }
       ) }
@@ -82,7 +82,7 @@ end
 
 #app/views/inboxes/new.html.erb
 ```ruby
-<%= turbo_frame_tag 'new_inbox', target: "_top" do %>
+<%= turbo_frame_tag 'inbox_form', target: "_top" do %>
   <%= render "form", inbox: @inbox %>
 <% end %>
 ```
@@ -91,7 +91,7 @@ end
 
 #app/views/inboxes/_form.html.erb
 ```ruby
-<%= turbo_frame_tag 'new_inbox' do %>
+<%= turbo_frame_tag 'inbox_form' do %>
   <%= form_with(model: inbox) do |form| %>
     ...
   <% end %>
