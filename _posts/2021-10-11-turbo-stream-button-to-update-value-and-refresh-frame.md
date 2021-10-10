@@ -10,11 +10,11 @@ thumbnail: /assets/thumbnails/turbo.png
 
 There's currently some problem turbo_streaming `button_to` (for example `Delete`):
 
-```sh
+`sh
 [ActiveJob] [Turbo::Streams::ActionBroadcastJob] [b1e06c35-6ac8-4a34-b717-41236ebcc593] Error performing Turbo::Streams::ActionBroadcastJob (Job ID: b1e06c35-6ac8-4a34-b717-41236ebcc593) from Async(default) in 44.89ms: ActionView::Template::Error (Request forgery protection requires a working session store but your application has sessions disabled. You need to either disable request forgery protection, or configure a working session store.):
-```
+`
 
-![button-to-turbo-stream-error](/assets/images/button-to-turbo-stream-error.gif)
+![button-to-turbo-stream-error](/assets/images/button-to-turbo-stream-error.png)
 
 To fix this, add this line:
 
