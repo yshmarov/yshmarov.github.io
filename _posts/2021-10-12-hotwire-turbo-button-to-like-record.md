@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hotwire Turbo: Increment likes count without any page refreshes"
+title: "#6 Hotwire Turbo: Increment likes count without any page refreshes"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo
 thumbnail: /assets/thumbnails/turbo.png

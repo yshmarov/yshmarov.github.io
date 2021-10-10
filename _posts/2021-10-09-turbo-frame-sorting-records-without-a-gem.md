@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Turbo Frame - Sort records without page refresh. Sorting without a gem."
+title: "#4 Turbo Frame - Sort records without page refresh. Sorting without a gem."
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails request-params hotwire turbo
 thumbnail: /assets/thumbnails/turbo.png

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Turbo Stream inboxes to inboxes/index. Lazy load form. Replace form on submit."
+title: "#2 Turbo Stream inboxes to inboxes/index. Lazy load form. Replace form on submit."
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo
 thumbnail: /assets/thumbnails/turbo.png
@@ -60,17 +60,6 @@ Inbox.first.destroy
 <% end %>
 ```
 
-* wrap the form into a turbo frame
-
-#app/views/inboxes/_form.html.erb
-```ruby
-<%= turbo_frame_tag 'inbox_form' do %>
-  <%= form_with(model: inbox) do |form| %>
-    ...
-  <% end %>
-<% end %>
-```
-
 * stream new frame to index page (to the current_user in this ActionCable:Broadcast connection)
 
 #app/controllers/inboxes_controller.rb
@@ -87,6 +76,26 @@ def create
     end
   end
 end
+```
+
+* wrap the form into a turbo frame
+
+#app/views/inboxes/new.html.erb
+```ruby
+<%= turbo_frame_tag 'new_inbox', target: "_top" do %>
+  <%= render "form", inbox: @inbox %>
+<% end %>
+```
+
+* ALTERNATIVE (not so good?) wrap the form into a turbo frame
+
+#app/views/inboxes/_form.html.erb
+```ruby
+<%= turbo_frame_tag 'inbox_form' do %>
+  <%= form_with(model: inbox) do |form| %>
+    ...
+  <% end %>
+<% end %>
 ```
 
 Resources:

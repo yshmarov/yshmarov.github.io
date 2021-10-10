@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Turbo: Button to update status and refresh frame. Edit inboxes inline"
+title: "#5 Turbo: Button to update status and refresh frame. Edit inboxes inline"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo
 thumbnail: /assets/thumbnails/turbo.png

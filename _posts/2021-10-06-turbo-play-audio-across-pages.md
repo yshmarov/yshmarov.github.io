@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Turbo: Keep the audio playing after changing the page"
+title: "#3 Turbo: Keep the audio playing after changing the page"
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails hotwire turbo audio mp3
+tags: ruby rails ruby-on-rails hotwire turbo audio mp3 turbo-drive
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
