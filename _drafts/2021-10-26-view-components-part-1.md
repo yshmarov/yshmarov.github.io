@@ -106,3 +106,7 @@ end
 ## LEVEL 2.
 
 
+```
+view component validation!; base component before render validate?
+view component blocks
+```
