@@ -9,6 +9,7 @@ thumbnail: /assets/thumbnails/turbo.png
 ### In this case we will replace a `_likes` partial inside `_inbox` partial, not the whole `_inbox` partial.
 
 ![turbo-frame-replace-button](/assets/images/turbo-like-without-refresh.gif)
+**EVERYTHING IS PERSISTED IN THE DATABASE.**
 
 * console
 

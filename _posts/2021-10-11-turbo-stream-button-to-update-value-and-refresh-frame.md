@@ -28,6 +28,7 @@ To fix this, add this line:
 ### 3.1. Button to update & replace frame
 
 ![turbo-frame-replace-button](/assets/images/turbo-frame-replace-button.gif)
+**EVERYTHING IS PERSISTED IN THE DATABASE.**
 
 * basic setup
 
