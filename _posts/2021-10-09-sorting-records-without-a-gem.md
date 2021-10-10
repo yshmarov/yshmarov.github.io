@@ -8,36 +8,7 @@ thumbnail: /assets/thumbnails/turbo.png
 
 ![turbo frame sort withot any gems](/assets/images/turbo-sort-without-gem.gif)
 
-### 1. Basic sorting for records
-
-##### 1.1. URL params are mighty! Use them! Some helpers:
-
-* see all params that are applied to current URL
-
-```ruby
-<%= params %>
-```
-
-* controller and action params are always present in a request
-* hacky way to see if any OTHER params are present:
-
-```ruby
-(params.keys - ['controller'] - ['action']).present?
-```
-
-* see if a particular params is present
-
-```ruby
-params.key?(:messages_count)
-```
-
-* display the value of a param (if present)
-
-```ruby
-params[:messages_count].presence
-```
-
-##### 1.2. Add sorting
+### 1. Basic sorting functionality
 
 * add helper to create sort_links that will pass search params
 * add `data: { turbo_frame: 'search' }` to the links to act WITHIN a trubo frame `search`
