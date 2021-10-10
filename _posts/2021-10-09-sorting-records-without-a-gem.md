@@ -8,16 +8,18 @@ thumbnail: /assets/thumbnails/turbo.png
 
 ![turbo frame sort withot any gems](/assets/images/turbo-sort-without-gem.gif)
 
-### URL params are mighty! Use them! Some helpers:
+### 1. Basic sorting for records
 
-* see all params
+##### 1.1. URL params are mighty! Use them! Some helpers:
+
+* see all params that are applied to current URL
 
 ```ruby
 <%= params %>
 ```
 
 * controller and action params are always present in a request
-* hacky way to see if any OTHER params are present
+* hacky way to see if any OTHER params are present:
 
 ```ruby
 (params.keys - ['controller'] - ['action']).present?
@@ -35,7 +37,7 @@ params.key?(:messages_count)
 params[:messages_count].presence
 ```
 
-### 1. Basic sorting for records
+##### 1.2. Add sorting
 
 * add helper to create sort_links that will pass search params
 * add `data: { turbo_frame: 'search' }` to the links to act WITHIN a trubo frame `search`
@@ -87,7 +89,9 @@ end
 
 ### 2. Turbo search
 
-* Wrap search and inboxes into a `turbo_frame_tag` with the same ID as the sort links: 
+* Wrap search and inboxes into a `turbo_frame_tag` with the same ID as the sort links
+* `target: '_top'` - not to break any other behavior inside the frame
+* The helper for the sort links (`app/helpers/search_helper.rb`) should direct to the frame that you want to "refresh" with `data: { turbo_frame: 'search' }`
 
 #app/views/inboxes/index.html.erb
 ```ruby
