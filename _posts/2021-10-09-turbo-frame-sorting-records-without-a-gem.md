@@ -16,19 +16,20 @@ thumbnail: /assets/thumbnails/turbo.png
 #app/helpers/sort_helper.rb
 ```ruby
 module SortHelper
-  def sort_link(attribute)
+  def sort_link(attribute, label = nil)
+    attribute_or_label = label.presence || attribute.to_s.humanize
     @attribute = attribute
     if params[attribute].eql?('desc')
-      link_to "▼ #{attribute.to_s.humanize}",
+      link_to "▼ #{attribute_or_label}",
               url_for(controller: controller_name, action: action_name, @attribute => :asc),
               data: { turbo_frame: 'search' }
     elsif params[attribute].eql?('asc')
-      link_to "▲ #{attribute.to_s.humanize}",
+      link_to "▲ #{attribute_or_label}",
               url_for(controller: controller_name, action: action_name, @attribute => :desc),
               data: { turbo_frame: 'search' }
     elsif !params.key?(attribute)
-      link_to attribute.to_s.humanize,
-              url_for(controller: controller_name, action: action_name, @attribute => :asc),
+      link_to attribute_or_label,
+              url_for(controller: controller_name, action: action_name, @attribute => :desc),
               data: { turbo_frame: 'search' }
     end
   end
@@ -69,8 +70,9 @@ end
 
 <%= turbo_frame_tag 'search', target: '_top' do %>
 
-  <%= sort_link(:messages_count) %>
-  <%= sort_link(:created_at) %>
+  <%= sort_link(:messages_count, 'Popular') %>
+  <%= sort_link(:created_at, 'Fresh') %>
+  <%= sort_link(:updated_at) %>
   <%= link_back_if_params %>
 
   <div id="inboxes">
