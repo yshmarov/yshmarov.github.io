@@ -29,7 +29,7 @@ It will generate `erd.pdf` in the root folder of your Rails app.
 
 Here are some examples of what it can look like:
 
-![rails-erd-pdf](/assets/images/erd-view.gif)
+![rails-erd-pdf](/assets/images/erd-view.png)
 
 ### Advanced usage
 
