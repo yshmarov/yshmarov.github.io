@@ -10,8 +10,8 @@ thumbnail: /assets/thumbnails/devise.png
 
 ```ruby
 def create
-	@inbox = Inbox.new(inbox_params)
-	@inbox.user = current_user
+  @inbox = Inbox.new(inbox_params)
+  @inbox.user = current_user
 end
 ```
 
@@ -27,7 +27,7 @@ end
 
 ```ruby
 def create
-	@inbox = Inbox.new(inbox_params.merge({ user: current_user }))
+  @inbox = Inbox.new(inbox_params.merge({ user: current_user }))
 end
 ```
 
@@ -35,8 +35,8 @@ end
 
 ```ruby
 def create
-	@inbox = Inbox.new(inbox_params)
-	@inbox.user = current_user
+  @inbox = Inbox.new(inbox_params)
+  @inbox.user = current_user
 end
 
 def inbox_params
