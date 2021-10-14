@@ -1,10 +1,12 @@
 ---
 layout: post
-title: "Current attribute support to set Current.user per request"
+title: "Current attribute. Access current_user from model"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails devise
 thumbnail: /assets/thumbnails/devise.png
 ---
+
+Current attribute support to set Current.user per request:
 
 #app/controllers/application_controller.rb
 ```ruby
@@ -41,3 +43,6 @@ class Post < ApplicationRecord
   validates :title, presence: true
 end
 ```
+
+Read more here:
+[(evilmartians/current-everything)](https://evilmartians.com/chronicles/rails-5-2-active-storage-and-beyond#current-everything)
