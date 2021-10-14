@@ -6,13 +6,19 @@ tags: ruby rails ruby-on-rails request-params url_for link_to
 thumbnail: /assets/thumbnails/url.png
 ---
 
-### 1. URL params are mighty! Use them! Some helpers:
+### 1.1 URL params are mighty! Use them! Some helpers:
 
 * get current controller name & action name
 
 ```
 <%= controller_name %>
 <%= action_name %>
+```
+
+* clean way to link to current path without helpers
+
+```erb
+<%= link_to "Refresh", controller: controller_name, action: action_name %>
 ```
 
 * check if a controller/action name equals ...
@@ -53,6 +59,39 @@ action_name.eql?('y')
 ```ruby
 params[:messages_count].presence
 ```
+
+### 1.2 Request-based manipulations 
+
+* link_to current url via `request` with removing params
+
+```erb
+<%= link_to "Refresh", request.params.slice("query", "filter", "sort") %>
+```
+
+* moving the above into a helper
+
+#app/helpers/application_helper.rb
+```ruby
+module ApplicationHelper
+  def current_page_params
+    # remove query params that you might have
+    request.params.slice("query", "filter", "sort")
+  end
+end
+```
+
+```erb
+<%= link_to "Refresh with helper", current_page_params %>
+```
+
+* add params to above helper
+
+```erb
+<%= link_to "with foo", current_page_params.merge(foo: true) %>
+```
+
+* ways to get link to current url
+
 
 ### 2. Link helpers
 
