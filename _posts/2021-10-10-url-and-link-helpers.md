@@ -21,6 +21,10 @@ thumbnail: /assets/thumbnails/url.png
 <%= link_to "Refresh", controller: controller_name, action: action_name %>
 ```
 
+* even cleaner way to current path
+
+<%= link_to "Refresh", request.path %>
+
 * check if a controller/action name equals ...
 
 ```ruby
