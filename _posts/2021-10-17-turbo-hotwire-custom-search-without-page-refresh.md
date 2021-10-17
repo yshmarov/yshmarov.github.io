@@ -16,14 +16,14 @@ Search without page refresh using Hotwire (Turbo Frames & Stimulus):
 
 #app/controllers/inboxes_controller.rb
 ```ruby
-  def index
+	def index
 		@search_params = request.url
 		if params[:name].present?
-		  @inboxes = Inbox.where('name ilike ?', "%#{params[:name]}%")
+			@inboxes = Inbox.where('name ilike ?', "%#{params[:name]}%")
 		else
-		  @inboxes = Inbox.all
+			@inboxes = Inbox.all
 		end
-  end
+	end
 ```
 
 * stimulus controller to submit form with 500ms delay, [inspired by David Colby's post](https://www.colby.so/posts/filtering-tables-with-rails-and-hotwire)
@@ -33,18 +33,18 @@ Search without page refresh using Hotwire (Turbo Frames & Stimulus):
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "form" ]
+	static targets = [ "form" ]
 
-  connect() { console.log("search form connected") }
+	connect() { console.log("search form connected") }
 
-  search() {
+	search() {
 	clearTimeout(this.timeout)
 	this.timeout = setTimeout(() => {
-	  // This needs a polyfill for Safari and IE11 support. Alternatively, use Rails/ujs:
-	  // Rails.fire(this.formTarget, 'submit')
-	  this.formTarget.requestSubmit()
+		// This needs a polyfill for Safari and IE11 support. Alternatively, use Rails/ujs:
+		// Rails.fire(this.formTarget, 'submit')
+		this.formTarget.requestSubmit()
 	}, 500)
-  }
+	}
 }
 ```
 
@@ -57,21 +57,21 @@ export default class extends Controller {
 #app/views/inboxes/index.html.erb
 ```ruby
 <%= form_with url: inboxes_path,
-						  method: :get,
-						  data: { controller: 'search-form',
-										  search_form_target: 'form',
-										  turbo_frame: 'search' } do |form| %>
-  <%= form.text_field :name,
-										  placeholder: 'Name',
-										  value: params[:name],
-										  autocomplete: 'off',
-										  autofocus: true,
-										  data: { action: 'input->search-form#search' } %>
+							method: :get,
+							data: { controller: 'search-form',
+											search_form_target: 'form',
+											turbo_frame: 'search' } do |form| %>
+	<%= form.text_field :name,
+											placeholder: 'Name',
+											value: params[:name],
+											autocomplete: 'off',
+											autofocus: true,
+											data: { action: 'input->search-form#search' } %>
 <% end %>
 
 <%= turbo_frame_tag 'search' do %>
 	<div id="inboxes">
-	  <%= render @inboxes %>
+		<%= render @inboxes %>
 	</div>
 <% end %>
 ```
