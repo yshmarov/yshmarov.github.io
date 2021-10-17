@@ -8,7 +8,7 @@ thumbnail: /assets/thumbnails/turbo.png
 
 ![turbo frame sort withot any gems](/assets/images/turbo-sort-without-gem.gif)
 
-### 1. Basic sorting functionality
+### 1.1. Basic sorting functionality
 
 * add helper to create sort_links that will pass search params
 * add `data: { turbo_frame: 'search' }` to the links to act WITHIN a trubo frame `search`
@@ -19,19 +19,9 @@ module SortHelper
   def sort_link(attribute, label = nil)
     attribute_or_label = label.presence || attribute.to_s.humanize
     @attribute = attribute
-    if params[attribute].eql?('desc')
-      link_to "▼ #{attribute_or_label}",
-              url_for(controller: controller_name, action: action_name, @attribute => :asc),
-              data: { turbo_frame: 'search' }
-    elsif params[attribute].eql?('asc')
-      link_to "▲ #{attribute_or_label}",
-              url_for(controller: controller_name, action: action_name, @attribute => :desc),
-              data: { turbo_frame: 'search' }
-    elsif !params.key?(attribute)
-      link_to attribute_or_label,
-              url_for(controller: controller_name, action: action_name, @attribute => :desc),
-              data: { turbo_frame: 'search' }
-    end
+    link_to "#{icon} #{attribute_or_label}",
+            url_for(controller: controller_name, action: action_name, @attribute => sort_direction),
+            data: { turbo_frame: 'search' }
   end
 
   def link_back_if_params
@@ -39,6 +29,28 @@ module SortHelper
       link_to 'Clear filters',
               url_for(controller: controller_name, action: action_name),
               data: { turbo_frame: 'search' }
+    end
+  end
+
+  private
+
+  def sort_direction
+    case params[@attribute]
+    when 'desc'
+      'asc'
+    when 'asc'
+      'desc'
+    else
+      'desc'
+    end
+  end
+
+  def icon
+    case params[@attribute]
+    when 'desc'
+      '▼'
+    when 'asc'
+      '▲'
     end
   end
 end
@@ -59,6 +71,21 @@ end
   end
 ```
 
+* Now you can add sort links
+* If there is a current sort, there will be a link to "refresh"
+
+#app/views/inboxes/index.html.erb
+```ruby
+<%= sort_link(:messages_count, 'Popular') %>
+<%= sort_link(:created_at, 'Fresh') %>
+<%= sort_link(:updated_at) %>
+<%= link_back_if_params %>
+
+<div id="inboxes">
+  <%= render @inboxes %>
+</div>
+```
+
 ### 2. Turbo search
 
 * Wrap search and inboxes into a `turbo_frame_tag` with the same ID as the sort links
@@ -67,7 +94,6 @@ end
 
 #app/views/inboxes/index.html.erb
 ```ruby
-
 <%= turbo_frame_tag 'search', target: '_top' do %>
 
   <%= sort_link(:messages_count, 'Popular') %>

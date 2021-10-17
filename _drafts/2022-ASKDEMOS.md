@@ -1,3 +1,7 @@
+https://www.upvoty.com/
+
+A lot like substack
+
 <h1>Create a public inbox</h1>
 
 Inbox types:
