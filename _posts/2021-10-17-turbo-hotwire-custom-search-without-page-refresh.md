@@ -55,7 +55,7 @@ export default class extends Controller {
 * wrap list of inboxes into a `turbo_frame_tag 'search'`
 
 #app/views/inboxes/index.html.erb
-```ruby
+```erb
 <%= form_with url: inboxes_path,
               method: :get,
               data: { controller: 'search-form',
