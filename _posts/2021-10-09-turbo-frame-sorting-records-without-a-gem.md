@@ -24,14 +24,6 @@ module SortHelper
             data: { turbo_frame: 'search' }
   end
 
-  def link_back_if_params
-    if (params.keys - ['controller'] - ['action']).present?
-      link_to 'Clear filters',
-              url_for(controller: controller_name, action: action_name),
-              data: { turbo_frame: 'search' }
-    end
-  end
-
   private
 
   def sort_direction
@@ -99,7 +91,7 @@ end
   <%= sort_link(:messages_count, 'Popular') %>
   <%= sort_link(:created_at, 'Fresh') %>
   <%= sort_link(:updated_at) %>
-  <%= link_back_if_params %>
+  <%= link_to 'Clear search', request.path if request.query_parameters.any? %>
 
   <div id="inboxes">
     <%= render @inboxes %>
