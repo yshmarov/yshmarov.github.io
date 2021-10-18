@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Tip: URL and link helpers."
+title: "Tiny Tip: URL and link helpers."
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails request-params url_for link_to
 thumbnail: /assets/thumbnails/url.png
