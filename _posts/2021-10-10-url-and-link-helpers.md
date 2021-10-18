@@ -30,13 +30,26 @@ thumbnail: /assets/thumbnails/url.png
 ```ruby
 controller_name.eql?('x')
 action_name.eql?('y')
-
 ```
 
 * see if we are now on a specific path
 
 ```ruby
 <%= current_page?(root_path) %>
+```
+
+* get query_parameters for an url
+* `localhost:3000/users?created_at=asc` would return `{"created_at"=>"asc"}`
+
+```ruby
+<%= request.query_parameters %>
+<%= request.query_parameters.empty? %>
+```
+
+now you can do
+
+```ruby
+<%= link_to 'clear search', request.path if request.query_parameters.any? %>
 ```
 
 * see all params that are applied to current URL
@@ -46,7 +59,8 @@ action_name.eql?('y')
 ```
 
 * controller and action params are always present in a request
-* hacky way to see if any OTHER params are present:
+* BAD hacky way to see if any OTHER params are present:
+* better use the above `request.query_parameters.present?`
 
 ```ruby
 <%=(params.keys - ['controller'] - ['action']).present? %>
