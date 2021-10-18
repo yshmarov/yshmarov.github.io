@@ -8,28 +8,28 @@ thumbnail: /assets/thumbnails/curlybrackets.png
 
 a) This
 ```ruby
-	if post.published?
-		'published'
-	else
-		'draft'
-	end
+  if post.published?
+    'published'
+  else
+    'draft'
+  end
 ```
 can be written like this
 ```ruby
-	post.published? 'published' : 'draft'
+  post.published? 'published' : 'draft'
 ```
 
 b) This
 ```ruby
 if post.published?
-	'published'
+  'published'
 elsif post.draft?
-	'draft'
+  'draft'
 else
-	'archived'
+  'archived'
 end
 ```
 can be written like this
 ```ruby
-	post.published? ? 'published' : post.draft? 'draft' : 'archived'
+  post.published? ? 'published' : post.draft? 'draft' : 'archived'
 ```
