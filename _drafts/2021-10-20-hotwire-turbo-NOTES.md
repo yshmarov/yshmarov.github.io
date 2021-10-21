@@ -91,24 +91,6 @@ Source page:
 <% end %>
 ```
 
-### AAA
-
-Turbo stream actions:
-append
-prepend
-replace
-update
-remove
-before
-after
-
-after_update_commit
-after_create_commit
-after_destroy_commit
-after_save_commit
-
-target - specify id of element
-
 ### 3. turbo frame - form to create messages in an inbox show
 
 ```ruby
@@ -244,60 +226,3 @@ export default class extends Controller {
   <li>Item 4</li>
 </ul>
 ```
-
-
-****
-
-AAA
-
-
-# Update count
-
-/askdemos/config/routes.rb
-```
-  resources :messages do
-    get :message_count, on: :collection    
-  end
-```
-/askdemos/app/views/messages/_message_count.html.erb
-```
-  def message_count
-    #message.broadcast_replace_to 'message-index-item-#{message.id}',
-    #  partial: 'messages/message', locals: { product: product }
-
-    # @messages = Message.all
-    # render partial: 'messages/message_count'
-
-    render partial: "messages/message_count", locals: { messages: Message.all }
-  end
-```
-/askdemos/app/views/messages/_message_count.html.erb
-```
-<%= turbo_frame_tag 'message_count' do %>
-  Messages: <%= messages.count %>
-<% end %>
-/askdemos/app/views/messages/index.html.erb
-```
-<h1>
-  <%= turbo_frame_tag 'message_count', src: message_count_messages_path, loading: :lazy do %>
-    Messages
-  <% end %>
-</h1>
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-render turbo_stream: turbo_stream.update("flash", partial: "shared/flash")
-[render multiple streams](https://github.com/hotwired/turbo-rails/issues/77)
-
