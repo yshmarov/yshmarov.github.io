@@ -107,17 +107,13 @@ inbox.rb
 
 #app/views/inboxes/_inbox.html.erb
 ```ruby
-<%= turbo_frame_tag dom_id(inbox) do %>
-  <div id="<%= dom_id inbox %>" style="background: <%= inbox.active_color %>">
-    <%= inbox.active %>
-    <%= button_to inbox.active_text,
-          toggle_active_state_inbox_path(inbox),
-          method: :patch, data: { turbo_frame: '_top' } %>
-      <%= link_to inbox.name, inbox, data: { turbo_frame: '_top' } %>
-    <div>
-      <%= link_to "Edit", edit_inbox_path(inbox) %>
-    </div>
-  </div>
+<%= turbo_frame_tag dom_id(inbox), style: "background: <%= inbox.active_color %>" do %>
+  <%= inbox.active %>
+  <%= button_to inbox.active_text,
+        toggle_active_state_inbox_path(inbox),
+        method: :patch, data: { turbo_frame: '_top' } %>
+    <%= link_to inbox.name, inbox, data: { turbo_frame: '_top' } %>
+  <%= link_to "Edit", edit_inbox_path(inbox) %>
 <% end %>
 ```
 
