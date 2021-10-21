@@ -21,13 +21,12 @@ rails g migration add_likes_to_inboxes like:integer
 
 ```ruby
     add_column :inboxes, :likes, :integer, default: 0, null: false
-
 ```
 
 * add the route
 
-#config/routes.rb
 ```ruby
+#config/routes.rb
 Rails.application.routes.draw do
   resources :inboxes do
     member do
@@ -37,39 +36,17 @@ Rails.application.routes.draw do
 end
 ```
 
-* keep it in a partial with a unique dom
-
-#app/views/inboxes/_likes.html.erb
-```ruby
-<%= turbo_frame_tag "#{dom_id(inbox)}_likes" do %>
-  <%= inbox.likes %>
-<% end %>
-```
-
-* render the partial in the view
-* add the button
-
-#app/views/inboxes/_inbox.html.erb
-```ruby
-<div id="<%= dom_id inbox %>">
-  <h1><%= link_to inbox.name, inbox %></h1>
-
-  <%= render partial: 'inboxes/likes', locals: { inbox: inbox } %>
-  <%= button_to 'Like!',
-        like_inbox_path(inbox),
-        method: :patch, data: { turbo_frame: '_top' } %>
-</div>
-```
-
 * on event - replace the `_likes` partial
+* include `include ActionView::RecordIdentifier` - to use `dom_id`
+* create a unique dom id for this specific partial
 
-#app/controllers/inboxes_controller.rb
 ```ruby
+#app/controllers/inboxes_controller.rb
   include ActionView::RecordIdentifier
 
   def like
     @inbox = Inbox.find(params[:id])
-    @inbox.like!
+    @inbox.increment!(:likes)
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
@@ -81,3 +58,30 @@ end
     end
   end
 ```
+
+* keep it in a partial with a unique dom
+
+```ruby
+#app/views/inboxes/_likes.html.erb
+<%= turbo_frame_tag "#{dom_id(inbox)}_likes" do %>
+  <%= inbox.likes %>
+<% end %>
+```
+
+* render the partial in the view
+* add the button
+* `data: { turbo_frame: '_top' }` - might be optional
+
+```ruby
+#app/views/inboxes/_inbox.html.erb
+<div id="<%= dom_id inbox %>">
+  <h1><%= link_to inbox.name, inbox %></h1>
+
+  <%= render partial: 'inboxes/likes', locals: { inbox: inbox } %>
+  <%= button_to 'Like!',
+        like_inbox_path(inbox),
+        method: :patch, data: { turbo_frame: '_top' } %>
+</div>
+```
+
+* you might want to move the `Like!` button into the partial.

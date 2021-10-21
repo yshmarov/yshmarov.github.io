@@ -46,10 +46,6 @@ rails g migration add_active_to_inboxes active:boolean
 
 inbox.rb
 ```ruby
-  def switch_active!
-    toggle!(:active)
-  end
-
   # ideally should be moved to a decorator or a helper
   def active_color
     if active?
@@ -88,7 +84,7 @@ inbox.rb
 
   def toggle_active_state
     @inbox = Inbox.find(params[:id])
-    @inbox.switch_active!
+    @inbox.toggle!(:active)
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(
