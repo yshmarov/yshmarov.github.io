@@ -1,0 +1,36 @@
+```
+rails generate task monitor_my_app
+```
+
+This will generate a file `lib/tasks/monitor_my_app.rake`:
+
+```
+namespace :monitor_my_app do
+  task email_latest_stats: [:environment] do
+     # Count number of new users
+     @count_of_users = User.where("created_at > ?", 24.hours.ago).count
+
+     ## Send the email with latest count
+     MonitoringMailer.with(count_of_users: @count_of_users).daily_update.deliver_now
+  end
+end
+```
+test by running in console:
+```
+rake monitor_my_app:email_latest_stats
+```
+
+run in production:
+```
+bundle exec cap production invoke:rake
+TASK=monitor_my_app:email_latest_stats
+```
+
+https://github.com/javan/whenever
+
+`schedule.rb`:
+```
+every 1.days do
+  rake "monitor_my_app:email_latest_stats"
+end
+```

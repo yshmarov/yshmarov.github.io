@@ -222,7 +222,6 @@ This is not the perfect behavior.
 ++ <%= turbo_frame_tag 'inbox_count' do %>
 ++   <%= @inboxes.count %>
 ++ <% end %>
-
 ```
 
 * when created/destory event happens - replace above frame with some HTML
@@ -269,16 +268,58 @@ This is not the perfect behavior.
   end
 ```
 
-### -7. VIA MODEL: Stream HTML. Update inboxes count on create/destroy. ?!?!?!?!?!?!?!!?!?!?!?
+### +7. VIA MODEL: Update inboxes count on create/destroy.
 
-```diff
-##app/models/inbox.rb
-++ after_create_commit :update_message_count
-++
-++ private
-++   def update_message_count
-++     broadcast_update_to(user, :messages, target: "message-count", html: "<p> #{user.messages.count} </p>")
-++   end
+* you can target a dom id (any html element that has an ID set) Not turbo frame needed for the stream to work.
+
+* Turbo Stream responce from controller - for current_user, when he does an action. doesn't work in console.
+* Turbo stream responce from model (broadcast) - global updates in realtime. works in console.
+
+* Please, use explicity paths. No shortcut magic:
+
+```ruby
+#app/models/inbox.rb
+  after_commit :send_counter, on: [ :create, :destroy ]
+  def send_counter
+    # broadcast_action_later_to > broadcast_action_to
+
+    # 1. broadcast - connection ID
+    # 2. target gets replaced/updated/appended....
+    # 3. partial...
+
+    # <%= turbo_stream_from "inboxes" %> creates broadcast named inboxes
+    # broadcast_append_to('inboxes')
+    # default target - inboxes
+    # default partial - _inbox
+    # override target:
+    # broadcast_append_to('inboxes', target: 'inboxes_list') }
+    # override partial:
+    # after_create_commit { broadcast_append_to('inboxes', partial: 'something_new') }
+    # override breadcast target: <%= turbo_stream_from "inbox_broad" %>
+    # after_create_commit { broadcast_append_to('inbox_broad', target: 'inboxes_list', partial: 'something_new') }
+    broadcast_update_to('inbox_quantity', target: "inbox_target", partial: 'inboxes/inbox_count')
+  end
+```
+
+* set a matching turbo stream ID in the view
+* set a target where the partial should go
+
+```ruby
+<%= turbo_stream_from 'inbox_quantity' %>
+<div id="inbox_target"></div>
+```
+
+* create the partial:
+
+```ruby
+#app/views/inboxes/_inbox_count.html.erb
+<div style="background: orange;">
+	Total inboxes:
+	<%= Inbox.count %>
+	<br>
+	New inbox id:
+	<%= inbox.id %>
+</div>
 ```
 
 ### +8. Flash messages with Turbo. Reusable Streams. Dismiss flash.
@@ -456,14 +497,9 @@ def destroy
     end
 ```
 
-### target a div_id or a turbo_frame? A DOM ID IS OK. NO TURBO FRAME NEEDED
-
-Turbo Stream responce from controller - for user, when he does an action. not in console
-Broadcast from model - global. ok in console
-
 ### Conditionally resond with turbo or html?
 ### FLASH for update?
-
+### Stream HTML via model?
 
 ### 9. `create.turbo_stream.erb`
 
@@ -495,3 +531,14 @@ Broadcast from model - global. ok in console
 * it can seem to be an easy path to use after_commit broadcast in model, but more predictable in controllers.
 * link_to_unless_current will return current from frame target
 * the ones in the controller will not fire if created from console
+
+****
+
+## teams/show.html.erb
+#<%= turbo_stream_from @team %>
+#
+## player.rb
+#belongs_to :team
+#
+#after_create_commit { broadcast_append_later_to(team) }
+#after_destroy_commit { broadcast_remove_to(team) }
