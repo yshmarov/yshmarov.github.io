@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Devise ONLY omniauth."
+title: "ONLY Omniauth login with Devise (without email registration)"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails devise omniauth
 thumbnail: /assets/thumbnails/devise.png
