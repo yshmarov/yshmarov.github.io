@@ -40,8 +40,8 @@ app/controllers/projects_controller.rb
   def comments
     if turbo_frame_request?
       respond_to do |format|
-        format.html { render partial: 'projects/comments', 
-                             locals: { comments: @project.comments, project: @project }}
+        format.html { render partial: 'projects/comments',
+          locals: { comments: @project.comments, project: @project }}
       end
     else
       redirect_to @project, alert: "Not allowed"
@@ -51,8 +51,8 @@ app/controllers/projects_controller.rb
   def tasks
     if turbo_frame_request?
       respond_to do |format|
-        format.html { render partial: 'projects/tasks', 
-                             locals: { tasks: @project.tasks, project: @project }}
+        format.html { render partial: 'projects/tasks',
+          locals: { tasks: @project.tasks, project: @project }}
       end
     else
       redirect_to @project, alert: "Not allowed"
