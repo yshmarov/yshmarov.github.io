@@ -1,10 +1,12 @@
 ---
 layout: post
-title: "Install Bootstrap 5 with Ruby on Rails 6+. Yarn, Webpack. Popovers, Tooltips. Stimulus"
+title: "Install Bootstrap 5 with Ruby on Rails 6+. Yarn, Webpack. Popovers, Tooltips. StimulusJS"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails bootstrap webpack yarn stimulus
 thumbnail: /assets/thumbnails/bootstrap.png
 ---
+
+![bootstrap-tooltip-popover](assets/images/bootstrap-tooltip-popover.png)
 
 ## Important: use `@popperjs/core`, not `popper.js`
 
@@ -130,7 +132,7 @@ Turbolinks.start()
 ActiveStorage.start()
 ```
 
-## 24 October 2021 UPDATE. 02. Popovers and Tooltips with stimulus
+## 24 October 2021 UPDATE. 02. Popovers and Tooltips with StimulusJS
 
 First, [install stimulus](https://blog.corsego.com/installl-stimulus-rails)
 
