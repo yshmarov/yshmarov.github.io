@@ -80,7 +80,7 @@ end
 ```
 console
 ```
-rails g migration add_omniauth_data_to_users
+rails g migration add_omniauth_data_to_users name image provider uid
 ```
 migration
 ```ruby
