@@ -169,6 +169,7 @@ app/views/projects/_comments.html.erb
 
 * in case you don't want to do the homework from above ;)
 
+app/config/routes.rb
 ```diff
   resources :projects do
     member do
@@ -212,6 +213,23 @@ app/views/projects/_comments.html.erb
   <%= content_tag :span, "Comments", style: "#{"font-weight: bold" if request.fullpath.eql?(comments_project_path(@project))}" %>
 <% end %>
 ```
+
+#### 3. Bonus: Default open tab
+
+* you can just render one of the partials in the target by default
+* of course, you would have to alter the `_tabs` partial for `tasks` to be current both for base url and url with params
+
+app/views/projects/show.html.erb
+```ruby
+<div id="dropdown_target">
+  <%= render partial: 'projects/tasks', locals: { project: @project, tasks: @project.tasks } %>
+  this will be replaced by tasks or comments
+</div>
+```
+
+Consideration: you might want to have an URL to be also changed/be available to something like `/projects/1/tasks` or `projects/1/comments`. This is not available by default so 
+
+****
 
 That's it!
 
