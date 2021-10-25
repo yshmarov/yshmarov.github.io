@@ -133,7 +133,56 @@ app/views/projects/show.html.erb
 <% end %>
 ```
 
-Conclusion:
+#### 3. Using template variants to respond only with a turbo frame
+
+* use template, not partial
+* if request is done by a turbo frame, respond with the template variant for turbo frame. [More about Rails layout variants](https://guides.rubyonrails.org/layouts_and_rendering.html#the-variants-option)
+
+```ruby
+class ProjectsController < ApplicationController
+  before_action :set_project
+  before_action :turbo_frame_request_variant
+
+  def show
+  end
+
+  def comments
+    respond_to do |format|
+      format.html { render template: 'projects/comments', 
+                           locals: { comments: @project.comments, project: @project }}
+    end
+  end
+
+  def tasks
+    respond_to do |format|
+      format.html { render template: 'projects/tasks', 
+                           locals: { tasks: @project.tasks, project: @project }}
+    end
+  end
+
+  private
+
+  def turbo_frame_request_variant
+    request.variant = :turbo_frame if turbo_frame_request?
+  end
+
+  def set_project
+    @project = Project.find(params[:id])
+  end
+end
+```
+
+* rename partials to templates, add `+turbo_frame` estention to the templates to respond with them
+```diff
+-- _comments.html.erb
+-- _tasks.html.erb
+++ comments.html+turbo_frame.erb
+++ tasks.html+turbo_frame.erb
+```
+
+* Now, when someoone tries to open a new tab, they will get a `Template is missing` error.
+
+#### Conclusion:
 
 * Rendering tabbed content with turbo frames feels more natural (than with STREAMS)
 * Frames use GET request
