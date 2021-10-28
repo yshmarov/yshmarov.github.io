@@ -16,7 +16,7 @@ Some most common meta tags:
 * tags
 * author
 
-#### without a gem
+### without a gem
 
 app/views/application.html.erb
 ```ruby
@@ -54,7 +54,7 @@ Both below options work, but one is better
 ++ Rails.application.class.module_parent_name
 ```
 
-#### with gem meta-tags
+### with gem meta-tags
 
 However, for more complex behaviour and more meta_tag types (like `description`, `tags`) - better use [gem meta-tags](https://github.com/kpumuk/meta-tags)
 
