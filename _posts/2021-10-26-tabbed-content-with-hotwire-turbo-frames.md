@@ -3,7 +3,7 @@ layout: post
 title: "#9 Hotwire Turbo: Tabbed content with Turbo Frames"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo
-thumbnail: /assets/thumbnails/devise.png
+thumbnail: /assets/thumbnails/turbo.png
 ---
 
 ![turbo-frames-tabs](assets/images/turbo-frames-tabs.gif)

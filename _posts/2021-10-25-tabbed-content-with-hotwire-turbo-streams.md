@@ -3,7 +3,7 @@ layout: post
 title: "#8 Hotwire Turbo: Tabbed content with Turbo Streams"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo
-thumbnail: /assets/thumbnails/devise.png
+thumbnail: /assets/thumbnails/turbo.png
 ---
 
 ![turbo-streams-tabs](/assets/images/turbo-streams-tabs.gif)

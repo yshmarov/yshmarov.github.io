@@ -6,6 +6,8 @@ tags: ruby rails ruby-on-rails hotwire turbo turbo-streams flash
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
+![turbo-flash](/assets/images/turbo-flash.gif)
+
 ### Problem:
 
 When doing CRUD via turbo, without page redirect, you would STILL want to inform user with a flash message, right?
@@ -19,7 +21,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 * Use flash in `redirect_to`: `redirect_to inboxes_path, notice: "Inbox '#{inbox.id}' deleted."`
 * Use a custom flash type: `redirect_to inboxes_path, flash: {new_type: "Inbox '#{inbox.id}' deleted."}`
 
-### 1. Baisc flash setup:
+****
 
 * add a basic partial for flash messages
 
@@ -80,7 +82,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 ++      format.turbo_stream do
 ++        render turbo_stream: [
 ++          turbo_stream.update('new_inbox', partial: 'inboxes/form', locals: { inbox: Inbox.new }),
-++          turbo_stream.prepend('inbox_collection', partial: 'inboxes/inbox', locals: { inbox: @inbox }),
+++          turbo_stream.prepend('inboxes', partial: 'inboxes/inbox', locals: { inbox: @inbox }),
 ++        ]
 ++      end
         format.html { redirect_to @inbox, notice: 'Inbox created.' }
@@ -120,7 +122,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
         format.turbo_stream do
           render turbo_stream: [
             turbo_stream.update('new_inbox', partial: 'inboxes/form', locals: { inbox: Inbox.new }),
-            turbo_stream.prepend('inbox_collection', partial: 'inboxes/inbox', locals: { inbox: @inbox }),
+            turbo_stream.prepend('inboxes', partial: 'inboxes/inbox', locals: { inbox: @inbox }),
 ++          turbo_stream.update("flash", partial: "shared/flash")
           ]
         end
@@ -144,7 +146,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-++        turbo_stream.update("flash", partial: "shared/flash")
+++        turbo_stream.update("flash", partial: "shared/flash"),
           turbo_stream.remove(@inbox)
         ]
       end
@@ -172,8 +174,8 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
         format.turbo_stream do
           render turbo_stream: [
             turbo_stream.update('new_inbox', partial: 'inboxes/form', locals: { inbox: Inbox.new }),
-            turbo_stream.prepend('inbox_collection', partial: 'inboxes/inbox', locals: { inbox: @inbox }),
-++          render_turbo_flash
+            turbo_stream.prepend('inboxes', partial: 'inboxes/inbox', locals: { inbox: @inbox }),
+++          render_turbo_flash,
 --          turbo_stream.update("flash", partial: "shared/flash")
           ]
         end
@@ -183,7 +185,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
         format.turbo_stream do
           render turbo_stream: [
             turbo_stream.update('new_inbox', partial: 'inboxes/form', locals: { inbox: @inbox }),
-++          render_turbo_flash
+++          render_turbo_flash,
 --          turbo_stream.update("flash", partial: "shared/flash")
           ]
         end
@@ -198,8 +200,8 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: [
-++        render_turbo_flash
---        turbo_stream.update("flash", partial: "shared/flash")
+++        render_turbo_flash,
+--        turbo_stream.update("flash", partial: "shared/flash"),
           turbo_stream.remove(@inbox)
         ]
       end
