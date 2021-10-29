@@ -25,7 +25,6 @@ navigate between frames /
 break in//out of frames
 SPA
 
-
 ### +1. Edit an inbox
 
 * wrap inbox partial into a turbo_frame with the id of the inbox
@@ -49,7 +48,7 @@ SPA
 
 ```diff
 #app/views/inboxes/edit.html.erb
-++ <%= turbo_frame_tag @inbox, class: "scaffold_record" do %>
+++ <%= turbo_frame_tag @inbox do %>
 <%= render "form", inbox: @inbox %>
 ++ <% end %>
 ```
@@ -58,11 +57,11 @@ SPA
 
 * 1.1. render partial in a turbo_frame
 
-```diff
+```ruby
 #app/views/inboxes/index.html.erb
-++<%= turbo_frame_tag "new_inbox" do %>
-++  <%= render partial: "inboxes/form", locals: { inbox: Inbox.new } %>
-++<% end %>
+<div id="new_inbox">
+  <%= render partial: "inboxes/form", locals: { inbox: Inbox.new } %>
+</div>
 ```
 
 * 1.2. controller re-render form (update, not replace)
@@ -542,3 +541,18 @@ def destroy
 #
 #after_create_commit { broadcast_append_later_to(team) }
 #after_destroy_commit { broadcast_remove_to(team) }
+
+****
+
+refresh frame from and outside of frame
+```html
+<%= turbo_frame_tag @person do %>
+  <%= @person.id %>
+  <%= link_to @person.id, @person %>
+  <%= Time.zone.now %>
+<% end %>
+<%# refresh frame from OUTSIDE of frame %>
+<%= link_to @person.id, @person, data: { turbo_frame: dom_id(@person) } %>
+<%= Time.zone.now %>
+<hr>
+```
