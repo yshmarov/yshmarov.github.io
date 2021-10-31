@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "#13 4 ways to render View Components with Turbo Streams"
+title: "#13 Turbo Streams: 4 ways to render View Components"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo viewcomponent
 thumbnail: /assets/thumbnails/turbo.png
