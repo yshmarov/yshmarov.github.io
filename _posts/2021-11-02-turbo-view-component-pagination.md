@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "#12 Turbo: Pagination with gem Pagy, ViewComponent without page refresh."
+title: "#12 Turbo: Pagination with gem Pagy, ViewComponent without page refresh"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo view-component pagination pagy
 thumbnail: /assets/thumbnails/turbo.png
