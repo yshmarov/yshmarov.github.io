@@ -19,13 +19,13 @@ Prerequisites:
 * Flash messages rendered via `app/views/shared/_flash`
 * An Inboxes model (to which we will connect polymorphic comments)
 
-* 1. A migration for comments
+### 1 A migration for comments
 console
 ```sh
 rails generate model Comment user:references body:text commentable:references{polymorphic} deleted_at:datetime:index
 ```
 
-* 2. The Comment model. 
+### 2 The Comment model. 
 
 app/models/comment.rb
 ```ruby
@@ -53,14 +53,14 @@ class Comment < ApplicationRecord
 end
 ```
 
-* 3. Inbox - Comment relationships
+### 3 Inbox - Comment relationships
 
 app/models/inbox.rb
 ```ruby
   has_many :comments, -> { order(created_at: :desc) }, as: :commentable, dependent: :destroy, inverse_of: :commentable
 ```
 
-* 4. We will have 3x comments_controller
+### 4 We will have 3x comments_controller
 
 config/routes.rb
 ```ruby
@@ -153,7 +153,7 @@ module Comments
 end
 ```
 
-* 5. Comment views
+### 5 Comment views
 
 -> NEW
 
@@ -207,7 +207,7 @@ app/views/comments/_comment.html.erb
 </div>
 ```
 
-* 6. Render comment form and list in an inbox view
+### 6 Render comment form and list in an inbox view
 
 app/controllers/inboxes_controller.rb
 ```ruby
@@ -224,7 +224,7 @@ app/views/inboxes/show.html.erb
 <%= render @comments %>
 ```
 
-* 7. Add some css
+### 7 Add some css
 
 app/assets/stylesheets/application.css
 ```css
