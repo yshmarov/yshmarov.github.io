@@ -6,7 +6,7 @@ tags: ruby rails ruby-on-rails hotwire turbo viewcomponent
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
-### 3 ways to do it in a controller.
+### 3 ways to do it in a controller:
 
 All work, use either one:
 
@@ -25,7 +25,7 @@ def some_action
 end
 ```
 
-### Our just use a `some_action.turbo_stream.erb` template
+### Our just use a `some_action.turbo_stream.erb` template:
 
 app/controllers/hello_controller.rb
 ```ruby
