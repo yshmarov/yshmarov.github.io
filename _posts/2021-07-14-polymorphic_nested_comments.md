@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "REVISED: Polymorphism 101. Part 4 of 3. Polymorphic Comments."
+title: "REVISED: Polymorphism 101. Part 4 of 3. Polymorphic Comments"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails polymorphism polymorphic-associations comments
 thumbnail: /assets/thumbnails/polymorphism-sign.png
@@ -8,6 +8,8 @@ thumbnail: /assets/thumbnails/polymorphism-sign.png
 
 Final result example:
 ![polymorphic nested commits](/assets/polymorphic_nested_comments/nested_comments.png)
+
+NOTE: I don't like this code any more. There's a newer post available ;)
 
 ### 1. migration
 
