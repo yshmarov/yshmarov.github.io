@@ -25,8 +25,8 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 
 * add a basic partial for flash messages
 
-```ruby
 #app/views/shared/_flash.html.erb
+```ruby
 <div id="flash">
   <% flash.each do |key, value| %>
     <%= content_tag :div, value, id: "#{key}" %>
@@ -36,8 +36,8 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 
 * render flash messages in layout
 
-```ruby
 #app/views/layouts/application.html.erb 
+```ruby
 <%= render 'shared/flash' %>
 ```
 
@@ -73,8 +73,8 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 </div>
 ```
 
-```diff
 #app/controllers/inboxes_controller.rb
+```diff
   def create
     @inbox = Inbox.new(inbox_params)
     respond_to do |format|
@@ -112,8 +112,8 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 
 ### 3. Finally, render flash with turbo:
 
-```diff
 #app/controllers/inboxes_controller.rb
+```diff
   def create
     @inbox = Inbox.new(inbox_params)
     respond_to do |format|
@@ -157,15 +157,15 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 
 ### 4. flash as a reusable turbo stream in the controller:
 
-```diff
 #app/controllers/application_controller.rb
+```diff
 ++  def render_turbo_flash
 ++    turbo_stream.update("flash", partial: "shared/flash")
 ++  end
 ```
 
-```diff
 #app/controllers/inboxes_controller.rb
+```diff
   def create
     @inbox = Inbox.new(inbox_params)
     respond_to do |format|
@@ -208,4 +208,62 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
       format.html { redirect_to inboxes_url, notice: 'Inbox destroyed.' }
     end
   end
+```
+
+### 5. Auto-dismiss flash messages with Stimulus
+
+```js
+import { Controller } from "@hotwired/stimulus";
+
+export default class extends Controller {
+  connect() {
+    setTimeout(() => {
+      this.dismiss();
+    }, 5000);
+  }
+
+  dismiss() {
+    this.element.remove();
+  }
+}
+```
+
+```diff
+<div id="flash">
+  <% flash.each do |key, value| %>
+++    <div data-controller="flash">
+      <%= content_tag :div, value, id: "#{key}" %>
+++    </div>
+  <% end %>
+</div>
+```
+
+### 6. Stream and Display multiple flash messsages
+
+* WRAP the parial into an ID
+
+app/views/layouts/application.html.erb
+```diff
+++    <div id="flash">
+      <%= render 'shared/flash' %>
+++    </div>
+```
+
+* not in INSIDE the partial
+
+```diff
+--<div id="flash">
+  <% flash.each do |key, value| %>
+    <div data-controller="flash">
+      <%= content_tag :div, value, id: "#{key}" %>
+    </div>
+  <% end %>
+--</div>
+```
+
+* prepend new flash messages to have all of them visible on the page
+
+```diff
+-- turbo_stream.update("flash", partial: "shared/flash")
+++ turbo_stream.prepend("flash", partial: "shared/flash")
 ```

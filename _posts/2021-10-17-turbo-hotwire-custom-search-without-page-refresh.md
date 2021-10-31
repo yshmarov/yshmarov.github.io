@@ -70,6 +70,8 @@ export default class extends Controller {
 <% end %>
 
 <%= turbo_frame_tag 'search' do %>
+  <%= request.url %>
+  <%= link_to 'Clear search', request.path if request.query_parameters.any? %>
   <div id="inboxes">
     <%= render @inboxes %>
   </div>
