@@ -16,7 +16,15 @@ Some most common meta tags:
 * tags
 * author
 
-### 1. without a gem
+Here's how they can look in the `<head>` of an HMTL document:
+```html
+<meta content="online education, course platform, video tutorials" name="keywords"/>
+<meta content="Online Learning and Skill sharing platform" name="description"/>
+<meta content="Yaroslav Shmarov" name="author"/>
+<%= favicon_link_tag 'thumbnail.png' %>
+<title>SupeRails</title>
+```
+### 1. Ruby on Rails: without a gem
 
 app/views/application.html.erb
 ```ruby
@@ -32,6 +40,7 @@ app/views/inboxes/index.html.erb
 <% content_for :title do %>
   <%= controller_name.humanize %>
   <%= action_name.humanize %>
+  <%= Inbox.count %>
 <% end %>
 ```
 
