@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "#9 Turbo Streams - a complete practical guide."
+title: "#14 Turbo CRUD"
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails hotwire turbo turbo-streams
+tags: ruby rails ruby-on-rails hotwire turbo CRUD
 thumbnail: /assets/thumbnails/turbo.png
 ---
 

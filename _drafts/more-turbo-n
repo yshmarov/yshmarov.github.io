@@ -1,0 +1,134 @@
+gem 'redis', '~> 4.0'
+
+Why do we need Redis?
+The Redis gem was added because ActionCable needs it to store some temporary data while browsing the WebSocket. However, just installing Redis is not enough to use it. We need to check whether it is configured correctly. When you go to the config/cable.yml file, it should look like this:
+```
+development:
+ adapter: redis
+ redis://localhost:6379/1te
+```
+Make sure Redis is running when your start your application (redis-server).
+
+
+
+add `data: { turbo: false }` to a form so that it ...
+
+    render :new, status: :unprocessable_entity 
+
+
+POST - create
+PUT - replace
+PATCH - update
+
+####
+
+First, when creating an action that will respond to turbo, don't forget:
+* `turbo_frames` respond only to `get` requests
+* `turbo_streams` respond to all requests except `get` (`post`, `put`, `patch`, `delete`...)
+
+Turbo Streams to Index page. Stream View Components
+
+## NEXT LEVEL: STREAMS
+
+### 4. Update pagination with Turbo STREAMS - controller approach
+
+* if you want to have some separate elements on the page updated
+
+* make the `index` page respond to both `get` & `post`, not only the default `get`.
+
+config/routes.rb
+```ruby
+  resources :inboxes do
+    collection do
+      match 'index', via: %i[get post]
+    end
+  end
+```
+
+* move results to a partial that will be rendered via a stream
+
+app/views/inboxes/_list.html.erb
+```ruby
+<%= render @inboxes %>
+```
+
+* the view
+
+app/views/inboxes/index.html.erb
+```ruby
+
+```
+
+* the index will now be able to respond to a POST request with a turbo stream
+
+```diff
+def index
+  def index
+   @pagy, @inboxes = pagy(Inbox.all, link_extra: 'data-turbo-frame="search", data-method="post"')
+   respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.update('inboxes', partial: 'inboxes/list'),
+          turbo_stream.update('request-url', html: request.url),
+          ]
+      end
+      format.html
+   end
+  end
+
+  @inbox = Inbox.new(inbox_params)
+  respond_to do |format|
+    if @inbox.save
+++    format.turbo_stream do
+++      render turbo_stream: [
+++        # turbo_stream.update('inboxes-pagination', render_to_string(PaginationComponent.new(results: @results)))
+++        # turbo_stream.update("inboxes-pagination", view_context.render(PaginationComponent.new(results: @results)))
+++        turbo_stream.update("inboxes-pagination", PaginationComponent.new(results: @results).render_in(view_context))
+++      ]
+++    end
+      format.html { redirect_to @inbox, notice: 'Inbox created.' }
+    else
+      format.html { render :new, status: :unprocessable_entity }
+    end
+  end
+end
+```
+
+### 4. Update pagination with Turbo STREAMS - template approach
+
+```diff
+def create
+  @inbox = Inbox.new(inbox_params)
+  respond_to do |format|
+    if @inbox.save
+++    format.turbo_stream
+      format.html { redirect_to @inbox, notice: 'Inbox created.' }
+    else
+      format.html { render :new, status: :unprocessable_entity }
+    end
+  end
+end
+```
+
+index.turbo_stream.erb
+```ruby
+<!-- update results in the pagination component when any search is being done  -->
+<%= turbo_stream.update "inboxes-pagination" do %>
+  <%= render PaginationComponent.new(results: @results) %>
+<% end %>
+
+<!-- update results when any search is being done  -->
+<%= turbo_stream.update "inventory-results" do %>
+  <%= render partial: "results" %>
+<% end %>
+
+<!-- add "Reset filters" link if there is a search query  -->
+<%= turbo_stream.update "inventory-reset" do %>
+  <%= link_to "Reset filters", request.path %>
+<% end %>
+
+<!-- update results in the pagination component when any search is being done  -->
+<%= turbo_stream.update "inventory-top-pagination" do %>
+  <%= render Table::PaginationComponent.new(results: @results) %>
+<% end %>
+```
