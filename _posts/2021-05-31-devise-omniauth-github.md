@@ -82,17 +82,6 @@ console
 ```
 rails g migration add_omniauth_data_to_users name image provider uid
 ```
-migration
-```ruby
-class AddOmniauthDataToUsers < ActiveRecord::Migration[6.1]
-  def change
-    add_column :users, :name, :string
-    add_column :users, :image, :string
-    add_column :users, :provider, :string
-    add_column :users, :uid, :string
-  end
-end
-```
 views
 ```ruby
 <% if user_signed_in? %>

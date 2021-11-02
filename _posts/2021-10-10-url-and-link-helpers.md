@@ -6,6 +6,17 @@ tags: ruby rails ruby-on-rails request-params url_for link_to
 thumbnail: /assets/thumbnails/url.png
 ---
 
+```ruby
+<%= request.path %>
+<%# /inboxes %>
+
+<%= request.fullpath %>
+<%# /inboxes?q%5Bs%5D=messages_count+asc  %>
+
+<%= request.url %>
+<%# localhost:3000/inboxes?q%5Bs%5D=messages_count+asc  %>
+```
+
 ### 1.1 URL params are mighty! Use them! Some helpers:
 
 * get current controller name & action name
