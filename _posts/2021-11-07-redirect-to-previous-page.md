@@ -6,6 +6,9 @@ tags: ruby rails ruby-on-rails url
 thumbnail: /assets/thumbnails/url.png
 ---
 
+https://api.rubyonrails.org/classes/ActionController/Redirecting.html
+https://www.bigbinary.com/blog/rails-5-improves-redirect_to_back-with-redirect-back
+
 You can use 
 ```ruby
 <%= link_to "return", request.referrer %>
