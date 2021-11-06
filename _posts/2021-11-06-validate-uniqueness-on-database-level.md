@@ -6,7 +6,7 @@ tags: ruby rails ruby-on-rails postgresql active-record
 thumbnail: /assets/thumbnails/curlybrackets.png
 ---
 
-You will want to fix this:
+You came here to fix `Rails/UniqueValidationWithoutIndex`
 ![validate-uniqueness-on-db](/assets/images/validate-uniqueness-on-db.png)
 
 ```sh
