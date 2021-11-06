@@ -3,7 +3,7 @@ layout: post
 title: "#14 Turbo + Devise"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails devise turbo hotwire
-thumbnail: /assets/thumbnails/devise.png
+thumbnail: /assets/thumbnails/turbo.png
 ---
 
 MISSION:
