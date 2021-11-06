@@ -26,4 +26,4 @@ If you than change the state back to hidden, the loaded content will stay.
 
 Think Tabs, Dropdowns, Modals.
 
-[`details` HTML tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)
+[`details` HTML tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details){:target="blank"}

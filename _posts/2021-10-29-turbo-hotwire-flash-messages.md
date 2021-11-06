@@ -17,7 +17,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 * Default flash types: `notice`, `alert`
 * `flash.now[:success]` - available only in current action (good for turbo)
 * `flash[:success]` - available in next action (good for redirect)
-* [ActionDispatch::Flash](https://api.rubyonrails.org/classes/ActionDispatch/Flash.html)
+* [ActionDispatch::Flash](https://api.rubyonrails.org/classes/ActionDispatch/Flash.html){:target="blank"}
 * Use flash in `redirect_to`: `redirect_to inboxes_path, notice: "Inbox '#{inbox.id}' deleted."`
 * Use a custom flash type: `redirect_to inboxes_path, flash: {new_type: "Inbox '#{inbox.id}' deleted."}`
 

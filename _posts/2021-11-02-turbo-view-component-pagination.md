@@ -37,8 +37,9 @@ bundle add pagy
 
 * optionally, update the default gem configuration
 
-#config/initializers/pagy.rb
 ```ruby
+# config/initializers/pagy.rb
+
 # See https://ddnexus.github.io/pagy/api/pagy#instance-variables
 Pagy::DEFAULT[:page] = 1 # default page to start with
 Pagy::DEFAULT[:items] = 3 # items per page
@@ -55,8 +56,8 @@ Pagy::DEFAULT[:overflow] = :last_page # default (other options: :empty_page and 
 * optionally, add a beautified element, like bootstrap
 * optionally, add links to other quantity of items per page
 
-#app/views/inboxes/index.html.erb
 ```diff
+# app/views/inboxes/index.html.erb
 ++ <%= @inboxes.count %> <!-- items on this page -->
 ++ <%= @pagy.count %> <!-- items in total -->
 ++ <%= link_to_unless_current "10", inboxes_path(items: 10) %>
@@ -73,6 +74,7 @@ Pagy::DEFAULT[:overflow] = :last_page # default (other options: :empty_page and 
 * you can also add `request.url` to see the search query inside the frame
 
 ```diff
+# app/views/inboxes/index.html.erb
 ++  <%= turbo_frame_tag 'search' do %>
       <%= link_to_unless_current "10", inboxes_path(items: 10) %>
       <%= link_to_unless_current "50", inboxes_path(items: 50) %>
@@ -93,6 +95,7 @@ You will want to make only pagination links work within the turbo_frame, so that
 * add `, data: { turbo_frame: 'search' }` to the links that should be scoped to the `search` frame
 
 ```diff
+# app/views/inboxes/index.html.erb
 <%= turbo_frame_tag 'search', target: '_top' do %>
 --  <%= link_to_unless_current "10", inboxes_path(items: 10) %>
 --  <%= link_to_unless_current "50", inboxes_path(items: 50) %>
@@ -109,11 +112,11 @@ You will want to make only pagination links work within the turbo_frame, so that
 ```
 
 Next, update the `<%== pagy_nav(@pagy) %>`:
-* [adding attributes to pagy 1](https://ddnexus.github.io/pagy/how-to.html#customizing-the-link-attributes)
-* [adding attributes to pagy 2](https://github.com/ddnexus/pagy/blob/master/docs/api/frontend.md#extra-attribute-strings)
+* [adding attributes to pagy 1](https://ddnexus.github.io/pagy/how-to.html#customizing-the-link-attributes){:target="blank"}
+* [adding attributes to pagy 2](https://github.com/ddnexus/pagy/blob/master/docs/api/frontend.md#extra-attribute-strings){:target="blank"}
 
-#app/controllers/inboxes_controller.rb
 ```diff
+# app/controllers/inboxes_controller.rb
   def index
 --   @pagy, @inboxes = pagy(Inbox.order(created_at: :desc))
 ++   @pagy, @inboxes = pagy(Inbox.order(created_at: :desc), link_extra: 'data-turbo-frame="search"')
@@ -127,15 +130,15 @@ Gemfile
 gem "view_component", require: "view_component/engine"
 ```
 
-console
 ```sh
+# console
 bin/rails generate component Pagination results
 ```
 
 * initialize pagy in the view component
 
-#app/components/pagination_component.rb
 ```diff
+# app/components/pagination_component.rb
 class PaginationComponent < ViewComponent::Base
 ++  include Pagy::Frontend
 
@@ -150,15 +153,15 @@ end
 
 * render pagy in the view component view
 
-#app/components/pagination_component.html.erb
 ```diff
+# app/components/pagination_component.html.erb
 ++  <%== pagy_nav(results) %>
 ```
 
 * render the pagination component on the index page
 
-#app/views/inboxes/index.html.erb
 ```diff
+# app/views/inboxes/index.html.erb
 ++  <%= render PaginationComponent.new(results: @pagy) %>
 ```
 
@@ -170,11 +173,11 @@ Althrough, it is a problem that there is no simple way to update URL when using 
 
 This way, when you refresh the page, the filters and page don't persist.
 
-However there is [a PR for this](https://github.com/hotwired/turbo/pull/398)
+However there is [a PR for this](https://github.com/hotwired/turbo/pull/398){:target="blank"}
 
 If I find a reliable way to do it with Turbo Drive, I will add it here.
 
 Resources:
-* [gem ViewComponent](https://github.com/github/view_component)
-* [gem Pagy](https://github.com/ddnexus/pagy)
-* [example pagy integtation](https://github.com/corsego/19-pagy/commit/266eba00f74e37414b76711e33a97e2c6e5dab1e)
+* [gem ViewComponent](https://github.com/github/view_component){:target="blank"}
+* [gem Pagy](https://github.com/ddnexus/pagy){:target="blank"}
+* [example pagy integtation](https://github.com/corsego/19-pagy/commit/266eba00f74e37414b76711e33a97e2c6e5dab1e){:target="blank"}

@@ -16,7 +16,7 @@ undefined method `user_url' for #<Devise::RegistrationsController:0x0000000000de
 ```ruby
 No route matches [GET] "/users/sign_out"
 ```
-* `sign_in` seems to work OK for me without any modifications
+* `sign_in` - validation errors do not display
 
 **TLDR: add `, data: { turbo: "false" }` / `"data-turbo" => "false"` to Devise `forms` and `buttons`**
 
@@ -26,7 +26,7 @@ I've been hearing that "devise & turbo don't play well yet" for many months, and
 
 Well, it's been 10 months since turbo was announced (Dec 20, 2020).
 
-Now we have Turbo 7.0, Rails 7 alpha2, and [the Devise maintainer says that Devise is ready](https://twitter.com/heartcombo/status/1446256070306013186).
+Now we have Turbo 7.0, Rails 7 alpha2, and [the Devise maintainer says that Devise is ready](https://twitter.com/heartcombo/status/1446256070306013186){:target="blank"}.
 
 So, let's try to install devise on a Rails 7 alpha2 app (that uses Turbo by default)
 
@@ -80,7 +80,7 @@ rails db:migrate
 
 ### 3. Fix `sign_in`
 
-Again, I don't have any problem here, but just in case:
+Validation errors do not display. This has to be fixed.
 
 ```diff
 -- rails generate devise:views

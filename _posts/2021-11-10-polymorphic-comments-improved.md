@@ -20,15 +20,16 @@ Prerequisites:
 * An Inboxes model (to which we will connect polymorphic comments)
 
 ### 1 A migration for comments
-console
+
 ```sh
+# console
 rails generate model Comment user:references body:text commentable:references{polymorphic} deleted_at:datetime:index
 ```
 
 ### 2 The Comment model. 
 
-app/models/comment.rb
 ```ruby
+# app/models/comment.rb
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :commentable, polymorphic: true, inverse_of: :comments
@@ -55,15 +56,15 @@ end
 
 ### 3 Inbox - Comment relationships
 
-app/models/inbox.rb
 ```ruby
+# app/models/inbox.rb
   has_many :comments, -> { order(created_at: :desc) }, as: :commentable, dependent: :destroy, inverse_of: :commentable
 ```
 
 ### 4 We will have 3x comments_controller
 
-config/routes.rb
 ```ruby
+# config/routes.rb
   resources :comments, only: [] do
     resources :comments, only: %i[new create destroy], module: :comments
   end
@@ -75,8 +76,8 @@ config/routes.rb
 
 * 1 general comments controller with all the logic
 
-app/controllers/comments_controller.rb
 ```ruby
+# app/controllers/comments_controller.rb
 class CommentsController < ApplicationController
   before_action :set_commentable
 
@@ -127,8 +128,8 @@ end
 
 * 2 controllers designed only to find a comment parent. No chance for `If-Else` mess.
 
-controllers/inboxes/comments_controller.rb
 ```ruby
+# controllers/inboxes/comments_controller.rb
 module Inboxes
   class CommentsController < CommentsController
     private
@@ -140,8 +141,8 @@ module Inboxes
 end
 ```
 
-app/controllers/comments/comments_controller.rb
 ```ruby
+# app/controllers/comments/comments_controller.rb
 module Comments
   class CommentsController < CommentsController
     private
@@ -157,8 +158,8 @@ end
 
 -> NEW
 
-app/views/comments/new.html.erb
 ```ruby
+# app/views/comments/new.html.erb
 New comment for
 <%= link_to @commentable.name, @commentable unless @commentable.is_a?(Comment) %>
 <%= link_to @commentable.find_top_parent.name, @commentable.find_top_parent if @commentable.is_a?(Comment) %>
@@ -167,8 +168,8 @@ New comment for
 
 -> FORM
 
-app/views/comments/_form.html.erb
 ```ruby
+# app/views/comments/_form.html.erb
 <%= form_with(model: [@commentable, comment]) do |form| %>
   <%= render 'shared/errors', form: form %>
 
@@ -187,8 +188,8 @@ app/views/comments/_form.html.erb
 
 -> SHOW
 
-app/views/comments/_comment.html.erb
 ```ruby
+# app/views/comments/_comment.html.erb
 <div class='comment'>
   <% if comment.deleted_at.present? %>
     <i>Comment has been deleted</i>
@@ -209,8 +210,8 @@ app/views/comments/_comment.html.erb
 
 ### 6 Render comment form and list in an inbox view
 
-app/controllers/inboxes_controller.rb
 ```ruby
+# app/controllers/inboxes_controller.rb
 def show
   @commentable = @inbox
   @comment = Comment.new
@@ -218,8 +219,8 @@ def show
 end
 ```
 
-app/views/inboxes/show.html.erb
 ```ruby
+# app/views/inboxes/show.html.erb
 <%= render template: 'comments/new' %>
 <%= render @comments %>
 ```

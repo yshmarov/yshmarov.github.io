@@ -16,8 +16,8 @@ rails g scaffold message inbox:references body:text
 
 ## 1. Validate uniqueness
 
-app/models/inbox.rb
 ```ruby
+# app/models/inbox.rb
   validates :name, uniqueness: true
 ```
 
@@ -35,8 +35,8 @@ class CreateInboxes < ActiveRecord::Migration[7.0]
 end
 ```
 
-app/models/message.rb
 ```ruby
+# app/models/message.rb
   validates :body, uniqueness: { scope: :inbox_id }
 ```
 

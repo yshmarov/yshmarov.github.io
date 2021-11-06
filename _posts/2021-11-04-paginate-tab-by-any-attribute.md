@@ -21,8 +21,8 @@ rails g scaffold post name category published_at:datetime
 rails db:migrate
 ```
 
-config/seeds.rb
 ```ruby
+# config/seeds.rb
 5.times do
   random_date = Time.at(rand * Time.now.to_i)
   random_category = %w[ruby python java].sample
@@ -32,8 +32,8 @@ config/seeds.rb
 end
 ```
 
-app/controllers/posts_controller.rb
 ```ruby
+# app/controllers/posts_controller.rb
   def index
     @posts = if params[:category].present?
                  Post.where(category: params[:category])
@@ -43,8 +43,8 @@ app/controllers/posts_controller.rb
   end
 ```
 
-app/views/posts/index.html.erb
 ```ruby
+# app/views/posts/index.html.erb
 Publication date:
 <% Inbox.pluck(:published_at).uniq.sort.each do |i| %>
   <br>
@@ -58,8 +58,8 @@ Publication date:
 
 ### Paginate/Tab by Category
 
-app/controllers/posts_controller.rb
 ```ruby
+# app/controllers/posts_controller.rb
   def index
     @posts = if params[:date].present?
                  Post.where(published_at: params[:date])
@@ -69,8 +69,8 @@ app/controllers/posts_controller.rb
   end
 ```
 
-app/views/posts/index.html.erb
 ```ruby
+# app/views/posts/index.html.erb
 Categories:
 <% Post.all.pluck(:category).uniq.sort.each do |category| %>
   <%= link_to_unless_current category, posts_path(category: category) %>

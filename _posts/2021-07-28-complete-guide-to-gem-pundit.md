@@ -6,6 +6,8 @@ tags: ruby rails ruby-on-rails pundit authorization roles
 thumbnail: /assets/thumbnails/stop-sign.png
 ---
 
+[Link - Great Pundit docs](https://www.rubydoc.info/gems/pundit/0.2.3){:target="blank"}
+
 As I know, Pundit and CanCanCan are the 2 best approaches to adding AUTHORIZATION into a Rails app.
 
 AUTHORIZATION - allow users to perform different actions / see different content based on their roles / other conditions.
@@ -14,21 +16,21 @@ I personally just prefer Pundit.
 
 # 1. Basic installation & usage:
 
-Gemfile
-```
+```ruby
+# Gemfile
  gem "pundit"
 ```
 
-console
-```
+```sh
+# console
 bundle
 rails g pundit:install
 rails g pundit:policy post
 rails g pundit:policy user
 ```
 
-app/controllers/application_controller.rb
-```
+```ruby
+# app/controllers/application_controller.rb
   include Pundit
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -41,8 +43,8 @@ app/controllers/application_controller.rb
   end
 ```
 
-app/policies/post_policy.rb
-```
+```ruby
+# app/policies/post_policy.rb
 class PostPolicy < ApplicationPolicy
   def index?
     true
@@ -57,8 +59,8 @@ class PostPolicy < ApplicationPolicy
 end
 ```
 
-app/controllers/posts_controller.rb
-```
+```ruby
+# app/controllers/posts_controller.rb
   def index
     @posts = Post.order(created_at: :desc)
     authorize @posts
@@ -67,8 +69,6 @@ app/controllers/posts_controller.rb
   def show
     authorize @post
   end
-
-  ...
 ```
 
 # 2. Pundit policy scopes
@@ -77,8 +77,8 @@ This allows you to let users with different authorizations to see different scop
 
 Below example - admins can see all posts, other users can see posts that have content not blank.
 
-app/policies/post_policy.rb
-```
+```ruby
+# app/policies/post_policy.rb
 class PostPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
@@ -91,13 +91,12 @@ class PostPolicy < ApplicationPolicy
   end
 ```
 
-app/controllers/posts_controller.rb
-```
+```ruby
+# app/controllers/posts_controller.rb
   def index
     @posts = policy_scope(Post).order(created_at: :desc)
     authorize @posts
   end
-  ...
 ```
 
 In the above case `@record` = selected post
@@ -107,7 +106,7 @@ In the above case `@record` = selected post
 Allow users different authorizations to see content in a view:
 
 views:
-```
+```ruby
 <b>current user can see particular users show page?</b>
 <%= policy(@user).show? %>
 
@@ -125,8 +124,8 @@ views:
 Instead of adding `authorize @posts` or `authorize @post` to each controller action,
 just list the actions that you want to authorize either in a before_action:
 
-app/controllers/posts_controller.rb
-```
+```ruby
+# app/controllers/posts_controller.rb
   before_action :authorize_valuations, only: %i[edit update destroy]
   # after_action :authorize_valuations, except: %i[create report_quotes]
 

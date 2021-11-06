@@ -10,8 +10,8 @@ thumbnail: /assets/thumbnails/turbo.png
 
 All work, use either one:
 
-app/controllers/hello_controller.rb
 ```ruby
+# app/controllers/hello_controller.rb
 def some_action
   respond_to do |format|
     format.turbo_stream do
@@ -27,8 +27,8 @@ end
 
 ### Our just use a `some_action.turbo_stream.erb` template:
 
-app/controllers/hello_controller.rb
 ```ruby
+# app/controllers/hello_controller.rb
 def some_action
   respond_to do |format|
     format.turbo_stream
@@ -36,8 +36,8 @@ def some_action
 end
 ```
 
-index.turbo_stream.erb
 ```ruby
+# index.turbo_stream.erb
 <%= turbo_stream.update "inventory-pagination" do %>
   <%= render PaginationComponent.new(results: @results) %>
 <% end %>

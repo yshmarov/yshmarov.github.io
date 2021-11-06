@@ -63,9 +63,9 @@ Both below options work, but one is better
 ++ Rails.application.class.module_parent_name
 ```
 
-### 2. with [gem meta-tags](https://github.com/kpumuk/meta-tags)
+### 2. with [gem meta-tags](https://github.com/kpumuk/meta-tags){:target="blank"}
 
-However, for more complex behaviour and more meta_tag types (like `description`, `tags`) - better use [gem meta-tags](https://github.com/kpumuk/meta-tags)
+However, for more complex behaviour and more meta_tag types (like `description`, `tags`) - better use [gem meta-tags](https://github.com/kpumuk/meta-tags){:target="blank"}
 
 console
 ```sh
@@ -112,4 +112,4 @@ config/initializers/meta_tags.rb
   config.truncate_site_title_first = true
 ```
 
-* [example of implemenation on SupeRails](https://github.com/yshmarov/superails/commit/d489756cc1f1b181e90f86c909d5ba9ce113ff1b)
+* [example of implemenation on SupeRails](https://github.com/yshmarov/superails/commit/d489756cc1f1b181e90f86c909d5ba9ce113ff1b){:target="blank"}

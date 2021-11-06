@@ -10,6 +10,7 @@ Sometimes I don't want to burden a Rails app with a CSS framework.
 
 Here are a few lines of CSS that I add to new Rails apps that leverage rails 7 scaffold templates.
 
+app/assets/application.css
 ```css
 /* display turbo frame - good for development */
 turbo-frame {
@@ -61,9 +62,9 @@ a:link { text-decoration:none; }
 a { text-decoration: none; }
 ```
 
-Next step - [adding some CSS for the form inputs](https://www.w3schools.com/css/css_form.asp)
+Next step - [adding some CSS for the form inputs](https://www.w3schools.com/css/css_form.asp){:target="blank"}
 
-You can also add a bottom footer [like this](https://blog.corsego.com/footer-bottom-of-page)
+You can also add a bottom footer [like this](https://blog.corsego.com/footer-bottom-of-page){:target="blank"}
 
 Other things I do when setting up a new Rails project:
 * `rails g controller static_pages landing_page pricing privacy terms`

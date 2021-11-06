@@ -33,7 +33,7 @@ app/config/routes.rb
 * `turbo_frame_request?` - to make this `format.html` available ONLY via turbo request, not as a separate page
 * `else redirect` - if someone tries to open a tab in a new tab
 
-[`turbo_frame_request` source code](https://github.com/hotwired/turbo-rails/blob/main/app/controllers/turbo/frames/frame_request.rb#L21)
+[`turbo_frame_request` source code](https://github.com/hotwired/turbo-rails/blob/main/app/controllers/turbo/frames/frame_request.rb#L21){:target="blank"}
 
 app/controllers/projects_controller.rb
 ```ruby
@@ -136,7 +136,7 @@ app/views/projects/show.html.erb
 #### 3. Using template variants to respond only with a turbo frame
 
 * use template, not partial
-* if request is done by a turbo frame, respond with the template variant for turbo frame. [More about Rails layout variants](https://guides.rubyonrails.org/layouts_and_rendering.html#the-variants-option)
+* if request is done by a turbo frame, respond with the template variant for turbo frame. [More about Rails layout variants](https://guides.rubyonrails.org/layouts_and_rendering.html#the-variants-option){:target="blank"}
 
 ```ruby
 class ProjectsController < ApplicationController
