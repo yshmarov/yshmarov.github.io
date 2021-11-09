@@ -93,6 +93,17 @@ Validation errors do not display. This has to be fixed.
 ++ <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { data: { turbo: false} } ) do |f| %>
 ```
 
-That's it! Should work perfectly.
+### 4. Fix all other views...
+
+add `, data: {turbo: false}` to all other forms:
+```ruby
+app/views/devise/confirmations/new.html.erb
+app/views/devise/passwords/edit.html.erb
+app/views/devise/passwords/new.html.erb
+app/views/devise/registrations/new.html.erb
+app/views/devise/sessions/new.html.erb
+```
+
+That's it! Should work OK.
 
 [More details about THIS solution](https://github.com/heartcombo/devise/issues/5358#issuecomment-798796788){:target="blank"}

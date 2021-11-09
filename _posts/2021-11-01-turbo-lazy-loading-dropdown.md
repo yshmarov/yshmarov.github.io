@@ -8,7 +8,6 @@ thumbnail: /assets/thumbnails/turbo.png
 
 ![details-turbo-eager-loading](/assets/images/details-turbo-eager-loading.gif)
 
-
 If a page has a turbo frame with lazy loading, the lazy loading will occur only when the frame element becomes not "hidden".
 
 If you than change the state back to hidden, the loaded content will stay.
