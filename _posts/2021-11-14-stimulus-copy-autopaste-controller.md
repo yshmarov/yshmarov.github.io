@@ -6,7 +6,7 @@ tags: ruby rails ruby-on-rails stimulus
 thumbnail: /assets/thumbnails/stimulus-logo.png
 ---
 
-![stimulus copy from one field to another](/assets/images/autopaste-controller.gif)
+![stimulus copy from one field to another](/assets/images/copycat-controller.gif)
 
 app/javascript/controllers/autopaste_controller.js
 ```js
