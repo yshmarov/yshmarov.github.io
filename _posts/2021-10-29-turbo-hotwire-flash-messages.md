@@ -212,6 +212,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 
 ### 5. Auto-dismiss flash messages with Stimulus
 
+app/javascript/controllers/flash_controller.js
 ```js
 import { Controller } from "@hotwired/stimulus";
 
@@ -229,6 +230,7 @@ export default class extends Controller {
 ```
 
 ```diff
+# app/views/shared/_flash.html.erb
 <div id="flash">
   <% flash.each do |key, value| %>
 ++    <div data-controller="flash">
@@ -242,8 +244,8 @@ export default class extends Controller {
 
 * WRAP the parial into an ID
 
-app/views/layouts/application.html.erb
 ```diff
+# app/views/layouts/application.html.erb
 ++    <div id="flash">
       <%= render 'shared/flash' %>
 ++    </div>
@@ -252,6 +254,7 @@ app/views/layouts/application.html.erb
 * not in INSIDE the partial
 
 ```diff
+# app/views/shared/_flash.html.erb
 --<div id="flash">
   <% flash.each do |key, value| %>
     <div data-controller="flash">
