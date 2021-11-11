@@ -22,16 +22,16 @@ There are 2 ways to use Turbo Streams:
 ****
 
 Plan:
-### 0. Initial setup
-### 1. CREATE an inbox. Turbo steam form.
-### 2. ADD a created inbox to inboxes list with Controller Streams. Render multiple streams.
-### 3. DESTROY an inbox with Controller Streams
-### 4. EDIT an inbox with Controller Streams
-### 5. NEXT LEVEL: Stream HTML. Update inboxes count on create/destroy.
-### 6. Add basic flash functionality
-### Bonus 1. Use `turbo_stream.erb` template!
-### Bonus 2. *Deleted* message text
-### Bonus 3. Update inboxes count on create/destroy. - Partial method
+* 0. Initial setup
+* 1. CREATE an inbox. Turbo steam form.
+* 2. ADD a created inbox to inboxes list with Controller Streams. Render multiple streams.
+* 3. DESTROY an inbox with Controller Streams
+* 4. EDIT an inbox with Controller Streams
+* 5. NEXT LEVEL: Stream HTML. Update inboxes count on create/destroy.
+* 6. Add basic flash functionality
+* Bonus 1. Use `turbo_stream.erb` template!
+* Bonus 2. *Deleted* message text
+* Bonus 3. Update inboxes count on create/destroy. - Partial method
 
 ****
 
