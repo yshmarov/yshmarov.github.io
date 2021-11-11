@@ -6,6 +6,8 @@ tags: ruby rails ruby-on-rails hotwire turbo CRUD
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
+![CRUD with turbo streams](/assets/images/crud-turbo-streams.gif)
+
 There are 2 ways to use Turbo Streams:
 1. Stream from controller action
 * live page updates to **current_user**
