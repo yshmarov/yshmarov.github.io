@@ -44,7 +44,6 @@ private-discoverable inbox with owner-visible-messages owner-create-messages = s
 
 who can delete a message? creator or inbox owner.
 
-
 Inbox
 - slug URL?
 - description
@@ -63,11 +62,6 @@ Message settings:
   -- messages can be filtered by created_at/votes (top rated / recent-oldest)
   -- messages can be searched for by body
   -- messages can be moderated: marked as [spam, new, seen, accepted, resolved, rejected] (votable OR status field)
-
-
-MARKDOWN SUPPORT
-
-DEVISE? OMNIAUTH?
 
 Price
 - Free
@@ -105,13 +99,9 @@ json/rss
 - bootstrap?
 - view components?
 - fontawesome?
-
 - rack-attack
 
-
 ******
-
-
 
 button {
   display: inline-block;

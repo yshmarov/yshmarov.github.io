@@ -1,3 +1,33 @@
+### +1. Edit an inbox
+
+* wrap inbox partial into a turbo_frame with the id of the inbox
+* remove the div with the dom id
+* you don't have to use dom_id. turbo_frame_tag will convert the inbox object into a dom_id automatically
+* to make link_to SHOW work, break out of the frame
+* to make link_to EDIT work, you can stay in the frame
+* FUTURE CONSIDERATION: maybe target top by default on this frame?
+
+```ruby
+#app/views/_inbox.html.erb
+<%= turbo_frame_tag inbox, class: "scaffold_record" do %>
+  <%= link_to inbox.name, inbox, data: { turbo_frame: '_top' } %>
+  <%= link_to "Edit", edit_inbox_path(inbox) %>
+  <%= button_to "Destroy", inbox_path(inbox), method: :delete %>
+<% end %>
+```
+
+* when you click "Edit", the frame will be replaced with content from frame with same ID on "Edit" page
+* when you submit, it will redirect to "Show" page and re-render the inbox partial that it finds there
+
+```diff
+#app/views/inboxes/edit.html.erb
+++ <%= turbo_frame_tag @inbox do %>
+<%= render "form", inbox: @inbox %>
+++ <% end %>
+```
+
+****
+
 gem 'redis', '~> 4.0'
 
 Why do we need Redis?
@@ -8,7 +38,6 @@ development:
  redis://localhost:6379/1te
 ```
 Make sure Redis is running when your start your application (redis-server).
-
 
 
 add `data: { turbo: false }` to a form so that it ...

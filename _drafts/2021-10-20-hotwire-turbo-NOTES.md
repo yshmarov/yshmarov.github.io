@@ -1,9 +1,5 @@
-https://www.upvoty.com/why/
-https://www.colby.so/posts/turbo-frames-on-rails
 https://www.colby.so/posts/conditional-rendering-with-turbo-stream-broadcasts
 https://www.colby.so/posts/turbo-streams-on-rails
-https://github.com/yshmarov/turbo-playground/pulls
-
 
 app/views/inboxes/index.html.erb
 ```ruby
