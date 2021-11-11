@@ -6,7 +6,7 @@ tags: ruby rails ruby-on-rails hotwire turbo CRUD
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
-![CRUD with turbo streams](/assets/images/crud-turbo-streams.gif)
+![CRUD with turbo streams](/assets/images/turbo-streams-crud.gif)
 
 There are 2 ways to use Turbo Streams:
 1. Stream from controller action
@@ -224,9 +224,9 @@ Source:
 
 ```diff
 # app/views/inboxes/index.html.erb
-++<div id="inbox_count">
+++<span id="inbox_count">
 ++  <%= @inboxes.count %>
-++</div>
+++</span>
 ```
 
 * when created/destory event happens - replace above DOM with some TEXT/HTML
