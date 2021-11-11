@@ -26,8 +26,10 @@ Plan:
 ### 3. DESTROY an inbox with Controller Streams
 ### 4. EDIT an inbox with Controller Streams
 ### 5. NEXT LEVEL: Stream HTML. Update inboxes count on create/destroy.
+### 6. Add basic flash functionality
 ### Bonus 1. Use `turbo_stream.erb` template!
 ### Bonus 2. *Deleted* message text
+### Bonus 3. Update inboxes count on create/destroy. - Partial method
 
 ****
 
@@ -270,6 +272,35 @@ Source:
   end
 ```
 
+### 6. Add basic flash functionality
+
+* create a notification partial
+
+```ruby
+# app/views/layouts/_messages.html.erb
+<%= message %>
+```
+
+* target for displaying notifications
+
+```diff
+# app/views/layouts/application.html.erb
+++<div id="notifications"></div>
+<%= yield %>
+```
+
+```ruby
+# app/controllers/inboxes_controller.rb
+
+# add this to any action
+
+# update - replace current message if present
+turbo_stream.update(:notifications, partial: 'layouts/messages', locals: { message: "#{Time.zone.now}" })
+
+# prepend - add to list
+# turbo_stream.prepend(:feed, partial: 'layouts/messages', locals: { message: "#{Time.zone.now}" })
+```
+
 ### Bonus 1. Use `turbo_stream.erb` template!
 
 Writing bulky turbo_streams in the conroller can feel wrong.
@@ -308,49 +339,28 @@ Example:
   end
 ```
 
-### +9. Display flow of partial(s) when an event happens
+### Bonus 3. Update inboxes count on create/destroy. - Partial method
 
-* create a notification partial
-
-```ruby
-#app/views/shared/_notification.html.erb
-<%= message %>
-```
-
-* target for displaying notifications
-
-```diff
-#app/views/layouts/application.html.erb
-	<body>
-++  <%= turbo_frame_tag :feed %>
-		<%= yield %>
-```
-
-* send notification partial with a turbos stream
-* pass a locale to set the message text
-* USING PREPEND HERE! :D
-
-```ruby
-turbo_stream.prepend(:feed, partial: 'shared/notification', locals: { message: "#{Time.zone.now}" })
-```
-
-### +10. Increase/Decrease Counter if record is created/destroyed - Partial method
+* create a partial with a local variable
 
 ```ruby
 #app/views/inboxes/_count.html.erb
 <%= inboxes_count %>
 ```
 
+* add a target
+* optionally, render the partial with some local variable by default
+
 ```ruby
 #app/views/inboxes/index.html.erb
-<%= turbo_frame_tag 'inbox_count' do %>
+<div id="inbox_count">
   <%= render partial: 'inboxes/count', locals: { inboxes_count: Inbox.count } %>
-<% end %>
+</div>
 ```
 
 * in controller
 
-```ruby
+```diff
 #app/controllers/inboxes_controller.rb
 def create
 	...
@@ -358,7 +368,7 @@ def create
     if @inbox.save
       format.turbo_stream do
         render turbo_stream: [
-          turbo_stream.update('inbox_count', partial: 'inboxes/count', locals: { inboxes_count: Inbox.count })
+++          turbo_stream.update('inbox_count', partial: 'inboxes/count', locals: { inboxes_count: Inbox.count })
         ]
 			end
 
@@ -367,7 +377,9 @@ def destroy
   respond_to do |format|
     format.turbo_stream do
       render turbo_stream: [
-        turbo_stream.update('inbox_count', partial: 'inboxes/count', locals: { inboxes_count: Inbox.count })
+++        turbo_stream.update('inbox_count', partial: 'inboxes/count', locals: { inboxes_count: Inbox.count })
       ]
     end
 ```
+
+### That's it!
