@@ -212,7 +212,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 
 ### 5. Auto-dismiss flash messages with Stimulus
 
-app/javascript/controllers/flash_controller.js
+app/javascript/controllers/autohide_controller.js
 ```js
 import { Controller } from "@hotwired/stimulus";
 
@@ -233,7 +233,7 @@ export default class extends Controller {
 # app/views/shared/_flash.html.erb
 <div id="flash">
   <% flash.each do |key, value| %>
-++    <div data-controller="flash">
+++    <div data-controller="autohide">
       <%= content_tag :div, value, id: "#{key}" %>
 ++    </div>
   <% end %>
@@ -246,7 +246,7 @@ export default class extends Controller {
 
 ```diff
 # app/views/layouts/application.html.erb
-++    <div id="flash">
+++    <div id="flash" style="position:absolute; z-index:2; right:10px; width:200px;">
       <%= render 'shared/flash' %>
 ++    </div>
 ```
@@ -257,7 +257,7 @@ export default class extends Controller {
 # app/views/shared/_flash.html.erb
 --<div id="flash">
   <% flash.each do |key, value| %>
-    <div data-controller="flash">
+    <div data-controller="autohide">
       <%= content_tag :div, value, id: "#{key}" %>
     </div>
   <% end %>
