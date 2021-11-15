@@ -110,7 +110,7 @@ rails g scaffold inbox name --no-helper --no-assets --no-controller-specs --no-v
 ```
 
 Source:
-* [rendering multiple streams](https://github.com/hotwired/turbo-rails/issues/77)
+* [rendering multiple streams](https://github.com/hotwired/turbo-rails/issues/77){:target="blank"}
 
 ### 3. DESTROY an inbox with Controller Streams
 
