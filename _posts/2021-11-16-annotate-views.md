@@ -12,6 +12,8 @@ There's a simple solution!
 
 ![Automatically annotate rails views](/assets/images/annotate-views.png)
 
+Just add this line:
+
 ```diff
 # config/environments/development.rb
   # Annotate rendered view with file names.
