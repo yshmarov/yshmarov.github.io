@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "#16 Turbo Streams: "edit" Modal."
+title: "#16 Turbo Streams: Edit Modal."
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo modals
 thumbnail: /assets/thumbnails/turbo.png
