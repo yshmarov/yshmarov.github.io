@@ -13,7 +13,7 @@ Objective:
 * on success - dismiss modal, update record
 * be able to **dismiss** the modal without submit
 
-![turbo stream edit modal](/assets/images/TURBO-STREAM-MODAL.gif)
+![turbo stream edit modal](/assets/images/TURBO-STREAM-MODALS.gif)
 
 ### 0. Initial setup
 
@@ -71,7 +71,7 @@ end
 * Add the `Edit` `button_to` with `method: :post` to the partial:
 
 ```diff
-# app/views/inboxes/_inbox.html.erb
+# app/views/posts/_post.html.erb
 ++    <%= button_to "Edit", edit_post_path(post), method: :post %>
 ```
 
@@ -97,7 +97,7 @@ end
 * update error -> re-render modal with errors
 
 ```diff
-# app/controllers/inboxes_controller.rb
+# app/controllers/posts_controller.rb
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -147,7 +147,7 @@ export default class extends Controller {
 * Add a button to Cancel/Close
 
 ```diff
-# app/views/inboxes/_inbox.html.erb
+# app/views/posts/_post.html.erb
 ++<div data-controller="click2hide">
 <%= form_with(model: post) do |form| %>
     <%= form.text_field :title %>
