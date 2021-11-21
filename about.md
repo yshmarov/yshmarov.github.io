@@ -24,10 +24,8 @@ permalink: /about/
 * 💾 [Corsego](https://corsego.com){:target="blank"} - Ruby on Rails 6 e-Learning platform (Udemy clone)
 * 💾 [CorsegoSaaS](https://saas.corsego.com){:target="blank"} - Ruby on Rails row-based multitenancy SaaS template **JumpstartPRO alternative**
 
-****
-
 ## Contact:
 
-* 💬 Message/flw me on twitter: [@yaro_the_slav](https://twitter.com/yarotheslav){:target="blank"}
-* [My Github](https://github.com/yshmarov/){:target="blank"}
-* [Email](yashm@outlook.com)
+* [💬 Twitter: @yaro_the_slav](https://twitter.com/yarotheslav){:target="blank"}
+* [💬 Github: @yshmarov](https://github.com/yshmarov/){:target="blank"}
+* [💬 Email (click to open in mail)](mailto:yashm@outlook.com)
