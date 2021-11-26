@@ -12,7 +12,7 @@ Here are some cool HTML elements that I've just recently learned about:
 
 ### 1. `<datalist>`
 
-<datalist> - lightweight autocomplete
+`<datalist>` - lightweight autocomplete
 
 [MDN datalist docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist)
 
@@ -20,7 +20,7 @@ Here are some cool HTML elements that I've just recently learned about:
 
 ### 2. `<details>`
 
-<details> - dropdowns without any extra CSS/JS!
+`<details>` - dropdowns without any extra CSS/JS!
 
 [MDN details docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)
 
@@ -28,7 +28,7 @@ Here are some cool HTML elements that I've just recently learned about:
 
 ### 3. `<meter>`
 
-<meter> - progress bar that changes color based on fill
+`<meter>` - progress bar that changes color based on fill
 
 [MDN meter docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter)
 
@@ -36,7 +36,7 @@ Here are some cool HTML elements that I've just recently learned about:
 
 ### 4. `<progress>`
 
-<progress> - progress bar with ZERO extra CSS
+`<progress>` - progress bar with ZERO extra CSS
 
 [MDN progress docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress)
 
