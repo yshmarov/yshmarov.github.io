@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: "TIL: date_select VS date_field"
