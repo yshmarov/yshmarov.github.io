@@ -16,7 +16,7 @@ Here are some cool HTML elements that I've just recently learned about:
 
 [MDN datalist docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist)
 
-![html datalist](/assets/images/html-datalist.png)
+![html datalist](/assets/images/1-html-datalist.png)
 
 ### 2. `<details>`
 
@@ -24,7 +24,7 @@ Here are some cool HTML elements that I've just recently learned about:
 
 [MDN details docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)
 
-![html details](/assets/images/html-details.png)
+![html details](/assets/images/2-html-details.png)
 
 ### 3. `<meter>`
 
@@ -32,7 +32,7 @@ Here are some cool HTML elements that I've just recently learned about:
 
 [MDN meter docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter)
 
-![html meter](/assets/images/html-meter.png)
+![html meter](/assets/images/3-html-meter.png)
 
 ### 4. `<progress>`
 
@@ -40,7 +40,7 @@ Here are some cool HTML elements that I've just recently learned about:
 
 [MDN progress docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress)
 
-![html progress](/assets/images/html-progress.png)
+![html progress](/assets/images/4-html-progress.png)
 
 ****
 
