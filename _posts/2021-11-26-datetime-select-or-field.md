@@ -2,7 +2,7 @@
 layout: post
 title: "TIL: date_select VS date_field"
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails today-i-learned
+tags: ruby rails ruby-on-rails today-i-learned html
 thumbnail: /assets/thumbnails/clock.png
 ---
 
