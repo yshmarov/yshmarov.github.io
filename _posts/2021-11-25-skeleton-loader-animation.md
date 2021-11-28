@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "TIP: Loading animation for a Skeleton loader"
+title: "TIL: Loading animation for a Skeleton loader"
 author: Yaroslav Shmarov
-tags: html css
+tags: html css today-i-learned
 thumbnail: /assets/thumbnails/loading.png
 ---
 
