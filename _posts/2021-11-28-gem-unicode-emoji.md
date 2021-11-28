@@ -1,4 +1,3 @@
-Emoji select with gem `unicode-emoji`.
 ---
 layout: post
 title: "Emoji select with `gem unicode-emoji`"
