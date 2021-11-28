@@ -18,6 +18,40 @@ Here are some cool HTML elements that I've just recently learned about:
 
 ![html datalist](/assets/images/1-html-datalist.gif)
 
+**Example of using `<datalist>` in a rails form:**
+
+* add a collection for the datalist:
+
+```ruby
+# app/models/post.rb
+  DEFAULT_COUNTRIES = ["European Union", "United States", "China", "Ukraine", "United Kingdom"].freeze
+```
+
+* add a datalist collection with an ID (`'default-countries'`)
+* add `list` attribute to a text field, pointing to the datalist collection with an ID (`'default-countries'`)
+
+```ruby
+# app/views/posts/_form.html.erb
+<%= form.text_field :icon, list: 'default-countries', placeholder: "select or add your own" %>
+  <datalist id="default-countries">
+    <% Post::DEFAULT_COUNTRIES.each do |x| %>
+      <option value="<%= x %>"></option>
+    <% end %>
+  </datalist>
+```
+
+* same as above, different syntax:
+
+```ruby
+# app/views/posts/_form.html.erb
+<%= form.text_field :icon, list: "default-countries", placeholder: "select or add your own" %>
+  <datalist id="default-countries">
+    <%= options_for_select(Post::DEFAULT_COUNTRIES) %>
+  </datalist>
+```
+
+![datalist with rails](/assets/images/datalist-select-example.gif)
+
 ### 2. `<details>`
 
 `<details>` - dropdowns without any extra CSS/JS!
