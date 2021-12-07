@@ -33,5 +33,5 @@ javascript:history.back()
 # If no previous page, will be link to something like "New tab"
 ```
 
-[More about redirecting - in the RoR API docs](https://api.rubyonrails.org/classes/ActionController/Redirecting.html){:target="blank"}
-
+* [More about redirecting - in the RoR API docs](https://api.rubyonrails.org/classes/ActionController/Redirecting.html){:target="blank"}
+* [Rails 5 improves redirect_to :back method](https://www.bigbinary.com/blog/rails-5-improves-redirect_to_back-with-redirect-back){:target="blank"}
