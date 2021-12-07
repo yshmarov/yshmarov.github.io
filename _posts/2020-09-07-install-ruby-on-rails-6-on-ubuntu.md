@@ -9,7 +9,7 @@ tags:
 - webpacker
 - yarn
 - tldr
-thumbnail: https://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png
+thumbnail: /assets/thumbnails/rails-logo.png
 ---
 
 Install the latest version of Ruby, Rails, Postgresql, Yarn, Webpacker

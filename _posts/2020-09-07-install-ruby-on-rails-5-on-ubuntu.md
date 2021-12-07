@@ -9,7 +9,7 @@ tags:
 - webpacker
 - yarn
 - tldr
-thumbnail: https://upload.wikimedia.org/wikipedia/commons/1/16/Ruby_on_Rails-logo.png
+thumbnail: /assets/thumbnails/rails-logo.png
 ---
 
 Maybe you want to install a newer version? [Install Ruby on Rails 6]({% post_url 2020-09-07-install-ruby-on-rails-6-on-ubuntu %})

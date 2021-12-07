@@ -3,7 +3,7 @@ layout: post
 title: "Install Ruby on Rails 7"
 author: Yaroslav Shmarov
 tags: ruby-on-rails-7, ubuntu
-thumbnail: rails-logo.png
+thumbnail: /assets/thumbnails/rails-logo.png
 ---
 
 Older posts:
