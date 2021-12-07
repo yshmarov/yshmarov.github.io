@@ -45,4 +45,5 @@ end
 ```
 
 Read more here:
-[(evilmartians/current-everything)](https://evilmartians.com/chronicles/rails-5-2-active-storage-and-beyond#current-everything)
+* [ActiveSupport/CurrentAttributes]https://api.rubyonrails.org/classes/ActiveSupport/CurrentAttributes.html){:target="blank"}
+* [evilmartians/current-everything](https://evilmartians.com/chronicles/rails-5-2-active-storage-and-beyond#current-everything){:target="blank"}
