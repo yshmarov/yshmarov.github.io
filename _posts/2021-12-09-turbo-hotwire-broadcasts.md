@@ -328,6 +328,82 @@ end
   end
 ```
 
+### 7. Broadcasting associations
+
+* Add `messages` to `inboxes`
+
+```sh
+rails g scaffold message body:text inbox:references
+```
+
+```ruby
+# app/models/inbox.rb
+  has_many :messages
+```
+
+```ruby
+# app/models/message.rb
+  belongs_to :inbox
+```
+
+* render messsages inside an inbox
+* add a `turbo_stream_from` target that is UNIQUE for this inbox
+
+```ruby
+# app/views/inboxes/show.html.erb
+<%= render @inbox %>
+<%= turbo_stream_from @inbox, :messages %>
+<div id="<%= dom_id(@inbox, :messages) %>">
+  <%= render @inbox.messages %>
+</div>
+```
+
+* Now, broadcast messages into an inbox
+* `[inbox, :messages]` will stream to `dom_id(@inbox, :messages)`
+
+```ruby
+# app/models/message.rb
+class Message < ApplicationRecord
+  belongs_to :inbox
+
+  # lets you use dom_id in a model
+  include ActionView::RecordIdentifier
+
+  after_create_commit do 
+    broadcast_prepend_to [inbox, :messages], target: dom_id(inbox, :messages), partial: "messages/message", locals: { message: self }
+    # broadcast_prepend_to [inbox, :messages], target: ActionView::RecordIdentifier.dom_id(inbox, :messages)
+  end
+
+  after_destroy_commit do
+    broadcast_update_to [inbox, :messages], target: self, partial: "messages/message", locals: { message: self }
+  end
+
+  after_update_commit do
+    broadcast_update_to [inbox, :messages], target: self
+  end
+end
+```
+
+* Now you can add messages to an inbox and they will be broadcasted into the inbox!
+
+```
+Inbox.first.messages.create body: SecureRandom.hex
+Inbox.first.messages.last.update body: "hello world"
+Inbox.first.messages.last.destroy
+```
+
+### P.S. WTF `dom_id`?!
+
+Here's how [ActionView::RecordIdentifier](https://api.rubyonrails.org/v4.2.5/classes/ActionView/RecordIdentifier.html) `dom_id` works:
+
+```ruby
+# dom_id(Inbox.first)
+# => inbox_1
+
+# dom_id(Inbox.first, :hello)
+# => hello_inbox_1
+```
+
 That's it!
 
 Next, I hope to explore Broadcasts + Devise + Authorization
