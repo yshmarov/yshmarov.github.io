@@ -10,7 +10,7 @@ thumbnail: /assets/thumbnails/turbo.png
 
 ![hotwire-demo-2](/assets/images/hotwire-demo-2.gif)
 
-### 2.1. Turbo stream - new inboxes to inboxes index without refreshing the page
+### 1. Turbo stream - new inboxes to inboxes index without refreshing the page
 
 #app/models/inbox.rb
 ```ruby
@@ -49,7 +49,7 @@ Inbox.first.update(name: SecureRandom.hex)
 Inbox.first.destroy
 ```
 
-### 2.2. Turbo Frame - form to create inboxes in inboxes/index
+### 2. Turbo Frame - form to create inboxes in inboxes/index
 
 * frame searches for `turbo_frame_tag` in inboxes/new.html.erb (and should find it in the partial)
 
@@ -98,7 +98,7 @@ end
 <% end %>
 ```
 
-### 2.3. Stimulus to definitely reset input in the form on submit
+### 3. Stimulus to definitely reset input in the form on submit
 
 * there can be a glitch with input from the form not being removed on form submit. A stimulus controller can help:
 

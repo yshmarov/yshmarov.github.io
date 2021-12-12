@@ -37,7 +37,7 @@ rails g scaffold Message body:text inbox:references --no-helper --no-assets --no
 rails db:migrate
 ```
 
-#### 1.1. Turbo stream - stream [create, destroy, update] messages to inbox
+#### 1. Turbo stream - stream [create, destroy, update] messages to inbox
 
 #app/models/message.rb
 ```ruby
@@ -78,7 +78,7 @@ Inbox.first.messages.first.update(body: SecureRandom.hex)
 Inbox.first.messages.first.destroy
 ```
 
-#### 1.2. Turbo stream - form to create messages. Error - form with errors. Success - new form.
+#### 2. Turbo stream - form to create messages. Error - form with errors. Success - new form.
 
 * nested resources
 
