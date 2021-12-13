@@ -61,6 +61,8 @@ Equals this:
 ```ruby
 local_assigns[:a].present?
 # => true
+local_assigns[:a].presence
+# => "b"
 local_assigns[:a]
 # => "b"
 ```
