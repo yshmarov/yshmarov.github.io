@@ -56,6 +56,19 @@ Equals this:
 <%= render "layouts/foo", a: "b" %>
 ```
 
+### 4. Check if a local variable is present
+
+```ruby
+local_assigns[:a].present?
+# => true
+local_assigns[:a]
+# => "b"
+```
+
+Found this ^ one [here](https://stackoverflow.com/a/23018557/5695646){:target="blank"}
+
+****
+
 That's it!
 
 More about [Layouts and Rendering in Rails](https://guides.rubyonrails.org/layouts_and_rendering.html#rendering-collections)

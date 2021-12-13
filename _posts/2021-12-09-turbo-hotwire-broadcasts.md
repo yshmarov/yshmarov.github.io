@@ -257,7 +257,7 @@ It can be fixed by adding:
 ++ config.action_controller.silence_disabled_session_errors = true
 ```
 
-### 6. Broadcasting [ViewComponent](https://viewcomponent.org)
+### 6. Broadcasting [ViewComponent](https://viewcomponent.org){:target="blank"}
 
 Previously I wrote about [(4 ways to Turbo Stream ViewComponent)]({% post_url 2021-11-05-turbo-stream-view-components %}). They won't work from a model.
 
