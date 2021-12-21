@@ -2,7 +2,7 @@
 layout: post
 title: "TIP: `if-else`, `case-when`, `hash`?"
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails tiny-tip action-view
+tags: ruby rails ruby-on-rails tiny-tip
 thumbnail: /assets/thumbnails/ruby.png
 ---
 
