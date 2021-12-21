@@ -22,7 +22,7 @@ class Task < ApplicationRecord
       'orange'
     elsif status == 'done'
       'green'
-    elsif status == 'spam'
+    elsif status == 'spam' || status == "error"
       'red'
     else
       'black'
@@ -51,7 +51,7 @@ class Task < ApplicationRecord
       'orange'
     when 'done'
       'green'
-    when 'spam'
+    when 'spam', 'error'
       'red'
     else
       'black'
@@ -74,12 +74,13 @@ However, in some cases you can just define a `hash` and get a value from a hash:
 ```ruby
 # app/models/task.rb
 class Task < ApplicationRecord
-  COLOR_STATUSES = { incoming: 'grey', todo: 'orange', done: 'green', spam: 'red' }.freeze
+  COLOR_STATUSES = { incoming: 'grey', todo: 'orange', done: 'green', spam: 'red', error: 'red' }.freeze
 end
 ```
 
 ```ruby
 Task::COLOR_STATUSES['todo'] || 'black'
+=> 'green'
 # Task::COLOR_STATUSES[@task.status.to_sym] || 'black'
 ```
 
