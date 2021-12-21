@@ -36,7 +36,7 @@ Task.status_color('done')
 => 'green'
 ```
 
-One beautiful day, I learnt about [Rubocop](https://github.com/rubocop/rubocop) and it introduced me to [`case-when`](https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/CaseLikeIf)
+One beautiful day, I learnt about [Rubocop](https://github.com/rubocop/rubocop){:target="blank"} and it introduced me to [`case-when`](https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/CaseLikeIf){:target="blank"}
 
 ### 2. 2017: `Case-When`
 
@@ -86,4 +86,4 @@ Task::COLOR_STATUSES['todo'] || 'black'
 
 In some cases this is better and simpler!
 
-[Here's a real-world scenario](https://github.com/yshmarov/askdemos/pull/1/files#diff-7cb3f33ed8cd7f9d71058dc2794a0f49c4ff135156fac2c3318840fdd2431040R4) where this approach is better (kudos [@secretpray](http://github.com/secretpray/))
+[Here's a real-world scenario](https://github.com/yshmarov/askdemos/pull/1/files#diff-7cb3f33ed8cd7f9d71058dc2794a0f49c4ff135156fac2c3318840fdd2431040R4){:target="blank"} where this approach is better (kudos [@secretpray](http://github.com/secretpray/){:target="blank"})

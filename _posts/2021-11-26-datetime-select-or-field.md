@@ -27,4 +27,4 @@ Firefox view:
 
 I like the `*_field` much more than `*_select` variants in this case.
 
-[My inital tweet about this](https://twitter.com/yarotheslav/status/1452011312503009283)
+[My inital tweet about this](https://twitter.com/yarotheslav/status/1452011312503009283){:target="blank"}

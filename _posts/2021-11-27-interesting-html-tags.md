@@ -14,7 +14,7 @@ Here are some cool HTML elements that I've just recently learned about:
 
 `<datalist>` - lightweight autocomplete
 
-[MDN datalist docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist)
+[MDN datalist docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist){:target="blank"}
 
 ![html datalist](/assets/images/1-html-datalist.gif)
 
@@ -56,7 +56,7 @@ Here are some cool HTML elements that I've just recently learned about:
 
 `<details>` - dropdowns without any extra CSS/JS!
 
-[MDN details docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details)
+[MDN details docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details){:target="blank"}
 
 ![html details](/assets/images/2-html-details.gif)
 
@@ -64,7 +64,7 @@ Here are some cool HTML elements that I've just recently learned about:
 
 `<meter>` - progress bar that changes color based on fill
 
-[MDN meter docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter)
+[MDN meter docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter){:target="blank"}
 
 ![html meter](/assets/images/3-html-meter.gif)
 
@@ -72,10 +72,10 @@ Here are some cool HTML elements that I've just recently learned about:
 
 `<progress>` - progress bar with ZERO extra CSS
 
-[MDN progress docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress)
+[MDN progress docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress){:target="blank"}
 
 ![html progress](/assets/images/4-html-progress.gif)
 
 ****
 
-[My initial tweet about this](https://twitter.com/yarotheslav/status/1443190441973850112)
+[My initial tweet about this](https://twitter.com/yarotheslav/status/1443190441973850112){:target="blank"}
