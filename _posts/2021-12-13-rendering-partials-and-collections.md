@@ -69,8 +69,6 @@ local_assigns[:a]
 
 Found this ^ one [here](https://stackoverflow.com/a/23018557/5695646){:target="blank"}
 
-****
-
-That's it!
-
-More about [Layouts and Rendering in Rails](https://guides.rubyonrails.org/layouts_and_rendering.html#rendering-collections)
+Resources:
+* [ActionView::PartialRenderer](https://api.rubyonrails.org/classes/ActionView/PartialRenderer.html#class-ActionView::PartialRenderer-label-Rendering+the+default+case){:target="blank"}
+* [Layouts and Rendering in Rails](https://guides.rubyonrails.org/layouts_and_rendering.html#rendering-collections){:target="blank"}
