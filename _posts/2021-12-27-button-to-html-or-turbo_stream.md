@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "#18 HOTWIRE button_to: conditionally respond with html OR turbo_stream"
+title: "#18 BUTTON_TO: conditionally respond with html OR turbo_stream"
 author: Yaroslav Shmarov
 tags: ruby-on-rails-7 hotwire turbo button_to
 thumbnail: /assets/thumbnails/turbo.png
@@ -23,9 +23,11 @@ We will have to:
 Examples:
 
 button1 - upvote and redirect (HTML):
+
 ![button1 - upvote and redirect](assets/images/html-upvote.gif)
 
 button2 - upvote without redirect (TURBO):
+
 ![button2 - upvote without redirect](assets/images/turbo-upvote.gif)
 
 ### 0. Initial setup. Upvote messages (format HTML).
@@ -92,6 +94,7 @@ Now we want to do the same, but without page refresh.
 Turbo Streams to the rescue!
 
 * add `format.turbo_stream` in the controller:
+* we need `ActionView::RecordIdentifier` to make `dom_id` work in a controller
 
 ```ruby
 # app/controllers/messages_controller.rb
