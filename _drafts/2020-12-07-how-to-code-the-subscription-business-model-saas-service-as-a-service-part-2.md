@@ -13,8 +13,10 @@ tags:
 thumbnail: https://cdn.shopify.com/s/files/1/1061/1924/products/Money_Bag_Emoji_grande.png?v=1571606064
 ---
 
-In the 
-[previous post]({% post_url 2020-11-19-how-to-code-the-subscription-business-model-saas-service-as-a-service-part-1 %}) 
+In the previous post 
+
+2020-11-19-how-to-code-the-subscription-business-model-saas-service-as-a-service-part-1
+
 we added basic subscription functionality to our `User` model. 
 
 Now we will build a complete subscription architecture that can be connected to any model.
