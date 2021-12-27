@@ -19,7 +19,7 @@ minima:
   skin: classic
   # skin: dark
   # skin: solarized-dark
-  date_format: "%a, %b %-d, %Y (week %V)"
+  date_format: "%a, %b %-d, %Y"
   social_links:
     twitter: yarotheslav
     github: yshmarov
