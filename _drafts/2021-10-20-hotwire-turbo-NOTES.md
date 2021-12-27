@@ -222,3 +222,29 @@ export default class extends Controller {
   <li>Item 4</li>
 </ul>
 ```
+
+****
+
+****
+
+refresh frame from and outside of frame
+```html
+<%= turbo_frame_tag @person do %>
+  <%= @person.id %>
+  <%= link_to @person.id, @person %>
+  <%= Time.zone.now %>
+<% end %>
+<%# refresh frame from OUTSIDE of frame %>
+<%= link_to @person.id, @person, data: { turbo_frame: dom_id(@person) } %>
+<%= Time.zone.now %>
+<hr>
+```
+
+****
+
+```ruby
+# seeds.rb
+print('.')
+puts '.All Ok!'
+```
+https://api.rubyonrails.org/classes/ActiveModel/Errors.html
