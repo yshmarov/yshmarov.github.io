@@ -10,7 +10,33 @@ thumbnail: /assets/thumbnails/like.png
 * [part 2 of this post]({% post_url 2021-05-10-gem-acts-as-votable-2 %}){:target="blank"}
 * [part 1 of this post]({% post_url 2021-05-03-gem-acts-as-votable %}){:target="blank"}
 
-## Scopes - which Posts a User voted for
+### Handy ActsAsVotable scopes
+
+The gem provides some nice methods to find records that a User voted for:
+
+Voted:
+```ruby
+<%= user.find_voted_items(vote_scope: 'like') %>
+```
+
+Upvoted:
+```ruby
+<%= user.find_up_voted_items(vote_scope: 'like') %>
+```
+
+Downvoted:
+```ruby
+<%= user.find_down_voted_items(vote_scope: 'like') %>
+```
+
+Bookmarked:
+```ruby
+<%= user.find_voted_items(vote_scope: 'bookmark') %>
+```
+
+However, you might want to write some scopes of your own:
+
+### Scopes - which Posts a User voted for
 
 post.rb
 
@@ -30,7 +56,7 @@ a view:
 <%= Post.my_down_voted(current_user).pluck(:id) %>
 ```
 
-## Scopes - which Users voted for a Post
+### Scopes - which Users voted for a Post
 
 a view:
 
