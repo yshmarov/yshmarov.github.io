@@ -138,7 +138,23 @@ Good practice - explicitly state the format that you want to respond to.
 * respond with TURBO_STREAM:
 ```ruby
 # app/views/messages/_message.html.erb
-<%= button_to "Upvote without redirect", upvote_message_path(message), method: :put, :form => {"data-type" => "turbo_stream" } %>
+<%= button_to "Upvote without redirect", upvote_message_path(message), method: :put, form: {"data-type": "turbo_stream" } %>
+```
+
+### 1.3. Classic `link_to` method?
+
+Since `rails-ujs` is depreciated and its' functionality is take over by `turbo-rails`.
+
+Now, you are supposed to use:
+* `link_to` - for `get` requests;
+* `button_to` - for `post`, `patch`, `put`, and `delete` requests.
+
+However if you do want to have `link_to` another method, you can use 
+[`data-turbo-method`](https://turbo.hotwired.dev/handbook/drive#performing-visits-with-a-different-method){:target="blank"}:
+```diff
+--<%= link_to "link html", upvote_message_path(post) %>
+++<%= link_to "link_to turob_stream1", upvote_message_path(message), 'data-turbo-method': :patch %>
+++<%= link_to "link_to turob_stream2", upvote_message_path(message), data: {turbo_method: "patch"} %>
 ```
 
 ****
