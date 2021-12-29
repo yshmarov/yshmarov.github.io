@@ -62,6 +62,11 @@ rails db:migrate
   <% end %>
 ```
 
+Alternatively, you can try a `link_to` with `data-turbo-method` `delete`:
+```ruby
+<%= link_to "Log Out", destroy_user_session_path, 'data-turbo-method': :delete %>
+```
+
 ### 2. BUT ALL DEVISE FORMS DO NOT WORK!
 
 We have to disable Turbo for devise (add `data: {turbo: false}` to all devise forms).
