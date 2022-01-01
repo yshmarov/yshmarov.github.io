@@ -18,7 +18,7 @@ rvm get head
 rvm install ruby-3.0.3
 rvm --default use 3.0.3
 
-gem install rails -v 7.0.0.rc1
+gem install rails -v 7.0.0
 
 gem update bundler
 gem update rails
