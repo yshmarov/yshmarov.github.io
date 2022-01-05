@@ -173,4 +173,19 @@ Re-render only the `attribute_list`. Not the `messages` partial!
 
 Perfect! Now when you auto-submit the form on input, you won't lose focus!
 
+### 3. IMPORTANT UPDATE (05.01.2021)
+
+According to the [form_with docs](https://apidock.com/rails/v6.1.3.1/ActionView/Helpers/FormHelper/form_with){:target="blank"}, you should use **either** `url` or `format`. Meaning, the below can lead to unexpected behavior:
+```ruby
+  <%= form_with model: message, url: message_path(message), format: :turbo_stream, method: :put do |form| %>
+```
+So in case you want to respond with `format: :turbo_stream`, you don't have to specify a format at all, because a non-`get` request will try to respond with turbo_stream by default (and then fallback to html):
+```ruby
+  <%= form_with model: message, url: message_path(message), method: :put do |form| %>
+```
+However if you do want the form to respond with **HTML**, you might want to do it like this:
+```ruby
+  <%= form_with model: message, url: message_path(message, format: :html), method: :put do |form| %>
+```
+
 **Homework**: How would you handle validation errors in the this turbo form?
