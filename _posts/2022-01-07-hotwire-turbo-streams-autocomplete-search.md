@@ -6,16 +6,6 @@ tags: ruby-on-rails-7 hotwire turbo form_with autocomplete
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
-#21 The *.turbo_stream.erb format
-#22 TIP: Turbo Streams: add a field to a form
-#23 Dynamic select forms (without Stimulus or other Javascript)
-
-action.Turbo_stream.erb
-conditional turbo_stream template rendering 
-(link params), respond with different templates
-
-format.turbo_stream { render template: "big_bear_apis/not_big_bear" }
-
 It's very easy to add autocomplete search with turbo streams:
 ![turbo streams autocomplete search](assets/images/autocomplete-search.gif)
 
