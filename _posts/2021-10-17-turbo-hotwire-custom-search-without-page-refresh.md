@@ -34,22 +34,20 @@ rails s
   end
 ```
 
-* stimulus controller to submit form with 500ms delay, [inspired by David Colby's post](https://www.colby.so/posts/filtering-tables-with-rails-and-hotwire)
+* stimulus controller to submit form with 500ms delay, [inspired by this post](https://www.colby.so/posts/filtering-tables-with-rails-and-hotwire)
 
-#app/javascript/controllers/search_form_controller.js
 ```js
+// app/javascript/controllers/debounce_controller.js
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = [ "form" ]
 
-  connect() { console.log("search form connected") }
+  connect() { console.log("debounce controller connected") }
 
   search() {
   clearTimeout(this.timeout)
   this.timeout = setTimeout(() => {
-      // This needs a polyfill for Safari and IE11 support. Alternatively, use Rails/ujs:
-      // Rails.fire(this.formTarget, 'submit')
       this.formTarget.requestSubmit()
     }, 500)
   }
@@ -66,15 +64,15 @@ export default class extends Controller {
 #app/views/inboxes/index.html.erb
 <%= form_with url: inboxes_path,
               method: :get,
-              data: { controller: 'search-form',
-                      search_form_target: 'form',
+              data: { controller: 'debounce',
+                      debounce_target: 'form',
                       turbo_frame: 'search' } do |form| %>
   <%= form.text_field :name,
                       placeholder: 'Name',
                       value: params[:name],
                       autocomplete: 'off',
                       autofocus: true,
-                      data: { action: 'input->search-form#search' } %>
+                      data: { action: 'input->debounce#search' } %>
 <% end %>
 
 <%= turbo_frame_tag 'search' do %>
@@ -143,14 +141,14 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 ```diff
 #app/views/inboxes/index.html.erb
 --<%= search_form_for @q, data: { turbo_frame: 'search'} do |f| %>
-++<%= search_form_for @q, data: { controller: 'search-form',
-++                                search_form_target: 'form',
+++<%= search_form_for @q, data: { controller: 'debounce',
+++                                debounce_target: 'form',
 ++                                turbo_frame: 'search' } do |f| %>
     <%= f.label :name_cont %>
 --  <%= f.search_field :name_cont %>
 ++  <%= f.search_field :name_cont,
 ++                     autocomplete: "off",
-++                     data: { action: "input->search-form#search" } %>
+++                     data: { action: "input->debounce#search" } %>
     <%= f.submit %>
   <% end %>
 
@@ -203,14 +201,14 @@ export default class extends Controller {
 
 ```diff
 ++<div data-controller="reset">
-<%= search_form_for @q, data: { controller: 'search-form',
-                                search_form_target: 'form',
+<%= search_form_for @q, data: { controller: 'debounce',
+                                debounce_target: 'form',
                                 turbo_frame: 'search' } do |f| %>
   <%= f.label :name_cont %>
   <%= f.search_field :name_cont,
                      autocomplete: "off",
 ++                     data: { reset_target: 'clearme', 
-                     action: "input->search-form#search" } %>
+                     action: "input->debounce#search" } %>
   <%= f.submit %>
 <% end %>
 

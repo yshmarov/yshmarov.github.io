@@ -153,7 +153,44 @@ Let's improve even more!
 
 This approach is much more mature!
 
-### 5. Postgresql optimisation?
+### 5. Debounce to limit number of queries
+
+To send fewer requests to the databse, you can add a stimulus controller to submit form with a 500ms delay.
+
+* add a stimulus controller that will submit the form with a delay:
+
+```js
+// app/javascript/controllers/debounce_controller.js
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  static targets = [ "form" ]
+
+  connect() { console.log("debounce controller connected") }
+
+  search() {
+    clearTimeout(this.timeout)
+    this.timeout = setTimeout(() => {
+        this.formTarget.requestSubmit()
+      }, 500)
+  }
+}
+```
+
+* add the stimulus controller to the form `data: { controller: 'debounce' }`
+* add the submit target to the form `data: { debounce_target: 'form' }`
+* trigger the debounce#search on the input field `data: { action: "input->debounce#search" }`
+
+```ruby
+# app/views/posts/_search_form.html.erb
+<%= form_with url: search_posts_path, method: :post, data: { controller: 'debounce', debounce_target: 'form' } do |form| %>
+  <%= form.search_field :title_search, value: params[:title_search], data: { action: "input->debounce#search" } %>
+<% end %>
+```
+
+I've also done the same in another post. See `search_form_controller.js` [in this post](https://blog.corsego.com/turbo-hotwire-custom-search-without-page-refresh){:target="blank"}
+
+### 6. Postgresql optimisation?
 
 Do we expect the posts table to get quite big?
 
@@ -162,7 +199,3 @@ I think that even if this table is small now, we may need to create two indexes 
 One of type BTREE (for equality comparisons) and one of type GIN (for pattern matching).
 
 For the latter, we will also need to add the pg_trgm extension first in a separate migration.
-
-### 6. Debounce to limit number of queries?
-
-To send fewer requests to the databse, you can add a stimulus controller to submit form with 500ms delay. See `search_form_controller.js` [in this post](https://blog.corsego.com/turbo-hotwire-custom-search-without-page-refresh){:target="blank"}
