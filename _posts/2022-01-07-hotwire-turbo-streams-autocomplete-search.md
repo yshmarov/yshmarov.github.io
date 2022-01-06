@@ -188,8 +188,6 @@ export default class extends Controller {
 <% end %>
 ```
 
-I've also done the same in another post. See `search_form_controller.js` [in this post](https://blog.corsego.com/turbo-hotwire-custom-search-without-page-refresh){:target="blank"}
-
 ### 6. Postgresql optimisation?
 
 Do we expect the posts table to get quite big?
