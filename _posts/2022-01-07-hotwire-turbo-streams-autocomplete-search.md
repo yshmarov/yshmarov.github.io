@@ -2,7 +2,7 @@
 layout: post
 title: "#20 Turbo Streams: autocomplete search"
 author: Yaroslav Shmarov
-tags: ruby-on-rails-7 hotwire turbo form_with autocomplete
+tags: ruby-on-rails-7 hotwire turbo autocomplete
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
