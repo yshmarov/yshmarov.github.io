@@ -7,7 +7,8 @@ thumbnail: /assets/thumbnails/turbo.png
 ---
 
 It's very easy to add autocomplete search with turbo streams:
-![turbo streams autocomplete search](assets/images/autocomplete-search.gif)
+
+![turbo streams autocomplete search nice UI](assets/images/sexier-autocomplete-search.gif)
 
 ### 1. Initial setup
 
@@ -187,6 +188,10 @@ export default class extends Controller {
   <%= form.search_field :title_search, value: params[:title_search], data: { action: "input->debounce#search" } %>
 <% end %>
 ```
+
+Final result:
+
+![turbo streams autocomplete search basic](assets/images/autocomplete-search.gif)
 
 ### 6. Postgresql optimisation?
 
