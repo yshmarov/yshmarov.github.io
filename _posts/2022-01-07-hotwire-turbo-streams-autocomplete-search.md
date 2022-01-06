@@ -94,9 +94,75 @@ end
 <% end %>
 ```
 
-That's it! Now you can render the search form anywhere:
+Now you can render the search form anywhere:
 
 ```ruby
 # app/views/posts/index.html.erb
 <%= render "posts/search_form" %>
 ```
+
+That's it!
+
+... or do you still want to go further?
+
+### 3. Don't make requests on empty input
+
+As [@gvpmahesh suggested](https://twitter.com/gvpmahesh/status/1478920884941295617){:target="blank"},
+In the above approach, if you clear your search input, you still query the database to return 0 results. Makes no sence!
+
+* if search query is empty - render empty array of posts:
+
+```ruby
+# app/controllers/posts_controller.rb
+  def search
+    if params.dig(:title_search).present?
+      @posts = Post.where('title ILIKE ?', "%#{params[:title_search]}%").order(created_at: :desc)
+    else
+      @posts = []
+    end
+    respond_to do |format|
+      format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update("search_results",
+            partial: "posts/search_results",
+            locals: { posts: @posts })
+          ]
+      end
+    end
+  end
+```
+
+### 4. Move query to model
+
+Let's improve even more!
+
+* add a scope to the model:
+
+```ruby
+# app/models/post.rb
+  scope :filter_by_title, -> (title) { where('title ILIKE ?', "%#{title}%") }
+```
+
+* add the scope to the controller:
+
+```ruby
+# app/controllers/posts_controller.rb
+  @posts = Post.filter_by_title(params[:title_search]).order(created_at: :desc)
+  # @posts = Post.where('title ILIKE ?', "%#{params[:title_search]}%").order(created_at: :desc)
+```
+
+This approach is much more mature!
+
+### 5. Postgresql optimisation?
+
+Do we expect the posts table to get quite big?
+
+I think that even if this table is small now, we may need to create two indexes for the title column.
+
+One of type BTREE (for equality comparisons) and one of type GIN (for pattern matching).
+
+For the latter, we will also need to add the pg_trgm extension first in a separate migration.
+
+### 6. Debounce to limit number of queries?
+
+To send fewer requests to the databse, you can add a stimulus controller to submit form with 500ms delay. See `search_form_controller.js` [in this post](https://blog.corsego.com/turbo-hotwire-custom-search-without-page-refresh){:target="blank"}
