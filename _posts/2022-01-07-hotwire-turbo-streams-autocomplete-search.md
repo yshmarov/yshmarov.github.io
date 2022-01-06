@@ -189,11 +189,11 @@ export default class extends Controller {
 <% end %>
 ```
 
-Final result:
+### Final result:
 
 ![turbo streams autocomplete search basic](assets/images/autocomplete-search.gif)
 
-### 6. Postgresql optimisation?
+### Final thoughts: Postgresql optimisation?
 
 Do we expect the posts table to get quite big?
 
