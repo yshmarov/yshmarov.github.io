@@ -10,15 +10,17 @@ Older posts:
 * [install Rails 6]({% post_url 2020-09-07-install-ruby-on-rails-6-on-ubuntu %})
 * [install Rails 7]({% post_url 2020-09-07-install-ruby-on-rails-5-on-ubuntu %})
 
-Install the latest version of Ruby 3, Rails 7, and Postgresql
+Install the latest version of 
+[Ruby 3](https://www.ruby-lang.org/en/downloads/releases/),
+[Rails 7](https://rubyonrails.org/), and Postgresql
 
 ```sh
 rvm list
 rvm get head
-rvm install ruby-3.0.3
-rvm --default use 3.0.3
+rvm install ruby-3.1.0
+rvm --default use 3.1.0
 
-gem install rails -v 7.0.0
+gem install rails -v 7.0.1
 
 gem update bundler
 gem update rails
