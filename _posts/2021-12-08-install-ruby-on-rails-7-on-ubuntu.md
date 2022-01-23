@@ -35,6 +35,23 @@ bundler -v
 pg_config --version
 ```
 
+Create app:
+```sh
+rails help
+rails new askdemos -j=importmap -c=tailwind -d=postgresql
+rails new askdemos -j=importmap -c=bootstrap -d=postgresql
+```
+
+To start the app, don't use `rails c` any more. You can use `./bin/dev` to start it via `Procfile.dev`
+
+In you are using Cloud9, you might want to do this:
+```diff
+# Procfile.dev
+--web: bin/rails server -p 3000
+++web: bin/rails server -p 8080
+css: bin/rails tailwindcss:watch
+```
+
 Next Step - [install Postgresql]({% post_url 2020-11-02-ruby-on-rails-install-postgresql %})
 
 ****
