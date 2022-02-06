@@ -15,6 +15,7 @@ A normal migration adds/removes/renames database tables/columns, adds indexes, a
 Whereas **data migration** changes what is inside your database. Examples of data being migrated:
 
 ```ruby
+# random examples of console commands that can be done as data migrations
 Service.where(language_id: 5).update_all(lang_name: "IT")
 
 Group.where(status: "Frozen").each { |g| g.update(status: "paused") }
