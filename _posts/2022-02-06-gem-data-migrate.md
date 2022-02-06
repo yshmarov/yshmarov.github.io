@@ -47,7 +47,7 @@ There's a gem for that! [gem data-migrate](https://github.com/ilyakatz/data-migr
 
 ```ruby
 # install the gem
-bundle add data-migrate
+bundle add data_migrate
 # add a migration
 rails g data_migration add_this_to_that
 # run the migration and update data in the database
