@@ -12,31 +12,10 @@ TLDR: use [gem data-migrate](https://github.com/ilyakatz/data-migrate).
 
 A normal migration adds/removes/renames database tables/columns, adds indexes, adds database attribute validations and default values.
 
-Whereas **data migration** changes what is inside your database. Examples of data being migrated:
+But what if you want to run such a command in production?
 
 ```ruby
-# random examples of console commands that can be done as data migrations
-Service.where(language_id: 5).update_all(lang_name: "IT")
-
-Group.where(status: "Frozen").each { |g| g.update(status: "paused") }
-
-Office.all.each do |x|
-  x.update_column(:payments_sum, (x.payments.map(&:amount).sum))
-  x.update_column(:expences_sum, (x.expences.map(&:amount).sum))
-  x.update_column(:balance, (x.payments_sum - x.expences_sum))
-end
-
-Job.where(member_id: nil).each do |j|
-  j.update(workable_type: "Supplier", workable_id: j.supplier_id)
-end
-
-Course.where(s_type: ["ind", "special"]).each do |c|
-  c.update(member_price: c.client_price*0.4)
-end
-
-puts "updating #{course.id}"
-course.update!(company_id: course.office.company_id)
-puts "done updating #{course.id} -> #{course.company_id}"
+Service.where(status: "Frozen").update_all(status: "paused")
 ```
 
 **First thought**: *"I should make a backup, and enter the production console and do that"*. 
@@ -49,7 +28,11 @@ There's a gem for that! [gem data-migrate](https://github.com/ilyakatz/data-migr
 # install the gem
 bundle add data_migrate
 # add a migration
-rails g data_migration add_this_to_that
+rails g data_migration change_frozen_courses_to_paused
+# db/data/20220125151511_change_frozen_courses_to_paused.rb
+  puts "updating #{Service.where(status: "Frozen").count} -> #{Service.where(status: "paused").count}"
+  Service.where(status: "Frozen").update_all(status: "paused")
+  puts "done updating #{Service.where(status: "Frozen").count} -> #{Service.where(status: "paused").count}"
 # run the migration and update data in the database
 rake data:migrate
 ```
