@@ -52,6 +52,8 @@ In you are using Cloud9, you might want to do this:
 css: bin/rails tailwindcss:watch
 ```
 
+BTW, if you get errors running `./bin/dev`, try running `gem install foreman`.
+
 Next Step - [install Postgresql]({% post_url 2020-11-02-ruby-on-rails-install-postgresql %})
 
 ****

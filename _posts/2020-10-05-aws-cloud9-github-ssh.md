@@ -13,7 +13,6 @@ Workaround: SSH connection!
 * ### 1 Create an SSH key in your local terminal
 
 ```
-ssh-keygen -t ed25519 -C "yourgithubemail@gmail.com"
 ssh-keygen -t ed25519 -C "yshmarov@gmail.com"
 ```
 
@@ -76,3 +75,12 @@ git remote set-url origin git@github.com:yshmarov/REPOSITORY.git
 When creating a remote, make sure you "clone with SSH" instead of "clone with HTTPS".
 
 That's it! Next time you `git push` anything, it should authenticate automatically, and you'll not have to enter your credentials on C9 again.
+
+****
+
+P.S. If for some reason some of your commits are anonymous, you will want to run something like this in the console:
+
+```sh
+git config --global user.name "Yaro"
+git config --global user.email yshmarov@gmail.com
+```
