@@ -12,7 +12,7 @@ For example, **modals**, **multi-step forms**, or a **wizard**:
 
 ![multistep-form.gif](/assets/images/multistep-form.gif)
 
-Not to duplicate HTML, use [Partials to Simplify Views](https://guides.rubyonrails.org/layouts_and_rendering.html#using-partials-to-simplify-views). With `yield` and `do`-blocks.
+Not to duplicate HTML, use [Partials to Simplify Views](https://guides.rubyonrails.org/layouts_and_rendering.html#using-partials-to-simplify-views){:target="blank"}. With `yield` and `do`-blocks.
 
 ### Before:
 
@@ -70,6 +70,6 @@ Not to duplicate HTML, use [Partials to Simplify Views](https://guides.rubyonrai
 
 Much cleaner, isn't it?! ;)
 
-It is also very common to use [ViewCompoenent](https://viewcomponent.org/guide/getting-started.html#implementation) for doing exactly this (rendering content inside an HTML block)!
+It is also very common to use [ViewCompoenent](https://viewcomponent.org/guide/getting-started.html#implementation){:target="blank"} for doing exactly this (rendering content inside an HTML block)!
 
 = render layout: 'courses/course_wizard/step' do

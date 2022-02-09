@@ -6,7 +6,7 @@ tags: ruby rails ruby-on-rails database migrations
 thumbnail: /assets/thumbnails/postgresql.png
 ---
 
-TLDR: use [gem data-migrate](https://github.com/ilyakatz/data-migrate).
+TLDR: use [gem data-migrate](https://github.com/ilyakatz/data-migrate){:target="blank"}.
 
 ...Sometimes when doing code changes, you need to update **data** in your production database.
 
@@ -22,7 +22,7 @@ Service.where(status: "Frozen").update_all(status: "paused")
 
 But that's always risky! Better use a **migration**. A **data migration**.
 
-There's a gem for that! [gem data-migrate](https://github.com/ilyakatz/data-migrate)
+There's a gem for that! [gem data-migrate](https://github.com/ilyakatz/data-migrate){:target="blank"}
 
 ```ruby
 # install the gem
