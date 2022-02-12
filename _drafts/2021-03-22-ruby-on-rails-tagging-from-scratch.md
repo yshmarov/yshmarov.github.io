@@ -6,6 +6,8 @@ tags: ruby rails ruby-on-rails tags
 thumbnail: /assets/thumbnails/tags-thumbnail.png
 ---
 
+### TODOYARO
+
 # 1. Migrations & configuration
 
 console

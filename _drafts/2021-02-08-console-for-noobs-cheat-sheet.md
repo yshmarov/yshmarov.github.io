@@ -16,6 +16,10 @@ cd <directory name> - change to directroy name
 
 cls - clear screen
 
+cd ..
+
+ls
+
 Tab - show dir starting with….
 
 dir - files in cd

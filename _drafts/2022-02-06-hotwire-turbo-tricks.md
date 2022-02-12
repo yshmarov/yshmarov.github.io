@@ -203,3 +203,5 @@ include Turbo::Streams::Broadcasts
 don’t use any globals in your partials - pass whatever they need in as locals so you can safely render them in different contexts
 
 ### Streams: `update` vs `replace`
+
+### HOVERCARDS?!

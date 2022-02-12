@@ -1,3 +1,5 @@
+DELETE
+
 set up development environment on Mac
 
 * download Github Desktop
