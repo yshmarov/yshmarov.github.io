@@ -39,9 +39,9 @@ def create
 end
 ```
 
-### 2. Turbo Streams: Stream from a template
+However DHH recommends to stream multiple streams by using a *.turbo_stream.erb template 👇
 
-Actually DHH recommends to stream multiple streams by using a *.turbo_stream.erb template
+### 2. Turbo Streams: Stream from a template
 
 * respond with a template:
 
@@ -58,18 +58,27 @@ This allows you to comfortably respond with blocks of HTML:
 
 ```ruby
 # app/views/posts/create.turbo_stream.erb
+
+# stream html:
 <%= turbo_stream.update "posts_count", Post.count %>
 
+# stream a partial:
 <%= turbo_stream.append("posts", partial: "posts/post", locals: {post: @post}) %>
 
+# stream a template:
+<%= turbo_stream.append("posts", partial: "posts/post", locals: {post: @post}) %>
+
+# remove content from a DOM:
 <%= turbo_stream.update "modal", nil %>
 
+# stream a block:
 <%= turbo_stream.replace "flash" do %>
   <div class="flash">
     A post has been created
   </div>
 <% end %>
 
+# stream a block. perfect example - a field:
 <% if @post.user.present? %>
   <%= turbo_stream.update "user_id" do %>
     <input value="<%= @user.id %>"
@@ -192,3 +201,5 @@ include Turbo::Streams::Broadcasts
 ###
 
 don’t use any globals in your partials - pass whatever they need in as locals so you can safely render them in different contexts
+
+### Streams: `update` vs `replace`
