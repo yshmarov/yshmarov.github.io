@@ -6,7 +6,6 @@ tags:
 thumbnail: https://1.bp.blogspot.com/-TvCUh6z5qVk/X5xugnUVOJI/AAAAAAACFKk/ZPe3-lNHn3MPwEEE7ZNHOk6Jw_HLHMpiQCLcBGAsYHQ/s72-c/serialize%2Baddress%2Blogo.png
 ---
 
-
 Often when creating an application you have to add an address field. 
 
 But an address usually contains a Country, State, City, Zip, Street, Apt#.... 

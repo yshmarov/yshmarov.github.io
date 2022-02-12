@@ -103,6 +103,8 @@ json/rss
 
 ******
 
+### Input password to enter a room
+
 button {
   display: inline-block;
   padding: 5px 15px;
@@ -122,3 +124,35 @@ button:active {
   background-color: #3e8e41;
   transform: translateY(4px);
 }
+
+****
+
+ASKDEMOS?!
+
+posts_controller.rb
+```ruby
+  def password
+    post = Post.find_by(id: params[:post_id])
+    if post.present?
+      redirect_to post_path(post), notice: "Success"
+    else
+      redirect_to posts_path, alert: "Failure"
+    end
+  end
+```
+
+routes.rb
+```ruby
+  resources :posts do
+    get :password, on: :collection
+  end
+```
+
+any view
+```ruby
+<%= form_tag password_posts_path, method: :get do %>
+  <%= text_field_tag "post_id" %>
+  <%= submit_tag "GO" %>
+<% end %>
+```
+
