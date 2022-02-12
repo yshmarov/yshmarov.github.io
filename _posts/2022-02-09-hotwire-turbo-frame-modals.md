@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "#21 Hotwire Turbo: TLDR Modals"
+title: "#21 Hotwire Turbo: The one right way to do Modals"
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails hotwire turbo tldr modals
+tags: ruby rails ruby-on-rails hotwire turbo tldr modals tailwind viewcomponent
 thumbnail: /assets/thumbnails/turbo.png
 canonical_url: https://www.bearer.com/blog/how-to-build-modals-with-hotwire-turbo-frames-stimulusjs
 ---
@@ -114,3 +114,7 @@ Final step - add `data: { turbo_frame: 'modal' }` to links to `Create` and `Edit
 ```
 
 That's it! [Source code](https://github.com/corsego/63-hotwire-modals){:target="blank"}
+
+What can be improved here:
+* conditionally blur background
+* conditionally center modal
