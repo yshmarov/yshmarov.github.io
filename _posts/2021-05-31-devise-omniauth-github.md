@@ -2,7 +2,7 @@
 layout: post
 title: "Add social log in with Github (Omniauth)"
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails devise omniauth
+tags: ruby rails ruby-on-rails devise omniauth github
 thumbnail: /assets/thumbnails/github-logo.png
 ---
 

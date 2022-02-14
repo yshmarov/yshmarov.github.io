@@ -72,3 +72,4 @@ That's it 🥳 !
 
 * [install/update postgresql script](https://www.postgresql.org/download/linux/ubuntu/){:target="blank"}
 * [create a postgresql user and password](https://www.a2hosting.com/kb/developer-corner/postgresql/managing-postgresql-databases-and-users-from-the-command-line){:target="blank"}
+* [Install the latest version of Postgresql](https://techviewleo.com/how-to-install-postgresql-database-on-ubuntu/){:target="blank"}
