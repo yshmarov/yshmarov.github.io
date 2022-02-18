@@ -19,11 +19,11 @@ Task: when you switch the page the audio should be still playing like here [http
   </body>
 ```
 
-* just wrap it into a `div` with an `id` and `data-turbo-permanent=""`
+* just wrap it into a `div` with an `id` and `data-turbo-permanent`
 
 #app/views/shared/_audio.html.erb
 ```ruby
-<div id="player1" data-turbo-permanent="">
+<div id="player1" data-turbo-permanent>
   <audio src="<%= audio_path 'song.mp3'%>" type="audio/mp3" controls>
   </audio>
 </div>
