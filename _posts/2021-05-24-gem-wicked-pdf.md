@@ -132,7 +132,7 @@ WickedPdf.config.merge!({
 [all options](https://github.com/mileszs/wicked_pdf#advanced-usage-with-all-available-options)
 
 `disposition: 'attachment'` - by default download PDF
-`disposition: 'inlnie'` - by default open PDF in browser
+`disposition: 'inline'` - by default open PDF in browser
 
 ## Level 4. Generate PDF from posts/show.html.erb
 
