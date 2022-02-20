@@ -77,7 +77,7 @@ Regards, Yaro
 <%= controller_name %>
 <%= action_name %>
 <%= request.path %>
-<div id="player1" data-turbo-permanent="">
+<div id="player1" data-turbo-permanent>
   <input>
   <%= render inbox %>
 </div>
