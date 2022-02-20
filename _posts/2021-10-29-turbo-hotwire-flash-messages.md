@@ -15,7 +15,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 ### 1. Basic Flash Setup:
 
 * Default flash types: `notice`, `alert`
-* `flash.now[:success]` - available only in current action (good for turbo)
+* `flash.now[:success]` - [available only in current action](https://api.rubyonrails.org/classes/ActionDispatch/Flash/FlashHash.html#method-i-now){:target="blank"} (good for turbo)
 * `flash[:success]` - available in next action (good for redirect)
 * [ActionDispatch::Flash](https://api.rubyonrails.org/classes/ActionDispatch/Flash.html){:target="blank"}
 * Use flash in `redirect_to`: `redirect_to inboxes_path, notice: "Inbox '#{inbox.id}' deleted."`
@@ -232,11 +232,11 @@ export default class extends Controller {
 ```diff
 # app/views/shared/_flash.html.erb
 <div id="flash">
+++<div data-controller="autohide">
   <% flash.each do |key, value| %>
-++    <div data-controller="autohide">
-      <%= content_tag :div, value, id: "#{key}" %>
-++    </div>
+    <%= content_tag :div, value, id: "#{key}" %>
   <% end %>
+++</div>
 </div>
 ```
 
@@ -246,9 +246,9 @@ export default class extends Controller {
 
 ```diff
 # app/views/layouts/application.html.erb
-++    <div id="flash" style="position:absolute; z-index:2; right:10px; width:200px;">
-      <%= render 'shared/flash' %>
-++    </div>
+++<div id="flash" style="position:absolute; z-index:2; right:10px; width:200px;">
+    <%= render 'shared/flash' %>
+++</div>
 ```
 
 * not in INSIDE the partial
@@ -256,11 +256,11 @@ export default class extends Controller {
 ```diff
 # app/views/shared/_flash.html.erb
 --<div id="flash">
-  <% flash.each do |key, value| %>
-    <div data-controller="autohide">
+  <div data-controller="autohide">
+    <% flash.each do |key, value| %>
       <%= content_tag :div, value, id: "#{key}" %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 --</div>
 ```
 
@@ -270,3 +270,5 @@ export default class extends Controller {
 -- turbo_stream.update("flash", partial: "shared/flash")
 ++ turbo_stream.prepend("flash", partial: "shared/flash")
 ```
+
+That's it!
