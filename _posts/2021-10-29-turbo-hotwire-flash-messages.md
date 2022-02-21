@@ -29,7 +29,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 ```ruby
 <div id="flash">
   <% flash.each do |key, value| %>
-    <%= content_tag :div, value, id: "#{key}" %>
+    <%= content_tag :div, value, id: key %>
   <% end %>
 </div>
 ```
