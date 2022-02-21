@@ -65,6 +65,7 @@ rails db:migrate
 Alternatively, you can try a `link_to` with `data-turbo-method` `delete`:
 ```ruby
 <%= link_to "Log Out", destroy_user_session_path, 'data-turbo-method': :delete %>
+<%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete" } %>
 ```
 
 ### 2. BUT ALL DEVISE FORMS DO NOT WORK!
