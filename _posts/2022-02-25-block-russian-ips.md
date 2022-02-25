@@ -2,9 +2,11 @@
 layout: post
 title: "🛑 Block access to your software from Russia IPs"
 author: Yaroslav Shmarov
-tags: rails
+tags: rails Ukraine rUssia
 thumbnail: /assets/thumbnails/rails-logo.png
 ---
+
+Russian Terrorist Army has attacked my country. It is bombing my hometown (Chernihiv). It is threatening life of my family. My grandmother is in a village occupied by Russians. She has no access to food an help.
 
 As a software developer, this might be one of the easiest things you can do:
 
