@@ -12,6 +12,8 @@ As a software developer, this might be one of the easiest things you can do:
 
 🛑 Block access to your software to anybody from Russia IPs 🛑
 
+![block software from russia](assets/images/block-software.png)
+
 Complete technological embargo.
 
 If you're running a Ruby on Rails app, it takes just one gem and one before_action to do:
