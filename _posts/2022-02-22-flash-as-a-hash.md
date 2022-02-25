@@ -26,4 +26,4 @@ flash[:post_status] = { title: "Success", subtitle: "Post created" } # a hash!
 ```
 
 * More about [ActionDispatch::Flash](https://api.rubyonrails.org/classes/ActionDispatch/Flash.html){:target="blank"} (official docs)
-* [Dismissable Flash Messages with Hotwire without page refresh]({% 2021-10-29-turbo-hotwire-flash-messages.md %}){:target="blank"}
+* [Dismissable Flash Messages with Hotwire without page refresh]({% post_url 2021-10-29-turbo-hotwire-flash-messages %}){:target="blank"}
