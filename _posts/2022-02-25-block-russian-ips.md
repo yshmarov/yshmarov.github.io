@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "🛑 Block access to your software from Russia IPs"
+title: "🛑🇷🇺 Block access to your software from Russia IPs"
 author: Yaroslav Shmarov
 tags: rails Ukraine rUssia
 thumbnail: /assets/thumbnails/rails-logo.png
