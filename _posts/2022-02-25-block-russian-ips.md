@@ -35,3 +35,5 @@ end
 Resources:
 * [inspired by this answer on Stackoverflow](https://stackoverflow.com/a/13478695){:target="blank"}
 * [gem geocoder](https://github.com/alexreisner/geocoder){:target="blank"}
+
+**Update**: [@rameerez has created a gem](https://twitter.com/rameerez/status/1497522706274996224) that blocks all requests from Russia.
