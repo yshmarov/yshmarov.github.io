@@ -23,7 +23,7 @@ Here's how it works on my website:
 
 * Set a `body` `class` and create links to selecting a `theme`:
 
-```
+```ruby
 # application.html.erb
 
 <body class="<%= cookies[:theme] %>">
@@ -41,25 +41,24 @@ Here's how it works on my website:
 
 * Persist `theme` in `cookies`:
 
-```
+```ruby
 # application_controller.rb
+  before_action :set_theme
 
-before_action :set_theme
-
-def set_theme
-  if params[:theme].present?
-    theme = params[:theme].to_sym
-    # session[:theme] = theme
-    cookies[:theme] = theme
-    redirect_to(request.referrer || root_path)
+  def set_theme
+    if params[:theme].present?
+      theme = params[:theme].to_sym
+      # session[:theme] = theme
+      cookies[:theme] = theme
+      redirect_to(request.referer || root_path)
+    end
   end
-end
 ```
 
 * Update your css file accordingly:
 
-```
-# application.scss
+```css
+/* application.scss */
 
 body.light {
   color: black;
