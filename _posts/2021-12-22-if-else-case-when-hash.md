@@ -83,7 +83,7 @@ end
 
 ```ruby
 Task::COLOR_STATUSES['todo'] || 'black'
-=> 'green'
+=> 'orange'
 # Task::COLOR_STATUSES[@task.status.to_sym] || 'black'
 ```
 
