@@ -32,16 +32,19 @@ rails g stimulus dropdown
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["dropdownContent", "openButton", "closeButton", "activated"]
+  static targets = ["dropdownContent", "openButton", "closeButton", "active"]
   static values = { open: Boolean }
-  static classes = [ "opened" ]
-
+  static classes = ["opened"]
+  
   connect() {
     if (this.openValue) {
-      this.openDropdown()      
+      this.openDropdown()
     } else {
       this.closeDropdown()
     }
+    // this.dropdownContentTarget.hidden = true
+    // this.closeButtonTarget.hidden = true
+    // console.log("hello")
   }
   
   toggleDropdown() {
@@ -51,29 +54,29 @@ export default class extends Controller {
       this.closeDropdown()
     }
   }
-
-  openDropdown() {
-    try { this.activatedTarget.classList.add(this.openedClass) } catch {}
-    try {
-      this.openButtonTarget.hidden = true
-      this.closeButtonTarget.hidden = false 
-      this.closeButtonTarget.classList.add(this.openedClass)
-      // this.activatedTarget.classList.add("bg-slate-300")
-    } catch {}
-
-    this.dropdownContentTarget.hidden = false
-  }
   
-  closeDropdown() {
-    try { this.activatedTarget.classList.remove(this.openedClass) } catch {}
+  openDropdown() {
+    this.dropdownContentTarget.hidden = false
     try {
-      this.openButtonTarget.hidden = false
-      this.closeButtonTarget.hidden = true
-      // this.dropdownContentTarget.classList.remove("bg-amber-300")
+    this.openButtonTarget.hidden = true
+    this.closeButtonTarget.hidden = false } catch {}
+    try {
+      // this.activeTarget.classList.add("bg-zinc-400")
+      this.activeTarget.classList.add(this.openedClass)
     } catch {}
-
-    this.dropdownContentTarget.hidden = true
   }
+
+  closeDropdown() {
+    this.dropdownContentTarget.hidden = true
+    try {
+    this.openButtonTarget.hidden = false
+    this.closeButtonTarget.hidden = true } catch {}
+    try {
+      // this.activeTarget.classList.remove("bg-zinc-400")
+      this.activeTarget.classList.remove(this.openedClass)
+    } catch {}
+  }
+
 }
 ```
 
