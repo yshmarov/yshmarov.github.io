@@ -122,10 +122,8 @@ export default class extends Controller {
 </div>
 ```
 
-****
-
 Surely, the same can be achieved without using a CSS framework.
 
-* [hotwire modals](https://www.bearer.com/blog/how-to-build-modals-with-hotwire-turbo-frames-stimulusjs)
-* [absolute vs fixed position](https://css-tricks.com/absolute-relative-fixed-positioining-how-do-they-differ/#absolute)
-* Quick CSS tip: `position: fixed;` stays on the same place when page scrolls, whereas `position: absolute;` - scrolls down with page. `z-index: 2`; will place on top of the page content.
+You can apply something like this to the `div` of `dropdownContent`: `style="background-color: red; position: fixed; padding: 4px; z-index: 2; border-radius: 6px;"`
+
+P.S. `position: fixed;` stays on the same place when page scrolls, whereas `position: absolute;` - scrolls down with page.
