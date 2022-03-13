@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "#23 Turbo Streams: Broadcasts with Devise and Authorization"
+title: "#23 Turbo Streams: Broadcasts with Devise and Authorization??"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo broadcasts devise pundit authorization
 thumbnail: /assets/thumbnails/turbo.png
