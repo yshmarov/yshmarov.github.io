@@ -42,7 +42,7 @@ rails new askdemos -j=importmap -c=tailwind -d=postgresql
 rails new askdemos -j=importmap -c=bootstrap -d=postgresql
 ```
 
-To start the app, don't use `rails c` any more. You can use `./bin/dev` to start it via `Procfile.dev`
+To start the app, don't use `rails c` any more. You can use `./bin/dev` or `bin/dev` to start it via `Procfile.dev`
 
 In you are using Cloud9, you might want to do this:
 ```diff
