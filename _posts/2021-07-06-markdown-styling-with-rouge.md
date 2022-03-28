@@ -6,6 +6,8 @@ tags: ruby rails ruby-on-rails markdown redcarpet rouge
 thumbnail: /assets/thumbnails/markdown.png
 ---
 
+[Part 1: Basic markdown with gem redcarpet]({% post_url 2021-06-10-markdown %}){:target="blank"}
+
 I HAVE READ 10+ BLOGS ON THIS TOPIC. HERE IS THE MOST IDEAL ANSWER BASED ON ALL OF THEM.
 
 Using markdown? With [gem redcarpet](https://github.com/vmg/redcarpet)?
