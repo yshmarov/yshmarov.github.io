@@ -14,11 +14,9 @@ Add [gem rouge](https://github.com/rouge-ruby/rouge) to add some styling to your
 
 ## HOWTO
 
-Gemfile
-
-```ruby
-gem "redcarpet"
-gem 'rouge'
+```sh
+bundle add redcarpet
+bundle add rouge
 ```
 
 application_helper.rb
@@ -29,9 +27,6 @@ application_helper.rb
   require 'rouge/plugins/redcarpet'
 
   class HTML < Redcarpet::Render::HTML
-   def initialize(extensions = {})
-     super extensions.merge(link_attributes: { target: '_blank' })
-   end
     include Rouge::Plugins::Redcarpet
   end
 
@@ -39,7 +34,7 @@ application_helper.rb
     options = {
       filter_html: true,
       hard_wrap: true,
-      link_attributes: { rel: 'nofollow' },
+      link_attributes: { rel: 'nofollow', target: '_blank' },
       prettify: true
     }
 
@@ -62,45 +57,40 @@ application_helper.rb
   end
 ```
 
-app/assets/stylesheets/rouge.scss.erb - add one of [10+ available themes](https://github.com/rouge-ruby/rouge/tree/master/lib/rouge/themes)
+Create `rouge.css.erb` and use one of [10+ available themes](https://github.com/rouge-ruby/rouge/tree/master/lib/rouge/themes).
+
+Here are my famorite ones:
 
 ```ruby
+# app/assets/stylesheets/rouge.css.erb
 <%= Rouge::Themes::Base16.mode(:light).render(scope: '.highlight') %>
-<%= Rouge::Themes::ThankfulEyes.render %>
-<%= Rouge::Themes::Base16.mode(:dark).render %>
+<%#= Rouge::Themes::ThankfulEyes.render %>
+<%#= Rouge::Themes::Base16.mode(:dark).render %>
 ```
 
-app/assets/stylesheets/application.scss
+* import the Rouge file into your assets
+* add some custom styling if you like
 
 ```ruby
+# app/assets/stylesheets/application.css
 @import "rouge";
-```
 
-****
-
-## Bonus 1 - override the theme
-
-app/assets/stylesheets/rouge.scss.erb
-
-```ruby
-<%= Rouge::Themes::Base16.mode(:dark).render %>
-
-div.highlight {
-  border-radius: 5px;
-  padding: 10px;
-  padding-bottom: 0px;
-  margin-bottom: 12px;
-}
+# style ```code block```
 pre.highlight {
-  padding-bottom: 10px;
+  padding: 10px;
+}
+# style `code`
+code.prettyprint {
+  color: red;
+  background-color: #F2F2F2;
 }
 ```
 
-## Bonus 2 - download and edit a default Rouge theme
+## Bonus: download and edit a default Rouge theme
 
-console
 
-```
+```sh
+# console
 rougify style github > app/assets/stylesheets/github.css
 ```
 
