@@ -33,6 +33,8 @@ application_helper.rb
   end
 
   def markdown(text)
+    return '' if text.nil?
+
     options = {
       filter_html: true,
       hard_wrap: true,
