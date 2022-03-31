@@ -6,7 +6,7 @@ tags: stimulusjs
 thumbnail: /assets/thumbnails/stimulus-logo.png
 ---
 
-**Regular** `<textarea>` **without** autogrow:
+**Standard** `<textarea>` does not autogrow while you add new rows:
 
 ![text area without autogrow](/assets/images/without-autogrow.gif)
 
