@@ -12,7 +12,7 @@ I HAVE READ 10+ BLOGS ON THIS TOPIC. HERE IS THE MOST IDEAL ANSWER BASED ON ALL 
 
 Using markdown? With [gem redcarpet](https://github.com/vmg/redcarpet)?
 
-Add [gem rouge](https://github.com/rouge-ruby/rouge) to add some styling to your markdown.
+Add [gem rouge](https://github.com/rouge-ruby/rouge) to add **code highlight** your markdown.
 
 ## HOWTO
 
