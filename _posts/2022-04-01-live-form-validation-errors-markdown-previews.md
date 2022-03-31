@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Live form validation and error rendering; Live markdown previews"
+title: "Live form validation and error rendering. Live markdown previews"
 author: Yaroslav Shmarov
 tags: ruby rails html stimulusjs forms markdown
 thumbnail: /assets/thumbnails/turbo.png
