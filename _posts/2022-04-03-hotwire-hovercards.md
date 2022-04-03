@@ -108,7 +108,7 @@ end
 
 ```ruby
 # app/views/people/_person.html.erb
-  <span class="hoverWrapper">
+  <div class="hoverWrapper">
     <span role="button" aria-describedby="<%= dom_id(person, :hovercard) %>">
       Details...
     </span>
@@ -117,7 +117,7 @@ end
         Loading...
       <% end %>
     </div>
-  </span>
+  </div>
 ```
 
 Now, when you hover on `Details...`, the `<div id="hoverContent">` will become visible and will load the template `app/views/people/hovercard.html.erb`.
