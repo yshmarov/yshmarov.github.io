@@ -6,9 +6,9 @@ tags: ruby hotwire
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
-Hovercard/Tooltip content is loaded **only** when you hover on an element, using lazy-loaded turbo frames and a bit of CSS:
+Let's make github-styled hovercards/tooltips that load content **only** when you hover on an element, using lazy-loaded turbo frames and a bit of CSS:
 
-![turbo frame hovercards](/assets/images/turbo-frame-hovercards.gif)
+![github hovercards example](/assets/images/github-multiple-hovercards.gif)
 
 ### 1. Initial setup
 
@@ -121,6 +121,10 @@ end
 ```
 
 Now, when you hover on `Details...`, the `<div id="hoverContent">` will become visible and will load the template `app/views/people/hovercard.html.erb`.
+
+Final result:
+
+![turbo frame hovercards](/assets/images/turbo-frame-hovercards.gif)
 
 That's it!
 
