@@ -89,5 +89,5 @@ Full credit to [source](https://www.driftingruby.com/episodes/markdown-parser). 
 Than you will want to use:
 1. [gem redcarpet]({% post_url 2021-06-10-markdown %}){:target="blank"} to parse markdown
 2. [gem rouge]({% post_url 2021-07-06-markdown-styling-with-rouge %}){:target="blank"} to style programming language syntax
-3. [live previews with hotwire]({% post_url 2022-04-01-live-form-validation-errors-markdown-previews %}){:target="blank"} to render the output as you type
+3. [live previews with hotwire]({% post_url 2022-04-01-live-form-validation-errors-markdown-preview %}){:target="blank"} to render the output as you type
 4. [StimulusJS textarea autogrow]({% post_url 2022-03-31-stimulus-textarea-autogrow %}){:target="blank"} to grow your input area as you type
