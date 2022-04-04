@@ -386,10 +386,32 @@ end
 
 * Now you can add messages to an inbox and they will be broadcasted into the inbox!
 
-```
+```ruby
 Inbox.first.messages.create body: SecureRandom.hex
 Inbox.first.messages.last.update body: "hello world"
 Inbox.first.messages.last.destroy
+```
+
+### 8. Best practices when broadcasting
+
+**It is never recommended to use callbacks in a model.**
+
+I highly recommend to trigger broadcasts in controller actions instead. 
+
+This way, your code will be more predictable and reliable.
+
+```ruby
+# app/controllers/messages_controller.rb
+def destroy
+  Turbo::StreamsChannel.broadcast_update_to([inbox, :messages],
+                                            target: @message,
+                                            partial: "messages/message",
+                                            locals: { message: @message })
+  Turbo::StreamsChannel.broadcast_update_to('global_notifications',
+                                            target: 'flash',
+                                            partial: "shared/flash",
+                                            locals: { flash: flash })
+end
 ```
 
 ### P.S. WTF `dom_id`?!
