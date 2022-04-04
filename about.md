@@ -6,12 +6,12 @@ permalink: /about/
 
 ### Hi there 👋
 
-🧐 I'm a Ruby and Rails developer building product MVPs and tutorials.
+🧐 I'm Yaroslav from Ukraine, a Ruby and Rails developer building product MVPs and tutorials.
 
 * 📺 [Superails.com](http://superails.com){:target="blank"} - Ruby on Rails screencasts by me
 * 📕 [Blog.corsego.com - My Ruby on Rails blog](https://blog.corsego.com){:target="blank"}
 
-## Ruby on Rails 6 courses by me:
+## Ruby on Rails Video courses by me:
 
 * 1 📺 [(Udemy) Ruby on Rails 6: Learn 25+ gems and build a Startup MVP 2020](https://www.udemy.com/course/2519558/?referralCode=4721E9D437DEE1734159){:target="blank"} - Udemy Course. Build an e-learning platform step-by-step. 20 hours of video, 18 chapters and 200 lectures. **1500+ students already enrolled!**
 * 2 📺 [(Udemy) Ruby on Rails Crash Course: Authentication and Authorization](https://www.udemy.com/course/ruby-on-rails-authentication-authorization-mvp/?referralCode=109A287566701D9AF3CC){:target="blank"}
