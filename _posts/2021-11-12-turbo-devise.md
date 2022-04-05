@@ -25,7 +25,7 @@ Now we have Turbo 7.0, Rails 7 alpha2, and [the Devise maintainer says that Devi
 
 So, let's try to install devise on a Rails 7 alpha2 app (that uses Turbo by default).
 
-### 0. Install `gem devise`
+### 1. Install `gem devise`
 
 Gemfile - use main 
 ```diff
@@ -44,7 +44,7 @@ rails db:migrate
   before_action :authenticate_user!
 ```
 
-### 1. Add navigation links. Fix `log_out`
+### 2. Add navigation links. Fix `log_out`
 
 * Before, it was a simple `link_to`
 * Now, it has to be a `button_to` with `data: { turbo: "false" }`
@@ -68,7 +68,7 @@ Alternatively, you can try a `link_to` with `data-turbo-method` `delete`:
 <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete" } %>
 ```
 
-### 2. BUT ALL DEVISE FORMS DO NOT WORK!
+### 3. BUT ALL DEVISE FORMS DO NOT WORK!
 
 We have to disable Turbo for devise (add `data: {turbo: false}` to all devise forms).
 
@@ -92,5 +92,7 @@ rails generate devise:views
 ```
 
 That's it! Should work OK.
+
+I've also updated [the Devise Wiki](https://github.com/heartcombo/devise/wiki/Troubleshooting-Rails-7-and-Turbo-Drive)
 
 Yes, it is quite manual, but I do not see a better solution at the moment :(
