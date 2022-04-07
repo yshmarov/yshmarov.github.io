@@ -31,21 +31,22 @@ rails generate acts_as_votable:migration
 rails db:migrate
 ```
 
-post.rb
-```
+```ruby
+# app/models/post.rb
 class Post < ApplicationRecord
   acts_as_votable
 end
 ```
-user.rb
-```
+
+```ruby
+# app/models/user.rb
 class User < ApplicationRecord
   acts_as_voter
 end
 ```
 
 rails g migration AddCachedVotesToPosts
-```
+```ruby
 class AddCachedVotesToPosts < ActiveRecord::Migration[6.1]
   def change
     change_table :posts do |t|
@@ -66,8 +67,8 @@ end
 
 ## 3. Ajax votes
 
-posts_controller.rb
-```
+```ruby
+# app/controllers/posts_controller.rb
 class PostsController < ApplicationController
   def index
     @posts = Post.all.order(cached_votes_score: :desc)
@@ -88,16 +89,16 @@ class PostsController < ApplicationController
   end
 end
 ```
-routes.rb
-```
+```ruby
+# config/routes.rb
   resources :posts do
     member do
       patch "like", to: "posts#like"
     end
   end
 ```
-posts/index.html.erb
-```
+```ruby
+# app/views/posts/index.html.erb
 <h1>Posts</h1>
 <% @posts.each do |post| %>
   <%= post.name %>
@@ -109,8 +110,8 @@ posts/index.html.erb
   <hr>
 <% end %>
 ```
-_like_link.html.erb
-```
+```ruby
+# app/views/posts/_like_link.html.erb
 <%= link_to like_post_path(post), method: :patch, remote: true, id: "like-link-#{post.id}" do %>
   <% if current_user.voted_up_on?(post) %>
     UP voted
@@ -133,12 +134,12 @@ _like_link.html.erb
   <% end %>
 <% end %>
 ```
-like.js.haml
-```
+```js
+// like.js.haml
 document.getElementById("like-link-#{@post.id}").innerHTML = "#{j render "posts/like_link", post: @post}";
 ```
-or like.js.erb
-```
+```js
+// like.js.erb
 document.getElementById("like-link-<%= @post.id %>").innerHTML = "<%= j render "posts/like_link", post: @post %>";
 ```
 
