@@ -21,31 +21,15 @@ NO jQuery. ONLY vanilla JS
 
 ## 2. Install [gem acts_as_votable](https://github.com/ryanto/acts_as_votable){:target="blank"}
 
-gemfile:
-```
-gem 'acts_as_votable'
-```
-console
-```
+```ruby
+# console
+rails g scaffold post body:text
+bundle add acts_as_votable
 rails generate acts_as_votable:migration
+rails g migration AddCachedVotesToPosts
 rails db:migrate
 ```
 
-```ruby
-# app/models/post.rb
-class Post < ApplicationRecord
-  acts_as_votable
-end
-```
-
-```ruby
-# app/models/user.rb
-class User < ApplicationRecord
-  acts_as_voter
-end
-```
-
-rails g migration AddCachedVotesToPosts
 ```ruby
 class AddCachedVotesToPosts < ActiveRecord::Migration[6.1]
   def change
@@ -62,6 +46,20 @@ class AddCachedVotesToPosts < ActiveRecord::Migration[6.1]
     # Uncomment this line to force caching of existing votes
     # Post.find_each(&:update_cached_votes)
   end
+end
+```
+
+```ruby
+# app/models/post.rb
+class Post < ApplicationRecord
+  acts_as_votable
+end
+```
+
+```ruby
+# app/models/user.rb
+class User < ApplicationRecord
+  acts_as_voter
 end
 ```
 
@@ -145,8 +143,8 @@ document.getElementById("like-link-<%= @post.id %>").innerHTML = "<%= j render "
 
 ## 4. Other way to add ajax votes
 
-posts_controller.rb
-```
+```ruby
+# posts_controller.rb
   def upvote
     @post = Post.find(params[:id])
     @post.upvote_by current_user
@@ -163,29 +161,29 @@ posts_controller.rb
     end 
   end
 ```
-app/views/posts/_downvote_link.html.erb
-```
+```ruby
+# app/views/posts/_downvote_link.html.erb
 <%= link_to downvote_post_path(post), method: :patch, remote: true, id: "downvote-#{post.id}" do %>
   Liked. Go Dislike
 <% end %>
 ```
-app/views/posts/_like_count.html.erb
-```
+```ruby
+# app/views/posts/_like_count.html.erb
 <%= post.cached_votes_score %> 
 ```
-app/views/posts/_upvote_link.html.erb
-```
+```ruby
+# app/views/posts/_upvote_link.html.erb
 <%= link_to upvote_post_path(post), method: :patch, remote: true, id: "upvote-#{post.id}" do %>
   Disliked. Go Like
 <% end %>
 ```
-app/views/posts/downvote.js.erb
-```
+```js
+// app/views/posts/downvote.js.erb
 document.getElementById("like-count-<%= @post.id %>").innerHTML = "<%= j render "posts/like_count", post: @post %>";
 document.getElementById("downvote-<%= @post.id %>").innerHTML = "<%= j render "posts/upvote_link", post: @post %>";
 ```
-app/views/posts/index.html.erb
-```
+```ruby
+# app/views/posts/index.html.erb
   <% if current_user.voted_up_on? post %>
     <%= render 'downvote_link', post: post %>
   <% elsif current_user.voted_down_on? post %>
@@ -195,13 +193,13 @@ app/views/posts/index.html.erb
     <%= render 'posts/like_count', post: post %>
   <% end %>
 ```
-app/views/posts/upvote.js.erb
-```
+```js
+// app/views/posts/upvote.js.erb
 document.getElementById("like-count-<%= @post.id %>").innerHTML = "<%= j render "posts/like_count", post: @post %>";
 document.getElementById("upvote-<%= @post.id %>").innerHTML = "<%= j render "posts/downvote_link", post: @post %>";
 ```
-config/routes.rb
-```
+```ruby
+# config/routes.rb
   patch "upvote", to: "posts#upvote"
   patch "downvote", to: "posts#downvote"
 ```
