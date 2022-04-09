@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "gem acts_as_votable to Like and Dislike posts with Vanilla JS"
+title: "gem acts_as_votable 1: Like and Dislike posts with Vanilla JS"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails acts_as_votable
 thumbnail: /assets/thumbnails/like.png
