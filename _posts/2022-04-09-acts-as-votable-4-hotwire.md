@@ -7,9 +7,9 @@ thumbnail: /assets/thumbnails/like.png
 ---
 
 My previous [ActsAsVotable](https://github.com/ryanto/acts_as_votable){:target="blank"} posts:
-* [gem acts_as_votable 1: Like and Dislike posts with Vanilla JS]({% post_url 2021-05-03-gem-acts-as-votable %}){:target="blank"}
-* [gem acts_as_votable 2: reddit-style up and down voting]({% post_url 2021-05-10-gem-acts-as-votable-2 %}){:target="blank"}
-* [gem acts_as_votable 3: vote search scopes]({% post_url 2021-07-17-gem-acts-as-votable-3-useful-scopes %}){:target="blank"}
+1. [gem acts_as_votable 1: Like and Dislike posts with Vanilla JS]({% post_url 2021-05-03-gem-acts-as-votable %}){:target="blank"}
+2. [gem acts_as_votable 2: reddit-style up and down voting]({% post_url 2021-05-10-gem-acts-as-votable-2 %}){:target="blank"}
+3. [gem acts_as_votable 3: vote search scopes]({% post_url 2021-07-17-gem-acts-as-votable-3-useful-scopes %}){:target="blank"}
 
 **This** is my current-best approach to reddit-style voting with Hotwire.
 
