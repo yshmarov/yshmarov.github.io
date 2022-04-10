@@ -2,11 +2,8 @@
 layout: post
 title: 'How to Install FontAwesome with Yarn and Webpacker in Rails 6?'
 author: Yaroslav Shmarov
-tags: 
-- fontawesome
-- webpacker
-- ruby on rails 6
-thumbnail: https://www.drupal.org/files/project-images/font_awesome_logo.png
+tags: fontawesome webpacker ruby-on-rails-6
+thumbnail: /assets/thumbnails/fontawesome-logo.png
 ---
 
 [Using FontAwesome yarn package manager](https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/using-package-managers){:target="blank"}
