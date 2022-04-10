@@ -6,7 +6,9 @@ tags: ruby-on-rails fontawesome
 thumbnail: /assets/thumbnails/fontawesome-logo.png
 ---
 
-I love [Fontawesome free icon library](https://fontawesome.com/search?m=free){:target="blank"}.
+I love [Fontawesome free icon library](https://fontawesome.com/search?m=free){:target="blank"}
+
+![fontawesome-icons-gif.gif](/assets/images/fontawesome-icons-gif.gif)
 
 I've been using it in most of my projects over the last 7 years.
 
