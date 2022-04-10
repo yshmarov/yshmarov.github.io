@@ -1,7 +1,7 @@
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 
-title: SupeRails blog
+title: SupeRails by Yaroslav Shmarov
 description: >- # this means to ignore newlines until "baseurl:"
   Ruby on Rails TLDR articles, Courses, Tutorials, Tips & Tricks.
   Also my adventures in hackathons, startups, teaching online.
