@@ -56,8 +56,6 @@ Now you can use icons in your code:
 
 That's it!
 
-****
-
 Bonus: [style fontawesome icons](https://fontawesome.com/v6/docs/web/style/styling){:target="blank"}
 
 It's super easy to add `size`, `animation`, `rotation`:
@@ -70,7 +68,5 @@ It's super easy to add `size`, `animation`, `rotation`:
 <i class="fa-brands fa-youtube" style="color: red;"></i>
 <i class="fa-regular fa-bell fa-beat"></i>
 ```
-
-****
 
 [Here is an alternative solution](https://pablofernandez.tech/2022/03/12/using-font-awesome-6-in-a-rails-7-project-that-uses-importmaps/){:target="blank"}
