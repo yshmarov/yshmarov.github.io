@@ -218,9 +218,20 @@ Cool stuff! You can respond with either `html` (full page redirect), or `turbo_s
 ### 4. Get all records that a user voted for
 
 ```ruby
-user.find_voted_items(vote_scope: 'like').count # voted
-user.find_up_voted_items(vote_scope: 'like').count # upvoted
-user.find_down_voted_items(vote_scope: 'like').count # downvoted
+# all voted entities
+user.find_voted_items # voted
+user.find_up_voted_items # upvoted
+user.find_down_voted_items # downvoted
+
+# all voted entities with a scope
+user.find_voted_items(vote_scope: 'like')
+user.find_up_voted_items(vote_scope: 'like')
+user.find_down_voted_items(vote_scope: 'like')
+
+# only voted Messages with a scope
+user.find_votes_for_class(Message, vote_scope: "like")
+user.find_up_votes_for_class(Message, vote_scope: "like")
+user.find_down_votes_for_class(Message, vote_scope: "like")
 ```
 
 That's it!
