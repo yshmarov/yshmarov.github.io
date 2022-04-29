@@ -10,9 +10,10 @@ Scenario: restrict users with different roles to modifying specific data inside 
 
 ## Option 1 (my way):
 
-users_controller.rb:
+Strong params authorization can look like this:
 
 ```ruby
+# app/controllers/users_controller.rb:
   def user_params
     list_allowed_params = []
     list_allowed_params += [:name] if current_user == @user || current_user.admin?
@@ -23,9 +24,8 @@ users_controller.rb:
 
 ## Option 2 (alternative):
 
-users_controller.rb:
-
 ```ruby
+# app/controllers/users_controller.rb:
   ADMIN_ATTRIBUTES = [:a, :b, :c, :d]
   MANAGER_ATTRIBUTES = [:a, :c, :d]
   EDITOR_ATTRIBUTES = [:b, :d]
