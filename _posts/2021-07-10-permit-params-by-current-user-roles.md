@@ -41,3 +41,5 @@ Strong params authorization can look like this:
     end
   end
 ```
+
+More about [Rails strong params](https://api.rubyonrails.org/classes/ActionController/StrongParameters.html)
