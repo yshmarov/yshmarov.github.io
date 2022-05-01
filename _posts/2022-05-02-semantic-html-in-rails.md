@@ -22,6 +22,7 @@ Good resources on writing semantic HTML:
 * `<nav>` for navbar
 * `<aside>` for sidebar (related links, advertisements)
 * `<section>` for main content
+* `<footer>` - sitemap, copyright, author, contact, sitemap, back-to-top
 
 ```ruby
 # app/views/layouts/application.html.erb
