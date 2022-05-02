@@ -18,28 +18,21 @@ Good resources on writing semantic HTML:
 
 ### Example of utilizing semantic HTML in a Ruby on Rails app:
 
-* `<header>`, `<main>`, `<footer>` in the body
-* `<nav>` for navbar
-* `<aside>` for sidebar (related links, advertisements)
-* `<section>` for main content
+* `<header>` for logao and navigation
+* `<main>` for `<%= yield %>`
 * `<footer>` - sitemap, copyright, author, contact, sitemap, back-to-top
 
 ```ruby
 # app/views/layouts/application.html.erb
+
 <body>
   <header>
-    <nav>
-      <%= render "shared/navbar" %>
-    </nav>
+    <%= render "shared/navbar" %>
   </header>
   <main>
     <%= render "shared/flash" %>
-    <aside>
-      <%= render "shared/sidebar" %>
-    </aside>
-    <section>
-      <%= yield %>
-    </section>
+    <%= render "shared/sidebar" %>
+    <%= yield %>
   </main>
   <footer>
     <%= render "shared/footer" %>
@@ -47,21 +40,33 @@ Good resources on writing semantic HTML:
 </body>
 ```
 
+* `<nav>` to define navbar
 * unstiled list of links inside the `<nav>` for navigation
 
 ```ruby
 # app/views/shared/_navbar.html.erb
-<ul>
-  <li>
-    <%= link_to "Home", root_path %>
-  </li>
-  <li>
-    <%= link_to "Posts", posts_path %>
-  </li>
-</ul>
+<nav>
+  <ul>
+    <li>
+      <%= link_to "Home", root_path %>
+    </li>
+    <li>
+      <%= link_to "Posts", posts_path %>
+    </li>
+  </ul>
+</nav>
 ```
 
-* `<section>` should usually have a heading
+* `<aside>` for sidebar (related links, advertisements)
+
+```ruby
+# app/views/shared/_sidebar.html.erb
+<aside>
+  ...
+</aside>
+```
+
+* `<section>` should usually have a heading `<h1>`-`<h6>`
 
 ```ruby
 # app/views/posts/index.html.erb
