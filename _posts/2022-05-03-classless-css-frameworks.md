@@ -33,7 +33,7 @@ Just include the CDN in your layout:
 </head>
 ```
 
-Result:
+Here's how your app can look **Without** VS **With** an included Classless CSS framework:
 
 ![semantic html with a classless css framework](/assets/images/classless-css-semantic-html.png)
 
