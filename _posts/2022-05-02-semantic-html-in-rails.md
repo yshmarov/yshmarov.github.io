@@ -86,6 +86,14 @@ Good resources on writing semantic HTML:
 </section>
 ```
 
+```ruby
+# app/views/posts/new, edit
+<section>
+  <h1>Create/Edit post<h1>
+  ...
+</section>
+```
+
 * `<article>` - an object that makes sence outside of other context
 
 ```ruby
