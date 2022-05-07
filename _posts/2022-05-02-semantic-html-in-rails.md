@@ -10,6 +10,8 @@ Often when writing an HTML page we resort to `div` and `span`, whereas there are
 
 Writing semantic HTML means actually using the right HTML tags for different parts of a page.
 
+![semantic-html](/assets/images/semantic-html.png)
+
 Semantic HTML is important for accessibility, screen readers, SEO. And just looks more professional ;)
 
 Good resources on writing semantic HTML:
