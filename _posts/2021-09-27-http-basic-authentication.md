@@ -11,6 +11,7 @@ thumbnail: /assets/thumbnails/lock.png
 You can use basic HTTP authentication to restrict access to different controller actions without 
 
 ```ruby
+# app/controllers/inboxes_controller.rb
 class InboxesController < ApplicationController
   before_action :authenticate, only: %i[index show]
 
@@ -34,9 +35,40 @@ class InboxesController < ApplicationController
 end
 ```
 
-credentials.yml
 ```ruby
+# credentials.yml
 http_auth:
 	login: superails
 	pass: 123abc
+```
+
+### Advanced usage:
+
+You can create a controller that will require authentication, and than inherit further controllers from it:
+
+```ruby
+# app/controllers/secured_controller.rb
+class SecuredController < ApplicationController
+  before_action :authenticate
+
+  private
+
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == 'ewlit' && password == '123456'
+    end
+  end
+end
+```
+
+```diff
+# app/controllers/inboxes_controller.rb
+-class InboxesController < ApplicationController
++class InboxesController < SecuredController
+```
+
+```diff
+# app/controllers/inboxes_controller.rb
+-class TasksController < ApplicationController
++class TasksController < SecuredController
 ```
