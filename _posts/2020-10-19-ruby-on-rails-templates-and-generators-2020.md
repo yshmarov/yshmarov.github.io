@@ -34,26 +34,6 @@ Below are the most prominent ones
 
 # **1. Generators**
 
-# [Railsnew.io](https://railsnew.io/){:target="blank"}
-
-![railsnew-io.png](/assets/2020-10-21-ruby-on-rails-templates-and-generators-2020/railsnew-io.png)
-
-when creating a new app you usually run
-
-```
-rails new myappname
-```
-
-But there are so many options! 
-
-Maybe you want something like
-
-`rails new myappname --skip-spring --skip-listen --skip-bootsnap --skip-gemfile --skip-git --skip-keeps --skip-bundle --skip-puma --skip-action-text --skip-active-storage --skip-action-cable --skip-action-mailer --skip-action-mailbox --skip-sprockets --skip-javascript --skip-turbolinks --skip-webpack-install --skip-yarn --skip-test --skip-system-test `
-
-This app provides a great UI to set up your new Rails app as you like!
-
-****
-
 # [Rubidium.io](https://www.rubidium.io/){:target="blank"}
 
 ![rubidium.png](/assets/2020-10-21-ruby-on-rails-templates-and-generators-2020/rubidium.png)

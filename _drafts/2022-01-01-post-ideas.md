@@ -19,9 +19,6 @@ The Free website builder you haven't heard of (Wix/Squarespace alternative) => O
 
 Ruby on Rails 6: Install ActionText: TLDR
 
-railsnew.io video
-railsbytes
-
 AWS C9 IDE for ROR
 
 Jekyll jumpstart + mailing list
