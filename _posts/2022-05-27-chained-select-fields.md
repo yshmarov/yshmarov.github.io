@@ -58,8 +58,8 @@ Select fields in form:
 ```ruby
 # app/views/addresses/_form.html.erb
 <%= form_with(model: car) do |form| %>
-  <%= form.select :brand, car.brands %>
-  <%= form.select :model, car.models %>
+  <%= form.select :brand, car.brands, {include_blank: true}, {} %>
+  <%= form.select :model, car.models, {include_blank: true}, {} %>
   <%= form.text_area :description %>
   <%= form.submit %>
 <% end %>
@@ -124,11 +124,11 @@ Select fields in form:
 ```ruby
 # app/views/addresses/_form.html.erb
 <%= form_with(model: address) do |form| %>
-    <%= form.select :country, address.countries %>
-    <%= form.select :region, address.regions %>
-    <%= form.select :city, address.cities.map { | k, v | [k.capitalize, k] } %>
-    <%= form.text_area :description %>
-    <%= form.submit %>
+  <%= form.select :country, address.countries, {include_blank: true}, {} %>
+  <%= form.select :region, address.regions, {include_blank: true}, {} %>
+  <%= form.select :city, address.cities.map { | k, v | [k.capitalize, k] }, {include_blank: true}, {} %>
+  <%= form.text_area :description %>
+  <%= form.submit %>
 <% end %>
 ```
 
