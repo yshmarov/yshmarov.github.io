@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jekyll/minima
-  revision: 69664442e5a45f631d5bccaba6d7978a91ce22c8
+  revision: 296bf6b872b8450529bee1e48d0ca9be200a4be5
   specs:
     minima (2.5.1)
       jekyll (>= 3.5, < 5.0)
@@ -59,7 +59,7 @@ GEM
       jekyll (>= 3.7, < 5.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    kramdown (2.3.2)
+    kramdown (2.4.0)
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
@@ -71,7 +71,7 @@ GEM
     multi_json (1.15.0)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    public_suffix (4.0.6)
+    public_suffix (4.0.7)
     rack (1.6.13)
     rack-protection (1.5.5)
       rack
