@@ -3,7 +3,7 @@ layout: post
 title: "Chained select fields for custom data structures"
 author: Yaroslav Shmarov
 tags: ruby-on-rails hotwire turbo chained-select
-thumbnail: /assets/thumbnails/turbo.png
+thumbnail: /assets/thumbnails/numbered-list.png
 ---
 
 In this post I want to demonstrate:
