@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Dynamic forms for gem City-State"
+title: "Chained select fields for gem City-State"
 author: Yaroslav Shmarov
-tags: ruby-on-rails hotwire turbo city-state
+tags: ruby-on-rails hotwire turbo city-state chained-select
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
@@ -22,7 +22,7 @@ Something like `country: "Ukraine, city: "New York` should be invalid. Oops, the
 
 ### 1. Basic setup
 
-```ruby
+```shell
 bundle add city-state
 rails g scaffold address country state city address_line_1
 rails db:migrate
@@ -75,7 +75,7 @@ Now, the form can look like this:
 
 ```ruby
 # app/views/addresses/_form.html.erb
-<%= form_with(model: address, data: {controller: "reset-form"}) do |form| %>
+<%= form_with(model: address) do |form| %>
   <%= form.label :country, style: "display: block" %>
   <%= form.select :country, address.country_opts.invert, {include_blank: true}, { onchange: "this.form.requestSubmit();" } %>
 
@@ -95,15 +95,35 @@ Let's improve it.
 
 ### 2. Dynamic form
 
+```shell
+rails g stimulus form-reset
+rails g stimulus form-element
+```
+
+To fix a common problem of refreshing the page and still having values in a form:
+
+```js
+// app/javascript/controllers/form_reset_controller.js
+import { Controller } from "@hotwired/stimulus"
+
+// Connects to data-controller="form"
+export default class extends Controller {
+  connect() {
+    this.element.reset()
+  }
+}
+```
+
 Considering the learning from the previous post, we will add a stimulus controller that will help us to submit a "remote" button:
 
 ```js
-// app/javascript/controllers/form_controller.js
+// app/javascript/controllers/form_element_controller.js
 import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="form"
 export default class extends Controller {
   static targets = ["submitbtn"]
+
   connect() {
     this.submitbtnTarget.hidden = true
   }
@@ -135,15 +155,15 @@ Finally, we will update our form:
 
 ```ruby
 # app/views/addresses/_form.html.erb
-<%= form_with(model: address, data: {controller: "reset-form"}) do |form| %>
-  <div data-controller="form">
-    <%= form.button "Validate", formaction: new_address_path, formmethod: :get, data: {form_target: "submitbtn", turbo_frame: :dynamic_fields} %>
+<%= form_with(model: address, data: {controller: "form-reset"}) do |form| %>
+  <div data-controller="form-element">
+    <%= form.button "Validate", formaction: new_address_path, formmethod: :get, data: {form_element_target: "submitbtn", turbo_frame: :dynamic_fields} %>
     <%= turbo_frame_tag :dynamic_fields do %>
       <%= form.label :country, style: "display: block" %>
-      <%= form.select :country, CS.countries.invert, {include_blank: true}, {data: { action: "change->form#autosumbit"}} %>
+      <%= form.select :country, CS.countries.invert, {include_blank: true}, {data: { action: "change->form-element#autosumbit"}} %>
 
       <%= form.label :state, style: "display: block" %>
-      <%= form.select :state, address.state_opts.invert, {include_blank: true}, {data: { action: "change->form#autosumbit"}} %>
+      <%= form.select :state, address.state_opts.invert, {include_blank: true}, {data: { action: "change->form-element#autosumbit"}} %>
 
       <%= form.label :city, style: "display: block" %>
       <%= form.select :city, address.city_opts, {include_blank: true}, {} %>
