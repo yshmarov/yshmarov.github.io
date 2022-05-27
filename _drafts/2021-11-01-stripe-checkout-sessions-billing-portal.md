@@ -1,26 +1,28 @@
 ---
 layout: post
-title: "Add Stripe Checkout and Billing Portal to a Rails app. Easy!"
+title: "Add Stripe Checkout and Billing Portal to a Rails app"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails stripe
 thumbnail: /assets/thumbnails/stripe.png
 ---
+
+https://web-crunch.com/posts/stripe-checkout-billing-portal-ruby-on-rails
 
 * [example Stripe-Rails e-commerce app](https://github.com/corsego/shoplify)
 * [example Stripe-Rails SaaS app](https://github.com/corsego/saasblog)
 
 ### 1. Install Stripe
 
-Gemfile
 ```ruby
-gem 'stripe'
+# Gemfile
+bundle add stripe
 ```
 
-* add your stripe keys to credentials
+* add your stripe API keys to credentials
 * webhook path should be something like `localhost:3000/webhooks`
 
-credentials.yml
 ```ruby
+# credentials.yml
 development:
   stripe:
     id: 123
@@ -35,8 +37,8 @@ production:
 
 * add `stripe` initializer: 
 
-config/initializers/stripe.rb
 ```ruby
+# config/initializers/stripe.rb
 Stripe.api_key = Rails.application.credentials.dig(Rails.env.to_sym, :stripe, :secret)
 ```
 
@@ -73,6 +75,12 @@ Stripe::Price.create(
 )
 ```
 
+### Stripe CLI
+
+Listen to events locally:
+```sh
+brew install stripe/stripe-cli/stripe
+```
 ### 2. Add Stripe info to your Users (Customers)
 
 ```sh
@@ -97,8 +105,8 @@ rails g migration add_stripe_fields_to_user stripe_customer_id plan subscription
 
 ###
 
-app/models/user.rb
 ```ruby
+# app/models/user.rb
   def active?
     subscription_status == 'active' && current_period_end > Time.zone.now
   end
@@ -137,8 +145,8 @@ config/routes.rb
   resources :webhooks, only: [:create]
 ```
 
-app/views/static_pages/pricing.html.erb
 ```ruby
+# app/views/static_pages/pricing.html.erb
 <h1>Pricing</h1>
 <% @pricing.each do |price| %>
   <%= price.product.name %>
@@ -160,8 +168,8 @@ app/views/static_pages/pricing.html.erb
 <% end %>
 ```
 
-app/controllers/static_pages_controller.rb
 ```ruby
+# app/controllers/static_pages_controller.rb
 class StaticPagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[pricing]
 
@@ -178,8 +186,8 @@ class StaticPagesController < ApplicationController
 end
 ```
 
-app/controllers/checkout_controller.rb
 ```ruby
+# app/controllers/checkout_controller.rb
 class CheckoutController < ApplicationController
   def create
     def mode
@@ -207,8 +215,8 @@ class CheckoutController < ApplicationController
 end
 ```
 
-app/controllers/billing_portal_controller.rb
 ```ruby
+# app/controllers/billing_portal_controller.rb
 class BillingPortalController < ApplicationController
   def create
     portal_session = Stripe::BillingPortal::Session.create({
@@ -220,8 +228,8 @@ class BillingPortalController < ApplicationController
 end
 ```
 
-app/controllers/webhooks_controller.rb
 ```ruby
+# app/controllers/webhooks_controller.rb
 class WebhooksController < ApplicationController
   skip_before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
