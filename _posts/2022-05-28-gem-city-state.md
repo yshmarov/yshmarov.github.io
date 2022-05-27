@@ -89,7 +89,7 @@ Now, the form can look like this:
 <% end %>
 ```
 
-However, this way we have a full page refresh each time you select something.
+However, this way there is a full page refresh each time you select something.
 
 Let's improve it.
 
@@ -174,5 +174,6 @@ Finally, we will update our form:
 ```
 
 That's it!
+
 Now your dynamic select should work perfectly:
 ![city-state-gem-dynamic-select.gif](/assets/images/city-state-gem-dynamic-select.gif)
