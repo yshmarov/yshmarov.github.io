@@ -25,7 +25,7 @@ Rails.application.credentials.dig(:active_record_encryption, :primary_key)
 Rails.application.credentials.dig(:active_record_encryption, :deterministic_key)
 Rails.application.credentials.dig(:active_record_encryption, :key_derivation_salt)
 
-
+```ruby
 class Inbox < ApplicationRecord
 	# default
 	# better security, impossible to query
@@ -35,8 +35,20 @@ class Inbox < ApplicationRecord
   # same string would get same encrypted hash
 	# deterministic_key not needed
   encrypts :description, deterministic: true
-end
 
+  ###
+  has_rich_text :description, encrypted: true
+
+  validates :passphrase, uniqueness: true
+  encrypts :passphrase, deterministic: true #, ignore_case: true #, downcase: true
+  # original_passphase
+  # User.find_by(passphrase: "tacosoup")
+
+  # serialize :settings, Hash
+  # encrypts :settings
+
+end
+```
 ### STRING should be 510 characters long
 
 
