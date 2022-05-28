@@ -11,7 +11,7 @@ In this post I want to demonstrate:
 * adding conditional `validations`
 * displaying `select` fields in a form
 
-### TWO chained fields
+### 1. TWO chained fields
 
 **Mission: Select car brand and model**
 
@@ -65,7 +65,55 @@ Select fields in form:
 <% end %>
 ```
 
-### THREE chained fields
+### 2. TWO chained fields - hash of hashes
+
+In this case we'll have our data in the form of a hash of hashes (slightly different data structure):
+
+```shell
+rails g scaffold order country city
+```
+
+```ruby
+# order.rb
+class Order < ApplicationRecord
+  CS2 = {
+    'usa' => { los_angeles: 'los angeles', new_york: 'new york', chicago: 'chicago' },
+    'poland' => { gdansk: 'gdansk', wroclaw: 'wroclaw', warsaw: 'warsaw' },
+    'ukraine' => { kyiv: 'kyiv', lviv: 'lviv', kharkiv: 'kharkiv', ivano_frankivsk: "ivano-frankivsk" }
+  }
+
+  validates :country, presence: true
+  validates :city, presence: true
+  validates :city, inclusion: { in: ->(record) { record.city_opts.values.map(&:to_s) }, allow_blank: true }
+
+  def country_opts
+    CS2.keys
+  end
+
+  def city_opts
+    return [] unless country.present?
+
+    CS2[country].invert || []
+  end
+end
+```
+
+We will update the form as in the previous example: 
+
+```ruby
+# orders/_form.html.erb
+<%= form_with(model: order) do |form| %>
+  <%= form.select :country, order.country_opts, { include_blank: true }, {} %>
+  <%= form.select :city, order.city_opts, {include_blank: true}, {} %>
+  <%= form.submit %>
+<% end %>
+```
+
+Result:
+
+![basic-country-city-select.gif](/assets/images/basic-country-city-select.gif)
+
+### 3. THREE chained fields
 
 **Mission: Select address country, region, city**
 
