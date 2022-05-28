@@ -132,4 +132,4 @@ Select fields in form:
 <% end %>
 ```
 
-Now when your backend is solid, feel free to add some interactivity to your form with Hotwire.
+Now when your backend is solid, feel free to add some interactivity to your form with Hotwire. This will be explored in the next post.
