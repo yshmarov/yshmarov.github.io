@@ -12,7 +12,7 @@ The common (bad) approach would be to format a `datetime` with `strftime` direct
 
 ```ruby
 post.created_at.strftime("%d %b, %Y")
-# => 26 June, 2022
+# => 11 June, 2022
 ```
 
 However, this way you store datetime formatting logic in views and there's a high chance of avoidable duplication.
@@ -23,11 +23,11 @@ What if we store `strftime` in the model?
 # app/models/post.rb
 
 def created_at_dmy
-  date.strftime("%d %b, %Y") # 26 June, 2022
+  date.strftime("%d %b, %Y") # 11 June, 2022
 end
 
 # post.created_at_dmy
-# => 26 June, 2022
+# => 11 June, 2022
 ```
 
 That's better, but there is a high chance that you will want to use the same `strftime` for other models in the app, and this method won't be accessible for them.
@@ -40,12 +40,12 @@ So you can just create a helper so that your `strftime` is available everywhere:
 
 module TimeHelper
   def created_at_dmy(date)
-    date.strftime("%d %b, %Y") # 26 June, 2022
+    date.strftime("%d %b, %Y") # 11 June, 2022
   end
 end
 
 # created_at_dmy(post.created_at)
-# => 26 June, 2022
+# => 11 June, 2022
 ```
 
 That's quite good. But there's an even better way offered by Rails!
@@ -79,7 +79,7 @@ Time::DATE_FORMATS[:dmy] = "%d %b, %Y" # 04 June, 2022
 Time::DATE_FORMATS[:my] = "%m/%Y" # 06/2022
 
 # post.created_at.to_s(:dmy)
-# => 26 June, 2022
+# => 11 June, 2022
 
 # post.created_at.to_s(:my)
 # => 06/2022
@@ -96,7 +96,7 @@ Well, the two classes can seem similar but they have a few different methods and
 
 # Time::DATE_FORMATS[:time1] = ->(date) { date.strftime("#{date.day.ordinalize} %B, %Y") }
 # post.created_at.to_s(:time1)
-# => "4th June, 2022"
+# => "11th June, 2022"
 ```
 
 That's it!
