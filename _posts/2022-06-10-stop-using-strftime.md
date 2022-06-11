@@ -26,7 +26,7 @@ def created_at_dmy
   date.strftime("%d %b, %Y") # 11 June, 2022
 end
 
-# post.created_at_dmy
+post.created_at_dmy
 # => 11 June, 2022
 ```
 
@@ -44,7 +44,7 @@ module TimeHelper
   end
 end
 
-# created_at_dmy(post.created_at)
+created_at_dmy(post.created_at)
 # => 11 June, 2022
 ```
 
@@ -57,16 +57,16 @@ and
 classes, that we can use out of the box:
 
 ```ruby
-# post.created_at.to_s(:iso8601)
+post.created_at.to_s(:iso8601)
 # => "2022-06-04T08:57:37Z"
 
-# post.created_at.to_s(:rfc822)
+post.created_at.to_s(:rfc822)
 # => "Sat, 04 Jun 2022 08:57:37 +0000"
 
-# post.created_at.to_s(:short)
+post.created_at.to_s(:short)
 # => "04 Jun 08:57"
 
-# post.created_at.to_s(:long)
+post.created_at.to_s(:long)
 # => "June 04, 2022 08:57"
 ```
 
@@ -78,10 +78,10 @@ This way you can create an initializer to add your own methods:
 Time::DATE_FORMATS[:dmy] = "%d %b, %Y" # 04 June, 2022
 Time::DATE_FORMATS[:my] = "%m/%Y" # 06/2022
 
-# post.created_at.to_s(:dmy)
+post.created_at.to_s(:dmy)
 # => 11 June, 2022
 
-# post.created_at.to_s(:my)
+post.created_at.to_s(:my)
 # => 06/2022
 ```
 
@@ -90,12 +90,12 @@ Ok, but what's the difference between `Date::DATE_FORMATS` and `Time::DATE_FORMA
 Well, the two classes can seem similar but they have a few different methods and can provide different outcomes:
 
 ```ruby
-# Date::DATE_FORMATS[:date1] = ->(date) { date.strftime("#{date.day.ordinalize} %B, %Y") }
-# post.created_at.to_s(:date1)
+Date::DATE_FORMATS[:date1] = ->(date) { date.strftime("#{date.day.ordinalize} %B, %Y") }
+post.created_at.to_s(:date1)
 # => "2022-06-04 08:57:37 UTC"
 
-# Time::DATE_FORMATS[:time1] = ->(date) { date.strftime("#{date.day.ordinalize} %B, %Y") }
-# post.created_at.to_s(:time1)
+Time::DATE_FORMATS[:time1] = ->(date) { date.strftime("#{date.day.ordinalize} %B, %Y") }
+post.created_at.to_s(:time1)
 # => "11th June, 2022"
 ```
 
