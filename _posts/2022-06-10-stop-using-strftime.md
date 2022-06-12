@@ -34,7 +34,6 @@ That's better, but there is a high chance that you will want to use the same `st
 
 So you can just create a helper so that your `strftime` is available everywhere:
 
-
 ```ruby
 # app/helpers/time_helper.rb
 
@@ -98,5 +97,11 @@ Time::DATE_FORMATS[:time1] = ->(date) { date.strftime("#{date.day.ordinalize} %B
 post.created_at.to_s(:time1)
 # => "11th June, 2022"
 ```
+
+Fantastic!
+
+Additionally, as [Jerome](https://disqus.com/by/disqus_ALu6tEXrCI/) suggested, another **good** way to display `strftime` would be via `locales`:
+* [official strftime locales guide](https://edgeguides.rubyonrails.org/i18n.html#adding-date-time-formats){:target="blank"}
+* [locales source code](https://github.com/rails/rails/blob/b2eb1d1c55a59fee1e6c4cba7030d8ceb524267c/activesupport/lib/active_support/locale/en.yml#L3){:target="blank"}
 
 That's it!
