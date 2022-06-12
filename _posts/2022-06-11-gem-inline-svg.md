@@ -54,7 +54,7 @@ To display the SVG, you can try to use `image_tag` and render the SVG as an **im
 
 And here we see the problem: we can't style the SVGs with CSS `class` & `style`:
 
-[PNG]
+![svg-as-img](/assets/images/svg-as-img.png)
 
 To overcome this issue, we can use a helper that will parse an SVG, add html options and render it in html:
 
@@ -81,7 +81,7 @@ end
 
 Now you see that the SVG was **correctly** rendered as an SVG in HTML:
 
-![svg-as-img](/assets/images/svg-as-img.png)
+![svg-as-svg](/assets/images/svg-as-svg.png)
 
 Finally, instead of writing custom SVG helpers and "reinventing the wheel", you can use an out-of-the-box solution: [`gem inline_svg`](https://github.com/jamesmartin/inline_svg){:target="blank"}
 
@@ -95,12 +95,6 @@ bundle add inline_svg
 <%= inline_svg_tag 'svg/search2', style: "color: green; background-color: red; height: 50px; width: 20px;" %>
 <%= inline_svg_tag 'svg/search2', style: "color: green; background-color: red; font-size: 40px;" %>
 ```
-
-![svg-as-img](/assets/images/svg-as-svg.png)
-
-Result:
-
-![inline-svg-gem.png](/assets/images/inline-svg-gem.png)
 
 That's it!
 
