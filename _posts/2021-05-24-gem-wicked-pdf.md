@@ -28,9 +28,8 @@ gem "wkhtmltopdf-binary", group: :development
 gem "wkhtmltopdf-heroku", group: :production
 ```
 
-console
-
-```
+```shell
+# terminal
 bundle
 rails g wicked_pdf
 echo > app/assets/stylesheets/pdf.scss
@@ -38,68 +37,81 @@ echo > app/assets/stylesheets/pdf.scss
 
 Now you can test the installation by running something like `wkhtmltopdf http://google.com google.pdf` to generate a pdf from this URL
 
-(If it is set up this way, it will work correctly on heroku) config/initializers/wicked_pdf.rb
+To make the initializer work correctly on Heroku:
 
 ```ruby
+# config/initializers/wicked_pdf.rb
 WickedPdf.config ||= {}
 WickedPdf.config.merge!({
   layout: "pdf.html.erb",
 }) 
 ```
 
-config/initializers/mime_types.rb
+Optionally you might need to add a mime type:
 
 ```ruby
+# config/initializers/mime_types.rb
 Mime::Type.register "application/pdf", :pdf
 ```
 
-app/views/layouts/pdf.html.erb
+Create a separate HTML layout file for generating your PDFs:
 
 ```ruby
+# app/views/layouts/pdf.html.erb
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Appname</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
     <%= wicked_pdf_stylesheet_link_tag "pdf" %>
-    <%= wicked_pdf_javascript_include_tag "number_pages" %>
   </head>
-  <body onload="number_pages">
+  <body>
     <div id="header">
       <!--= wicked_pdf_image_tag 'thumbnail.png', height: "30", width: "auto"-->
     </div>
-    <div id="content">
-      <%= yield %>
-    </div>
+    <%= yield %>
   </body>
 </html>
 ```
 
-app/controllers/posts_controller.rb
-
 ```ruby
+# app/controllers/posts_controller.rb
   def index
     @posts = Post.all
     respond_to do |format|
       format.html
       format.pdf do
-        render template: "posts/index.html.erb",
-          pdf: "Posts: #{@posts.count}"
+        # Rails 6
+        # render template: "posts/index.html.erb",
+        #        pdf: "Posts: #{@posts.count}"
+
+        # Rails 7
+        # https://github.com/mileszs/wicked_pdf/issues/1005
+        render pdf: "Posts: #{@posts.count}", # filename
+               template: "hello/print_pdf",
+               formats: [:html],
+               disposition: :inline,
+               layout: 'pdf'
       end
     end
   end
 ```
 
-app/views/posts/index.html.erb
-
 ```ruby
+# app/views/posts/index.html.erb
 <%= link_to "PDF", posts_path(format: :pdf) %>
 ```
 
 ## Level 2. Style your PDFs
 
-app/assets/stylesheets/pdf.scss
-
-```
+```css
+/* app/assets/stylesheets/pdf.css */
+body {
+  background-color: green;
+}
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -109,15 +121,16 @@ table {
 }
 ```
 
-You might want to REMOVE this line from application.scss
-```
- *= require_tree .
+You might want to REMOVE this line from application.css, so that `pdf.css` is not available anywhere else around the app:
+
+```diff
+- *= require_tree .
 ```
 
 ## Level 3. Customize your PDF generations
 
-config/initializers/wicked_pdf.rb
 ```ruby
+# config/initializers/wicked_pdf.rb
 WickedPdf.config ||= {}
 WickedPdf.config.merge!({
   layout: "pdf.html.erb",
@@ -136,21 +149,29 @@ WickedPdf.config.merge!({
 
 ## Level 4. Generate PDF from posts/show.html.erb
 
-app/controllers/posts_controller.rb
 ```ruby
+# app/controllers/posts_controller.rb
   def show
     respond_to do |format|
       format.html
       format.pdf do
-        render template: "posts/show.html.erb",
-          pdf: "Post ID: #{@post.id}"
+        # Rails 6:
+        # render template: "posts/show.html.erb",
+        #        pdf: "Post ID: #{@post.id}"
+
+        # Rails 7:
+        render pdf: [@post.id, @post.name].join('-'),
+               template: "posts/show.html.erb",
+               formats: [:html],
+               disposition: :inline,
+               layout: 'pdf'
       end
     end
   end
 ```
 
-app/views/posts/index.html.erb
 ```ruby
+# app/views/posts/index.html.erb
 <%= link_to 'This post in PDF', post_path(post, format: :pdf) %>
 ```
 
@@ -158,19 +179,20 @@ You can also have a separate template for PDF-only like `render template: "pdfs/
 
 ## Level 5. Email a PDF as an attachment
 
-console
 
-```
+```shell
+# terminal
 rails g mailer PostMailer new_post
 ```
 
-action to trigger the mailer (in any controller, for example posts#show)
+action to trigger the mailer (in any controller, for example posts#show):
+
 ```ruby
 PostMailer.new_post.deliver_later
 ```
 
-app/mailers/post_mailer.rb
 ```ruby
+# app/mailers/post_mailer.rb
   # def pdf_attachment_method(post_id)
   def new_post
     # post = Post.find(post_id)
