@@ -8,9 +8,11 @@ thumbnail: /assets/thumbnails/gdpr-cookie.png
 
 According to GDPR regulations you might need to add a banner on your site where a website visitor can `accept`/`reject` cookies.
 
+A basic cookies modal can look like this:
+
 ![rails-cookies.gif](/assets/images/rails-cookies.gif)
 
-We can store this descision in `session[:cookies_accepted]`.
+We can store this decision in `session[:cookies_accepted]`.
 
 If a user **accepts** - expect normal website behavior.
 
@@ -20,7 +22,17 @@ If a user **rejects** - you might want to disable some tracking services:
 <%= render "shared/google_analytics" if (session[:cookies_accepted] == true) %>
 ```
 
-A basic cookies modal can look like this:
+### HOWTO
+
+Generate `views`, `controllers`, `routes` for our cookies:
+
+```shell
+# Terminal
+rails g controller cookies index
+```
+
+* Render the cookies view inside a `turbo_frame_tag`;
+* Display links to `accept`/`reject` modals:
 
 ```ruby
 # app/views/shared/cookies_banner.html.erb
@@ -53,16 +65,11 @@ Positioning the modal with css:
 }
 ```
 
-To make the above work, we will need a `route` and a `controller`:
-
-```shell
-# Terminal
-rails g controller cookies index
-```
+A simplistic route:
 
 ```ruby
 # config/routes.rb
-  get 'cookies', to: 'cookies#index'
+  get 'cookies', to: 'cookies#index' 
 ```
 
 Display cookies template, update preferences based on selected accept/reject params:
