@@ -85,9 +85,10 @@ Here are some example usecases that come to my mind:
 - ✅ user preferences - light/dark mode `kredis_hash`
 - ✅ "saved" search filter (url params) `kredis_string`
 - ✅ maximum free page visits without login `kredis_integer`
-- 🤔 sidebar counts?
-- 🤔 cookies preferences?
+- 🤔 users online `kredis_list`?
 - 🤔 multistep form progress?
+- 🤔 cookies preferences?
+- 🤔 sidebar counts?
 - 🤔 temporary computations?
 - 🤔 whatever you would store in the session/cookies?
 
