@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Accept cookies banner in Rails"
+title: "Accept cookies consent banner in Rails"
 author: Yaroslav Shmarov
 tags: ruby-on-rails gdpr cookies
 thumbnail: /assets/thumbnails/gdpr-cookie.png
@@ -101,3 +101,8 @@ end
 ```
 
 That's it!
+
+Alternatively, there are some cookies/GDPR gems:
+* [`infinum/cookies_eu`](https://github.com/infinum/cookies_eu) - Gem to add cookie consent to Rails application
+* [`prey/gdpr_rails`](https://github.com/prey/gdpr_rails) - Rails Engine for the GDPR compliance 
+* [`osano/cookieconsent`](https://github.com/osano/cookieconsent) - A free solution to the EU, GDPR, and California Cookie Laws
