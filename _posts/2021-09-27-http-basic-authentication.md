@@ -72,3 +72,7 @@ end
 -class TasksController < ApplicationController
 +class TasksController < SecuredController
 ```
+
+Sources:
+* [apidock/authenticate_or_request_with_http_basic](https://apidock.com/rails/ActionController/HttpAuthentication/Basic/ControllerMethods/authenticate_or_request_with_http_basic)
+* [api.rubyonrails/HttpAuthentication](https://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic/ControllerMethods.html)
