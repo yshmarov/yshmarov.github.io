@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Tiny Tip: Debugging current request"
+title: "Tiny Tip: Debug current request in views"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails devise
 thumbnail: /assets/thumbnails/ladybug.png
