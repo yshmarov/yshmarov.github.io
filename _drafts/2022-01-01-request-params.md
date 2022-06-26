@@ -1,6 +1,8 @@
 request params
 
 https://api.rubyonrails.org/classes/ActionDispatch/Request.html#method-i-authorization
+    <%= request.headers.each { |h| h } %>
+https://api.rubyonrails.org/classes/ActionDispatch/Http/Headers.html
 
 _helper.rb
 ```
