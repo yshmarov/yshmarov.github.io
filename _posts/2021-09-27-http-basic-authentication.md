@@ -8,28 +8,45 @@ thumbnail: /assets/thumbnails/lock.png
 
 ![http-authentication-example](assets/images/http-basic-auth-example.png)
 
-You can use basic HTTP authentication to restrict access to different controller actions without 
+You can use HTTP basic authentication to restrict access to different controllers/actions.
+
+The easiest way is to use a `http_basic_authenticate_with` callback in a controller:
+
+```diff
+# app/controllers/posts_controller.rb
+class PostsController < ApplicationController
++  http_basic_authenticate_with name: 'superails', password: '123456', except: :index
+```
+
+A better approach where you have more control is to use `authenticate_or_request_with_http_basic(realm = "Application", message = nil, &login_procedure)`, because it allows you to pass multple options and a block.
+
+* `realm` - "scope". You can have different http authentication for different parts of your app. Defaults to `"Application"`.
+* `message` - failure message. Default: `*"HTTP Digest: Access denied."`
 
 ```ruby
-# app/controllers/inboxes_controller.rb
-class InboxesController < ApplicationController
-  before_action :authenticate, only: %i[index show]
+# app/controllers/posts_controller.rb
+class PostsController < ApplicationController
+  before_action :http_authenticate, only: %i[show]
 
   def index
-    @inboxes = Inbox.all
+    @posts = Post.all
   end
 
   def show
   end
 
   private
-  def authenticate
+
+  def http_authenticate
+    # conditionally enable the feature only in production:
+    # return true if %w(test staging).include? Rails.env
+    # return true unless Rails.env == 'production'
+
     authenticate_or_request_with_http_basic do |username, password|
-      # either
-      username == 'superails' && password == '123abc' 
-      # or
-      username == Rails.application.credentials.dig(:http_auth, :login) && 
-        password == Rails.application.credentials.dig(:http_auth, :pass)
+      username == 'superails' && password == '123456' 
+      # better to hide password in credentials:
+      username == Rails.application.credentials.dig(:http_auth, :username) && 
+        password == Rails.application.credentials.dig(:http_auth, :password)
     end
   end
 end
@@ -38,41 +55,84 @@ end
 ```ruby
 # credentials.yml
 http_auth:
-	login: superails
-	pass: 123abc
+	username: superails
+	password: 123456
 ```
 
-### Advanced usage:
+* Check (in a view) if current page required authorization to open:
+
+```ruby
+request.headers[:HTTP_AUTHORIZATION].present?
+request.authorization.present?
+```
+
+### Sustainable ways to include http auth im multiple controllers:
+
+1. **Controller inheritance:**
 
 You can create a controller that will require authentication, and than inherit further controllers from it:
 
 ```ruby
 # app/controllers/secured_controller.rb
 class SecuredController < ApplicationController
-  before_action :authenticate
+  before_action :http_authenticate
 
   private
 
-  def authenticate
+  def http_authenticate
     authenticate_or_request_with_http_basic do |username, password|
-      username == 'ewlit' && password == '123456'
+      username == 'superails' && password == '123456'
     end
   end
 end
 ```
 
 ```diff
-# app/controllers/inboxes_controller.rb
--class InboxesController < ApplicationController
-+class InboxesController < SecuredController
+# app/controllers/posts_controller.rb
+-class PostsController < ApplicationController
++class PostsController < SecuredController
 ```
 
 ```diff
-# app/controllers/inboxes_controller.rb
+# app/controllers/posts_controller.rb
 -class TasksController < ApplicationController
 +class TasksController < SecuredController
 ```
 
-Sources:
+2. **Concern inclusion:**
+
+```ruby
+# app/controllers/concerns/http_auth_concern.rb
+module HttpAuthConcern  
+  extend ActiveSupport::Concern
+
+  included do
+    before_action :http_authenticate
+  end
+
+  def http_authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == 'superails' && password == '123456'
+    end
+  end
+end
+```
+
+```diff
+# app/controllers/application_controller.rb
+class PostsController < ApplicationController
++  include HttpAuthConcern
+```
+
+```diff
+# app/controllers/posts_controller.rb
+class TasksController < ApplicationController
++  include HttpAuthConcern
+```
+
+### Sources:
+* [MDN: Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization#basic_authentication)
+* [api.rubyonrails/HttpAuthentication example](https://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic.html)
+* [api.rubyonrails/HttpAuthentication methods](https://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic/ControllerMethods.html)
+* [Rails source code](https://github.com/rails/rails/blob/25b14b4d3238d5474c60826ee1b359537af987ef/actionpack/lib/action_controller/metal/http_authentication.rb#L70)
 * [apidock/authenticate_or_request_with_http_basic](https://apidock.com/rails/ActionController/HttpAuthentication/Basic/ControllerMethods/authenticate_or_request_with_http_basic)
-* [api.rubyonrails/HttpAuthentication](https://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic/ControllerMethods.html)
