@@ -51,7 +51,7 @@ Add a form with a unique `id` and route it to `bulk_action_users_path`.
 
 `data: {controller: "form-reset"})` - so that old selected checkboxes are not checked on page refresh. [See how to use `form_reset_controller.js` here.]({% post_url 2022-05-29-gem-city-state %}){:target="blank"}
 
-**IMPORTANT** Different form buttons can send a different param to the controller. Based on this you will be able to handle different bulk actions
+**IMPORTANT:** Different form buttons can send a different param to the controller. Based on this you will be able to handle different bulk actions:
 * `form.button type: :submit, value: :active` => `params[:button] == 'active'`
 * `form.submit "disabled"` => `params[:commit] == "disabled"`
 
