@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Meta Tags for better SEO. Add page title"
+title: "Gem Meta Tags for better SEO"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails SEO meta-tags
 thumbnail: /assets/thumbnails/url.png
