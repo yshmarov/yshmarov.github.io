@@ -134,3 +134,7 @@ end
 Final result:
 
 ![checkbox-bulk-update.gif](/assets/images/checkbox-bulk-update.gif)
+
+Relevant reading:
+* https://www.stimulus-components.com/docs/stimulus-checkbox-select-all/
+* http://railscasts.com/episodes/165-edit-multiple-revised
