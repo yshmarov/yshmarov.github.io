@@ -50,8 +50,8 @@ export default class extends Controller {
 
 In the HTML:
 * initialize the stimulus controller `data-controller="checkbox-select-all"` around all the checkboxes
-* "Select all" should have `data-checkbox-select-all-target="parent" data-action="change->checkbox-select-all#toggleChildren"`
-* Each other checkbox should have `data-checkbox-select-all-target="child" data-action="change->checkbox-select-all#toggleParent"`
+* "Select all" should have `data-checkbox-select-all-target="parent"` `data-action="change->checkbox-select-all#toggleChildren"`
+* Each other checkbox should have `data-checkbox-select-all-target="child"` `data-action="change->checkbox-select-all#toggleParent"`
 * BEWARE: each checkbox should have it's unique `id`, `name`, `value`
 
 ```html
