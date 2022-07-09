@@ -68,4 +68,24 @@ In the HTML:
 </div>
 ```
 
+That will work.
+
+Here's how you can do the same using rails `check_box_tag`:
+
+```diff
++<div data-controller="checkbox-select-all">
++  <%= label_tag "select all" %>
++  <%= check_box_tag "select all", nil, nil, { data: { checkbox_select_all_target: "parent", action: "change->checkbox-select-all#toggleChildren" } } %>
+<%= form_with url: bulk_update_users_path, method: :patch, id: :bulk_actions_form do |form| %>
+  <%= form.submit "active" %>
+  <%= form.submit "disabled" %>
+<% end %>
+<%= render partial: "user", collection: @users %>
++</div>
+```
+
+```diff
++<%= check_box_tag "user_ids[]", user.id, nil, { data: { checkbox_select_all_target: "child", action: "change->checkbox-select-all#toggleParent" }, multiple: true, form: :bulk_actions_form } %>
+```
+
 That's it!
