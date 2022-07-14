@@ -19,21 +19,20 @@ Enums are a Rails feature, not a Ruby feature.
 
 ## Option 1
 
-post.rb
-
 ```ruby
+# app/models/post.rb
   enum status: %i[draft reviewed published]
 ```
 
-migration:
-
 ```ruby
+# migration
   add_column :posts, :status, :integer, default: 0
 ```
 
 ### inclusion validation works automatically with enums!
 
-```
+```ruby
+# app/models/post.rb
   # this is automatic!!!
   validates :status, inclusion: { in: Post.statuses.keys }
 ```
@@ -48,7 +47,7 @@ If we add new values - add at the end of the array!
 
 ### to get keys/values
 
-```
+```ruby
 Post.statuses.keys
 => ["draft", "published"] 
 Post.statuses.values
@@ -57,7 +56,7 @@ Post.statuses.values
 
 ### to select an enum in a form
 
-```
+```ruby
 # basic
 <%= form.select :status, Post.statuses.keys %>
 # advanced
@@ -66,17 +65,15 @@ Post.statuses.values
 
 ## Option 2 - fix integer values to specific strings (better)
 
-post.rb
-
 ```ruby
+# app/models/post.rb
   enum status: { draft: 2, reviewed: 1, published: 0 }
 ```
 
 ## Option 3 - map enum to strings (the best)
 
-post.rb
-
 ```ruby
+# app/models/post.rb
   enum status: {
     draft: "draft",
     reviewed: "reviewed",
@@ -84,29 +81,55 @@ post.rb
   }
 ```
 
-migration:
+```ruby
+# migration
+  add_column :posts, :status, :string
+```
+
+### Postgresql enum
+
+[Rails 7 now supports `postgresql enum` migrations](https://github.com/rails/rails/commit/4eef348584087c81f1e32ad971baf632b0149cd4):
 
 ```ruby
-  add_column :posts, :status, :string
+# migration
+class CreatePosts < ActiveRecord::Migration[7.0]
+  def up
+    create_enum :post_status, ["draft", "reviewed", "published"]
+
+    create_table :posts do |t|
+      t.enum :current_mood, enum_type: "post_status", default: "draft", null: false
+      # t.column :status, :post_status, null: false, index: true
+    end
+  end
+
+  # to drop the enum table:
+  def down
+    execute <<-SQL
+      DROP TYPE post_status;
+    SQL
+  end
+end
 ```
 
 ## Bonus: setting default values
 
-instead setting defaults on database level like
+instead of setting defaults on database level like:
 
 ```ruby
+# migration
   add_column :posts, :status, :string, default: 'draft'
   add_column :posts, :category, :string, default: 'Rails'
 ```
 
-you can better do it in the model
+you could (better) do it in the model:
 
 ```ruby
+# app/models/post.rb
   enum status: %i[draft reviewed published], _default: 'draft'
   enum category: { rails: 'Rails', ruby: 'Ruby' }, _default: 'Rails'
 ```
 
-to get the default value
+to get the default value:
 
 ```
 Post.new.status # => "draft"
@@ -115,6 +138,8 @@ Post.new.status # => "draft"
 ## a few methods that can be called when using enums:
 
 ```ruby
+Post::STATUSES[:draft] # => "draft"
+
 post.draft! # => true
 post.draft? # => true
 post.status # => "draft"
