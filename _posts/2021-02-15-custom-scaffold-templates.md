@@ -29,7 +29,7 @@ rails g erb:scaffold Post title content
 Here's how bootstrap scaffold templates erb files can look:
 
 lib/templates/erb/scaffold/index.html.erb
-```
+```html
 <h3>
   <div class="text-center">
     <%= plural_table_name.capitalize %>
