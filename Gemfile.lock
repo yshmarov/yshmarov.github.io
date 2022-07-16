@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jekyll/minima
-  revision: 296bf6b872b8450529bee1e48d0ca9be200a4be5
+  revision: ffdb3210adabbd0a04f567ff88aa716928d664d0
   specs:
     minima (2.5.1)
       jekyll (>= 3.5, < 5.0)
@@ -22,7 +22,7 @@ GEM
     ffi (1.15.5)
     forwardable-extended (2.6.0)
     http_parser.rb (0.8.0)
-    i18n (1.10.0)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     jekyll (4.1.1)
       addressable (~> 2.4)
