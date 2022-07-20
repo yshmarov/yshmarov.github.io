@@ -14,7 +14,7 @@ How it works:
 * click current active button -> hide this tab (all) tabs
 * optionally, a select tab can be open by default
 
-![stimulusjs-tabs](/assets/images/stimulusjs-tabs.gif)
+![stimulus-js-tabs](/assets/images/stimulus-js-tabs.gif)
 
 HOWTO:
 
