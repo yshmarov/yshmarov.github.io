@@ -37,12 +37,12 @@ export default class extends Controller {
 
   connect() {
     this.tabTargets.map(x => x.hidden = true) // hide all tabs by default
-    // open the default tab if available
+    // OPEN DEFAULT TAB
     try {
       let selectedBtn = this.btnTargets.find(element => element.id === this.defaultTabValue)
       let selectedTab = this.tabTargets.find(element => element.id === this.defaultTabValue)
       selectedTab.hidden = false
-      selectedBtn.classList.add("active") // disabled = true
+      selectedBtn.classList.add("active")
     } catch { }
   }
 
@@ -50,15 +50,17 @@ export default class extends Controller {
     // find tab with same id as clicked btn
     let selectedTab = this.tabTargets.find(element => element.id === event.currentTarget.id)
     if (selectedTab.hidden) {
+      // CLOSE CURRENT TAB
       this.tabTargets.map(x => x.hidden = true) // hide all tabs
       this.btnTargets.map(x => x.classList.remove("active")) // deactive all btns
       selectedTab.hidden = false // show current tab
       event.currentTarget.classList.add("active") // active current btn
     } else {
+      // OPEN CURRENT TAB
       this.tabTargets.map(x => x.hidden = true) // hide all tabs
       this.btnTargets.map(x => x.classList.remove("active")) // deactive all btns
-      selectedTab.hidden = true // show current tab
-      event.currentTarget.classList.remove("active") // active current btn
+      selectedTab.hidden = true // hide current tab
+      event.currentTarget.classList.remove("active") // deactive current btn
     }
   }
 }
