@@ -6,7 +6,14 @@ tags: tabs stimulusjs
 thumbnail: /assets/thumbnails/stimulus-logo.png
 ---
 
-I'm not a JS god, but I present you with my minimalistic approach to handling **tabs** with StimulusJS.
+Previously I did a post covering
+[lazy-loading tabs with Turbo Frames]({% post_url 2021-10-26-tabbed-content-with-hotwire-turbo-frames %}){:target="blank"}
+
+That's a great appraoch, but not always will you want a separate route-controller-view for each tab.
+
+Sometimes JS tabs are just enough.
+
+Now, I'm not a JS god, but I present you with my minimalistic approach to handling **tabs** with StimulusJS.
 
 How it works:
 * click a button -> unhide the related tab

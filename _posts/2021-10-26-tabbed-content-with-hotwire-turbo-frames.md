@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "#9 Hotwire Turbo: Tabbed content with Turbo Frames"
+title: "#9 Turbo Frame Tabs"
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails hotwire turbo
+tags: ruby rails ruby-on-rails hotwire turbo tabs
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
