@@ -151,4 +151,10 @@ csv.each do |row|
 end
 ```
 
+Alternatively to `find_or_create_by` you might sometimes want to use
+[`upsert`](https://apidock.com/rails/v6.1.3.1/ActiveRecord/Persistence/ClassMethods/upsert){:target="blank"}
+or
+[`upsert_all`](https://apidock.com/rails/v6.1.3.1/ActiveRecord/Persistence/ClassMethods/upsert_all){:target="blank"}
+to find existing records by a unique key and update their attributes based on the CSV.
+
 That's it! P.S. Kudos [@secretpray](https://github.com/secretpray){:target="blank"}
