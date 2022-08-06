@@ -111,7 +111,8 @@ class GenerateQr < ApplicationService
     image = IO.binwrite("tmp/storage/#{image_name}.png", qr_png.to_s)
 
     # save TMP file to ActiveStorage
-    blob = ActiveStorage::Blob.create_after_upload!(
+    # blob = ActiveStorage::Blob.create_after_upload!(
+    blob = ActiveStorage::Blob.create_and_upload!(
       io: File.open("tmp/storage/#{image_name}.png"),
       filename: image_name,
       content_type: 'png'
