@@ -2,7 +2,7 @@
 layout: post
 title: "Export from database table to Excel Workbook. Level 1"
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails export excel xls xlsx download
+tags: ruby rails ruby-on-rails export excel xls xlsx csv download
 thumbnail: /assets/thumbnails/xlsx.png
 ---
 
