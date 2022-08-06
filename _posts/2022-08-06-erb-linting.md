@@ -2,7 +2,7 @@
 layout: post
 title: "auto-style your html.erb with gem erb-lint"
 author: Yaroslav Shmarov
-tags: ruby-on-rails erb haml
+tags: ruby-on-rails erb haml code-quality
 thumbnail: /assets/thumbnails/html.png
 ---
 
