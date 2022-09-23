@@ -1,14 +1,24 @@
 ---
 layout: post
-title: "#13 Turbo Streams: 4 ways to render View Components"
+title: "#13 Turbo Streams: 5 ways to render View Components"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo viewcomponent
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
-### 3 ways to do it in a controller:
+If you have problems rendering a ViewComponent with Turbo Streams, here are some solutions.
 
-All work, use either one:
+### 4 ways to do it in a controller:
+
+```ruby
+render_to_string(PaginationComponent.new(results: @results))
+view_context.render(PaginationComponent.new(results: @results))
+PaginationComponent.new(results: @results).render_in(view_context)
+# most universal:
+ApplicationController.render(PaginationComponent.new(results: @results), layout: false)
+```
+
+All work, use either one with Turbo Streams:
 
 ```ruby
 # app/controllers/hello_controller.rb
