@@ -3,7 +3,7 @@ layout: post
 title: "$1000 in AWS credits for startups (For free)"
 author: Yaroslav Shmarov
 tags: aws startup accelerator
-thumbnail: https://cdn.shopify.com/s/files/1/1061/1924/products/Money_Bag_Emoji_large.png?v=1571606064
+thumbnail: /assets/thumbnails/money.png
 ---
 
 
