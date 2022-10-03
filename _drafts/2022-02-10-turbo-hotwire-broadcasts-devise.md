@@ -1,10 +1,24 @@
 ---
 layout: post
-title: "#23 Turbo Streams: Broadcasts with Devise and Authorization??"
+title: "User-speific Turbo Stream Broadcasts"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo broadcasts devise pundit authorization
 thumbnail: /assets/thumbnails/turbo.png
 ---
+
+https://www.colby.so/posts/conditional-rendering-with-turbo-stream-broadcasts
+
+https://www.beflagrant.com/blog/reactive-rails-hotwire #
+
+🤔 The biggest challenge of using Hotwire Turbo Broadcasts -> streaming different HTML to current_user and other users. 
+
+Example:
+create - to all
+delete - to all
+likes count - to all
+like button - to current_user
+delete button - to current_user
+
 
 ### Devise: broadcast to a specific user
 

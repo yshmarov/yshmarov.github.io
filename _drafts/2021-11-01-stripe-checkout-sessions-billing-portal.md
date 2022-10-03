@@ -1,86 +1,21 @@
 ---
 layout: post
-title: "Add Stripe Checkout and Billing Portal to a Rails app"
+title: "Add Stripe Checkout to a Rails app"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails stripe
 thumbnail: /assets/thumbnails/stripe.png
 ---
+
+1. Minimal (stripe products, prices, payments). No current user
+2. Pay per product (local products with prices), pay to buy
+3. Pay per cart (cart object, quantities)
 
 https://web-crunch.com/posts/stripe-checkout-billing-portal-ruby-on-rails
 
 * [example Stripe-Rails e-commerce app](https://github.com/corsego/shoplify)
 * [example Stripe-Rails SaaS app](https://github.com/corsego/saasblog)
 
-### 1. Install Stripe
 
-```ruby
-# Gemfile
-bundle add stripe
-```
-
-* add your stripe API keys to credentials
-* webhook path should be something like `localhost:3000/webhooks`
-
-```ruby
-# credentials.yml
-development:
-  stripe:
-    id: 123
-    secret: 123
-    webhook: 123 
-production:
-  stripe:123
-    id: 123
-    secret: 123
-    webhook: 123
-```
-
-* add `stripe` initializer: 
-
-```ruby
-# config/initializers/stripe.rb
-Stripe.api_key = Rails.application.credentials.dig(Rails.env.to_sym, :stripe, :secret)
-```
-
-* Now you can play with Stripe API in the console. Create some stripe products in `rails c`:
-
-```ruby
-product = Stripe::Product.create(name: 'pro')
-
-Stripe::Price.create(
-  product: product,
-  unit_amount: 3900,
-  currency: 'usd',
-  recurring: {
-    interval: 'month'
-  },
-  lookup_key: 'pro_monthly',
-)
-
-Stripe::Price.create(
-  product: product,
-  unit_amount: 39000,
-  currency: 'usd',
-  recurring: {
-    interval: 'year'
-  },
-  lookup_key: 'pro_yearly',
-)
-
-Stripe::Price.create(
-  product: product,
-  unit_amount: 24900,
-  currency: 'usd',
-  lookup_key: 'pro_forever',
-)
-```
-
-### Stripe CLI
-
-Listen to events locally:
-```sh
-brew install stripe/stripe-cli/stripe
-```
 ### 2. Add Stripe info to your Users (Customers)
 
 ```sh
@@ -129,11 +64,11 @@ rails g migration add_stripe_fields_to_user stripe_customer_id plan subscription
 ```
 
 
-
-```sh
+```shell
+rails g controller static_pages landing_page --no-helper --no-assets --no-controller-specs --no-view-specs --no-test-framework
 rails g controller static_pages pricing
-rails g controller checkout create
-rails g controller webhooks create
+rails g controller checkout create --no-helper --no-assets --no-controller-specs --no-view-specs --no-test-framework --skip-template-engine
+rails g controller webhooks stripe --no-helper --no-assets --no-controller-specs --no-view-specs --no-test-framework --skip-template-engine
 rails g controller billing_portal create
 ```
 
@@ -143,6 +78,7 @@ config/routes.rb
   post "checkout/create", to: "checkout#create", as: "checkout_create"
   post "billing_portal/create", to: "billing_portal#create", as: "billing_portal_create"
   resources :webhooks, only: [:create]
+  post 'webhooks/stripe', to: 'webhooks#stripe'
 ```
 
 ```ruby
@@ -287,3 +223,8 @@ class WebhooksController < ApplicationController
   end
 end
 ```
+
+### Billing Portal
+
+
+http://lvh.me:3000/webhooks
