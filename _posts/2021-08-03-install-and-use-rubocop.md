@@ -114,12 +114,12 @@ bundle exec rubocop -A --only Layout/EmptyLineAfterMagicComment
 rubocop --auto-correct --disable-uncorrectable
 ```
 
-### 5. Github workflow
+### 5. Github workflows
 
 ```yml
 # mkdir .github
-# mkdir .github/workflow
-# echo > .github/workflow/.lint.yml
+# mkdir .github/workflows
+# echo > .github/workflows/.lint.yml
 name: Code style
 
 on: [pull_request]
