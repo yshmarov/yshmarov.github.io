@@ -23,9 +23,9 @@ Usually to ensure code quality you would use run `tests` and `linters` locally.
 
 Usually code storage solutions like Github/Gitlab allow you to run these tests in a virtual environment.
 
-That way, you and your team can be sure that the tests are successful before merging a PR.
+That way, you and your team can be sure that the tests are successful before merging a PR without having to re-run the tests on their machines.
 
-The Github tool that allows you to run scripts in a virtual environment is called **Github Actions**.
+The Github tool that allows you to run this sort of scripts in a virtual environment is called **Github Actions**.
 
 To start using Github Actions on a repo, you would need to add a folder like `.github/workflows` in the root directory of your app.
 
@@ -33,7 +33,7 @@ Next, you could add `yml` scripts inside the folder. Here's an example script:
 
 ![git-github-action-workflow.png](/assets/images/git-github-action-workflow.png)
 
-The above script would run `rubocop` on your app whenever a pull request is created or commits are pushed to it and provide a `success`/`failure` state:
+The above script would run `rubocop` on your app whenever a pull request is created, or commits are pushed to it and provide a `success`/`failure` state:
 
 ![git-rubocop-action.png](/assets/images/git-rubocop-action.png)
 
@@ -57,7 +57,10 @@ Common "problems" are:
 * installing Postgresql
 * adding credentials
 
-Let's add a basic page and test it:
+Now let's
+* add a basic page to a Rails app
+* test the page locally
+* finally add a script to test the page with Github Actions
 
 ```shell
 rails g controller static_pages landing_page
@@ -71,11 +74,9 @@ rails g controller static_pages landing_page
 ```ruby
 # test/system/static_pages_test.rb
 require 'application_system_test_case'
-
 class StaticPagesTest < ApplicationSystemTestCase
   test 'visiting the homepage' do
     visit static_pages_landing_page_url
-
     assert_text 'hello world'
   end
 end
@@ -86,7 +87,6 @@ To run system tests in CI, you will need to use `headless chrome`:
 ```ruby
 # test/application_system_test_case.rb
 require 'test_helper'
-
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   # driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
   driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
@@ -107,23 +107,21 @@ Run system tests:
 bin/rails test:system
 ```
 
-### Fix Github Actions with rails credentials
+### Troubleshoot Github Actions with rails credentials
 
 Running some tests would require having valid credentials.
 
-Here's how you can add `master.key` with a value `34tjk3ngiovv3j409jc34jt90v3q4jt4` to Github Actions.
-
-Name should be `RAILS_MASTER_KEY`.
+Here's how you can add `master.key` with a value `34tjk3ngiovv3j409jc34jt90v3q4jt4` to Github Actions using the Github GUI:
 
 ![git-add-secrets.png](/assets/images/git-add-secrets.png)
 
-It can later be accessed in the CI yaml file as `secrets.RAILS_MASTER_KEY`.
+(Name should be `RAILS_MASTER_KEY`).
+
+It can later be accessed in the CI yaml file as `secrets.RAILS_MASTER_KEY` ⤵️
 
 ### Finally, the CI script
 
 This script works for me to install postgres, redis, run tests, re-run seeds.
-
-It is as dry as I could make it.
 
 ```yml
 # .github/workflows/.tests.yml
@@ -195,6 +193,8 @@ jobs:
         run: bundle exec rails db:reset
 ```
 
-Finally, here is an [example CI script](https://github.com/joemasilotti/railsdevs.com/tree/main/.github/workflows) from an open source Rails project.
+Finally, here are example CI scripts from open source RoR projects:
+* [avo-hq/avo CI](https://github.com/avo-hq/avo/tree/main/.github/workflows)
+* [joemasilotti/railsdevs.com CI](https://github.com/joemasilotti/railsdevs.com/tree/main/.github/workflows)
 
 That's it!
