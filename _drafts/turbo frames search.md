@@ -39,8 +39,8 @@ rails db:seed
 <% end %>
 
 <%= turbo_frame_tag "posts" do %>
-  <%= sort_link_to "Name", :name, class: "table-cell pr-4", data: { turbo_action: "advance" } %>
-  <%= sort_link_to "Start Date", :start_date, class: "table-cell pr-4", data: { turbo_action: "advance" } %>
+  <%= sort_link_to "Name", :name, data: { turbo_action: "advance" } %>
+  <%= sort_link_to "Start Date", :start_date, data: { turbo_action: "advance" } %>
   <%= render @posts %>
 <% end %>
 <%== pagy_nav(@pagy, link_extra: 'data-turbo-action="advance"') %>
