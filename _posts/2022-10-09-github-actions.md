@@ -3,7 +3,7 @@ layout: post
 title: "Github Actions. CI/CD basics"
 author: Yaroslav Shmarov
 tags: ruby-on-rails github-actions ci cd
-thumbnail: /assets/thumbnails/github.png
+thumbnail: /assets/thumbnails/github-actions-logo.png
 ---
 
 From my experience, here are some best practices when working on git with a team:
