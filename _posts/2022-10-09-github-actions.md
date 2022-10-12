@@ -124,6 +124,7 @@ It can later be accessed in the CI yaml file as `secrets.RAILS_MASTER_KEY` â¤µï¸
 This script works for me to install postgres, redis, run tests, re-run seeds.
 
 {% raw %}
+
 ```yml
 # .github/workflows/.tests.yml
 name: CI
@@ -193,6 +194,7 @@ jobs:
           # RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: bundle exec rails db:reset
 ```
+
 {% endraw %}
 
 Finally, here are example CI scripts from open source RoR projects:
