@@ -178,7 +178,7 @@ jobs:
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:password@localhost:5432/myapp_test
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          # RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: |
           bin/rails tailwindcss:build
           bin/rails db:create
@@ -189,7 +189,7 @@ jobs:
         env:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:password@localhost:5432/myapp_test
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          # RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: bundle exec rails db:reset
 ```
 
