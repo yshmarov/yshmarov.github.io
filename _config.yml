@@ -45,8 +45,6 @@ author:
 
 permalink: "/:title"
 
-google_analytics: UA-164140784-2
-
 pwa:
   enabled: true # Optional
   sw_src_filepath: service-worker.js # Optional
