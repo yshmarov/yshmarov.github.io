@@ -6,7 +6,7 @@ tags: ruby rails ruby-on-rails rolify
 thumbnail: /assets/thumbnails/ransack.png
 ---
 
-Let's say you assing User roles via Ransack.
+Let's say you assing User roles via Rolify.
 
 Example code for editing user roles:
 

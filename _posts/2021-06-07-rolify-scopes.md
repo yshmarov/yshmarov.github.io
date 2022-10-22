@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Role scopes with gem Ransack"
+title: "Role scopes with gem Rolify"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails rolify
 thumbnail: /assets/thumbnails/ransack.png
@@ -10,7 +10,7 @@ The magic of Rolify is not in just **assigning user roles**, but in assigning us
 
 Meaning, 2 different posts can easily have different **admins** and **moderators**.
 
-But Ransack has no default scopes to see all user with a role for a post, or all posts that a user has a role for.
+But Rolify has no default scopes to see all user with a role for a post, or all posts that a user has a role for.
 
 Here are some example relationship scopes that you can add to your models and fix the "problem":
 
