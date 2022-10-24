@@ -24,7 +24,7 @@ Here's how they can look in the `<head>` of an HMTL document:
 <%= favicon_link_tag 'thumbnail.png' %>
 <title>SupeRails</title>
 ```
-### 1. Ruby on Rails: without a gem
+### 1. Without a Ruby gem
 
 app/views/application.html.erb
 ```ruby
@@ -112,4 +112,5 @@ config/initializers/meta_tags.rb
   config.truncate_site_title_first = true
 ```
 
-* [example of implemenation on SupeRails](https://github.com/yshmarov/superails/commit/d489756cc1f1b181e90f86c909d5ba9ce113ff1b){:target="blank"}
+* [example implementation on insta2blog.com](https://github.com/yshmarov/insta2blog.com/commit/64d690a0e967027c87de13de8cb39113d28cf538){:target="blank"}
+* [example implemenation on SupeRails](https://github.com/yshmarov/superails/commit/d489756cc1f1b181e90f86c909d5ba9ce113ff1b){:target="blank"}
