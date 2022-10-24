@@ -16,6 +16,28 @@ Here's how you can convert `integer` to `hh:mm:ss`
 
 For example, follow along to see how to convert 54,234 seconds to hours, minutes, and seconds.
 
+### THE SHORT WAY
+
+```ruby
+def seconds_to_time(seconds)
+  # t = 236 # seconds
+  Time.at(seconds).utc.strftime('%H:%M:%S')
+  # => "00:03:56"
+end
+
+def time_to_seconds(time)
+  # t = '00:03:56'
+  h = time.split(':').first.to_f
+  m = time.split(':').second.to_f
+  s = time.split(':').third.to_f
+  tts = (h * 60 * 60) + (m * 60) + s
+  tts.to_i
+  # => 236
+end
+```
+
+### THE LONG WAY
+
 ```ruby
 # First, find the number of whole hours
 now = 54234
