@@ -63,6 +63,6 @@ with_hashtags(text)
 
 Here's the final result in my case: click hashtag -> refresh page with this hashtag in the search bar (search by hashtag):
 
-![search-by-hashtag](/assets/images/search-by-hashtag.gif)
+![search-by-hashtag](/assets/images/search-by-hashtag-lowres.gif)
 
 P.S. here is [the pull request](https://github.com/yshmarov/insta2blog.com/pull/49/files){:target="blank"} where I added this functionality to the app.
