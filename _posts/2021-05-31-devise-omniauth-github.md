@@ -90,6 +90,7 @@ views
   <%= current_user.uid %>
   <%= current_user.provider %>
 <% else %>
-  <%= link_to "Sign in with Github", omniauth_authorize_path(User, :github), method: :post, data: { disable_with: "Connecting..." } %>
+  <%= button_to 'Sign in with Github', omniauth_authorize_path(User, :github), method: :post, data: { turbo: 'false' } %>
+  <%#= button_to "Sign in with Github", omniauth_authorize_path(User, :github), method: :post, data: { disable_with: "Connecting..." } %>
 <% end %>
 ```
