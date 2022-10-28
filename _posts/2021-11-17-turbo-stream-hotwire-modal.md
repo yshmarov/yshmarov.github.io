@@ -124,7 +124,7 @@ end
 * A stimulus controller will do the job perfectly!
 
 ```js
-// app/controllers/click2hide_controller.js
+// app/javascript/controllers/click2hide_controller.js
 import { Controller } from "@hotwired/stimulus"
 
 // <div data-controller="click2hide">
