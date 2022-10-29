@@ -44,6 +44,16 @@ After that, (if appliable to you) set the billing address to the USA. That way y
 
 Additionally, a coupon code that was valid on 15-Oct-2022 was `DO10`. Feel free to try it too.
 
+### Prerequisites
+
+Before deploying, ensure that your app can run on linux. Otherwise you will get errors:
+
+```shell
+bundle lock --add-platform x86_64-linux --add-platform ruby
+```
+
+This command will add a line in your `Gemfile.lock`. Now commit these changes to git, and let's start!
+
 ### Deploy to App Platform
 
 DigitalOcean App Platform allows you to deploy and manage apps easily, nearly like Heroku.
