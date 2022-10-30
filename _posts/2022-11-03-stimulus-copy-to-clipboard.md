@@ -60,8 +60,3 @@ HTML:
 ```
 
 That's it!
-
-Share link:
-https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share
-
-https://github.com/Deanout/share_button
