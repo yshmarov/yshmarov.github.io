@@ -60,7 +60,6 @@ import SlimSelect from 'slim-select'
 import 'slim-select/dist/slimselect.css'
 // import "slim-select/dist/slimselect.min.css";
 
-
 // Connects to data-controller="slim-select"
 export default class extends Controller {
   static targets = ['field']
