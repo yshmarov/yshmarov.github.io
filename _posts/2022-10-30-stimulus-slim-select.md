@@ -152,6 +152,26 @@ or
 
 You can also try manually running `rails assets:precompile`, if you are not sure that the build happened 🤷
 
+### Better JS: without Stimulus `target`
+
+You don't really have to define the `target`, since we are adding the controller on the same element!
+
+```js
+  connect() {
+    this.select = new SlimSelect({
+      select: this.element
+    })
+  }
+  disconnect() {
+    this.select.destroy()
+  }
+```
+
+```diff
+-<%= form.select :user_id, User.pluck(:email, :id), {include_blank: true}, {data: { controller: 'slim', slim_target: 'field' } } %>
++<%= form.select :user_id, User.pluck(:email, :id), {include_blank: true}, {data: { controller: 'slim' } } %>
+```
+
 That's it!
 
 Resources:
