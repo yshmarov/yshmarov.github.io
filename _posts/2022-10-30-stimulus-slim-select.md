@@ -131,6 +131,13 @@ Finally, just add the `multiple: true` in the html options of the select field:
 
 If the CSS for the multiselect does not render, you can try including it in a stylesheet:
 
+```html
+<!-- app/views/layouts/application.html.erb -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.css" rel="stylesheet" crossorigin="" />
+```
+
+or
+
 ```ruby
 # app/views/layouts/application.html.erb
 <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.css", "data-turbo-track": "reload" %>
@@ -138,12 +145,12 @@ If the CSS for the multiselect does not render, you can try including it in a st
 
 or
 
-```html
-<!-- app/views/layouts/application.html.erb -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.css" rel="stylesheet" crossorigin="" />
+```css
+/* app/assets/stylesheets/application.css */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.1/slimselect.min.css");
 ```
 
-You can also try manually running `rails assets:precompile`, if you are not sure that the build happened. 🤷
+You can also try manually running `rails assets:precompile`, if you are not sure that the build happened 🤷
 
 That's it!
 
