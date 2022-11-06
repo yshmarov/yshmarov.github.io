@@ -40,6 +40,12 @@ After registration, you will have to add a credit card or PayPal to use the plat
 
 After that, (if appliable to you) set the billing address to the USA. That way you will not pay ±20% VAT.
 
+An example address:
+
+```html
+1601 Millersville Rd, Millersville, MD 21108, United States
+```
+
 ![do-2-address](assets/images/do-2-address.png)
 
 Additionally, a coupon code that was valid on 15-Oct-2022 was `DO10`. Feel free to try it too.
