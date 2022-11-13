@@ -6,7 +6,25 @@ tags: ruby-on-rails
 thumbnail: https://previews.123rf.com/images/dmitrymoi/dmitrymoi1609/dmitrymoi160900126/63675567-man-before-and-after-sports-cartoon-vector-illustration-diet-and-sport-fat-and-strong-character-fitn.jpg
 ---
 
-**TLDR:** add a few `--no` tags to your rails generators to produce only the crucial files:
+**TLDR 1:**
+
+You can disable scaffolds from generating certain files in your app config:
+
+```diff
+# config/application.rb
+module Myapp
+  class Application < Rails::Application
++    config.generators do |g|
++      g.assets false
++      g.helper false
++      g.test_framework false
++      g.jbuilder false
++    end
+  end
+end
+```
+
+**TLDR 2:** add a few `--no` tags to your rails generators to produce only the crucial files:
 
 `rails g controller home index --no-helper --no-assets --no-controller-specs --no-view-specs --no-test-framework`
 
