@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jekyll/minima
-  revision: 41b97699af658128fa9983e5312ca5516641f335
+  revision: 1e6da7df8e42e56f4506d78137b778bff36b2993
   specs:
     minima (2.5.1)
       jekyll (>= 3.5, < 5.0)
@@ -38,7 +38,7 @@ GEM
       rouge (~> 3.0)
       safe_yaml (~> 1.0)
       terminal-table (~> 1.8)
-    jekyll-feed (0.16.0)
+    jekyll-feed (0.17.0)
       jekyll (>= 3.7, < 5.0)
     jekyll-pwa-plugin (2.2.3)
     jekyll-remote-theme (0.4.3)
