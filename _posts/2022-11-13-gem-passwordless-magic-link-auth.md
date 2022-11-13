@@ -17,8 +17,6 @@ A passwordless authentication flow looks like this:
 
 I've implemented passwordless authentication in [insta2blog.com](https://insta2blog.com), and for now I am super happy with the solution 🚀. Feel free to try it out!
 
-[GIF]
-
 In a way this is a more secure authenication strategy, because there is no compromised password point of failure. It is as secure as your email account. 
 
 However to even start using this solution in production, you will need to set up [**sending emails in production**]({% post_url 2021-02-08-send-emails-in-production-amazon-ses %}).
