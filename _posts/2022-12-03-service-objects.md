@@ -80,4 +80,4 @@ user = User.first
 Posts::Publish.new(post, user).call
 ```
 
-That's it!
+That's it! 🎉🥳🍾
