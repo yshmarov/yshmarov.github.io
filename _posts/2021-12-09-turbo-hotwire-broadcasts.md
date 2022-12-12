@@ -9,26 +9,20 @@ thumbnail: /assets/thumbnails/turbo.png
 **Turbo Streams in Controller VS Broadcasts: When to use which?**
 
 Rule of thumb:
-* -> If you want to update the page when a user **INTERACTS** with it -> Streams in Controller
-* -> If you want to send updates to a page **WITHOUT user interaction** -> Broadcasts
-
-![Turbo Streams VS Broadcasts](/assets/images/stream-vs-broadcast.png)
-
-Example behavior:
-* Turbo Stream responce from **controller** - for current_user, when he does an action. Doesn't work in console.
-* Turbo Stream responce from **model** (broadcast) - global updates in realtime. Works in console.
+* -> If you want to send updates to a page **when a user INTERACTS with the page** (clicks something) -> HTTP Turbo Streams
+* -> If you want to send updates to a page **WITHOUT user interaction** -> Websocket Turbo Stream Broadcasts
 
 I would use broadcasts for:
 * live chat
-* "push" notification
+* "async" notification
 * live dashboards
 
 I would NOT use broadcasts for:
-* user-triggered CRUD updates (like a post, add a comment, edit a record)
+* user-triggered CRUD updates (like a post, add a comment, edit a record, search)
 
 ****
 
-The common way to trigger [turbo broadcasts](https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb#L39){:target="blank"} - with [ActiveRecordCallbacks](https://guides.rubyonrails.org/active_record_callbacks.html){:target="blank"} in a model.
+If you look at the [docs for turbo broadcasts](https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb#L39){:target="blank"}, the suggested way to trigger them are [ActiveRecordCallbacks](https://guides.rubyonrails.org/active_record_callbacks.html){:target="blank"} in a model.
 
 Callbacks to use:
 * `after_create_commit`
@@ -374,12 +368,12 @@ class Message < ApplicationRecord
     # broadcast_prepend_to [inbox, :messages], target: ActionView::RecordIdentifier.dom_id(inbox, :messages)
   end
 
-  after_destroy_commit do
+  after_update_commit do
     broadcast_update_to [inbox, :messages], target: self, partial: "messages/message", locals: { message: self }
   end
 
-  after_update_commit do
-    broadcast_update_to [inbox, :messages], target: self
+  after_destroy_commit do
+    broadcast_remove_to [inbox, :messages], target: self
   end
 end
 ```
@@ -427,5 +421,7 @@ Here's how [ActionView::RecordIdentifier](https://api.rubyonrails.org/v4.2.5/cla
 ```
 
 That's it!
+
+[Official Turbo/Broadcastable docs](https://www.rubydoc.info/gems/turbo-rails/0.5.2/Turbo/Broadcastable)
 
 Next, I hope to explore Broadcasts + Devise + Authorization
