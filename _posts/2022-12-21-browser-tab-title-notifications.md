@@ -14,7 +14,7 @@ Notice the different favicon (with a red circle), and the title text (with notif
 
 ### 1. Display Notifications count
 
-Assuming you have a `current_user` that `has_many :notifications`.
+Assuming you have a `current_user` that `has_many :notifications`. Notifications model has `seen:boolean, default: false`.
 
 You would need two separate favicons:
 
