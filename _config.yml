@@ -17,13 +17,9 @@ links_to_prev_next: true
 
 minima:
   skin: classic
-  # skin: dark
-  # skin: solarized-dark
   date_format: "%a, %b %-d, %Y"
   social_links:
-    - { platform: rss, user_url: "/feed.xml" }
     - { platform: github, user_url: "https://github.com/yshmarov/" }
-    - { platform: twitter, user_url: "https://twitter.com/yarotheslav" }
     - { platform: linkedin, user_url: "https://www.linkedin.com/in/yshmarov/" }
 
 plugins:
@@ -35,7 +31,7 @@ plugins:
 tagline: Ruby on Rails and Indie Hacking
 
 feed:
-  posts_limit: 100
+  posts_limit: 1000
 
 author:
   name: Yaroslav Shmarov

@@ -6,10 +6,10 @@ permalink: /about/
 
 ### Hi there 👋
 
-🧐 I'm Yaroslav from Ukraine, a Ruby and Rails developer building product MVPs and tutorials.
+🧐 I'm Yaroslav from Ukraine. I'm an experienced Ruby and Rails engineer with a passion of sharing knowledge.
 
-* 📺 [Superails.com](http://superails.com){:target="blank"} - Ruby on Rails screencasts by me
-* 📕 [Blog.corsego.com - My Ruby on Rails blog](https://blog.corsego.com){:target="blank"}
+* 📺 [Superails.com](http://superails.com){:target="blank"} - Modern Ruby on Rails screencasts by me
+* 📕 [Blog.corsego.com](https://blog.corsego.com){:target="blank"} - My Ruby on Rails blog
 
 ## Ruby on Rails Video courses by me:
 
@@ -22,10 +22,10 @@ permalink: /about/
 ## Ruby on Rails 6 boilerplate apps:
 
 * 💾 [Corsego](https://corsego.com){:target="blank"} - Ruby on Rails 6 e-Learning platform (Udemy clone)
-* 💾 [CorsegoSaaS](https://saas.corsego.com){:target="blank"} - Ruby on Rails row-based multitenancy SaaS template **JumpstartPRO alternative**
+* 💾 [CorsegoSaaS](https://saas.corsego.com){:target="blank"} - Ruby on Rails row-based multitenancy SaaS template 
 
 ## Contact:
 
-* [💬 Twitter: @yaro_the_slav](https://twitter.com/yarotheslav){:target="blank"}
+* [💬 Linkedin: @yshmarov](https://pl.linkedin.com/in/yshmarov){:target="blank"}
 * [💬 Github: @yshmarov](https://github.com/yshmarov/){:target="blank"}
-* [💬 Email (click to open in mail)](mailto:yashm@outlook.com)
+* [💬 Email (click to open in mail app)](mailto:yashm@outlook.com)
