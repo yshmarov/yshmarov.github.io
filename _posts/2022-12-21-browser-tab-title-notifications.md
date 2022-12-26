@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Browser tab notifications"
+title: "Browser tab title notifications"
 author: Yaroslav Shmarov
 tags: stimulusjs html rails
 thumbnail: /assets/thumbnails/linkedin-bell.png
@@ -96,20 +96,20 @@ export default class extends Controller {
 }
 ```
 
-### 3. Refresh without page reload?
+### 3. Refresh without page reload
 
-I tried broadcasting to other tabs / other users with turbo stream broadcasts. This would have allowed us to update browser tab title without user action. It did not work for me, most likely due to browser limitations.
+You can move the page title into a partial, and update it each time a new notification is created using Turbo Stream Broadcasts:
 
-I did something like this:
-
-```
-<%= turbo_stream_from (current_user, :global_notifications) %>
+```ruby
+<%#= turbo_stream_from (current_user, :global_notifications) %>
+<%= turbo_stream_from :global_notifications %>
 ```
 
 ```ruby
 # app/controllers/notifications_controller.rb
 @notification.save
-Turbo::StreamsChannel.broadcast_replace_to([current_user, :global_notifications],
+# Turbo::StreamsChannel.broadcast_replace_to([current_user, :global_notifications],
+Turbo::StreamsChannel.broadcast_replace_to(:global_notifications,
                                           target: 'page-title',
                                           partial: "shared/page_title")
 ```
