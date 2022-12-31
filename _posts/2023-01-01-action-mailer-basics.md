@@ -17,6 +17,17 @@ Use [`gem 'letter_opener'`](https://github.com/ryanb/letter_opener){:target="bla
   config.action_mailer.perform_deliveries = true
 ```
 
+If you still have an error `missing host to link to`, you can add this:
+
+```diff
+# app/config/development.rb
+require "active_support/core_ext/integer/time"
+
++ Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+
+Rails.application.configure do
+```
+
 ### 2. Mailer setup for `test`/`staging`
 
 You might want to test real email delivery in PR apps / staging.
