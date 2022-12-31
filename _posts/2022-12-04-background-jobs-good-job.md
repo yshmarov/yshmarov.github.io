@@ -14,6 +14,8 @@ Chapters:
 *"Background jobs"* or *"background workers"* are a very important concept in software development.
 You can create complete architecture based on tasks that will perform independently from the client side request-response cycle.
 
+Background jobs are often used for processing heavy tasks that take too long to perform during a typical web request. Additionally, you can use them when the user is not expecting an output immediately.
+
 Jobs can be scheduled to be processed:
 - As soon as there is resource capacity
 - Once, at a specific time
@@ -24,6 +26,9 @@ Example usecases:
 - Process importing of multiple records
 - Autogenerate & send daily/weekly/monthly reports
 - Schedule sending a reminder email 30 minutes before an event
+- Processing an image or a video after upload
+
+It is also normal for a job to trigger multiple jobs!
 
 **Real life scenario:** In my app [insta2blog.com](https://insta2blog.com/), I [use jobs](https://github.com/yshmarov/insta2blog.com/tree/main/app/jobs) to:
 1. Refresh Instagram bearer API tokens every 7 days (CRON)
