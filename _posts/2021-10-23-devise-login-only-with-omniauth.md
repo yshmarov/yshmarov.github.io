@@ -6,7 +6,7 @@ tags: ruby rails ruby-on-rails devise omniauth
 thumbnail: /assets/thumbnails/devise.png
 ---
 
-I don't recommend using omniathu without devise. Security. So here's how we set it up with devise.
+Sometimes when using Devise, we want to **disable email/password authentication**, and enable only omniauth. Here's how we can do it:
 
 ### 1. Initial setup
 
