@@ -10,7 +10,7 @@ Previously I've covered [Github omniauth with Devise]({% post_url 2021-05-31-dev
 
 An even **simpler** solution would be to sign in via a social login provider **without Devise** at all! Here's the easiest way to do it.
 
-First, add the [omniauth](https://github.com/omniauth/omniauth){:target="blank"} gems:
+First, add the [`gem omniauth`](https://github.com/omniauth/omniauth){:target="blank"} gems:
 
 ```ruby
 # Gemfile
@@ -18,11 +18,18 @@ gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 ```
 
-Add your social provider API credentials:
+If you are using Github omniauth, you can generate API credentials [**here**](https://github.com/settings/applications/new)
+
+For development environment you can use
+
+Homepage URL:
+`http://localhost:3000`
+Authorization callback URL
+`http://localhost:3000/auth/github/callback`
+
+Add your social provider API credentials to the Rails app:
 
 ```ruby
-# https://github.com/omniauth/omniauth
-# https://github.com/settings/applications/new
 # echo > config/initializers/omniauth.rb
 # config/initializers/omniauth.rb
 Rails.application.config.middleware.use OmniAuth::Builder do
