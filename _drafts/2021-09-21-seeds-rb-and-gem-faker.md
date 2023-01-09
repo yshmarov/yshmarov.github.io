@@ -1,3 +1,35 @@
+```ruby
+Faker::Internet.safe_email
+```
+
+### Attach a photo 
+
+```ruby
+has_one_attached :photo
+require "open-uri"
+
+require "open-uri" # at the top
+
+article = Article.new(title: 'NES', body: "A great console")
+file = URI.open('https://giantbomb1.cbsistatic.com/uploads/original/9/99864/2419866-nes_console_set.png')
+article.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+
+require 'open-uri'
+50.times do
+  user = Upload.create!(
+  email: Faker::Internet.safe_email,
+  password: '123123', # needs to be 6 digits,
+  # add any additional attributes you have on your model
+)
+  file = URI.open('https://thispersondoesnotexist.com/image')
+  user.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
+end
+
+User.last.photo.attached?
+```
+
+****
+
 http://blog.magmalabs.io/2019/11/25/best-practices-using-rails-seeds.html
 https://edgeguides.rubyonrails.org/active_record_migrations.html#migrations-and-seed-data
 https://github.com/rormvp/tourreise-core/tree/develop/db
