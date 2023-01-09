@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Social log in with Github without Devise (Omniauth)"
+title: "Omniauth without Devise"
 author: Yaroslav Shmarov
 tags: ruby-on-rails devise omniauth github
 thumbnail: /assets/thumbnails/devise.png
 ---
 
-Previously I've covered [Github omniauth with Devise](https://blog.corsego.com/devise-omniauth-github), and [only github omniauth with Devise (without email-based registration)](https://blog.corsego.com/devise-login-only-with-omniauth).
+Previously I've covered [Github omniauth with Devise]({% post_url 2021-05-31-devise-omniauth-github %}){:target="blank"}, and [only github omniauth with Devise (without email-based registration)]({% post_url 2021-10-23-devise-login-only-with-omniauth %}){:target="blank"}.
 
-An even **learner** solution would be to sign in via a social login provider **without Devise** at all! Here's the easiest way to do it.
+An even **simpler** solution would be to sign in via a social login provider **without Devise** at all! Here's the easiest way to do it.
 
-First, add the [omniauth](https://github.com/omniauth/omniauth) gems:
+First, add the [omniauth](https://github.com/omniauth/omniauth){:target="blank"} gems:
 
 ```ruby
 # Gemfile
