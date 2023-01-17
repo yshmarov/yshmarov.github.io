@@ -18,7 +18,7 @@ gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 ```
 
-If you are using Github omniauth, you can generate API credentials [**here**](https://github.com/settings/applications/new)
+If you are using Github omniauth, you can generate API credentials [**here**](https://github.com/settings/applications/new){:target="blank"}
 
 For development environment you can use
 
