@@ -82,7 +82,7 @@ json.map { |element| element['title'] }
 #  "Ruby on Rails #99 Hotwire: Search and Infinite Pagination (Ransack with Pagy)"]
 
 json.first['title'] = 'New title'
-# write
+# write to the json file
 File.write(path, JSON.dump(data))
 ```
 

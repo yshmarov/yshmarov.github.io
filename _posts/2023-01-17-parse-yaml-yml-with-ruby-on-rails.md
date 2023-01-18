@@ -65,11 +65,15 @@ You can parse this data (convert it into a Hash or Array) using Ruby on Rails **
 
 ```ruby
 require 'yaml'
-path = "/Users/yaroslavshmarov/Documents/GitHub.nosync/superails-episodes.yml"
+path = "/Users/yaroslavshmarov/Downloads/superails-episodes.yml"
 @episodes = YAML::load File.open(path)
 
 @episodes.first.fetch('title')
 # => "Ruby on Rails #103 Simple Omniauth without Devise"
+
+# write to the yaml file
+@episodes.first['title'] = 'New title'
+File.write(path, @episodes.to_yaml)
 ```
 
 Source: [Ruby YAML docs](https://ruby-doc.org/stdlib-2.5.1/libdoc/yaml/rdoc/YAML.html){:target="blank"}
