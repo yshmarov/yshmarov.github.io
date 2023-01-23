@@ -41,7 +41,7 @@ Geocoder::Calculations.geographic_center([ua.first.coordinates, fr.first.coordin
 # => [50.51223060957045, 16.201193185230583]
 ```
 
-### Debug current HTTP request
+### Find location from HTTP request
 
 You can get the current web requests country/ip/etc.
 
@@ -49,7 +49,6 @@ You can use it, for example, to [geoblock countries like Ruzzia]({% post_url 202
 
 ```ruby
 # controller or view
-request.location
 request.location
 request.location.try(:country)
 # request.ip
@@ -169,7 +168,24 @@ ne_corner = [36.12, 88.65]
 Location.within_bounding_box(sw_corner, ne_corner)
 ```
 
-### Search locations near
+For example, here's how you can list all **nearby** locations within 10km/10mi from current location, and exact **distance** to them:
+
+```ruby
+# app/views/locations/show.html.erb
+<% @location.nearbys(10).each do |location| %>
+  <%= location.name %>
+  <b>Distance:</b>
+  <%= location.distance_to(@location).round(2) %>
+  <%= Geocoder.config.units.to_s %>
+  <br>
+<% end %>
+```
+
+Result:
+
+![geocoder-nearby-locations.png](/assets/images/geocoder-nearby-locations.png)
+
+### Search locations near address
 
 Having a search for for `place` and `distance`, you can find relevant Locations. This can be a vital feature when building a website like AirBnB or Booking.com.
 
@@ -201,6 +217,10 @@ end
 <% end %>
 ```
 
+Result:
+
+![geocoder-search-near.png](/assets/images/geocoder-search-near.png)
+
 ### Display coordinates on static map
 
 To display a market on a static image map, you would need to connect a places API.
@@ -216,6 +236,10 @@ From the above, I've tried only Mapbox. As long as you receive a Mapbox API key,
 ```ruby
 <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/pin-s+ff2700(#{location.longitude},#{location.latitude})/#{location.longitude},#{location.latitude},13,0/300x200?access_token=#{Rails.application.credentials.dig(:mapbox_key)}" %>
 ```
+
+Result:
+
+![geocoder-mapbox-static-map.png](/assets/images/geocoder-mapbox-static-map.png)
 
 There's much more that we can do with coordinates. In the future I hope to explore:
 * gem Mapkick for displaying multiple Locations on a responsive map
