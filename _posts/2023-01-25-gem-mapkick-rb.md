@@ -42,17 +42,13 @@ Basic map with multiple options:
             refresh: 60 %>
 ```
 
-Result:
+Result - display a marker on draggable map:
 
 ![mapbox-map-all-params](/assets/images/mapbox-map-all-params.png)
 
 ### HTML tooltips
 
-Map with clickable links to locations:
-
-![mapbox-map-clickable-link](/assets/images/mapbox-map-clickable-link.png)
-
-Create a helper with a link:
+Create a helper with a link to the `location` page:
 
 ```ruby
 # app/helpers/locations_helper.rb
@@ -78,6 +74,10 @@ Render the helper method in the tooltip param:
              tooltips: { hover: false, html: true} %>
 ```
 
+Result - map with clickable links to locations:
+
+![mapbox-map-clickable-link](/assets/images/mapbox-map-clickable-link.png)
+
 ### Display multiple locations on the map, JSON
 
 For this, the best way will be to render `/locations.json`:
@@ -96,13 +96,13 @@ json.tooltip html_link_to_location(location)
 // json.tooltip "#{html_link_to_location(location)} <br> #{location.address}"
 ```
 
-Result:
+Result - `@locations` is rendered from `app/views/locations/index.json.jbuilder`:
 
 ![mapbox-map-multiple-locations](/assets/images/mapbox-map-multiple-locations.png)
 
-### With search params
+### JSON with search params
 
-In this final example, we will factor in having a search form for `place` and `distance`. The maps' `zoom` will be smaller/higher based on the maximum search `distance`:
+In this final example, we will factor in having a search form for `place` and `distance`. Bigger distance -> smaller `zoom`:
 
 ```ruby
 # app/controllers/locations_controller.rb
@@ -113,7 +113,7 @@ class LocationsController < ApplicationController
   def index
     if params[:place].present?
       @locations = Location.near(params[:place], params[:distance] || 10, order: :distance)
-      # this!
+      # distance 10 km => zoom 13x; distance 100 km => zoom 10x;
       @zoom = params[:distance].eql?('10') ? 13 : 10
     else
       @locations = Location.all
