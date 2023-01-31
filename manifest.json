@@ -1,12 +1,12 @@
 {
-  "name": "RoR TLDR",
-  "short_name": "SupeRails blog: RoR TLDR",
+  "name": "SupeRails",
+  "short_name": "SupeRails Tricks",
   "start_url": "/",
   "scope": "/",
   "display": "fullscreen",
   "background_color": "#fff",
   "theme_color": "#3367D6",
-  "description": "Ruby on Rails TLDR articles, Tips & Tricks.",
+  "description": "Ruby on Rails tips and tricks",
   "lang": "en",
   "orientation": "portrait",
   "icons": [
