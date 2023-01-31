@@ -84,3 +84,5 @@ P.S. If for some reason some of your commits are anonymous, you will want to run
 git config --global user.name "Yaro"
 git config --global user.email yshmarov@gmail.com
 ```
+
+### Still confused? See me perform all these steps [**live on youtube**](https://youtube.com/watch?v=q-90GlLPBBI&t=1100&si=EnSIkaIECMiOmarE){:target="blank"}
