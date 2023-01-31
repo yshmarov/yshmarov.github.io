@@ -102,7 +102,7 @@ Result - `@locations` is rendered from `app/views/locations/index.json.jbuilder`
 
 ### JSON with search params
 
-In this final example, we will factor in having a search form for `place` and `distance`. Bigger distance -> smaller `zoom`:
+In this final example, we will factor in having a search form for `place` and `distance`:
 
 ```ruby
 # app/controllers/locations_controller.rb
@@ -114,7 +114,7 @@ class LocationsController < ApplicationController
     if params[:place].present?
       @locations = Location.near(params[:place], params[:distance] || 10, order: :distance)
       # distance 10 km => zoom 13x; distance 100 km => zoom 10x;
-      @zoom = params[:distance].eql?('10') ? 13 : 10
+      # @zoom = params[:distance].eql?('10') ? 13 : 10
     else
       @locations = Location.all
     end
@@ -131,8 +131,59 @@ Be sure to add the query params to the path in the view:
 <%= js_map locations_path(format: :json, place: params[:place], distance: params[:distance]), zoom: @zoom %>
 ```
 
-Result - smaller/bigger map zoom based on search params:
+Result - show only location within set `distance` from geocoded coordinates of `place`:
 
 ![geocoder-search-zoom](/assets/images/geocoder-search-zoom.gif)
+
+### Bonus: Search for locations that offer a specific product
+
+Business problem #1: Find *hotels* that have a *SPA*
+
+Business problem #2: Find *hotels* that have a *Massage*
+
+Here we are solving the problem: *"find all parents with children that have a particular attribute"*.
+
+In the below example `location has_many :products` && `Product.name = String`.
+
+Add `product_name` search field:
+
+```ruby
+<%= form_with url: locations_path, method: :get do |form| %>
+  <%= form.text_field :product_name, value: params[:product_name] %>
+  <%= form.text_field :place, value: params[:place] %>
+  <%= form.select :distance, [10, 100], selected: params[:distance] %>
+  <%= form.submit %>
+<% end %>
+```
+
+Find locations that have product you are searching for:
+
+```ruby
+# app/controllers/locations_controller.rb
+  def index
+    locations = Location.joins(:products).includes(:products) # initially select only locations that have products
+
+    if params[:product_name].present?
+      products = Product.where('name ILIKE ?', "%#{params[:product_name]}%")
+      location_ids = products.select(:location_id).distinct
+      locations = locations.where(id: location_ids)
+    end
+
+    if params[:place].present?
+      locations = locations.near(params[:place], params[:distance] || 10, order: :distance)
+    end
+    @locations = locations
+  end
+```
+
+Don't forget to add `product_name: params[:product_name]` to the JSON map path:
+
+```ruby
+<%= js_map locations_path(format: :json, place: params[:place], product_name: params[:product_name], distance: params[:distance]) %>
+```
+
+Result: find locations that offer a specific product/service:
+
+![search-by-child.gif](/assets/images/search-by-child.gif)
 
 That's it! Now you can build your own AIRNBN search frontend!
