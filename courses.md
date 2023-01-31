@@ -28,7 +28,7 @@ In my code-along courses I try to show the process of creating a complex Web App
 - 📕 20 hours of content, 18 chapters and 200 lectures.
 - **4000+ students already enrolled!**
 - 👀 [Live demo (corsego.com)](https://corsego.com){:target="blank"}
-- 🤑 [>Buy here<](https://gumroad.com/l/ror6saas){:target="blank"}
+- 🤑 [>Buy here<](https://www.udemy.com/course/2519558/?referralCode=4721E9D437DEE1734159){:target="blank"}
 
 ### 3. [Complete guide to Stripe Payments and Subscriptions with Ruby on Rails](https://www.udemy.com/course/complete-guide-to-payments-with-ruby-on-rails-stripe-api/?referralCode=41A5A2FC554CFE261894){:target="blank"}
 
