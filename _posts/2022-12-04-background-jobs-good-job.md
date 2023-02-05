@@ -196,9 +196,18 @@ end
 
 ### 4. Production
 
+#### Digital Ocean App Platform
+
 If you are using Digital Ocean App platform, inside your app `Create Resource From Source Code` with the same source repository as your main one, but the type should be `Worker`.
 
-Run command should be:
+Run Command for your **Web app**:
+
+```shell
+bin/rails db:migrate:with_data
+rails server -p $PORT -e ${RAILS_ENV:-production}
+```
+
+Run Command for your **Worker**:
 
 ```shell
 bundle exec good_job start --max-threads=8
@@ -207,5 +216,17 @@ bundle exec good_job start --max-threads=8
 ![digitalocean-good-job-worker](/assets/images/digitalocean-good-job-worker.png)
 
 Don't forget to all all the same ENV VARS, like `RAILS_MASTER_KEY`, `DATABASE_URL` as you would for your normal Rails app. After deploying, it should start working!
+
+#### Heroku
+
+Procfile:
+
+```shell
+web: bundle exec rails s
+worker: bundle exec good_job start
+release: bin/rails db:migrate:with_data
+```
+
+After adding a procfile and deploying to heroku, it will create a worker resource in `https://dashboard.heroku.com/apps/myapp/resources`. You might need to upgrade it to a paid $7/mo dyno for it to work.
 
 That's it! 🎉🥳🍾
