@@ -117,7 +117,7 @@ Rails.application.configure do
 end
 ```
 
-### GoodJob GUI Dashboard
+### 3. GoodJob GUI Dashboard
 
 You can monitor all past and scheduled jobs in a web GUI. To do so, add the route: 
 
@@ -149,7 +149,7 @@ http_auth:
   password: 123
 ```
 
-### Schedule automatic recurring jobs (CRON)
+### 4. Schedule automatic recurring jobs (CRON)
 
 CRON - 5 `* * * * *` symbols that represent a recurring period. For example:
 * *2 times a month on Wednesday at 13:45*
@@ -181,7 +181,7 @@ Rails.application.configure do
 end
 ```
 
-### Log errors
+### 5. Log errors
 
 ```diff
 # config/initializers/good_job.rb
@@ -194,9 +194,9 @@ end
 +  config.good_job.on_thread_error = -> (exception) { Sentry.capture_exception(exception) }
 ```
 
-### 4. Production
+### 6. Production
 
-#### Digital Ocean App Platform
+#### 6.1. Digital Ocean App Platform
 
 If you are using Digital Ocean App platform, inside your app `Create Resource From Source Code` with the same source repository as your main one, but the type should be `Worker`.
 
@@ -217,7 +217,7 @@ bundle exec good_job start --max-threads=8
 
 Don't forget to all all the same ENV VARS, like `RAILS_MASTER_KEY`, `DATABASE_URL` as you would for your normal Rails app. After deploying, it should start working!
 
-#### Heroku
+#### 6.2. Heroku
 
 Procfile:
 
@@ -228,5 +228,7 @@ release: bin/rails db:migrate:with_data
 ```
 
 After adding a procfile and deploying to heroku, it will create a worker resource in `https://dashboard.heroku.com/apps/myapp/resources`. You might need to upgrade it to a paid $7/mo dyno for it to work.
+
+![good job worker on heroku](/assets/images/good-job-heroku.png)
 
 That's it! 🎉🥳🍾
