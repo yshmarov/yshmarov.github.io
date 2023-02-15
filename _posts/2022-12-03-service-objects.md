@@ -59,14 +59,14 @@ module Posts
     def call
       return unless callable?
 
-      @post.update(user: @user)
-      @post.published!
+      post.update(user:)
+      post.published!
     end
 
     private
 
     def callable?
-      !@post.published?
+      !post.published?
     end
   end
 end
