@@ -25,12 +25,12 @@ Minimalistic Database representation:
 
 ### Example: Spotify subscription
 
-In this case a user can buy a  `premium` subscription for `$12,11` for a limited time `1 month` to `remove adds`.
+In this case a user can buy a  `premium` subscription for `$9,99` for a limited time `1 month` to **remove adds**.
 
 Here's how it will work:
 
-```
-# user.rb
+```ruby
+# app/models/user.rb
 
 #  email      :string
 #  ends_at    :datetime
@@ -38,7 +38,7 @@ Here's how it will work:
 def premium_price
   # how much to charge for postponing ends_at
   # always keep money in integer. last 2 digits are cents
-  1299.to_i 
+  999.to_i 
 end
 
 def premium_interval
@@ -57,8 +57,8 @@ def show_annoying_adds?
 end
 ```
 
-```
-# charge.rb
+```ruby
+# app/models/charge.rb
 
 # user_id     :integer
 # amount      :integer # to track how much was paid at this moment of time
@@ -66,8 +66,8 @@ end
 belongs_to :user
 ```
 
-```
-# charges_controller.rb
+```ruby
+# app/controllers/charges_controller.rb
 
 def create
   @charge.amount = current_user.premium_price
