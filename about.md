@@ -34,6 +34,8 @@ Yaroslav profecitently speaks seven languages:
 * [💬 Github: @yshmarov](https://github.com/yshmarov/){:target="blank"}
 * [💬 Email (click to open in mail app)](mailto:yashm@outlook.com)
 
+<img src="/assets/static-pages/shmarov-family.jpg" alt="yaro-avatar" style="max-width:400px;"/>
+
 <img src="/assets/static-pages/yaro-avatar.png" alt="yaro-avatar" style="max-width:400px;"/>
 
 <img src="/assets/static-pages/yaro-cindy.jpg" alt="yaro-cindy" style="max-width:400px;"/>
