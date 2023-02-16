@@ -8,7 +8,11 @@ thumbnail: /assets/thumbnails/users-online-symbol.png
 
 It's amazing that now you can add advanced javascript/websockets features like "Live visitor count" without writing a single extra line of javascript!
 
-A "live visitor count" feature can give users a "you are not alone" feeling. For example, when watching a live stream on youtube:
+A "live visitor count" feature can give users a "you are not alone" feeling. For example, when browsing a Reddit post:
+
+![reddit-people-here-feature.gif](/assets/images/reddit-people-here-feature.gif)
+
+Or when watching a live stream on youtube:
 
 ![youtube-watching-now-count.png](/assets/images/youtube-watching-now-count.png)
 
