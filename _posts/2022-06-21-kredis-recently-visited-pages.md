@@ -7,8 +7,8 @@ thumbnail: /assets/thumbnails/redis.png
 ---
 
 Final result:
-* whenever you visit a movie page, it will be added to "recently visited movies" list
-* 5 last visited movies will be saved in the list
+* whenever you visit a movie page, it will be added to "recently opened movie pages" list
+* 5 last opened movies will be saved in the list
 * list is unique for each user
 
 ![kredis-recently-viewed.gif](/assets/images/kredis-recently-viewed.gif)
@@ -52,7 +52,7 @@ Install kredis:
 ./bin/rails kredis:install
 ```
 
-### 2. recently visited pages with Kredis
+### 2. recently opened pages with Kredis
 
 `Kredis.unique_list` is basically an array with a max number of elements:
 
@@ -90,7 +90,8 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     current_user.recent_movies.prepend(@movie.id)
-    # current_user.recent_movies.remove(current_user.recent_movies.elements) # clear array
+    # current_user&.recent_movies.clear # clear array
+    # current_user.recent_movies.remove(current_user.recent_movies.elements) # stupid clear array
   end
 end
 ```
@@ -98,7 +99,7 @@ end
 Display the list:
 
 ```ruby
-# app/views/users/_recently_visited_movies.html.erb
+# app/views/users/_recently_opened_movies.html.erb
 <% current_user.recent_movies.elements.each do |movie| %>
   <% movie = Movie.find(movie) %>
   <%= link_to movie.title, movie_path(movie) %>
