@@ -85,11 +85,13 @@ Here are some example usecases that come to my mind:
 - ✅ user preferences - light/dark mode `kredis_hash`
 - ✅ "saved" search filter (url params) `kredis_string`
 - ✅ maximum free page visits without login `kredis_integer`
-- 🤔 users online `kredis_list`?
+- ✅ users online `kredis_list`
 - 🤔 multistep form progress?
 - 🤔 cookies preferences?
-- 🤔 sidebar counts?
 - 🤔 temporary computations?
+- 🤔 API call results that can be reused between requests?
+- 🤔 CACHING - sidebar counters?
+- 🤔 CACHING - database rows
 - 🤔 whatever you would store in the session/cookies?
 
 ### Cool projects using Kredis:
