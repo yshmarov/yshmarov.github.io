@@ -1,50 +1,10 @@
 ---
 layout: post
-title: "Gem Kredis #3 - recently search results"
+title: "Recent search history with Kredis"
 author: Yaroslav Shmarov
 tags: ruby-on-rails redis kredis
 thumbnail: /assets/thumbnails/redis.png
 ---
-
-### Example 2: Latest search results
-
-Add a form to search for a post by name:
-
-```ruby
-# app/views/posts/index.html.erb
-<%= form_with url: posts_path, method: :get do |form| %>
-  <%= form.search_field :query %>
-<% end %>
-
-<% current_user.recent_searches.elements.each do |query| %>
-  <%= link_to query, root_path(query: query) %>
-<% end %>
-
-<%= params[:query] %>
-```
-
-Next, associate a Redis entity of `kredis_unique_list` with the `user.rb` model:
-
-```ruby
-# user.rb
-  kredis_unique_list :recent_searches, limit: 5
-```
-
-When there is a search, save the search params to `current_user.recent_searches`. `prepend` will add it at the top of the list:
-
-```ruby
-# app/controllers/posts_controller.rb
-def index
-  @posts = if params[:query].present?
-              Post.where(name: params[:query])
-            else
-              Post.all
-            end
-  current_user.recent_searches.prepend(params[:query]) if params[:query].present?
-end
-```
-
-Recently visited pages
 
 ### Example 2: user preferences
 

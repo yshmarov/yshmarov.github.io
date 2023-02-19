@@ -24,7 +24,7 @@ Feature description:
 
 **Implementation**:
 
-First, add `recent_searches` kredis attribute to User model:
+First, associate a Redis entity of `kredis_unique_list` with the `user.rb` model:
 
 ```ruby
 # app/models/user.rb
@@ -43,17 +43,17 @@ Add a search form:
 <% end %>
 ```
 
-If the form was submitted, add the latest search result to the list:
+When there search form is submitted, save the search params to `current_user.recent_searches`. `prepend` will add it at the top of the list:
 
 ```ruby
 # app/controllers/posts_controller.rb
 def index
-  if params[:query]
-    @posts = Post.where('title ILIKE ?', "%#{params[:query]}%").order(created_at: :desc)
-    current_user.recent_searches.prepend(params[:query]) # THIS
-  else
-    @posts = Post.all.order(created_at: :desc)
-  end
+  @posts = if params[:query].present?
+            Post.where(name: params[:query])
+            current_user.recent_searches.prepend(params[:query]) if params[:query].present?
+           else
+             Post.all
+           end
 end
 ```
 
