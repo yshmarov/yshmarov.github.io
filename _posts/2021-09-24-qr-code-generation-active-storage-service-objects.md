@@ -15,8 +15,8 @@ Flow:
 
 Tools:
 
-* [gem rqrcode](https://github.com/whomwah/rqrcode)
-* [ActiveStorage](https://edgeguides.rubyonrails.org/active_storage_overview.html)
+* [gem rqrcode](https://github.com/whomwah/rqrcode){:target="blank"}
+* [ActiveStorage](https://edgeguides.rubyonrails.org/active_storage_overview.html){:target="blank"}
 * Url Helpers
 * Storage & Temp files
 * Service Objects
@@ -49,7 +49,6 @@ app/models/product.rb
 console
 ```ruby
 mkdir app/services
-echo > app/services/application_service.rb
 echo > app/services/generate_qr.rb
 ```
 

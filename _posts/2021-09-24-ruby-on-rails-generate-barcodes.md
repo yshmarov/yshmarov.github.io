@@ -12,6 +12,7 @@ Imagine if you could generate a barcode for each of your products... Well, that'
 focused on QR codes.
 
 Final result with both Barcodes and QR for each product:
+
 ![barcode and qr in a rails app](/assets/images/barcode-and-qr.png)
 
 **There difference between generating QRcodes and BARcodes is very minor.**
