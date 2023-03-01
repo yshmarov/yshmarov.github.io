@@ -40,7 +40,7 @@ app/models/product.rb
 
   after_create :generate_qr
   def generate_qr
-    GenerateQr.call(self)
+    GenerateQrService.new(self).call
   end
 ```
 
@@ -53,18 +53,9 @@ echo > app/services/application_service.rb
 echo > app/services/generate_qr.rb
 ```
 
-app/services/application_service.rb
+app/services/generate_qr_service.rb
 ```ruby
-class ApplicationService
-  def self.call(*args, &block)
-    new(*args, &block).call
-  end
-end
-```
-
-app/services/generate_qr.rb
-```ruby
-class GenerateQr < ApplicationService
+class GenerateQrService
   attr_reader :product
 
   def initialize(product)
@@ -107,19 +98,12 @@ class GenerateQr < ApplicationService
     # name the image
     image_name = SecureRandom.hex
 
-    # save the image in TMP
-    image = IO.binwrite("tmp/storage/#{image_name}.png", qr_png.to_s)
-
-    # save TMP file to ActiveStorage
-    # blob = ActiveStorage::Blob.create_after_upload!(
-    blob = ActiveStorage::Blob.create_and_upload!(
-      io: File.open("tmp/storage/#{image_name}.png"),
-      filename: image_name,
-      content_type: 'png'
+    # attach the generated image object
+    product.qr_code.attach(
+      io: StringIO.new(qr_png.to_s),
+      filename: "#{image_name}.png",
+      content_type: "image/png"
     )
-
-    # attach ActiveStorage::Blob to the product
-    product.qr_code.attach(blob)
   end
 end
 ```
@@ -135,9 +119,28 @@ app/views/products/_product.html.erb
 
 ### OTHER THOUGHTS & NOTES
 
+Previously, before using `StringIO`, I would save the file locally, upload it to storage, and later attach it:
+
+```ruby
+# save the image in TMP
+image = IO.binwrite("tmp/storage/#{image_name}.png", qr_png.to_s)
+
+# save TMP file to ActiveStorage
+# blob = ActiveStorage::Blob.create_after_upload!(
+blob = ActiveStorage::Blob.create_and_upload!(
+  io: File.open("tmp/storage/#{image_name}.png"),
+  filename: image_name,
+  content_type: 'png'
+)
+
+# attach ActiveStorage::Blob to the product
+product.qr_code.attach(blob)
+```
+
 What if we write not to `tmp/storage/..`, but to Tempfile?
 
-```
+
+```ruby
 file = Tempfile.new(['hello', '.jpg'])
 file.path  # => something like: "/tmp/foo2843-8392-92849382--0.jpg"
 

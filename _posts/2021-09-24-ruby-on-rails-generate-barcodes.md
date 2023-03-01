@@ -8,7 +8,7 @@ thumbnail: /assets/thumbnails/barcode.png
 
 Imagine if you could generate a barcode for each of your products... Well, that's easy!
 
-[The previous post]({% post_url 2021-09-24-qr-code-generation-active-storage-service-objects %})
+[The previous post]({% post_url 2021-09-24-qr-code-generation-active-storage-service-objects %}){:target="blank"}
 focused on QR codes.
 
 Final result with both Barcodes and QR for each product:
@@ -16,7 +16,7 @@ Final result with both Barcodes and QR for each product:
 
 **There difference between generating QRcodes and BARcodes is very minor.**
 
-But for Barcodes we will use another gem - [https://github.com/toretore/barby](https://github.com/toretore/barby).
+But for Barcodes we will use another gem - [https://github.com/toretore/barby](https://github.com/toretore/barby){:target="blank"}.
 
 We generated QR codes for the product URL. We will generate Barcodes for the product name.
 
@@ -34,22 +34,13 @@ app/models/product.rb
 
   after_create :generate_code
   def generate_code
-    GenerateBarcode.call(self)
+    GenerateBarcodeService.new(self).call
   end
 ```
 
-app/services/application_service.rb
+app/services/generate_barcode_service.rb
 ```ruby
-class ApplicationService
-  def self.call(*args, &block)
-    new(*args, &block).call
-  end
-end
-```
-
-app/services/generate_barcode.rb
-```ruby
-class GenerateBarcode < ApplicationService
+class GenerateBarcodeService
   attr_reader :product
 
   def initialize(product)
