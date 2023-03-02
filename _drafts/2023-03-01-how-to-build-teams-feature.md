@@ -50,6 +50,9 @@ class ProjectsController < ApplicationController
     email = params[:email]
     return redirect_to tenant_path(current_tenant), alert: 'No email proided' if email.blank?
 
+    email_regex = URI::MailTo::EMAIL_REGEXP
+    return redirect_to tenant_path(@current_tenant), alert: 'Invalid email' unless email_regex.match?(email)
+
     user = User.find_by(email:) || User.invite!({ email: }, current_user)
     return redirect_to tenant_path(current_tenant), alert: 'Email invalid' unless user.valid?
 
