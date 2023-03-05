@@ -28,6 +28,12 @@ Yaroslav profecitently speaks seven languages:
 * Blogpost on Bearer.com: [Infinite scrolling pagination with Rails, Hotwire, and Turbo](https://www.bearer.com/blog/infinite-scrolling-pagination-hotwire){:target="blank"}
 * Blogpost on Bearer.com: [How to build modals with Hotwire (Turbo Frames + StimulusJS)](https://www.bearer.com/blog/how-to-build-modals-with-hotwire-turbo-frames-stimulusjs){:target="blank"}
 
+### Beliefs. Life, love, death
+
+* Is life worth living, if you have nothing to die for? When I was a kid, I dreamt of living forever and thought that there's nothing more important than life. My life. Now, as a husband, parent and citizen of a country fighting for survival, I have grown up. I believe that freedom, love and family are more important than life. There are things worth dying for. That makes life worth living.
+* Without knowing of death you wouldn't value the time you were given to live.
+* Sacrificing freedom for "peace" is the path to slavery. That's why we fight. Stand with Ukraine.
+
 ## Contact:
 
 * [💬 Linkedin: @yshmarov](https://pl.linkedin.com/in/yshmarov){:target="blank"}
