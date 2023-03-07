@@ -70,5 +70,6 @@ body.dark {
 }
 ```
 
-Next step - 
-[Editing your css for dark mode (Stackoverflow)](https://stackoverflow.com/questions/64960915/change-css-colors-based-on-body-class-dark-mode/64960981#64960981){:target="blank"}
+Next steps:
+* [Editing your css for dark mode (Stackoverflow)](https://stackoverflow.com/questions/64960915/change-css-colors-based-on-body-class-dark-mode/64960981#64960981){:target="blank"}
+* [Dark mode with TailwindCSS](https://tailwindcss.com/docs/dark-mode){:target="blank"}
