@@ -8,36 +8,44 @@ tags:
 thumbnail: https://previews.123rf.com/images/arcady31/arcady311011/arcady31101100012/8157731-404-error-sign.jpg
 ---
 
+It is often easy to distinguish a Rails app by going to `/404` or `/500`. You know this screen, right?
+
+![rails-default-error-page](/assets/images/rails-default-error-page.png)
+
 When you create a new rails app, error pages like `404` and `500` are automatically created and kept in `public` folder.
 
-At some point of time, you will what to integrate these pages into your app and style them. Here's how you can integrate them into your MVC structure:
+At some point of time, you will what to integrate these pages into your app and style them, like I did here:
 
-console
+![styled-error-page](/assets/images/styled-error-page.png)
 
-```
+Here's how you can integrate the error pages into your app:
+
+```shell
+# terminal
 rails g controller errors not_found internal_server_error --no-helper --no-assets --no-controller-specs --no-view-specs --no-test-framework
 rm public/{404,500}.html
 echo > app/views/layouts/errors.html.erb
 ```
 
-application.rb
+`app/config/application.rb`:
 
-```
+```ruby
 config.exceptions_app = self.routes
 ```
 
-routes.rb
+`app/config/routes.rb`:
 
-```
+```ruby
 match "/404", via: :all, to: "errors#not_found"
 match "/500", via: :all, to: "errors#internal_server_error"
 ```
 
-errors_controller.rb
+`app/views/controllers/errors_controller.rb`:
 
-```
-class ErrorsController < ApplicationController
-  skip_before_action :authenticate_user!
+```ruby
+# class ErrorsController < ApplicationController
+#   skip_before_action :authenticate_user!
+class ErrorsController < ActionController::Base
 
   def not_found
     render status: 404
@@ -49,9 +57,9 @@ class ErrorsController < ApplicationController
 end
 ```
 
-layouts/errors.html.erb
+`app/views/layouts/errors.html.erb`
 
-```
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -70,10 +78,10 @@ layouts/errors.html.erb
 </html>
 ```
 
-internal_server_error.html.erb
+`app/views/errors/internal_server_error.html.erb`:
 
-```
-<center class="container">
+```html
+<div class="text-center">
   <br>
   <h2>
     500
@@ -85,13 +93,13 @@ internal_server_error.html.erb
   </b>
   <hr>
   <%= link_to "Back", root_path %>
-</center>
+</div>
 ```
 
-not_found.html.erb
+`app/views/errors/not_found.html.erb`:
 
-```
-<center class="container">
+```html
+<div class="text-center">
   <br>
   <h2>
     404
@@ -105,7 +113,40 @@ not_found.html.erb
   You may have mistyped the address or the page may have moved.
   <hr>
   <%= link_to "Back", root_path %>
-</center>
+</div>
+```
+
+### Tailwind example
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CustomErrorPages</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <main class="grid h-screen place-items-center">
+      <%= yield %>
+    </main>
+  </body>
+</html>
+```
+
+```html
+<div class='text-center'>
+  <h1 class="font-bold text-4xl"><%= action_name.humanize %></h1>
+  <p>This page does not exist</p>
+  <%= link_to 'Return to homepage', root_url, class: 'text-blue-500' %>
+  <%= image_tag "#{response.status}.png" %>
+</div>
 ```
 
 [More detailed article on the topic](http://www.hoxton-digital.com/posts/dynamic-404-422-amp-500-error-pages-with-rails-internationalization-i18n){:target="blank"}
