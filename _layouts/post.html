@@ -30,6 +30,18 @@ layout: default
     {{ content }}
   </div>
 
+  {% if site.related_posts.size >= 1 %}
+  <hr>
+  <div>
+    <h3>You might also like:</h3>
+    <ul>
+    {% for related_post in site.related_posts limit: 5 %}
+      <li><a href="{{ related_post.url }}">{{ related_post.title }}</a></li>
+    {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
   {%- if site.links_to_prev_next -%}
     {%- include links_to_prev_next.html -%}
   {%- endif -%}

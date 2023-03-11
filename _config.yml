@@ -27,6 +27,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-pwa-plugin
+  - jekyll-tagging-related_posts
 
 tagline: Ruby on Rails tips and tricks
 
