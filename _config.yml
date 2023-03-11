@@ -28,6 +28,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-pwa-plugin
   - jekyll-tagging-related_posts
+  - jekyll-target-blank
 
 tagline: Ruby on Rails tips and tricks
 

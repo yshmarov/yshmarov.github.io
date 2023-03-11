@@ -11,7 +11,7 @@ tags:
 thumbnail: /assets/thumbnails/dark-mode.png
 ---
 
-Usually an app can have dark mode based on a users' [device preferences](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme){:target="blank"}, or if he manually turns it on in your app.
+Usually an app can have dark mode based on a users' [device preferences](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme), or if he manually turns it on in your app.
 
 Here's how dark mode works on one of my apps:
 

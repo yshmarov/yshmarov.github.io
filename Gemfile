@@ -8,6 +8,7 @@ group :jekyll_plugins do
   gem 'jekyll-remote-theme'
   gem 'jekyll-pwa-plugin', "= 2.2.3" # https://github.com/lavas-project/jekyll-pwa
   gem 'jekyll-tagging-related_posts'
+  gem 'jekyll-target-blank' # https://github.com/keithmifsud/jekyll-target-blank
   # gem 'jekyll-admin'
 end
 
