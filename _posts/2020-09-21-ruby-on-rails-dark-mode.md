@@ -8,68 +8,92 @@ tags:
 - dark theme
 - bootstrap
 - tldr
-thumbnail: https://www.clipartkey.com/mpngs/m/131-1311951_transparent-white-moon-png-transparent-crescent-moon-symbol.png
+thumbnail: /assets/thumbnails/dark-mode.png
 ---
 
-You don't need to migrate columns, have a current user, or add new stylesheets.
+Usually an app can have dark mode based on a users' [device preferences](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme){:target="blank"}, or if he manually turns it on in your app.
 
-Here's how it works on my website:
+Here's how dark mode works on one of my apps:
 
 ![dark-mode](/assets/2020-09-21-ruby-on-rails-dark-mode/dark-mode.gif)
 
-[Live Demo - try to click yourself!](https://saas.corsego.com/){:target="blank"}
+[Live Demo - log in and click yourself!](https://saas.corsego.com/){:target="blank"}
 
-### Here's how to do it:
+### Here's how you can add dark mode to a Rails app:
 
-* Set a `body` `class` and create links to selecting a `theme`:
+By default, our app will inherit users device `prefers-color-scheme`, but we will also let the user manually switch the preference in the app.
 
-```ruby
-# application.html.erb
+**Cookie storage** is the easyest way to store a users theme preferences without unnesesary complications.
 
-<body class="<%= cookies[:theme] %>">
+First, add links to switch the color theme and allow setting a class on the `<body>` based on the theme set in the cookies.
 
-  <% if cookies[:theme] == "light" %>
-    <%= link_to "go dark", root_path(theme: "dark") %>
-  <% else %>
-    <%= link_to "go light", root_path(theme: "light") %>
-  <% end %>
-  
+```diff
+# app/views/layouts/application.html.erb
+-<body>
++<body class="<%= cookies[:theme] %>">
++  <%= cookies[:theme] %>
++  <%= link_to 'light', set_theme_path(theme: 'light') %>
++  <%= link_to 'dark', set_theme_path(theme: 'dark') %>
++  <%= link_to 'system default', set_theme_path %>
   <%= yield %>
-
 </body>
 ```
 
-* Persist `theme` in `cookies`:
+Controller to switch the prefered theme in cookies:
 
 ```ruby
-# application_controller.rb
-  before_action :set_theme
-
-  def set_theme
-    if params[:theme].present?
-      theme = params[:theme].to_sym
-      # session[:theme] = theme
-      cookies[:theme] = theme
-      redirect_to(request.referer || root_path)
-    end
+# app/controllers/theme_controller.rb
+class ThemeController < ApplicationController
+  def update
+    cookies[:theme] = params[:theme]
+    redirect_to(request.referrer || root_path)
   end
+end
 ```
 
-* Update your css file accordingly:
+Add route to theme switch:
+
+```ruby
+# config/routes.rb
+  get 'set_theme', to: 'theme#update'
+```
+
+Update your css file to either use device color scheme (`body` styles), or override it with color scheme from cookies (`body.light` and `body.dark` styles):
 
 ```css
-/* application.scss */
+/* app/assets/stylesheets/application.css */
+:root {
+  --light-bg-color: silver;
+  --light-text-color: white;
+  --dark-bg-color: black;
+  --dark-text-color: white;
+} 
 
-body.light {
-  color: black;
-  background-color: white;
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--dark-bg-color);
+    color: var(--dark-text-color);
+  }
+
+  body.light {
+    background: var(--light-bg-color);
+    color: var(--light-text-color);
+  }
 }
-body.dark {
-  color: white;
-  background-color: black;
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: var(--light-bg-color);
+    color: var(--light-text-color);
+  }
+
+  body.dark {
+    background: var(--dark-bg-color);
+    color: var(--dark-text-color);
+  }
 }
 ```
 
-Next steps:
+Useful readings:
 * [Editing your css for dark mode (Stackoverflow)](https://stackoverflow.com/questions/64960915/change-css-colors-based-on-body-class-dark-mode/64960981#64960981){:target="blank"}
 * [Dark mode with TailwindCSS](https://tailwindcss.com/docs/dark-mode){:target="blank"}
