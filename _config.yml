@@ -21,6 +21,8 @@ minima:
   social_links:
     - { platform: github, user_url: "https://github.com/yshmarov/" }
     - { platform: linkedin, user_url: "https://www.linkedin.com/in/yshmarov/" }
+    - { platform: mastodon, user_url: "https://ruby.social/@yarotheslav/" }
+    - { platform: twitter, user_url: "https://twitter.com/yarotheslav/" }
 
 plugins:
   - jekyll-feed
