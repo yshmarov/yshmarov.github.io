@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Ruby on Rails: a sexy basic Trello clone'
+title: Build a Trello clone with Ruby on Rails, RankedModel and jQuery Sortable
 author: Yaroslav Shmarov
 tags: 
 - ruby on rails
@@ -8,7 +8,7 @@ tags:
 - ranked-model
 - drag and drop
 - sortable
-thumbnail: https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/trello-512.png
+thumbnail: /assets/thumbnails/trello.png
 ---
 
 It takes half an hour and 9 commits to build a basic Trello clone with Ruby on Rails!
@@ -18,8 +18,6 @@ Result:
 ![micro-trello-demo](/assets/2020-08-23-ruby-on-rails-sexy-basic-trello-clone/micro-trello-demo.gif)
 
 [Source code](https://github.com/yshmarov/micro-trello){:target="blank"}
-&
-[Live demo](https://micro-trello.herokuapp.com){:target="blank"}
 
 Tools:
 
