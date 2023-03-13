@@ -11,16 +11,12 @@ thumbnail: https://previews.123rf.com/images/dmitrymoi/dmitrymoi1609/dmitrymoi16
 You can disable scaffolds from generating certain files in your app config:
 
 ```diff
-# config/application.rb
-module Myapp
-  class Application < Rails::Application
-+    config.generators do |g|
-+      g.assets false
-+      g.helper false
-+      g.test_framework false
-+      g.jbuilder false
-+    end
-  end
+# config/initializers/generators.rb
+Rails.application.config.generators do |g|
+  g.assets false
+  g.helper false
+  g.test_framework false
+  g.jbuilder false
 end
 ```
 
