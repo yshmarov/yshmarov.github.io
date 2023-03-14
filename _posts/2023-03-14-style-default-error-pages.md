@@ -27,32 +27,26 @@ Feel free to copy my `public/404.html` and use it in your app:
       text-align: center;
       font-family: arial, sans-serif;
     }
-    .button-home {
-      font-size: 20px;
-      color: white;
+    .button {      
+      font-size: 14px;
       text-decoration: none;
-      background-color: #008060;
-      padding-left: 14px;
-      padding-right: 14px;
-      padding-top: 6px;
-      padding-bottom: 6px;
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-top: 7px;
+      padding-bottom: 7px;
       border-radius: 4px;
-      box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
       display: inline-block;
     }
+    .button-home {
+      color: white;
+      background-color: #008060;
+      box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+    }
     .button-help {
-      font-size: 20px;
       color: black;
-      text-decoration: none;
       border: 1px solid;
       border-color: #BABFC3;
-      padding-left: 14px;
-      padding-right: 14px;
-      padding-top: 6px;
-      padding-bottom: 6px;
-      border-radius: 4px;
       box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.05);
-      display: inline-block;
     }
     .container {
       position: relative;
@@ -78,14 +72,16 @@ Feel free to copy my `public/404.html` and use it in your app:
     Page not found
   </div>
   <div style="margin-top: 20px; margin-bottom: 14px;">
-    <a href="/" class="button-home">Back to home page</a>
+    <a href="/" class="button button-home">Back to home page</a>
   </div>
   <div>
-    <a href="https://superails.com/" target="_blank" class="button-help">Visit help center</a>
+    <a href="https://superails.com/" target="_blank" class="button button-help">Visit help center</a>
   </div>
 </body>
 </html>
 ```
+
+You can use the same template for `/422.html` and `/500.html`, just change the text.
 
 To make it look nice, be sure to have a `public/404logo.png` file present.
 
