@@ -2,10 +2,8 @@
 layout: post
 title:  Add custom error pages in a Rails app
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails
-- error pages
-thumbnail: https://previews.123rf.com/images/arcady31/arcady311011/arcady31101100012/8157731-404-error-sign.jpg
+tags: ruby-on-rails, error-pages, 404
+thumbnail: /assets/thumbnails/404.png
 ---
 
 It is often easy to distinguish a Rails app by going to `/404` or `/500`. You know this screen, right?
