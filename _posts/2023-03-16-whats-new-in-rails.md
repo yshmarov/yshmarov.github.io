@@ -6,7 +6,7 @@ tags: ruby-on-rails
 thumbnail: /assets/thumbnails/rails-logo.png
 ---
 
-I started working with Ruby on Rails around 2015, when Rails 4 was the lastest version. Here I want to share some of the main highlights that I have noticed over the years of Rails evolution.
+I started working with Ruby on Rails around 2015, when Rails 4 was the lastest version. Here I want to share some of the main highlights that have most affected the way I write code over the years of Rails evolution.
 
 ### Rails 4
 
