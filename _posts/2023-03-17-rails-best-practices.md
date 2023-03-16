@@ -22,6 +22,8 @@ Promote independency in decision making.
 
 `main`/`master` branch should accept changes only via Pull Request.
 
+Do not review DRAFT Pull Requests.
+
 Pull Request should require 1 approval and a passing CI to be merged.
 
 Do not merge a PR if you are not the author.
