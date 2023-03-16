@@ -64,6 +64,10 @@ Prefer using ViewComponents over _partials. Here are some rules of thumb:
 
 When using ViewComponent, try to store all the view login in the `.rb` file, not in the `.html.erb` file.
 
+Do not use magic strings:
+- Bad: `tax_amount = price * 0,17`
+- Good: `TAX_AMOUNT = 0,17` && `tax_amount = price * TAX_AMOUNT`
+
 Do not use jQuery and jQuery-based libraries.
 
 If you can't render a turbo_stream as a one-liner in a controller, use a `*.turbo_stream.erb` template.
