@@ -46,15 +46,13 @@ Good code does not require a lot of comments to explain it.
 
 ### 4. Writing Rails code
 
-Avoid using ActiveRecord callbacks. Call methods explicitly when needed.
+#### Views
 
 Do not disable turbo by default in the app. The limitations of turbolinks are irrelevant in 2023.
 
 Do not use `<a>` tag. Use `link_to` instead.
 
 Do not embed SVG code in an HTML page. Store the SVG as a separate object and use gem `inline_svg` to render it.
-
-Do not store view logic in a Rails model. Use `app/helpers`, `app/components`, `app/decorators` instead.
 
 Prefer using ViewComponents over _partials. Here are some rules of thumb:
 - logic that you would pass in locals? **VC**
@@ -64,15 +62,13 @@ Prefer using ViewComponents over _partials. Here are some rules of thumb:
 
 When using ViewComponent, try to store all the view login in the `.rb` file, not in the `.html.erb` file.
 
-Do not use magic strings:
-- Bad: `tax_amount = price * 0,17`
-- Good: `TAX_AMOUNT = 0,17` && `tax_amount = price * TAX_AMOUNT`
+Do not store view logic in a Rails model. Use `app/helpers`, `app/components`, `app/decorators` instead.
 
 Do not use jQuery and jQuery-based libraries.
 
 If you can't render a turbo_stream as a one-liner in a controller, use a `*.turbo_stream.erb` template.
 
-When testing, focus on writing good Controller and System tests.
+#### Design patterns
 
 Use `app/services` to extract complex logic and test it in isolation.
 
@@ -81,4 +77,30 @@ As you application gets complex, you can use a more advanced system of design pa
 - `app/operations` for working with (`Book::GenerateBarcode`)
 - `app/interactors` for extracting logical sequences (`if Book::GenerateBarcode.success? ? Twilio::SendSms`)
 
+#### Models
+
+When doing database migrations, don't forget to validate `null` and `default` on the database level.
+
+Avoid using ActiveRecord callbacks. Call methods explicitly when needed.
+
+#### Testing
+
+Always use a CI tool for:
+- code style: rubocop, prettier, erblint
+- tests
+
+Minitest is okay, but Rspec is better. FactoryBot is more useful that fixtures.
+
+When testing, focus on writing good **Controller** and **System** tests.
+
 🤔💭 I will be adding more to the list, if I remember something.
+
+#### Other
+
+Use gem Pagy for pagination. WillPaginate and Kaminari are simply not as great.
+
+Do not use [magic `strftime`]({% post_url 2022-06-10-stop-using-strftime %})
+
+Do not use magic strings:
+- Bad: `tax_amount = price * 0,17`
+- Good: `TAX_AMOUNT = 0,17` && `tax_amount = price * TAX_AMOUNT`
