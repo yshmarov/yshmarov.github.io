@@ -54,11 +54,17 @@ Do not embed SVG code in an HTML page. Store the SVG as a separate object and us
 
 Do not store view logic in a Rails model. Use `app/helpers`, `app/components`, `app/decorators` instead.
 
-Prefer using ViewComponents over _partials.
+Prefer using ViewComponents over _partials. Here are some rules of thumb:
+- logic that you would pass in locals? **VC**
+- view rendering logic? **VC**
+- non-reusable HTML abstraction? **partials**
+- reusable HTML? **partials**
 
 When using ViewComponent, try to store all the view login in the `.rb` file, not in the `.html.erb` file.
 
 Do not use jQuery and jQuery-based libraries.
+
+If you can't render a turbo_stream as a one-liner in a controller, use a `*.turbo_stream.erb` template.
 
 When testing, focus on writing good Controller and System tests.
 
@@ -69,4 +75,4 @@ As you application gets complex, you can use a more advanced system of design pa
 - `app/operations` for working with (`Book::GenerateBarcode`)
 - `app/interactors` for extracting logical sequences (`if Book::GenerateBarcode.success? ? Twilio::SendSms`)
 
-I will be adding more to the list.
+🤔💭 I will be adding more to the list, if I remember something.
