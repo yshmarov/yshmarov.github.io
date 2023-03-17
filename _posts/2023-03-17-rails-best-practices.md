@@ -68,6 +68,10 @@ Do not use jQuery and jQuery-based libraries.
 
 If you can't render a turbo_stream as a one-liner in a controller, use a `*.turbo_stream.erb` template.
 
+When writing text, use "sentence case capitalization":
+- Bad: *"These Are Some Words"*
+- Good: *"These are some words"*
+
 #### Design patterns
 
 Use `app/services` to extract complex logic and test it in isolation.
@@ -96,6 +100,14 @@ When testing, focus on writing good **Controller** and **System** tests.
 🤔💭 I will be adding more to the list, if I remember something.
 
 #### Other
+
+Prefer storing text in `en.yml` i18n file and inheriting from there.
+- Bad: `redirect_to posts_path, notice: 'post created!'`
+- Good: `redirect_to posts_path, notice: t('.success')`
+
+Prefer symbols over strings:
+- Bad `"payment pending"`
+- Good: `:payment_pending`
 
 Use gem Pagy for pagination. WillPaginate and Kaminari are simply not as great.
 
