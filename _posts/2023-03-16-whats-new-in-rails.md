@@ -40,7 +40,9 @@ Gems for encrypting secrets were replaced by [Rails Credentials]({% post_url 202
 
 ### Rails 7
 
-Not much on the backend, but a lot of changes to the frontend!
+Gems for encrypting database table attributes like [attr_encrypted](https://github.com/attr-encrypted/attr_encrypted) got replaced with [Active Record Encryption](https://edgeguides.rubyonrails.org/active_record_encryption.html).
+
+Not so many changes in the backend, but a lot of changes to the frontend!
 
 Webpacker was good for it's time. A nessesary evil. Now, the frontend has evolved and Rails 7 offers new approaches to importing new JS packages out of the box: **Importmaps** and **JS/CSS bundling**. Importmaps is default in new Rails apps, but it can have troubling importing CSS; this technology is still developing. JS/CSS bundling very good and used in most projects.
 
@@ -54,7 +56,7 @@ Hotwire/TurboStreams became default for AJAX server-side rendering. `*.js.erb` f
 
 Hotwire/TurboStreamBroadcasts use ActionCable to do server-side rendering for all clients listening to the same channel. This made building live functionality (like live chat) very easy.
 
-StimulusJS is now the default way of writing Javascript for Rails. No more `<script>` tags.
+StimulusJS is now the default way of writing Javascript for Rails. As of now, `<script>` tags are frowned upon.
 
 ### Conclusion
 
