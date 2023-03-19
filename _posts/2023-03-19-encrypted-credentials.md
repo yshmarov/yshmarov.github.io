@@ -62,6 +62,16 @@ It is recommended to store encryptable attributes as `text`, not `string`.
 
 If you want to encrypt an `integer` or `datetime`, **you will get errors**. You have to store encryptable data as `text`.
 
+I think it is quite safe to change column type from integer to text. If you do so, further encryption will be easy.
+
+```ruby
+class StoreIntegersAsText < ActiveRecord::Migration[7.0]
+  def change
+    change_column :clients, :annual_income, :text
+  end
+end
+```
+
 #### 2.2. Querying encrypted data:
 
 Only if you use **deterministic** encryption, you will be able to query the database, but only for an exact match like `Client.find_by(username: 'yarotheslav')`.
