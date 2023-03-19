@@ -90,6 +90,10 @@ client.decrypt
 client.ciphertext_for :sexual_orientation
 # is this attribute encrypted?
 client.encrypted_attribute? :sexual_orientation
+# encrypt all records
+Client.all(&:encrypt)
+# decrypt all records
+Client.all(&:decrypt)
 ```
 
 Example:
