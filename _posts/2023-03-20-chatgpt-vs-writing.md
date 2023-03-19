@@ -19,3 +19,5 @@ Dear friend, **You should write too**! It will help you tell your story, become 
 It is okay to look for content in source material, in blogposts, on wikipedia, on chatgpt - whatever servers a better answer. As long as you know which questions to ask, there's forever been a load of good information out there. The problem is putting information into your head and structuring it (turning information into knowledge). 
 
 There is no tool yet that can safely upload unbiased updated knowledge into your brain. Enjoy your life and your unique learning path!
+
+Note: this post was written by a human, not an AI.
