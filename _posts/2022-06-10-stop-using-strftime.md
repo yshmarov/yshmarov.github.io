@@ -56,16 +56,16 @@ and
 classes, that we can use out of the box:
 
 ```ruby
-post.created_at.to_s(:iso8601)
+post.created_at.to_fs(:iso8601)
 # => "2022-06-04T08:57:37Z"
 
-post.created_at.to_s(:rfc822)
+post.created_at.to_fs(:rfc822)
 # => "Sat, 04 Jun 2022 08:57:37 +0000"
 
-post.created_at.to_s(:short)
+post.created_at.to_fs(:short)
 # => "04 Jun 08:57"
 
-post.created_at.to_s(:long)
+post.created_at.to_fs(:long)
 # => "June 04, 2022 08:57"
 ```
 
@@ -77,10 +77,10 @@ This way you can create an initializer to add your own methods:
 Time::DATE_FORMATS[:dmy] = "%d %b, %Y" # 04 June, 2022
 Time::DATE_FORMATS[:my] = "%m/%Y" # 06/2022
 
-post.created_at.to_s(:dmy)
+post.created_at.to_fs(:dmy)
 # => 11 June, 2022
 
-post.created_at.to_s(:my)
+post.created_at.to_fs(:my)
 # => 06/2022
 ```
 
@@ -90,11 +90,11 @@ Well, the two classes can seem similar but they have a few different methods and
 
 ```ruby
 Date::DATE_FORMATS[:date1] = ->(date) { date.strftime("#{date.day.ordinalize} %B, %Y") }
-post.created_at.to_s(:date1)
+post.created_at.to_fs(:date1)
 # => "2022-06-04 08:57:37 UTC"
 
 Time::DATE_FORMATS[:time1] = ->(date) { date.strftime("#{date.day.ordinalize} %B, %Y") }
-post.created_at.to_s(:time1)
+post.created_at.to_fs(:time1)
 # => "11th June, 2022"
 ```
 
