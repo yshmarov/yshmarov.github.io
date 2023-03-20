@@ -1,29 +1,26 @@
 ---
 layout: post
-title: Console cheat sheet
-date: '2020-11-09T23:22:00.000+01:00'
-author: yaro_the_slav
-tags: 
-modified_time: '2020-11-09T23:22:04.054+01:00'
-blogger_id: tag:blogger.com,1999:blog-5936476238571675194.post-6459744336013263155
+title: basic iTerm commands that I use every day
+author: Yaroslav Shmarov
+tags: terminal, mac, iterm
 ---
 
- Basic terminal commands
+Basic terminal commands
 
-cd  - current directory name
+`cd`  - go to root
 
-cd <directory name> - change to directroy name
+`cd Documents/Github/myapp` - open directory
 
-cls - clear screen
+`cd ..` - go up one directory
 
-cd ..
+`ls` - display all files and folders in current folder
 
-ls
+`open Readme.md` - find Readme.md in current folder and open it in the default app
+
+`Ctrl+L` - clear current terminal window
+
+`Command+T` - open a new terminal window
 
 Tab - show dir starting with….
-
-dir - files in cd
-
-Ctrl+L = clear
 
 rails console --sandbox # all db changes will be terminated after end of session
