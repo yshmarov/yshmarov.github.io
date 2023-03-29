@@ -80,7 +80,7 @@ That's it!
 P.S. For everything to work, sometimes you might have to include specific Rails helpers in your service object:
 
 ```diff
-class Renderers::Poster
+class Broadcasters::Posts::Created
 +  include ActionView::RecordIdentifier
 +  include Turbo::StreamsHelper
 +  include Rails.application.routes.url_helpers
