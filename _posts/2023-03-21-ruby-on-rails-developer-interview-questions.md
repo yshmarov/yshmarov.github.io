@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '21 Ruby on Rails and Hotwire interview questions in 2023'
+title: '14 Ruby on Rails and 7 Hotwire interview questions in 2023'
 author: Yaroslav Shmarov
 tags: 
 - ruby on rails
