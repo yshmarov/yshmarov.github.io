@@ -12,7 +12,7 @@ Nevertheless, there is one easy way to find a saved wifi password stays valid no
 
 First, open the **command prompt**:
 
-![windows-wifi-command-prompt.png](/assets/images/windows-wifi-command-prompt.png)
+![windows-wifi-command-prompt.png](/assets/images/windows-open-command-prompt.png)
 
 Type this in the command prompt to display all the saved WIFI Network names:
 
@@ -20,7 +20,7 @@ Type this in the command prompt to display all the saved WIFI Network names:
 netsh wlan show profiles
 ```
 
-![windows-wifi-list.png](/assets/images/windows-wifi-list.png)
+![windows-wifi-list.png](/assets/images/windows-wifi-list.PNG)
 
 Type this in the command prompt to display the details of any network:
 
@@ -36,6 +36,6 @@ netsh wlan show profile name="Biblioteka" key=clear
 
 The saved network password is highlighted in blue:
 
-![windows-wifi-password.png](/assets/images/windows-wifi-password.png)
+![windows-wifi-password.png](/assets/images/windows-wifi-password.PNG)
 
 That's it!
