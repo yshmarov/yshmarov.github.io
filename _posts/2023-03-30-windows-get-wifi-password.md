@@ -3,7 +3,7 @@ layout: post
 title: "Find a saved WIFI password on Windows 10 or Windows 11"
 author: Yaroslav Shmarov
 tags: windows password
-thumbnail: /assets/thumbnails/windows.png
+thumbnail: /assets/thumbnails/windows.PNG
 ---
 
 I sometimes need to find a password on my Windows computer, but Windows keeps getting new updates all the time and changing things.
