@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Find a saved password on Windows 10 or Windows 11"
+title: "Find a saved WIFI password on Windows 10 or Windows 11"
 author: Yaroslav Shmarov
 tags: windows password
 thumbnail: /assets/thumbnails/windows.png
