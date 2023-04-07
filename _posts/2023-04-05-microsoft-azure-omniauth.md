@@ -135,4 +135,18 @@ end
 <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), method: :post, data: { turbo: "false" } %>
 ```
 
+### 4. Troubleshooting
+
+If you get an `unauthorized_client` error, most likely the "supported account types" that you selected for your App registration don't include your current account type.
+
+To update it:
+1. In the sidebar, select Manifest.
+2. In the JSON code, find the `signInAudience` setting.
+3. Check whether the setting contains one of the following values:
+* `AzureADMyOrg`
+* `AzureADMultipleOrgs`
+* `AzureADandPersonalMicrosoftAccount`
+* `PersonalMicrosoftAccount`
+4. Select the scope you need and Save.
+
 That's it!
