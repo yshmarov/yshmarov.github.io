@@ -24,7 +24,9 @@ September 15-17 2023, Wroclaw, Poland (**I'm going**)
 September 21–23 2023, Vilnius, Lithuania
 7. [Friendly.rb](https://friendlyrb.com/)
 September 27-28 2023, Bucharest, Romania (**I'm going**)
-8. [Helvetic Ruby](https://helvetic-ruby.ch/)
+8. [Rails World](https://rubyonrails.org/2023/4/6/rails-world-is-coming)
+October 5-6 2023, Amsterdam, Netherlands
+9. [Helvetic Ruby](https://helvetic-ruby.ch/)
 November 24 2023, Bern, Switzerland
 
 I myself will be definitely visiting at least the highlighted ones. I hope to meet **YOU** there in person and get some drinks together! 🥂🍻
