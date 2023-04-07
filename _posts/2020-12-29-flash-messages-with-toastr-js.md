@@ -2,7 +2,7 @@
 layout: post
 title: "Ruby on Rails 6: Disappearing flash messages with toastr"
 author: Yaroslav Shmarov
-tags: ruby-on-rails jsonb store_accessor
+tags: ruby-on-rails flash toastr
 thumbnail: /assets/thumbnails/notification.png
 ---
 
