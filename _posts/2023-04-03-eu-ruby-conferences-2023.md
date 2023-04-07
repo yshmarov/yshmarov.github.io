@@ -11,7 +11,7 @@ After a few years of lockdown, everybody seems to be unleashing their creative e
 Ruby conferences in 2023 that I know of, ordered chronologically:
 
 1. [Rails SaaS Europe](https://railssaas.com/)
-June 1–2, 2023, Athens, Greece  (**I'm going**)
+June 1–2, 2023, Athens, Greece  (**I've already got tickets!**)
 2. [Ruby Unconf](https://2023.rubyunconf.eu/)
 June 10-11 2023, Hamburg, Germany
 3. [RubyDay Italy](https://2023.rubyday.it/)
@@ -20,10 +20,10 @@ June 16, 2023 Verona, Italy
 June 30, 2023, Brighton, UK
 5. [wrocloverb](https://wrocloverb.com/)
 September 15-17 2023, Wroclaw, Poland (**I'm going**)
-6. [Euruko](https://euruko.org)
+6. [Euruko](https://2023.euruko.org/)
 September 21–23 2023, Vilnius, Lithuania
 7. [Friendly.rb](https://friendlyrb.com/)
-September 27-28 2023, Bucharest, Romania (**I'm going**)
+September 27-28 2023, Bucharest, Romania (**I've already got tickets!**)
 8. [Rails World](https://rubyonrails.org/2023/4/6/rails-world-is-coming)
 October 5-6 2023, Amsterdam, Netherlands
 9. [Helvetic Ruby](https://helvetic-ruby.ch/)
