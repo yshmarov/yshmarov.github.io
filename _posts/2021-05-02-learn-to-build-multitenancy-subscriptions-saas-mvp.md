@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Discount coupon: Ruby on Rails 6: Learn to Build a Multitenancy Subscriptions SaaS app MVP"
+title: "Launching course: Ruby on Rails - Learn to Build a Multitenancy Subscriptions SaaS app MVP"
 author: Yaroslav Shmarov
 tags: 
 - gumroad
@@ -15,17 +15,20 @@ tags:
 - startup
 - boilerplate
 thumbnail: https://www.strattic.com/wp-content/uploads/2019/05/gumroad.jpg
+cover_image: /assets/launching-learn-to-build-a-multitenancy-saas-mvp/saas-book-cover.png
+description: Launching Course and Black Friday sale
 ---
+
+After 6 months of work, ressearch and trials **I'm officially launching the course**!
 
 | Course name  | [Ruby on Rails 6: Learn to Build a Multitenancy Subscriptions SaaS app MVP](https://gumroad.com/l/ror6saas/presale33){:target="blank"}  |
 |--|--|
-| Discount coupon  | presale33  |
-|--|--|
-| Price with coupon  | $150.00 - %33.00 = $99.00 |
+| 33% Discount coupon  | presale33  |
 |--|--|
 | Expires  |  N/A  |
 |--|--|
-| Coupon limit |  N/A  |
+| Coupon limit |  50  |
 |--|--|
 | Link  | [https://gumroad.com/l/ror6saas/presale33](https://gumroad.com/l/ror6saas/presale33){:target="blank"}  |
 
+![{{page.cover_image}}]({{page.cover_image}})
