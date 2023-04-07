@@ -19,10 +19,10 @@ thumbnail: https://about.udemy.com/wp-content/uploads/2017/10/NewUlogo-large-1.p
 |--|--|
 | Discount coupon  | 4721E9D437DEE1734159  |
 |--|--|
-| Price with coupon  | Dynamic minimum (around $12) |
+| Price with coupon  | Dynamic minimum (around $15) |
 |--|--|
 | Expires  |  N/A  |
 |--|--|
 | Coupon limit |  100  |
 |--|--|
-| Link  | [https://www.udemy.com/course/ruby-on-rails-6-learn-20-gems-build-an-e-learning-platform](https://www.udemy.com/course/ruby-on-rails-6-learn-20-gems-build-an-e-learning-platform/?referralCode=4721E9D437DEE1734159){:target="blank"}  |
+| Link  | [https://www.udemy.com/course/ruby-on-rails-6-learn-20-gems-build-an-e-learning-platform/?referralCode=4721E9D437DEE1734159](https://www.udemy.com/course/ruby-on-rails-6-learn-20-gems-build-an-e-learning-platform/?referralCode=4721E9D437DEE1734159){:target="blank"}  |
