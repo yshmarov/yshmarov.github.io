@@ -93,7 +93,7 @@ Always use a CI tool for:
 - code style: rubocop, prettier, erblint
 - tests
 
-Minitest is okay, but Rspec is better. FactoryBot is more useful that fixtures.
+Minitest is okay, but Rspec is better. FactoryBot is more useful that fixtures. Ultimately, use the tools that you feel more comfortable with.
 
 When testing, focus on writing good **Controller** and **System** tests.
 
