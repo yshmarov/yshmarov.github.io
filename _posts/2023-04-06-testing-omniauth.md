@@ -151,4 +151,6 @@ class OmniauthLoginTest < ActionDispatch::IntegrationTest
 end
 ```
 
+Based on the [Official docs for testing omniauth](https://github.com/omniauth/omniauth/wiki/Integration-Testing)
+
 That's it!
