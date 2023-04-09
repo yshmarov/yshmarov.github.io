@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Build a Public-facing Rails API with Bearer token authentication 
+title: Build a Public-facing Rails API with Bearer token authentication 
 author: Yaroslav Shmarov
 tags: ruby-on-rails rails-api bearer
 thumbnail: /assets/thumbnails/api.png
