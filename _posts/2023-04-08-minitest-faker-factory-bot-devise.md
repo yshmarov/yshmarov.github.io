@@ -67,7 +67,6 @@ class DeviseAuthSystemTest < ApplicationSystemTestCase
   end
 
   test 'create user and sign in' do
-    skip
     User.create(email: @email, password: @password)
     @email = Faker::Internet.email
     @password = Faker::Internet.password(min_length: 10, max_length: 30)
