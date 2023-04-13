@@ -106,15 +106,17 @@ Create a `BaseController`. API controllers that require authentication should in
 ```ruby
 # app/controllers/api/v1/base_controller.rb
 class Api::V1::BaseController < ActionController::Base
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
+
   before_action :authenticate
 
   attr_reader :current_user, :current_api_token
 
+  private
+
   def authenticate
     authenticate_user_with_token || handle_bad_authentication
   end
-
-  private
 
   def authenticate_user_with_token
     authenticate_with_http_token do |token, options|
@@ -125,6 +127,10 @@ class Api::V1::BaseController < ActionController::Base
 
   def handle_bad_authentication
     render json: { message: "Bad credentials" }, status: :unauthorized
+  end
+
+  def handle_not_found
+    render json: { message: "Record not found" }, status: :not_found
   end
 end
 ```

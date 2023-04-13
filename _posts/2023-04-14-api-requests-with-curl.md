@@ -13,7 +13,7 @@ You can make API CRUD requests to a Rails controller via cURL.
 Let's create a `Post` scaffold and make some CRUD requests:
 
 ```ruby
-scaffold Post title:string body:text published:boolean published_at:datetime
+rails g scaffold Post title:string body:text published:boolean published_at:datetime
 ```
 
 #### READ
@@ -39,6 +39,7 @@ Add `protect_from_forgery with: :null_session` to your controller to enable thes
 ```ruby
 # app/controllers/posts_controller.rb
   # skip_before_action :verify_authenticity_token
+  # skip_before_action :authenticate_user!
   protect_from_forgery with: :null_session
 ```
 
