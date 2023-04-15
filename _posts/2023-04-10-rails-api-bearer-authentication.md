@@ -178,4 +178,8 @@ class ApiWelcomePageTest < ActionDispatch::IntegrationTest
 end
 ```
 
+Inspired by:
+* [Ari Summer: Building a Public-Facing REST API - An In Depth Guide with Rails](https://codingdeliberately.com/guide-to-building-a-public-rest-api/)
+* [Steve Polito: Build an API in Rails with Authentication](https://stevepolito.design/blog/build-an-api-in-rails-with-authentication)
+
 That's it!
