@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rails API requests with cURL
+title: Rails CRUD API requests with cURL
 author: Yaroslav Shmarov
 tags: ruby-on-rails rails-api curl
 thumbnail: /assets/thumbnails/api.png

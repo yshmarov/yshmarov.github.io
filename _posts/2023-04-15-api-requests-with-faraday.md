@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rails API requests with Faraday
+title: Rails CRUD API requests with Faraday
 author: Yaroslav Shmarov
 tags: ruby-on-rails rails-api faraday
 thumbnail: /assets/thumbnails/api.png
