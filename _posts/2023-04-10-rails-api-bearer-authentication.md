@@ -110,7 +110,7 @@ class Api::V1::BaseController < ActionController::Base
 
   before_action :authenticate
 
-  attr_reader :current_user, :current_api_token
+  attr_reader :current_user
 
   private
 
@@ -120,8 +120,8 @@ class Api::V1::BaseController < ActionController::Base
 
   def authenticate_user_with_token
     authenticate_with_http_token do |token, options|
-      @current_api_token = ApiToken.where(active: true).find_by_token(token)
-      @current_user = @current_api_token&.user
+      current_api_token = ApiToken.where(active: true).find_by_token(token)
+      @current_user = current_api_token&.user
     end
   end
 
@@ -143,10 +143,7 @@ Inherit from the `BaseController`:
 +class Api::V1::HomeController < Api::V1::BaseController
   def index
 -    render json: { message: "Welcome to the app!" }
-+    render json: {
-+      current_api_token_id: current_api_token.id,
-+      current_user_id: current_user.id
-+    }
++    render json: { message: "Welcome to the app! #{current_user.email}" }
   end
 end
 ```
@@ -173,7 +170,8 @@ class ApiWelcomePageTest < ActionDispatch::IntegrationTest
     raw_token = api_token.raw_token
     get api_v1_welcome_path, headers: { HTTP_AUTHORIZATION: "Token token=#{raw_token}" }
     assert_response :success
-    assert_includes response.body, 'Welcome to the SupeRails API!'
+    assert_includes response.body, 'Welcome to the app'
+    assert_includes response.body, api_token.user.mail
   end
 end
 ```
