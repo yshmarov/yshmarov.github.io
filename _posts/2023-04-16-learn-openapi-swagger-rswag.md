@@ -50,13 +50,13 @@ Set the path to access the api docs;
 
 In this case it would be `https://localhost:3000/docs/api`;
 
-Optionally require authentication to access the API docs:
+Optionally require authentication to access the API docs using devise `authenticated :user` in routes:
 
 ```ruby
 # config/routes.rb
   authenticated :user do
-    mount Rswag::Ui::Engine => "/docs/api"
-    mount Rswag::Api::Engine => "/docs/api"
+    mount Rswag::Ui::Engine => '/api-docs'
+    mount Rswag::Api::Engine => '/api-docs'
   end
 ```
 
@@ -64,8 +64,19 @@ Set the path to your OpenAPI manifest file:
 
 ```ruby
 # config/initializers/rswag_ui.rb
-  c.swagger_endpoint "/docs/api/v1/openapi.yaml", "API V1 Docs"
+  c.swagger_endpoint '/api-docs/v1/openapi.yaml', 'API V1 Docs'
 ```
+
+Path to your yml file should be `Rails.root/swaggger/v1/openapi.yaml`:
+
+```ruby
+# swagger/v1/openapi.yaml
+openapi: 3.0.3
+info:
+  title: SupeRails API
+```
+
+Now if you visit `http://localhost:3000/api-docs/index.html` you will see your API skeleton!
 
 ### 2. Add your custom branding to the UI
 
@@ -103,3 +114,13 @@ curl -X GET "http://localhost:3000/api/v1/posts/1" -H "Authorization: Bearer myS
 *Do not forget to abstract schema and include bearer authentication*
 
 **Keep in mind: ChatGPT does not get everything right. Read through the generated responses attentively and be ready to solve inconsistencies!**
+
+Great resources about OpenAPI:
+* [OpenAPI vs Swagger](https://www.wallarm.com/what/openapi-vs-swagger-an-in-depth-clarification)
+* [Swagger advanced API example](https://petstore.swagger.io/#/)
+* [OpenAPI editor playground](https://editor.swagger.io/)
+* [API client generator](https://github.com/OpenAPITools/openapi-generator)
+* [Swagger API client generator](https://swagger.io/tools/swagger-codegen/)
+* [RubyKaigi: OpenAPI basics](https://speakerdeck.com/ota42y/how-to-use-openapi3-for-api-developer-rubykaigi-2019)
+* [Etsy OpenAPI example](https://www.etsy.com/openapi/generated/oas/3.0.0.json)
+* [Etsy OpenAPI client generation tutorial](https://blog.tjoyal.dev/etsy-open-api-v3/)
