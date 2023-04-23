@@ -66,7 +66,7 @@ In the base API controller, log API requests with `log_api_request` and check li
   def log_api_request
     current_user.api_requests.create!(path: request.path, method: request.method)
     # in the response header, include remaining api request count
-    response.headers['X-Superails-User-Api-Call-Limit'] = "#{current_user.api_requests_remaining.to_s}/#{User::MAX_API_REQUESTS_PER_30_DAYS.to_s}"
+    response.headers['X-Superails-User-Api-Call-Limit'] = "#{current_user.api_requests_within_last_30_days.to_s}/#{User::MAX_API_REQUESTS_PER_30_DAYS.to_s}"
   end
 
   def check_api_limit
