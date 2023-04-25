@@ -41,29 +41,11 @@ First, here's an example json file:
     "tags": [
         "icalendar"
     ]
-  },
-  {
-    "rank_number": 100,
-    "title": "Ruby on Rails #100 Browser tab title notifications",
-    "description": "Do you like see the \"new notifications count\" in the LinkedIn browser tab?\nIn this episode we will update the browser tab title, if the application user has new unsee notifications.\n",
-    "tags": [
-        "hotwire"
-    ]
-  },
-  {
-    "rank_number": 99,
-    "title": "Ruby on Rails #99 Hotwire: Search and Infinite Pagination (Ransack with Pagy)",
-    "description": "Implementing search or pagination is relatively easy, but it can get tricky when you try to combine the two, especially when you factor in some frontend. In this eposide we will learn to use gem Ransack for search, and gem Pagy for infinite scroll pagination.\n",
-    "tags": [
-        "ransack",
-        "pagy",
-        "hotwire"
-    ]
   }
 ]
 ```
 
-Parse JSON with Ruby:
+### 1. Parse JSON with Ruby:
 
 ```ruby
 path = "/Users/yaroslavshmarov/Downloads/superails-episodes.json"
@@ -77,20 +59,27 @@ json.map { |element| element['title'] }
 # =>
 # ["Ruby on Rails #103 Simple Omniauth without Devise",
 #  "Ruby on Rails #102 Email Calendar Invite",
-#  "Ruby on Rails #101 iCalendar and .ics format. Add events to calendar",
-#  "Ruby on Rails #100 Browser tab title notifications",
-#  "Ruby on Rails #99 Hotwire: Search and Infinite Pagination (Ransack with Pagy)"]
+#  "Ruby on Rails #101 iCalendar and .ics format. Add events to calendar"]
 
 json.first['title'] = 'New title'
 # write to the json file
 File.write(path, JSON.dump(data))
 ```
 
-Parse JSON within Rails:
+### 2. Parse JSON within Rails:
 
 ```ruby
 data = File.read('./db/fixtures/superails-episodes.json')
 json = JSON.parse(data)
+```
+
+### 3. Parse JSON from a remote URL
+
+```ruby
+require 'open-uri'
+path = "https://raw.githubusercontent.com/erik-sytnyk/movies-list/master/db.json"
+uri = URI.open(path)
+uri_json = JSON.load(uri)
 ```
 
 That's it! 🤠

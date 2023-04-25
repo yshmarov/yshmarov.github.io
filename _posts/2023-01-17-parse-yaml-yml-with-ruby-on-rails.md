@@ -80,7 +80,7 @@ Render the results in a view:
 <% end %>
 ```
 
-### 3. Parse a yml file from URL, fix `Psych::DisallowedClass`
+### 3. Parse YAML from a remote URL, fix `Psych::DisallowedClass`
 
 ```ruby
 require 'open-uri'
