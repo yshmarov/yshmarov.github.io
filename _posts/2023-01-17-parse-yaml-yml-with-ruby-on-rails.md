@@ -40,28 +40,11 @@ Here's an example list of SupeRails episodes in the YAML format:
     Learn to create valid calendar events, that a user can download as an .ics file and add to his calendar!
   tags:
     - icalendar
-
-- rank_number: 100
-  title: "Ruby on Rails #100 Browser tab title notifications"
-  description: |
-    Do you like see the "new notifications count" in the LinkedIn browser tab?
-    In this episode we will update the browser tab title, if the application user has new unsee notifications.
-  tags:
-    - hotwire
-
-- rank_number: 99
-  title: "Ruby on Rails #99 Hotwire: Search and Infinite Pagination (Ransack with Pagy)"
-  description: |
-    Implementing search or pagination is relatively easy, but it can get tricky when you try to combine the two, especially when you factor in some frontend. In this eposide we will learn to use gem Ransack for search, and gem Pagy for infinite scroll pagination.
-  tags:
-    - ransack
-    - pagy
-    - hotwire
 ```
 
 You can parse this data (convert it into a Hash or Array) using Ruby on Rails **native yaml parsers**!
 
-1. Parse a local YAML file with pure **Ruby**:
+### 1. Parse a local YAML file with pure **Ruby**:
 
 ```ruby
 require 'yaml'
@@ -78,7 +61,7 @@ File.write(path, @episodes.to_yaml)
 
 Source: [Ruby YAML docs](https://ruby-doc.org/stdlib-2.5.1/libdoc/yaml/rdoc/YAML.html){:target="blank"}
 
-2. Parse a YAML file inside a **Rails** app:
+### 2. Parse a YAML file inside a **Rails** app:
 
 ```ruby
 # a controller action
@@ -95,6 +78,16 @@ Render the results in a view:
   <%= episode.fetch('name') %>
   <%= episode['title'] %>
 <% end %>
+```
+
+### 3. Parse a yml file from URL, fix `Psych::DisallowedClass`
+
+```ruby
+require 'open-uri'
+path = "https://raw.githubusercontent.com/ruby-conferences/ruby-conferences.github.io/master/_data/conferences.yml"
+uri = URI.open(path)
+yaml = YAML.load_file uri, permitted_classes: [Date]
+# yaml = YAML.load File.read(uri), permitted_classes: [Date]
 ```
 
 Source: [Rails YAML.load_file docs](https://apidock.com/ruby/YAML/load_file/class){:target="blank"}
