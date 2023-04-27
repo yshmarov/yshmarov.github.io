@@ -68,7 +68,9 @@ So now you can remove 2 of the 3 CDN links:
 <script src="https://cdn.jsdelivr.net/gh/alumuko/vanilla-datetimerange-picker@latest/dist/vanilla-datetimerange-picker.js"></script>
 ```
 
-[vanilla-daterange-picker](https://github.com/alumuko/vanilla-datetimerange-picker) does not exist as an npm package, so there is no straightforward way to import it. Here's just some code I tried:
+[vanilla-daterange-picker](https://github.com/alumuko/vanilla-datetimerange-picker) does not exist as an npm package, so there is no straightforward way to import it. 
+
+I tried to copy the code of the DateRangePicker into `app/assets/javascripts/libraries/vanilla-daterange-picker@3-1.js` and import it in application.js:
 
 ```js
 // app/javascript/application.js
