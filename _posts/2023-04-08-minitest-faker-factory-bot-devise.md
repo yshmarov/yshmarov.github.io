@@ -67,15 +67,15 @@ class DeviseAuthSystemTest < ApplicationSystemTestCase
   end
 
   test 'create user and sign in' do
-    User.create(email: @email, password: @password)
-    @email = Faker::Internet.email
-    @password = Faker::Internet.password(min_length: 10, max_length: 30)
+    email = Faker::Internet.email
+    password = Faker::Internet.password(min_length: 10, max_length: 30)
+    User.create(email: email, password: password)
 
     visit static_dashboard_path
     # visit new_user_session_path
 
-    fill_in 'Email', with: @email
-    fill_in 'Password', with: @password
+    fill_in 'Email', with: email
+    fill_in 'Password', with: password
     click_button 'Log in'
 
     assert_current_path static_dashboard_path
