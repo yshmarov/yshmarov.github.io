@@ -3,7 +3,7 @@ layout: post
 title: How to Get List of YouTube Channel Videos using YouTube API
 author: Yaroslav Shmarov
 tags: ruby rails youtube api
-thumbnail: /assets/thumbnails/api.png
+thumbnail: /assets/thumbnails/youtube.png
 ---
 
 I've got 150+ videos on [@SupeRails Youtube channel](https://www.youtube.com/@SupeRails/), and now I want to list them on my own [superails.com](https://superails.com) website.
