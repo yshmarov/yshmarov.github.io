@@ -63,7 +63,7 @@ devise :database_authenticatable,
        #:registerable,
        #:recoverable,
        :rememberable,
-       #:validatable,
+       :validatable,
        :omniauthable, omniauth_providers: [:github]
 ```
 
