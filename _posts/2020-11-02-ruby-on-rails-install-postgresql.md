@@ -32,6 +32,12 @@ y
 exit
 ```
 
+You can fix `Connection to server on socket "/var/run/postgresql/.s.PGSQL.5432" failed` by just starting/restarting postgresql:
+
+```
+sudo service postgresql restart
+```
+
 check version of postgresql
 ```sh
 pg_config --version
