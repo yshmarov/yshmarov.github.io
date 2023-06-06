@@ -97,13 +97,15 @@ class CreatePosts < ActiveRecord::Migration[7.0]
     create_enum :post_status, ["draft", "reviewed", "published"]
 
     create_table :posts do |t|
-      t.enum :current_mood, enum_type: "post_status", default: "draft", null: false
+      t.enum :status, enum_type: "post_status", default: "draft", null: false
       # t.column :status, :post_status, null: false, index: true
     end
   end
 
   # to drop the enum table:
   def down
+    remove_column :posts, :status
+
     execute <<-SQL
       DROP TYPE post_status;
     SQL
