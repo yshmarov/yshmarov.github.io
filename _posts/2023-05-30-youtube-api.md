@@ -43,7 +43,8 @@ Install the gem:
 
 ```ruby
 # Gemfile
-gem 'google-api-client' # https://github.com/googleapis/google-api-ruby-client
+# gem 'google-api-client' # https://github.com/googleapis/google-api-ruby-client
+gem 'google-apis-youtube_v3'
 ```
 
 Make a `list_searches` API call to get up to 50 videos per page form the selected channel. 
@@ -55,7 +56,10 @@ CHANNEL_ID = 'UCyr6ZTmztFW3FB4qG_97FoA'
 YOUTUBE_KEY = 'MySecretKey'
 youtube = Google::Apis::YoutubeV3::YouTubeService.new
 youtube.key = YOUTUBE_KEY
+# list videos and playlists
 response = youtube.list_searches('snippet', channel_id: CHANNEL_ID, max_results: 50)
+# list only videos
+response = youtube.list_searches('snippet', channel_id: CHANNEL_ID, max_results: 5, type: 'video')
 ```
 
 This will provide you basic information about up to 50 videos per page.
