@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Active Job. Background jobs with gem good_job and Postgres."
+title: "Process ActiveJob background jobs with gem good_job and Postgres without Redis"
 author: Yaroslav Shmarov
 tags: active-job good-job background-jobs postgresql
 thumbnail: /assets/thumbnails/bot.png
