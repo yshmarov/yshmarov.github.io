@@ -8,7 +8,9 @@ thumbnail: /assets/thumbnails/youtube.png
 
 I've got 150+ videos on [@SupeRails Youtube channel](https://www.youtube.com/@SupeRails/), and now I want to list them on my own [superails.com](https://superails.com) website.
 
-I could copypaste the information manually, but that would take ages. So naturally I will use the Youtube API to get all the videos.
+I could copypaste the information manually, but that would take ages. 
+
+I could use web scraping, but what's the point, if there is an easy to use Youtube API?
 
 Youtube API is accessible in Ruby via the [gem 'google-api-client'](https://github.com/googleapis/google-api-ruby-client)
 
