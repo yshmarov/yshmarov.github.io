@@ -96,6 +96,23 @@ bundle add inline_svg
 <%= inline_svg_tag 'svg/search2', style: "color: green; background-color: red; font-size: 40px;" %>
 ```
 
+### Display all svgs in a view
+
+```ruby
+class StyleguideController < ApplicationController
+  def index
+    @svg_names = Rails.root.join("app", "assets", "images", "svg").children.map { |path| path.basename.to_s.split(".")[0] }
+  end
+end
+```
+
+```ruby
+<% @svg_names.each do |svg_name| %>
+  <%= inline_svg_tag "svg/#{svg_name}.svg", class: "h-6 w-6" %>
+  <%= svg_name %>
+<% end %>
+```
+
 That's it!
 
 References:
