@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Save image from URL to ActiveStorage
+title: Image scraping with Rails. Save image from URL to ActiveStorage
 author: Yaroslav Shmarov
 tags: ruby rails active-storage
 thumbnail: /assets/thumbnails/placeholder-image.png
@@ -9,6 +9,7 @@ thumbnail: /assets/thumbnails/placeholder-image.png
 Sometimes we have an image url, that we want to "download" and store directly in our app's storage.
 
 Usecase examples:
+- scrape images from reddit or imgur?
 - User signs up with an oAuth provider, we get an image_url from the oAuth params
 - Import Youtube videos via API and store thumbnail locally from thumbnail_url
 
