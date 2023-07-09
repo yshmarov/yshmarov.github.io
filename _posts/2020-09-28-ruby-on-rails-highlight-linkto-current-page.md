@@ -31,6 +31,8 @@ Use `active_link_to` instead of `link_to` to apply classes `underline font-bold`
   end
 ```
 
+`class_names` that we are using was [introduced in Rails 6.1](https://www.bigbinary.com/blog/rails-6-1-introduces-class_names-helper)
+
 `active_link_to` works with both inline `link_to` and block:
 
 ```ruby
