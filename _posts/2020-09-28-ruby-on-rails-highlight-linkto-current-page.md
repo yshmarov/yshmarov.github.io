@@ -49,24 +49,22 @@ Writing tests for `active_link_to`:
 # test/helpers/application_helper_test.rb
 class ApplicationHelperTest < ActionView::TestCase
   test 'active_link_to' do
-    assert_dom_equal(
-      active_link_to('Home', root_path),
-      link_to('Home', root_path, class: 'underline font-bold')
+    def current_page?(link)
+      true
+    end
+
+    assert_equal(
+      active_link_to('Home', static_pages_pricing_path),
+      link_to('Home', static_pages_pricing_path, class: "active")
     )
 
-    assert_dom_equal(
-      active_link_to('Home', root_path, class: 'text-red-500'),
-      link_to('Home', root_path, class: 'text-red-500 underline font-bold')
-    )
+    def current_page?(link)
+      false
+    end
 
-    assert_dom_equal(
-      active_link_to(root_path) { 'Home' },
-      link_to(root_path, class: 'underline font-bold') { 'Home' }
-    )
-
-    assert_dom_equal(
-      active_link_to(root_path, class: 'text-red-500') { 'Home' },
-      link_to(root_path, class: 'text-red-500 underline font-bold') { 'Home' }
+    assert_equal(
+      active_link_to('Home', static_pages_pricing_path),
+      link_to('Home', static_pages_pricing_path)
     )
   end
 end
