@@ -14,13 +14,50 @@ thumbnail: /assets/thumbnails/stimulus-logo.png
 
 ![text area with autogrow](/assets/images/with-autogrow-good.gif)
 
-How it works:
+### 14.06.2023 updated version:
 
 Just connect the below stimulus controller to a `<textarea>` and you're good to go!
 
 ```sh
 rails g stimulus autogrow
 ```
+
+StimulusJS controller inspired by [MDN HTMLTextAreaElement example](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement#autogrowing_textarea_example):
+
+```js
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  connect() {
+    this.element.style.overflow = 'hidden';
+    this.grow();
+  }
+
+  grow() {
+    const textarea = this.this.element;
+    if (textarea.scrollHeight > textarea.clientHeight) {
+      textarea.style.height = `${textarea.scrollHeight}px`;
+    }
+  }
+
+  // bad approach:
+  // grow() {
+  //   this.element.style.height = 'auto';
+  //   this.element.style.height = `${this.element.scrollHeight}px`;
+  // }
+}
+```
+
+Usage with `html.erb`:
+
+```ruby
+<%= form.text_area :content,
+                    # rows: 5,
+                    data: { controller: 'autogrow',
+                            action: "input->autogrow#grow" } %>
+```
+
+### 31.03.2022 version:
 
 ```js
 // app/javascript/controllers/autogrow.js
@@ -53,4 +90,4 @@ export default class extends Controller {
 }
 ```
 
-Based on the fantastic [@guillaumebriday's stimulus-textarea-autogrow](https://github.com/stimulus-components/stimulus-textarea-autogrow/blob/master/src/index.ts){:target="blank"}
+This old version is based on the fantastic [@guillaumebriday's stimulus-textarea-autogrow](https://github.com/stimulus-components/stimulus-textarea-autogrow/blob/master/src/index.ts){:target="blank"}
