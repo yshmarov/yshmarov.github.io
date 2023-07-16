@@ -34,17 +34,9 @@ export default class extends Controller {
   }
 
   grow() {
-    const textarea = this.this.element;
-    if (textarea.scrollHeight > textarea.clientHeight) {
-      textarea.style.height = `${textarea.scrollHeight}px`;
-    }
+    this.element.style.height = 'auto';
+    this.element.style.height = `${this.element.scrollHeight}px`;
   }
-
-  // bad approach:
-  // grow() {
-  //   this.element.style.height = 'auto';
-  //   this.element.style.height = `${this.element.scrollHeight}px`;
-  // }
 }
 ```
 
