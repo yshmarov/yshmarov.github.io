@@ -6,6 +6,11 @@ tags: ruby-on-rails, error-pages, 404
 thumbnail: /assets/thumbnails/404.png
 ---
 
+Series:
+1. [Add custom error pages in a Rails app]({% post_url 2023-03-14-style-default-error-pages %})
+2. [Style default error pages in a Rails app inside /public folder]({% post_url 2023-03-14-style-default-error-pages %})
+3. [DRY custom error pages]({% post_url 2023-07-19-dry-custom-error-pages %})
+
 It is often easy to distinguish a Rails app by going to `/404` or `/500`. You know this screen, right?
 
 ![rails-default-error-page](/assets/images/rails-default-error-page.png)
@@ -25,24 +30,19 @@ rm public/{404,500}.html
 echo > app/views/layouts/errors.html.erb
 ```
 
-`app/config/application.rb`:
-
 ```ruby
+# app/config/application.rb
 config.exceptions_app = self.routes
 ```
 
-`app/config/routes.rb`:
-
 ```ruby
+# app/config/routes.rb
 match "/404", via: :all, to: "errors#not_found"
 match "/500", via: :all, to: "errors#internal_server_error"
 ```
 
-`app/views/controllers/errors_controller.rb`:
-
 ```ruby
-# class ErrorsController < ApplicationController
-#   skip_before_action :authenticate_user!
+# app/views/controllers/errors_controller.rb
 class ErrorsController < ActionController::Base
 
   def not_found
@@ -55,9 +55,8 @@ class ErrorsController < ActionController::Base
 end
 ```
 
-`app/views/layouts/errors.html.erb`
-
 ```html
+<!-- app/views/layouts/errors.html.erb -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -76,9 +75,8 @@ end
 </html>
 ```
 
-`app/views/errors/internal_server_error.html.erb`:
-
 ```html
+<!-- app/views/errors/internal_server_error.html.erb -->
 <div class="text-center">
   <br>
   <h2>
@@ -94,13 +92,12 @@ end
 </div>
 ```
 
-`app/views/errors/not_found.html.erb`:
-
 ```html
+<!-- app/views/errors/not_found.html.erb -->
 <div class="text-center">
   <br>
   <h2>
-    404
+    <%= response.status %>
     <%= action_name.humanize %>
   </h2>
   <hr>
@@ -117,6 +114,7 @@ end
 ### Tailwind example
 
 ```html
+<!-- app/views/layouts/errors.html.erb -->
 <!DOCTYPE html>
 <html>
   <head>
@@ -139,6 +137,7 @@ end
 ```
 
 ```html
+<!-- app/views/errors/not_found.html.erb -->
 <div class='text-center'>
   <h1 class="font-bold text-4xl"><%= action_name.humanize %></h1>
   <p>This page does not exist</p>
