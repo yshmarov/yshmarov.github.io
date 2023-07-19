@@ -7,8 +7,8 @@ thumbnail: /assets/thumbnails/404.png
 ---
 
 Series:
-1. [Add custom error pages in a Rails app]({% post_url 2023-03-14-style-default-error-pages %})
-2. [Style default error pages in a Rails app inside /public folder]({% post_url 2023-03-14-style-default-error-pages %})
+1. [Add custom error pages in a Rails app]({% post_url 2020-12-14-custom-error-pages %})
+2. [**Style default error pages in a Rails app inside /public folder**]({% post_url 2023-03-14-style-default-error-pages %})
 3. [DRY custom error pages]({% post_url 2023-07-19-dry-custom-error-pages %})
 
 Previously I wrote about adding [Adding custom error pages in a Rails app]({%post_url 2020-12-14-custom-error-pages %}). If you don't want to go that way, you can just style the existing error pages that are stored in the `/public` folder with CSS.
