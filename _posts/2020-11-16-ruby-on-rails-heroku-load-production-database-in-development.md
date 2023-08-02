@@ -6,7 +6,7 @@ tags:
 - ruby on rails
 - heroku
 - postgresql
-thumbnail: https://res-3.cloudinary.com/crunchbase-production/image/upload/c_lpad,f_auto,q_auto:eco/v1491420676/cenlvst0fgs8ejx12n8u.png
+thumbnail: /assets/thumbnails/heroku.png
 youtube_id: qSYLJhe2nO4
 ---
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
