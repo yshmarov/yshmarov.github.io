@@ -74,4 +74,4 @@ For example, for a page with centered, not full-width content you can do:
 
 That's it! 🤠
 
-Next step: Make the navbar dropdown actually work on small screen when the sidebar is hidden 🙈
+Next step: [Make the navbar dropdown actually work on small screen when the sidebar is hidden]({% post_url 2023-08-08-tailwindcss-dropdown %}) 🙈
