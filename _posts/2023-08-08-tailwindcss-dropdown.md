@@ -133,6 +133,8 @@ bin/importmap pin stimulus-use
 * close dropdown by clicking outside
 * close dropdown if screen size is more than `sm` (768 px)
 * hide `<main>` area and display ONLY dropdown on page
+* blur `<main>`
+* disable scrolling of `<body>` content
 
 ```js
 // app/javasctipt/controllers/dropdown_controller.js
@@ -175,13 +177,19 @@ export default class extends Controller {
 
   open() {
     this.contentTarget.classList.remove("hidden")
+
     // let main = document.querySelector("main")
+    // main.classList.add("blur")
+    // document.body.classList.add("overflow-hidden");
     // main.classList.add("hidden")
   }
 
   close() {
     this.contentTarget.classList.add("hidden")
+
     // let main = document.querySelector("main")
+    // main.classList.remove("blur")
+    // document.body.classList.remove("overflow-hidden");
     // main.classList.remove("hidden")
   }
 }
