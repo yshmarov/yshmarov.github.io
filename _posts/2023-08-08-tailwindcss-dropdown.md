@@ -225,15 +225,15 @@ Update the navbar:
 That's it! 🤠
 
 **"Tailwind on Rails"** agenda:
-- Responsive layout
-- Navigation (header, sidebar, footer)
-- Dropdown navigation menu
+- Responsive layout with Navigation (header, sidebar, footer)
+- Dropdown navbar menu
+- Responsive Content Layout: Grid; 2-column layout; centered
 - Flash message placement, styling, dismissal
 - Reusable styled error messages
-- Responsive Content Grid
-- Content page layouts (2-columns, centered)
 - Buttons and Links styling
 - Responsive tables
 - mobile footer navbar
 - changing default scaffold templates
 - Popup modal dropdowns (hide with clickoutside)
+- Tabs
+- Form: inputs scattered around page
