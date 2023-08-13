@@ -6,9 +6,13 @@ tags: rails tailwindcss grid flex
 thumbnail: /assets/thumbnails/tailwindcss.png
 ---
 
-Image/gif examples coming soon!
+### Content grid (columns)
 
-### Content grid (columns):
+```
+LG 📜📜📜
+MD 📜📜
+SM 📜
+```
 
 ```html
 <div id="products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -16,7 +20,11 @@ Image/gif examples coming soon!
 </div>
 ```
 
-### Center content on page:
+### Center content on page
+
+```
+➡️📜⬅️
+```
 
 ```html
 <div class="mx-auto md:w-2/3 w-full border p-8 rounded-xl shadow-lg">
@@ -28,6 +36,13 @@ Image/gif examples coming soon!
 
 ### 2-column layout
 
+```
+LG
+📜📜
+SM
+📜
+📜
+```
 Big screen - inline. Small screen - column.
 
 `flex-1` or `flex-grow` - on the `div` within `flex` that should take up the responsive max space in a **row**.
@@ -50,7 +65,7 @@ prefer `gap-4` over `space-` when possible
 </div>
 ```
 
-### @-column layout: Fixed width on large screens
+### 2-column layout: Fixed width on large screens
 
 use `w-4/5` and similar, instead of `flex-1`:
 
