@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "#3 Turbo: Keep the audio playing after changing the page"
+title: "#3 Turbo: Keep the audio playing after changing the page with data-turbo-permanent"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo audio mp3 turbo-drive
 thumbnail: /assets/thumbnails/turbo.png
@@ -37,6 +37,11 @@ Task: when you switch the page the audio should be still playing like here [http
 
 In this case `song.mp3` is sourced from `#app/assets/images/song.mp3`
 
+Another example of using `data-turbo-permanent` on [superails.com](https://superails.com) - search form and results are persisted across pages:
+
+![persist-search-results-across-pages](/assets/images/data-turbo-permanent-persist-search-results.gif)
+
 Resources:
+* [Hotwire Turbo Docs: Persisting Elements Across Page Loads](https://turbo.hotwired.dev/handbook/building#persisting-elements-across-page-loads)
 * [https://github.com/hotwired/turbo/issues/64](https://github.com/hotwired/turbo/issues/64)
 * [https://github.com/hotwired/turbo/issues/221](https://github.com/hotwired/turbo/issues/221)
