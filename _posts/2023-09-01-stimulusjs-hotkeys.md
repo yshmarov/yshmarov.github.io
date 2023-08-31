@@ -64,6 +64,7 @@ HTML usage example:
 
 Important considerations:
 
+* Most `Ctrl+yourKey` combination are reserved by the browser. Different browsers can have different reserved combinations. A few characters that seem to work across browsers are `k`, `u`, `b`, `k`.
 * This brings value only to users with keyboards (not mobile devices)
 * [Using accesskeys can have accessibility issues](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey)
 
