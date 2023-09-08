@@ -20,6 +20,8 @@ Example 2:
 
 In our example a user will always have to click `⌘ Command` + `yourKey` (Mac), or `Ctrl` + `yourKey` (Linux/Windows).
 
+#### Option 1: With event listeners
+
 ```js
 import { Controller } from "@hotwired/stimulus"
 
@@ -60,6 +62,43 @@ HTML usage example:
   <button data-hotkeys-target="button" data-hotkey="s">Save</button>
   <button data-hotkeys-target="button" data-hotkey="d">Delete</button>
 </body>
+```
+
+#### Option 2 (better): with Stimulus actions
+
+Instead of EventListeners, we can use [Stimulus KeyboardEvent Filter](https://stimulus.hotwired.dev/reference/actions#keyboardevent-filter)
+
+```diff
+-<body data-controller="hotkeys">
++<body data-controller="hotkeys" data-action="keydown->hotkeys#handleKeydown">
+  <a href="#" data-hotkeys-target="button" data-hotkey="e">Edit</a>
+  <button data-hotkeys-target="button" data-hotkey="s">Save</button>
+  <button data-hotkeys-target="button" data-hotkey="d">Delete</button>
+</body>
+```
+
+```js
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  static targets = [ "button" ]
+
+  handleKeydown(event) {
+    // Check if Cmd (Mac) or Ctrl (Windows/Linux) is pressed simultaneously with the key
+    let pressedCtrl = event.metaKey || event.ctrlKey
+    let pressedKey = event.key.toLowerCase()
+    
+    if (pressedCtrl) {
+      // find a button with data-hotkey attribute that matches the pressed key
+      let buttonTarget = this.buttonTargets.find((el) => el.dataset.hotkey == pressedKey)
+      if (buttonTarget) {
+        event.preventDefault();
+        buttonTarget.focus()
+        buttonTarget.click()
+      }
+    }
+  }
+}
 ```
 
 Important considerations:
