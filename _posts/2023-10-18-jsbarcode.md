@@ -45,7 +45,7 @@ export default class extends Controller {
   loadJsBarcodeLibrary() {
     // https://github.com/lindell/JsBarcode/wiki/Options
     const options = {
-      format: "CODE128",
+      format: "CODE128", // CODE39
       // font: "monospace", // fantasy
       // textAlign: "left",
       // textPosition: "top",
@@ -53,7 +53,7 @@ export default class extends Controller {
       height: 60,
       quite: 1,
       margin: 0,
-      lineColor: "#000000",
+      lineColor: "#000000", // #0000FF
       displayValue: false,
     };
 
@@ -72,7 +72,11 @@ A barcode has to be generated in an `img` or `svg` html tag.
 Minimal HTML setup example:
 
 ```html
-<img data-controller="barcode" data-barcode="1234567890"></img>
+<img data-controller="barcode" data-barcode="1234567890">
 ```
+
+Example of rendering a list of products and their barcodes:
+
+![Barcodes generated with JsBarcode](/assets/images/jsbarcodes-example.png)
 
 That's it! 🤠
