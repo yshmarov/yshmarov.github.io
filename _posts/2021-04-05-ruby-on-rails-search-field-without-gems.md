@@ -12,7 +12,7 @@ thumbnail: /assets/thumbnails/search.png
 ![search-field.png](/assets/ruby-on-rails-search-field-without-gems/search-field.png)
 
 posts_controller.rb
-```
+```ruby
   def index
     if params[:title]
       @posts = Post.where('title ILIKE ?', "%#{params[:title]}%").order(created_at: :desc) #case-insensitive
@@ -21,8 +21,10 @@ posts_controller.rb
     end
   end
 ```
+
 any view (posts/index.html.haml or in a **bootstrap** navbar)
-```
+
+```ruby
 .form-inline.my-2.my-lg-0
   = form_tag(courses_path, method: :get) do
     .input-group
@@ -31,8 +33,10 @@ any view (posts/index.html.haml or in a **bootstrap** navbar)
         %button.btn.btn-primary.btn-sm{:type => "submit"}
           %span.fa.fa-search{"aria-hidden" => "true"}
 ```
+
 .html.erb without bootstrap
-```
+
+```ruby
 <%= form_tag(posts_path, method: :get) do %>
   <%= text_field_tag :title, params[:title], autocomplete: 'off', placeholder: "post title" %>
   <%= submit_tag "Search" %>
