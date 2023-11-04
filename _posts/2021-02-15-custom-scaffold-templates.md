@@ -6,16 +6,36 @@ tags: railsbytes rubidium generators templates scaffolds rails ruby-on-rails-6
 thumbnail: /assets/thumbnails/script.png
 ---
 
-Add sexy `simple_form` & `bootstrap` styling for your scaffolds by default.
+Since Hotwire was released, Rails scaffolds generate **LISTS** with **CARDS**, not a **TABLE** in `index.html.erb`.
+
+To continue having tables in your scaffolds, paste [this code](https://github.com/rails/rails/blob/ecb2850a04adc6c6665f9a30a1d60ca73965ccfa/railties/lib/rails/generators/erb/scaffold/templates/index.html.erb.tt) into `lib/templates/erb/scaffold/index.html.erb.tt` within your Rails app.
+
+If you are using `tailwindcss-rails`, you will also want to specify that you want to use your own `template_engine`:
+
+```ruby
+# config/application.rb
+    config.generators.template_engine = :erb
+```
+
+****
+
+In this same way you can overwrite the default scaffold templates to include:
+- your own CSS styling
+- i18n
+- search, pagination (in scaffold views and controllers)
+
+****
+
+For example, you can try adding `simple_form` & `bootstrap` styling for your scaffolds by default.
 
 Example of final result:
 
 ![custom-scaffold-templates-result.png](/assets/custom-scaffold-templates/custom-scaffold-templates-result.png)
 
-run this [script](/script-custom-scaffold-templates.txt){:target="blank"} in your terminal to add bootstrap scaffold templates to your app:
-```
-rm ./lib/templates/erb/scaffold/_form.html.erb
+If you run the below command in your terminal, it will run a [script](/script-custom-scaffold-templates.txt) to add styled `*.html.erb` scaffold templates to your app:
 
+```shell
+rm ./lib/templates/erb/scaffold/_form.html.erb
 rails app:template LOCATION="{{ site.url }}/script-custom-scaffold-templates.txt"
 ```
 
@@ -26,10 +46,10 @@ Regenerating scaffold views for existing model based on attributes:
 rails g erb:scaffold Post title content
 ```
 
-Here's how bootstrap scaffold templates erb files can look:
+Here's how a bootstrap-styled scaffold template erb file can look:
 
-lib/templates/erb/scaffold/index.html.erb
 ```html
+<!-- lib/templates/erb/scaffold/index.html.erb -->
 <h3>
   <div class="text-center">
     <%= plural_table_name.capitalize %>
