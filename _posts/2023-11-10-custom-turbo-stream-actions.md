@@ -60,7 +60,7 @@ module TurboStreamActionsHelper
   def turbo_stream_navigate(url)
     link = tag.a(
       nil,
-      class: "hidden",
+      style: 'display: none;'
       href: url,
       data: {controller: "autoclick", turbo_cache: false}
     )
