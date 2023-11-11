@@ -62,7 +62,7 @@ module TurboStreamActionsHelper
       nil,
       class: "hidden",
       href: url,
-      data: {controller: "autoclick"}
+      data: {controller: "autoclick", turbo_cache: false}
     )
 
     turbo_stream.append_all("body") { link }
