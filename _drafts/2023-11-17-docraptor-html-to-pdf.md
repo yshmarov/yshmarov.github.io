@@ -33,15 +33,16 @@ Since 2015 I have always relied on the [gem wicked_pdf]({% post_url 2021-05-24-g
 2. [Gem Prawn](https://github.com/prawnpdf/prawn) - DSL to script PDF documents with plain Ruby.
 3. [Gem Ferrum](https://github.com/rubycdp/ferrum) - virtual "headless" browser opens a page in "Print"/"Save to PDF" view.
 
-While **Prawn** and **Ferrum** offer *fundamentally* different approaches to generating PDF, I think **DocRaptor** might be the the best **"plug-and-play"** replacement for wicked_pdf, because it uses the same technological principle (HTML-to-PDF).
+While **Prawn** and **Ferrum** offer *fundamentally* different approaches to generating PDF, I think **DocRaptor** might be the the best **"plug-and-play"** replacement for wicked_pdf, because it uses the same technological principle (HTML-to-PDF). 
+
+I think that [CSS Paged Media](https://docraptor.com/css-paged-media) is the killer feature of DocRaptor/Prince technology: it allows us to have maximum CSS control of what is rendered on a single PDF page.
 
 By the way, I first casually heard about DocRaptor on [IndieRails Podcast: Matt Gordon - Going from Consulting to Products](https://www.indierails.com/15). Let's give it a try! 
 
-### 3. DocRaptor basic usage
+### 3. [DocRaptor.com](https://docraptor.com/) basic usage
 
 Useful resources:
 
-- [DocRaptor.com](https://docraptor.com/)
 - [DocRaptor Ruby docs](https://docraptor.com/documentation/ruby)
 - [Gem DocRaptor](https://github.com/DocRaptor/docraptor-ruby)
 
@@ -75,7 +76,7 @@ class Invoices::ToPdfJob < ApplicationJob
     # document_content = ActionController::Base.render( # bad
     document_content = ApplicationController.render(
       template: 'invoices/show',
-      # layout: 'layouts/application', # this will fail with "File system access is not allowed"
+      # layout: 'layouts/application', # in development fails with "File system access is not allowed"
       layout: 'layouts/pdf',
       assigns: { invoice: }
     )
@@ -113,7 +114,7 @@ Inside the root folder of your app you will have a downloaded PDF! It will look 
 
 ### 4. FIX ERROR: `File system access is not allowed.`
 
-The DocRaptor API does not have access to assets inside your app by default:
+The DocRaptor API does not have access to these assets inside your `localhost:3000` app by default:
 
 ```ruby
 # app/views/layouts/application.html.erb
@@ -122,7 +123,9 @@ The DocRaptor API does not have access to assets inside your app by default:
 <%= javascript_importmap_tags %>
 ```
 
-Easiest solution: create a separate PDF layout that will not contain internal asset path.
+The official docs [suggest](https://docraptor.com/documentation/article/1986775-development-testing-localhost-servers) using Ngrok.
+
+My easiest solution: create a separate PDF layout that will not contain internal asset path.
 
 ```html
 <!-- app/views/layouts/pdf.html.erb -->
@@ -132,7 +135,9 @@ Easiest solution: create a separate PDF layout that will not contain internal as
     <title>DocraptorHtmlToPdf</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
-
+  <style>
+    /* your inline CSS goes here */
+  </style>
   <body>
     <%= yield %>
   </body>
@@ -271,13 +276,26 @@ We can add a new attribute like `pdf_url` to our `Invoice` and update it.
 
 That's it: now DocRaptor replaced both ActiveStorage and our cloud storage provider!
 
-### 8. DocRaptor is not free?
+### 8. URL to PDF
 
-To remove the *"TEST DOCUMENT"* branding from the generated PDFs, you will need to register a DocRaptor account and get an API key:
+Instead of rendering an internal template, we can create pdf from any **public** url using [document_url](https://docraptor.com/documentation/api#api_document_url):
+
+```diff
+# # app/jobs/invoices/to_pdf_job.rb
+- document_content: document_content,
++ document_url: 'https://google.com/',
++ document_url: invoice_url(@invoice),
+```
+
+![docraptor-url-to-pdf](/assets/images/docraptor-url-to-pdf.png)
+
+### 9. DocRaptor is not free?
+
+To remove the *"TEST DOCUMENT"* branding from the generated PDFs, we will need to register a DocRaptor account and get an API key:
 
 ![docraptor-api-key](/assets/images/docraptor-api-key.png)
 
-Use `YOUR_API_KEY_HERE` for `development`, and your real API key for `production`:
+Use `YOUR_API_KEY_HERE` for `development`, and our real API key for `production`:
 
 ```diff
 -  config.username = "YOUR_API_KEY_HERE" # THIS key works in test mode!
@@ -301,7 +319,7 @@ Via DocRaptor, we can get "pay-as-you-go" access to:
 
 So the price is `12 cents` -> `2,5 cents` per PDF document.
 
-### 9. Final thoughts
+### 10. Final thoughts
 
 - Most often in production you would generate a PDF for an important money-related event (ticket sold, order placed, contract signed, invoice issued). A PDF is the first thing you deliver after a successful online transaction - you want it to be a fulfilling experience for your customer...
 - I like the idea of outsourcing PDF generation and hosting.
