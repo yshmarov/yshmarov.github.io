@@ -25,7 +25,7 @@ price.each do |price|
 end
 ```
 
-Read stored data:
+Read stored data `Rails.cache.read`:
 
 ```ruby
 Rails.cache.read("price-7484845785247")
@@ -72,4 +72,4 @@ class CacheStripePricingJobTest < ActiveJob::TestCase
 end
 ```
 
-That's it!
+That's it! I might add more details about Rails caching inside this blogpost in the future.
