@@ -112,6 +112,11 @@ Inside the root folder of your app you will have a downloaded PDF! It will look 
 
 ### 4. FIX ERROR: `File system access is not allowed.`
 
+https://docraptor.com/documentation/article/1986775-development-testing-localhost-servers
+
+[document_url](https://docraptor.com/documentation/api#api_document_url)
+
+
 The DocRaptor API does not have access to assets inside your app by default:
 
 ```ruby
