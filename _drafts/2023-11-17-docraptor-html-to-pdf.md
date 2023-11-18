@@ -41,6 +41,7 @@ By the way, I first casually heard about DocRaptor on [IndieRails Podcast: Matt 
 
 Useful resources:
 
+- [DocRaptor.com](https://docraptor.com/)
 - [DocRaptor Ruby docs](https://docraptor.com/documentation/ruby)
 - [Gem DocRaptor](https://github.com/DocRaptor/docraptor-ruby)
 
@@ -111,11 +112,6 @@ Inside the root folder of your app you will have a downloaded PDF! It will look 
 ![docraptor-local-storage-file-preview.png](/assets/images/docraptor-local-storage-file-preview.png)
 
 ### 4. FIX ERROR: `File system access is not allowed.`
-
-https://docraptor.com/documentation/article/1986775-development-testing-localhost-servers
-
-[document_url](https://docraptor.com/documentation/api#api_document_url)
-
 
 The DocRaptor API does not have access to assets inside your app by default:
 
