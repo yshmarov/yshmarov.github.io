@@ -164,6 +164,15 @@ Use it in your controller:
 
 And it will redirect! YAY!
 
+### Don't lose the flash message
+
+Just add `flash.keep` to make flash work on a double-redirect 😉
+
+```ruby
+  flash[:notice] = "Comment created."
+  flash.keep(:notice)
+```
+
 ### **Advanced** redirect with custom Turbo Stream Actions
 
 In this case, we will pass the url not as a target but as a param. You could pass multiple params like this.
