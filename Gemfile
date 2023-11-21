@@ -10,6 +10,8 @@ group :jekyll_plugins do
   gem 'jekyll-tagging-related_posts'
   gem 'jekyll-target-blank' # https://github.com/keithmifsud/jekyll-target-blank
   # gem 'jekyll-admin'
+  # gem 'jekyll-redirect-from', '0.16.0'
+  # gem 'jekyll-mermaid', '1.0.0'
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem

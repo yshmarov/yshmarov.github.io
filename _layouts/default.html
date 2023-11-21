@@ -15,7 +15,8 @@
 
     <main class="page-content" aria-label="Content" style="background-color: rgb(8 47 73);">
       <div class="wrapper" style="background-color:#D0D0D0;">
-        {{ content }}
+        <!-- {{ content }} -->
+				{% include anchor_headings.html html=content anchorBody="#" anchorClass="anchor" %}
       </div>
     </main>
 
