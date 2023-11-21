@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "Advanced: Hotwire Turbo Modals with HTML Dialog"
+title: "Revised: Hotwire Turbo Modals with HTML Dialog"
 author: Yaroslav Shmarov
 tags: hotwire turbo modals dialog
 thumbnail: /assets/thumbnails/turbo.png
 ---
 
-Previously I wrote about 
+Previously I wrote about:
 
 1) [Hotwire Turbo Modals]({% post_url 2022-02-09-hotwire-turbo-frame-modals %}){:target="blank"}
 
@@ -127,6 +127,107 @@ Now you can add `data: { turbo_frame: :modal, action: "dialog#open" }` to any li
 +<% end %>
 ```
 
+### Refactoring
+
+Problems with the above approach:
+- We were needlessly adding a stimulus controller on the BODY html tag;
+- dialog html was present in the layout file, even if we do not need it right now;
+
+Solution:
+
+Let's remove the `<dialog>` from the layout file, and leave an empty `turbo_frame_tag :modal`
+
+```diff
+# app/views/layouts/application.html.erb
+  <body>
+    <%= turbo_frame_tag :modal %>
+    <%= yield %>
+  </body>
+```
+
+We will open
+
+```ruby
+# app/views/layouts/_turbo_dialog.html.erb
+<%= turbo_frame_tag :modal do %>
+  <dialog data-controller="dialog" data-action="click->dialog#clickOutside"
+          class="backdrop:bg-gray-400 backdrop:bg-opacity-90 z-10 rounded-md border-4 bg-sky-900 w-full md:w-2/3 mt-24">
+    <div class="p-8">
+      <button class="bg-slate-400" data-action="dialog#close">Cancel</button>
+
+      <%= yield %>
+
+    </div>
+  </dialog>
+<% end %>
+```
+
+Wrap the views that should be rendered inside the modal with the new `_turbo_dialog` partial:
+
+```diff
+# app/views/comments/new.html.erb
+# app/views/comments/edit.html.erb
+# app/views/comments/show.html.erb
+- <%= turbo_frame_tag :modal do %>
++ <%= render 'layouts/turbo_dialog' do %>
+```
+
+So now when a user clicks on a link that should open inside a modal, the content will be rendered within a hidden `<dialog>`. Let's update the stimulus controller to automatically open this dialog:
+
+```diff
+// app/javascript/controllers/dialog_controller.js
+// app/javascript/controllers/dialog_controller.js
+import { Controller } from "@hotwired/stimulus"
+
+// Connects to data-controller="dialog"
+export default class extends Controller {
+  connect() {
++    this.open()
+    // needed because ESC key does not trigger close event
+    this.element.addEventListener("close", this.enableBodyScroll.bind(this))
+  }
+
+  disconnect() {
+    this.element.removeEventListener("close", this.enableBodyScroll.bind(this))
+  }
+
+  // hide modal on successful form submission
+  // data-action="turbo:submit-end->turbo-modal#submitEnd"
+  submitEnd(e) {
+    if (e.detail.success) {
+      this.close()
+    }
+  }
+
+  open() {
+    this.element.showModal()
+    document.body.classList.add('overflow-hidden')
+  }
+
+  close() {
+    this.element.close()
+    // clean up modal content
++    const frame = document.getElementById('modal')
++    frame.removeAttribute("src")
++    frame.innerHTML = ""
+  }
+
+  enableBodyScroll() {
+    document.body.classList.remove('overflow-hidden')
+  }
+
+  clickOutside(event) {
+    if (event.target === this.element) {
+      this.close()
+    }
+  }
+}
+```
+
+We also cleaned up the redundant stimulus targets!
+
+Perfect! Visually everything works the same, but this code is much better! 🎯
+
 ### Disable certain pages to be opened outside modal
 
 ```ruby
@@ -148,4 +249,8 @@ post comment_path(comment), params: {comment: {body: 'foo'}}, headers: {"Turbo-F
 assert_response :success
 ```
 
-Well, that's it!
+Well, that's it! 
+
+This approach works well for hotwire-based modals.
+
+[Source code](https://github.com/corsego/151-dialog-turbo-modals/commits/main)
