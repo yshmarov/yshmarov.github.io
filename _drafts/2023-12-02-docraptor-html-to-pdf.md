@@ -254,7 +254,7 @@ Voila! Now your email will have an attached invoice PDF:
 
 ![docraptor-email-preview](/assets/images/docraptor-email-preview.png)
 
-### 7. DocRaptor document [hosting](https://docraptor.com/documentation/api/parameters#hosted)
+### 7. DocRaptor [document hosting](https://docraptor.com/documentation/api/parameters#hosted)
 
 Are using ActiveStorage only for DocRaptor-generated documents?
 
@@ -283,7 +283,7 @@ Instead of rendering an internal template, we can create pdf from any **public**
 ```diff
 # # app/jobs/invoices/to_pdf_job.rb
 - document_content: document_content,
-+ document_url: 'https://google.com/',
++ document_url: 'https://blog.corsego.com/ruby-on-rails-developer-interview-questions',
 + document_url: invoice_url(@invoice),
 ```
 
@@ -306,7 +306,7 @@ In a post-wicked_pdf world, I think Prince is the only easy HTML-to-PDF tool.
 
 Prince is a well maintained technology that lets you perform very advanced PDF features.
 
-Purchasing Prince directly is an expensive upfront ~payment~ investment.
+Purchasing Prince directly is an expensive upfront ~~payment~~ investment:
 
 ![princexml-pricing](/assets/images/princexml-pricing.png)
 
@@ -317,7 +317,7 @@ Via DocRaptor, we can get "pay-as-you-go" access to:
 
 ![docraptor-pricing](/assets/images/docraptor-pricing.png)
 
-So the price is `12 cents` -> `2,5 cents` per PDF document.
+So the price is between `12 cents` and `2,5 cents` per PDF document.
 
 ### 10. Final thoughts
 
