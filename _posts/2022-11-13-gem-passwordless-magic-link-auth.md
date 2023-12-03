@@ -8,14 +8,18 @@ thumbnail: /assets/thumbnails/lock.png
 
 Passwordless authentication via magic link is an interesting alternative to email-password authentication solutions like Devise.
 
-![passwordless-magic-link-form](/assets/images/passwordless-magic-link-form.png)
+For the first ever time I saw passwordless login in Slack:
+
+![passwordless-slack-example](/assets/images/passwordless-slack-example.png)
 
 A passwordless authentication flow looks like this:
-- Enter your email address
-- Receive login link in an email
-- Click link -> You are logged in
+1. Enter your email address
+2. Receive **login link** or/and **token** in an email
+3. Click link/Input token -> You are logged in
 
 I've implemented passwordless authentication in [insta2blog.com](https://insta2blog.com), and for now I am super happy with the solution 🚀. Feel free to try it out!
+
+![passwordless-magic-link-form](/assets/images/passwordless-magic-link-form.png)
 
 In a way this is a more secure authenication strategy, because there is no compromised password point of failure. It is as secure as your email account. 
 
@@ -29,7 +33,27 @@ Here's how the authentication (login) flow looks in my app:
 
 ### 1. Install [gem passwordless](https://github.com/mikker/passwordless)
 
-Apart of following the official installation guide, here are some of my improvements.
+Apart of following the official installation guide, here are some of my improvements:
+
+The routes helper
+
+```ruby
+# config/routes.rb
+  passwordless_for :users
+```
+
+will generate
+```ruby
+Prefix Verb                 URI Pattern                         Controller#Action
+users_sign_in GET           /users/sign_in(.:format)            passwordless/sessions#new {:authenticatable=>:user, :resource=>:users}
+POST                        /users/sign_in(.:format)            passwordless/sessions#create {:authenticatable=>:user, :resource=>:users}
+verify_users_sign_in GET    /users/sign_in/:id(.:format)        passwordless/sessions#show {:authenticatable=>:user, :resource=>:users}
+confirm_users_sign_in GET   /users/sign_in/:id/:token(.:format) passwordless/sessions#confirm {:authenticatable=>:user, :resource=>:users}
+PATCH                       /users/sign_in/:id(.:format)        passwordless/sessions#update {:authenticatable=>:user, :resource=>:users}
+users_sign_out GET|DELETE   /users/sign_out(.:format)           passwordless/sessions#destroy {:authenticatable=>:user, :resource=>:users}
+```
+
+Update user model, enable user creation:
 
 ```ruby
 # app/models/user.rb
@@ -66,48 +90,30 @@ Login/Logout links:
 
 ```ruby
 # app/views/layouts/application.html.erb
+<%= notice %>
+<%= alert %>
 <% if current_user %>
   <%= current_user.email %>
-  <%= button_to 'Sign out', auth.sign_out_path, method: :delete, form: { data: { turbo_confirm: 'Log out?' } } %>
+  <%= button_to 'Sign out', users_sign_out_path, method: :delete, form: { data: { turbo_confirm: 'Log out?' } } %>
 <% else %>
-  <%= link_to 'Sign in', auth.sign_in_path %>
+  <%= link_to 'Sign in', users_sign_in_path %>
 <% end %>
 ```
 
-### 2. Update email template
+### 2. Email template preview
 
 Preview magic link email with Rails ActionMailer previews:
 
 ```ruby
 # test/mailers/previews/passwordless_mailer_preview.rb
 class PasswordlessMailerPreview < ActionMailer::Preview
-  # http://localhost:3000/rails/mailers/passwordless_mailer/magic_link
-  def magic_link
-    session = Passwordless::Session.first
-    Passwordless::Mailer.magic_link(session).deliver_now
+  # http://localhost:3000/rails/mailers/passwordless_mailer/sign_in
+  def sign_in
+    user = User.build(email: 'foo@bar.com')
+    session = Passwordless::Session.create!(authenticatable: user)
+    Passwordless::Mailer.sign_in(session)
   end
 end
-```
-
-Add better wording to the passwordless email:
-
-```html
-<!-- app/views/passwordless/mailer/magic_link.text.erb -->
-Please confirm that you want to sign in to <%= Rails.application.class.module_parent.name %>.
-
-<%= I18n.t('passwordless.mailer.magic_link', link: @magic_link) %>
-
-The link will expire at <%= Passwordless.timeout_at.call %>
-
-Confirming this request will securely log you in using <%= @session.authenticatable.email %>.
-
-This login was requested using <%= @session.user_agent %>.
-
-If you have any issues with your account, please don't hesitate to contact me by replying to this mail.
-
-Thanks!
-
-Yaro from <%= Rails.application.class.module_parent.name %>
 ```
 
 ![passwordless-mailer-preview](/assets/images/passwordless-mailer-preview.png)
@@ -116,34 +122,30 @@ Yaro from <%= Rails.application.class.module_parent.name %>
 
 To automaticall open previews of sent emails (so that you can confirm a magic link), you will need the [**gem letter_opener**](https://github.com/ryanb/letter_opener) gem:
 
-```
-bundle add letter_opener
+```shell
+$ bundle add letter_opener
 ```
 
-```ruby
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.delivery_method = :letter_opener
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = true
+```diff
+# /config/environments/development.rb
++ Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+Rails.application.configure do
++  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
++  config.action_mailer.delivery_method = :letter_opener
++  config.action_mailer.perform_deliveries = true
++  config.action_mailer.raise_delivery_errors = true
 ```
 
 ![passwordless-letter-opener](/assets/images/passwordless-letter-opener.png)
 
-### 4. Troubleshooting. Future development.
+### 4. Custom config
 
-* Add `data: { turbo: 'false' }` for the redirect from the form to work.
-* Add `required: true` for frontend validation of having an email present on submit.
-
-```diff
--<%= form_for @session, url: send(Passwordless.mounted_as).sign_in_path do |f| %>
-+<%= form_with model: @session, url: send(Passwordless.mounted_as).sign_in_path, data: { turbo: 'false' } do |f| %>
-  <% email_field_name = :"passwordless[#{@email_field}]" %>
--  <%= text_field_tag email_field_name, params.fetch(email_field_name, nil) %>
-+  <%= text_field_tag email_field_name, params.fetch(email_field_name, nil), required: true %>
-  <%= f.submit I18n.t('passwordless.sessions.new.submit') %>
-<% end %>
+```ruby
+# config/initializers/passwordless.rb
+Passwordless.configure do |config|
+  config.default_from_address = "login@insta2blog.com"
+  config.success_redirect_path = '/dashboard'
+end
 ```
-
-I've submitted these changes in [a PR to passwordless](https://github.com/mikker/passwordless/pull/128). Let's see if my changes come through.
 
 That's it!
