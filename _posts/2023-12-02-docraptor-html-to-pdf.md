@@ -4,7 +4,7 @@ title: HTML to PDF in Rails with gem DocRaptor (successor of wicked_pdf)
 author: Yaroslav Shmarov
 tags: rails pdf wicked_pdf active-storage
 thumbnail: /assets/thumbnails/docraptor.png
-youtube_id: i_cNw4APRDg 
+youtube_id: i_cNw4APRDg
 ---
 <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen src="https://www.youtube.com/embed/{{page.youtube_id}}"></iframe>
