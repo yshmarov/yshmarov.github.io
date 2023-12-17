@@ -88,6 +88,14 @@ path = "https://raw.githubusercontent.com/ruby-conferences/ruby-conferences.gith
 uri = URI.open(path)
 yaml = YAML.load_file uri, permitted_classes: [Date]
 # yaml = YAML.load File.read(uri), permitted_classes: [Date]
+
+yaml.each do |event|
+  Event.create!(
+    name: event["name"],
+    location: event["location"],
+    start_date: event["start_date"]
+  )
+end
 ```
 
 Source: [Rails YAML.load_file docs](https://apidock.com/ruby/YAML/load_file/class){:target="blank"}
