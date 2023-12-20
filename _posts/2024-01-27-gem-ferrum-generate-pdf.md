@@ -117,7 +117,7 @@ class HomeController < ApplicationController
     # browser.go_to("http://localhost:3000/home/index")
     browser.go_to(home_index_url)
     # browser.go_to("https://google.com")
-    # click on "Accept all"
+    # click_on_text "Accept all"
     # browser.at_css(".QS5gu.sy4vM").click
     sleep(0.3)
     browser.pdf(
