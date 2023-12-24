@@ -150,12 +150,30 @@ Turbo::StreamsChannel.broadcast_refresh_to current_user
 <%= turbo_stream_from current_user %>
 ```
 
+### Debugging common problems
+
+After a page morph stimulus controllers can lose the default state. You can manually "re-connect" a stimulus controller:
+
+```html
+<div data-action="turbo:morph@window->dropdown#connect">
+```
+
+You can also [trigger a callback on a value change](https://stimulus.hotwired.dev/reference/values#change-callbacks).
+
+In the below scenario, a page morph would not affect elements inside a div, but we trigger some `turbo`/`form` behaviours manually:
+
+```html
+<div data-turbo-permanent data-action="
+  turbo:submit-end->dropdown#close
+  turbo:submit-end->form-reset#connect">
+  <form ....>
+```
+
 ### Open questions:
 
 * Can morphing replace turbo frames search?
 * Would it correctly refresh based on each users' current query params?
 * How would it work on a page with infinite pagination?
-* Stimulus controller states can sometimes be out of sync after morph-refresh
 
 Resources:
 * [A happier happy path with turbo morphing](https://dev.37signals.com/a-happier-happy-path-in-turbo-with-morphing/)
