@@ -6,9 +6,11 @@ tags: ruby rails rubyonrails rubocop code-quality
 thumbnail: /assets/thumbnails/rubocop.png
 ---
 
-Resources:
-* [https://docs.rubocop.org/rubocop-rails/index.html](https://docs.rubocop.org/rubocop-rails/index.html){:target="blank"}
-* [https://github.com/rubocop/rubocop-rails](https://github.com/rubocop/rubocop-rails){:target="blank"}
+[Rubocop](https://github.com/rubocop/rubocop-rails) is one of the most essential gems that I always add to all my apps.
+
+Rails 8 [will have Rubocop](https://github.com/rails/rubocop-rails-omakase/blob/main/rubocop.yml) included by default.
+
+[Official docs](https://docs.rubocop.org/rubocop-rails/index.html)
 
 ### 1. Installation
 
@@ -19,11 +21,15 @@ group :development, :test do
 end
 ```
 
+Create a config file:
+
 ```shell
 # console
 bundle
 echo > .rubocop.yml
 ```
+
+My basic setup:
 
 ```yml
 # .rubocop.yml - basic setup example
@@ -32,7 +38,7 @@ require:
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.1.2
+  TargetRubyVersion: 3.3.0
   Exclude:
     - vendor/bundle/**/*
     - '**/db/schema.rb'
@@ -75,7 +81,7 @@ rubocop app/models/user.rb
 
 ### 3. Disable cops
 
-1. in a file, for a method:
+1. Disable in a file, around a code block:
 
 app/models/user.rb
 
@@ -87,7 +93,7 @@ app/models/user.rb
   # rubocop: enable Metrics/AbcSize, Metrics/MethodLength
 ```  
 
-2. on a whole file:
+2. Disable on a whole file:
 
 ```yml
 # .rubocop.yml
