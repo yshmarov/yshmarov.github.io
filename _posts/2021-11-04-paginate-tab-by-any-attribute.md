@@ -2,7 +2,7 @@
 layout: post
 title: "Paginate/Tab records by any attribute"
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails pagination tabs
+tags: ruby rails calendar ruby-on-rails pagination tabs
 thumbnail: /assets/thumbnails/pagination.png
 ---
 
@@ -35,11 +35,11 @@ end
 ```ruby
 # app/controllers/posts_controller.rb
   def index
-    @posts = if params[:category].present?
-                 Post.where(category: params[:category])
-               else
-                 Post.all
-               end
+    @posts = if params[:date].present?
+                Post.where(published_at: params[:date])
+              else
+                Post.where(published_at: Date.today)
+              end
   end
 ```
 
@@ -61,11 +61,11 @@ Publication date:
 ```ruby
 # app/controllers/posts_controller.rb
   def index
-    @posts = if params[:date].present?
-                 Post.where(published_at: params[:date])
-               else
-                 Post.where(published_at: Date.today)
-               end
+    @posts = if params[:category].present?
+                Post.where(category: params[:category])
+              else
+                Post.all
+              end
   end
 ```
 
