@@ -2,8 +2,8 @@
 layout: post
 title: "My journey through hackathons and startup weekends"
 author: Yaroslav Shmarov
-tags: yarotheslav
-thumbnail: /assets/thumbnails/money.png
+tags: hackathon startup
+thumbnail: /assets/static-pages/yaro-avatar.png
 ---
 
 **I have a hobby: visiting hackathons and “startup weekends”.**
