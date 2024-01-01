@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Does Turbo 8 morphing make sence?
+title: Does Turbo 8 morphing make sense?
 author: Yaroslav Shmarov
 tags: rails hotwire turbo morphing
 thumbnail: /assets/thumbnails/turbo.png
