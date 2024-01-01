@@ -154,9 +154,9 @@ Display records (events) and pagination in a view:
 
 1. `@calendar[:week].label` does not work
 
-1. It should be possible to define `format` in view `pagy_nav(@calendar[:day], format: "%d")`, not just in controller `day:  { size: [0, 31, 31, 0], format: '%d' }`
+1. It would be cool to define `format` in view `pagy_nav(@calendar[:day], format: "%d")`, not just in controller `day:  { size: [0, 31, 31, 0], format: '%d' }`.
 
-1. I would like to display **year** in params, not page index:
+1. If we could have actual **year** in params, not **page index**, it would make URLs predictable:
 ```ruby
 # bad
 http://localhost:3000/events?year_page=10&month_page=10&day_page=5
@@ -164,15 +164,17 @@ http://localhost:3000/events?year_page=10&month_page=10&day_page=5
 http://localhost:3000/events?year_page=2023&month_page=10&day_page=5
 ```
 
-2. Add new event
+1. Add new event to current date
 
 When `format` is defined inside the controller, it can be hard to get current selected date in the view:
 ```ruby
 # app/views/events/index.html.erb
 # no format defined in controller
 <%= link_to "Add event", new_event_path(start_date: @calendar[:day].label) %>
-# if format is defined in controller
+
+# if :day format is defined in controller, we have to deduce todays date
 <%= link_to "Add event", new_event_path(start_date: [@calendar[:day].label, @calendar[:month].label(format: '%m-%Y')].join('-')) %>
+
 <%= link_to "Add event (Today)", new_event_path(start_date: Date.today) %>
 ```
 Display the selected date in a form:
