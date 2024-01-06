@@ -8,7 +8,9 @@ thumbnail: /assets/thumbnails/calendar.png
 
 Peviously I wrote about [paginating records by date]({% post_url 2021-11-04-paginate-tab-by-any-attribute %}).
 
-Gem pagy also [offers a pagination solution](https://ddnexus.github.io/pagy/docs/extras/calendar/) out of the box.
+Gem pagy also [offers a pagination solution](https://ddnexus.github.io/pagy/docs/extras/calendar/) out of the box:
+
+![calendar pagination](/assets/images/pagy-calendar.png)
 
 Here's how we can (and can't) use it.
 
@@ -63,7 +65,12 @@ class ApplicationController < ActionController::Base
 
   # start and end of calendar (first and last record in the list)
   def pagy_calendar_period(collection)
-    collection.minmax.map(&:start_date)
+    # collection.minmax.map(&:start_date)
+
+    # between first event and Today
+    start_date = collection.min_by(&:start_date).start_date
+    end_date = Time.zone.now
+    [start_date, end_date]
   end
 
   # query to paginate within start_date
@@ -111,6 +118,7 @@ Display records (events) and pagination in a view:
 
 ```ruby
 # app/views/events/index.html.erb
+<h1>Events</h1>
 
 <div>
   <% if params[:skip] %>
@@ -122,18 +130,17 @@ Display records (events) and pagination in a view:
   <% end %>
 </div>
 
-<h1>Events</h1>
-
 <% if @calendar %>
   <%== pagy_info(@pagy) %>
   for
-  <%== @calendar[:day].label %>
+  <%#== @calendar[:year].label %>
+  <%== @calendar[:day]&.label %>
   <%== @calendar[:month].label(format: '%B %Y') %>
-
+  <%#== @calendar[:week].label %>
   <%== pagy_nav(@calendar[:year]) %>
   <%== pagy_nav(@calendar[:month]) %>
-  <%#== pagy_nav(@calendar[:week]) %>
-  <%== pagy_nav(@calendar[:day]) %>
+  <%== pagy_nav(@calendar[:week]) if @calendar[:week] %>
+  <%== pagy_nav(@calendar[:day]) if @calendar[:day] %>
 <% end %>
 
 <%== pagy_nav(@pagy) %>
@@ -146,15 +153,12 @@ Display records (events) and pagination in a view:
 <% elsif @events.empty? %>
   No events found
 <% end %>
+
 ```
 
 ### Open questions
 
-1. `pagy_calendar_url_at` does not work for me
-
-1. `@calendar[:week].label` does not work
-
-1. It would be cool to define `format` in view `pagy_nav(@calendar[:day], format: "%d")`, not just in controller `day:  { size: [0, 31, 31, 0], format: '%d' }`.
+1. `pagy_calendar_url_at` does not work for me: `undefined method pagy_calendar_url_at' for #<ActionView::Base:0x0000000000b7c0>`
 
 1. If we could have actual **year** in params, not **page index**, it would make URLs predictable:
 ```ruby
@@ -164,16 +168,18 @@ http://localhost:3000/events?year_page=10&month_page=10&day_page=5
 http://localhost:3000/events?year_page=2023&month_page=10&day_page=5
 ```
 
+1. It would be cool to define `format` in view `pagy_nav(@calendar[:day], format: "%d")`, not just in controller `day:  { size: [0, 31, 31, 0], format: '%d' }`.
+
 1. Add new event to current date
 
 When `format` is defined inside the controller, it can be hard to get current selected date in the view:
 ```ruby
 # app/views/events/index.html.erb
-# no format defined in controller
+# if no format defined in controller
 <%= link_to "Add event", new_event_path(start_date: @calendar[:day].label) %>
 
 # if :day format is defined in controller, we have to deduce todays date
-<%= link_to "Add event", new_event_path(start_date: [@calendar[:day].label, @calendar[:month].label(format: '%m-%Y')].join('-')) %>
+<%= link_to "New event", new_event_path(start_date: [@calendar[:day]&.label, @calendar[:month].label(format: '%m-%Y')].compact.join('-')) %>
 
 <%= link_to "Add event (Today)", new_event_path(start_date: Date.today) %>
 ```
@@ -196,4 +202,3 @@ Overall, Pagy Calendar is a great out of the box solution. Huge respect to [ddne
 To explore later:
 - Time zones
 - i18n
-- custom pagy_nav styling
