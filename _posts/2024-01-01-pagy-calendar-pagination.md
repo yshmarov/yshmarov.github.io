@@ -41,7 +41,10 @@ rails db:migarte db:seed
 ### Add calendar pagination
 
 ```shell
+# terminal
 bundle add pagy
+# Gemfile
+gem "pagy", github: "ddnexus/pagy", branch: "dev"
 ```
 
 Enable pagy calendar plugin:
@@ -125,8 +128,8 @@ Display records (events) and pagination in a view:
     <%= link_to 'Show Calendar', events_path %>
   <% else %>
     <%= link_to 'Hide Calendar', events_path(skip: true) %>
-    <%= link_to 'Today', pagy_url_for(@calendar.send(:last_object_at, Time.zone.now), 1) %>
-    <%#= link_to 'Today (does not work)', pagy_calendar_url_at(@calendar, Time.zone.now) %>
+    <br>
+    <%= link_to 'Today', pagy_calendar_url_at(@calendar, Time.zone.now, fit_time: true) %>
   <% end %>
 </div>
 
@@ -146,6 +149,15 @@ Display records (events) and pagination in a view:
 <%== pagy_nav(@pagy) %>
 
 <hr>
+
+<% if @calendar %>
+  <%= link_to "New event", new_event_path(start_date: [@calendar[:day]&.label, @calendar[:month].label(format: '%m-%Y')].compact.join('-')) %>
+<% else %>
+  <%= link_to "New event", new_event_path %>
+<% end %>
+
+<hr>
+
 <% if @events.any? %>
   <% @events.each do |event| %>
     <%= render 'event', event: event %>
@@ -153,12 +165,9 @@ Display records (events) and pagination in a view:
 <% elsif @events.empty? %>
   No events found
 <% end %>
-
 ```
 
 ### Open questions
-
-1. `pagy_calendar_url_at` does not work for me: `undefined method pagy_calendar_url_at' for #<ActionView::Base:0x0000000000b7c0>`
 
 1. If we could have actual **year** in params, not **page index**, it would make URLs predictable:
 ```ruby
@@ -168,11 +177,9 @@ http://localhost:3000/events?year_page=10&month_page=10&day_page=5
 http://localhost:3000/events?year_page=2023&month_page=10&day_page=5
 ```
 
-1. It would be cool to define `format` in view `pagy_nav(@calendar[:day], format: "%d")`, not just in controller `day:  { size: [0, 31, 31, 0], format: '%d' }`.
-
 1. Add new event to current date
 
-When `format` is defined inside the controller, it can be hard to get current selected date in the view:
+When `format` is defined inside the controller, it can be hard to get `current_date` in the view:
 ```ruby
 # app/views/events/index.html.erb
 # if no format defined in controller
@@ -186,7 +193,11 @@ When `format` is defined inside the controller, it can be hard to get current se
 Display the selected date in a form:
 ```ruby
 # app/views/events/_form.html.erb
-<%= form.datetime_field :start_date, value: params[:start_date].to_date.strftime('%Y-%m-%dT%H:%M:%S') || @object.start_date %>
+<% if params[:start_date] %>
+  <%= form.datetime_field :start_date, value: params[:start_date].to_date.strftime('%Y-%m-%dT%H:%M:%S') || form.object.start_date %>
+<% else %>
+  <%= form.datetime_field :start_date %>
+<% end %>
 ```
 Redirect to current page
 ```ruby
