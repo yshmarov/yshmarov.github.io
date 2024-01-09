@@ -136,9 +136,10 @@ Display records (events) and pagination in a view:
 <% if @calendar %>
   <%== pagy_info(@pagy) %>
   for
+  <%= @calendar.showtime %>
   <%#== @calendar[:year].label %>
-  <%== @calendar[:day]&.label %>
-  <%== @calendar[:month].label(format: '%B %Y') %>
+  <%#== @calendar[:day]&.label %>
+  <%#== @calendar[:month].label(format: '%B %Y') %>
   <%#== @calendar[:week].label %>
   <%== pagy_nav(@calendar[:year]) %>
   <%== pagy_nav(@calendar[:month]) %>
@@ -151,7 +152,8 @@ Display records (events) and pagination in a view:
 <hr>
 
 <% if @calendar %>
-  <%= link_to "New event", new_event_path(start_date: [@calendar[:day]&.label, @calendar[:month].label(format: '%m-%Y')].compact.join('-')) %>
+  <%#= link_to "New event", new_event_path(start_date: [@calendar[:day]&.label, @calendar[:month].label(format: '%m-%Y')].compact.join('-')) %>
+  <%= link_to "New event", new_event_path(start_date: @calendar.showtime) %>
 <% else %>
   <%= link_to "New event", new_event_path %>
 <% end %>
@@ -167,30 +169,32 @@ Display records (events) and pagination in a view:
 <% end %>
 ```
 
-### Open questions
+### Add new event to current date
 
-1. If we could have actual **year** in params, not **page index**, it would make URLs predictable:
-```ruby
-# bad
-http://localhost:3000/events?year_page=10&month_page=10&day_page=5
-# good
-http://localhost:3000/events?year_page=2023&month_page=10&day_page=5
-```
+In the view, add a `link_to` add an event for a date.
 
-1. Add new event to current date
+`@calendar.showtime` will always give you the current date/month/year.
 
-When `format` is defined inside the controller, it can be hard to get `current_date` in the view:
 ```ruby
 # app/views/events/index.html.erb
+
+# for current_date
+link_to "New event", new_event_path(start_date: @calendar.showtime)
+
+# for any date
+link_to "Add event (Today)", new_event_path(start_date: Date.today)
+
+# other approaches
+
 # if no format defined in controller
-<%= link_to "Add event", new_event_path(start_date: @calendar[:day].label) %>
+link_to "Add event", new_event_path(start_date: @calendar[:day].label)
 
 # if :day format is defined in controller, we have to deduce todays date
-<%= link_to "New event", new_event_path(start_date: [@calendar[:day]&.label, @calendar[:month].label(format: '%m-%Y')].compact.join('-')) %>
-
-<%= link_to "Add event (Today)", new_event_path(start_date: Date.today) %>
+link_to "New event", new_event_path(start_date: [@calendar[:day]&.label, @calendar[:month].label(format: '%m-%Y')].compact.join('-'))
 ```
+
 Display the selected date in a form:
+
 ```ruby
 # app/views/events/_form.html.erb
 <% if params[:start_date] %>
@@ -199,16 +203,47 @@ Display the selected date in a form:
   <%= form.datetime_field :start_date %>
 <% end %>
 ```
-Redirect to current page
-```ruby
+
+To redirect to the calendar page with this event, we need to define `@calendar` in the `#create` action the same way we did for `#index`.
+
+```diff
 # app/controllers/events_controller.rb
-# Does not work because @calendar is not defined. We would need to provide it's context.
-def create
-  if @event.save
-    redirect_to events_path(pagy_calendar_url_at(@calendar, @event.start_date))
++ before_action :set_calendar, only: %i[ index create ]
+
+  def create
+    if @event.save
+-     redirect_to events_path
++     redirect_to helpers.pagy_calendar_url_at(@calendar, @event.start_date)
+
+  private
+# this will be shared for both #index and #create actions
++  def set_calendar
++    # @events = Event.all
++    collection = Event.all.order(start_date: :asc)
++    @calendar, @pagy, @events = pagy_calendar(collection,
++      year:  { size:  [1, 1, 1, 1] },
++      month:  { size: [0, 12, 12, 0], format: '%b' },
++      # week:  { size: [0, 53, 53, 0], format: '%W' },
++      day:  { size: [0, 31, 31, 0], format: '%d' },
++      pagy:  { items: 10 }, # items per page
++      active: !params[:skip]
++    )
++  end
 ```
 
-Overall, Pagy Calendar is a great out of the box solution. Huge respect to [ddnexus](https://github.com/ddnexus/) for his work! 💪
+### Wishes for the future
+
+If we could have actual **year** in params, not **page index**, it would make URLs predictable:
+```ruby
+# bad
+http://localhost:3000/events?year_page=10&month_page=10&day_page=5
+# good
+http://localhost:3000/events?year_page=2023&month_page=10&day_page=5
+```
+
+Overall, Pagy Calendar is a great out of the box solution.
+
+Huge respect to [ddnexus](https://github.com/ddnexus/) for his work! 💪
 
 To explore later:
 - Time zones
