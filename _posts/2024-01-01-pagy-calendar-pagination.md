@@ -43,8 +43,6 @@ rails db:migarte db:seed
 ```shell
 # terminal
 bundle add pagy
-# Gemfile
-gem "pagy", github: "ddnexus/pagy", branch: "dev"
 ```
 
 Enable pagy calendar plugin:
@@ -68,13 +66,21 @@ class ApplicationController < ActionController::Base
 
   # start and end of calendar (first and last record in the list)
   def pagy_calendar_period(collection)
-    # collection.minmax.map(&:start_date)
+    collection.minmax.map(&:start_date)
 
     # between first event and Today
-    start_date = collection.min_by(&:start_date).start_date
-    end_date = Time.zone.now
-    [start_date, end_date]
+    # start_date = collection.min_by(&:start_date).start_date
+    # end_date = Time.zone.now
+    # [start_date, end_date]
   end
+
+  # optionally: end on last event or today
+  # def end_date(collection)
+  #   last_event_date = collection.max_by(&:start_date).start_date
+  #   return last_event_date if last_event_date > Time.zone.now
+
+  #   Time.zone.now
+  # end
 
   # query to paginate within start_date
   def pagy_calendar_filter(collection, from, to)
@@ -105,10 +111,14 @@ Uncomment for any pagination granularity that you like:
   def index
     collection = Event.all.order(start_date: :asc)
     @calendar, @pagy, @events = pagy_calendar(collection,
-      year:  { size:  [1, 1, 1, 1] },
-      month:  { size: [0, 12, 12, 0], format: '%b' },
+      year: {size: 4},
+      # year:  { size:  [1, 1, 1, 1] },
+      month: {size: 12, format: '%b'},
+      # month:  { size: [0, 12, 12, 0], format: '%b' },
+      week:  { size: 53, format: '%W' },
       # week:  { size: [0, 53, 53, 0], format: '%W' },
-      day:  { size: [0, 31, 31, 0], format: '%d' },
+      day: {size: 31, format: '%d'},
+      # day:  { size: [0, 31, 31, 0], format: '%d' },
       pagy:  { items: 10 }, # items per page
       active: !params[:skip]
     )
@@ -221,10 +231,9 @@ To redirect to the calendar page with this event, we need to define `@calendar` 
 +    # @events = Event.all
 +    collection = Event.all.order(start_date: :asc)
 +    @calendar, @pagy, @events = pagy_calendar(collection,
-+      year:  { size:  [1, 1, 1, 1] },
-+      month:  { size: [0, 12, 12, 0], format: '%b' },
-+      # week:  { size: [0, 53, 53, 0], format: '%W' },
-+      day:  { size: [0, 31, 31, 0], format: '%d' },
++      year: {size: 4},
++      month: {size: 12, format: '%b'},
++      day: {size: 31, format: '%d'},
 +      pagy:  { items: 10 }, # items per page
 +      active: !params[:skip]
 +    )
