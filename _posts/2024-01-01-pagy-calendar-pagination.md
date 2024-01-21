@@ -208,7 +208,7 @@ Display the selected date in a form:
 ```ruby
 # app/views/events/_form.html.erb
 <% if params[:start_date] %>
-  <%= form.datetime_field :start_date, value: params[:start_date].to_date.strftime('%Y-%m-%dT%H:%M:%S') || form.object.start_date %>
+  <%= form.datetime_field :start_date, value: params[:start_date]&.to_date&.strftime('%Y-%m-%dT%H:%M:%S') || form.object.start_date %>
 <% else %>
   <%= form.datetime_field :start_date %>
 <% end %>
