@@ -2,7 +2,7 @@
 layout: post
 title: "REVISED: Polymorphism 101. Part 4 of 3. Polymorphic Comments"
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails polymorphism polymorphic-associations comments
+tags: ruby rails ruby-on-rails polymorphism polymorphic-associations comments ajax js-erb
 thumbnail: /assets/thumbnails/polymorphism-sign.png
 ---
 

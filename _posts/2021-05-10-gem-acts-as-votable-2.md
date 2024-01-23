@@ -2,7 +2,7 @@
 layout: post
 title: "gem acts_as_votable 2: reddit-style up and down voting"
 author: Yaroslav Shmarov
-tags: ruby rails ruby-on-rails acts_as_votable
+tags: ruby rails ruby-on-rails acts_as_votable ajax js-erb
 thumbnail: /assets/thumbnails/like.png
 ---
 
