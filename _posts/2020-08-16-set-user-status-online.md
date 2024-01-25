@@ -34,3 +34,37 @@ Now we can get `true` or `false` if we make a call like `@user.online?`:
 # app/views/users/show.html.erb
 <%= @user.online? %>
 ```
+
+Problems with this approach:
+- you do not want to override the purpose of `update_at`
+- you WRITE to the database after each request = expensive
+
+### Better approach
+
+Add a separate attribute to the User model:
+
+```ruby
+# terminal
+rails g migration add_last_online_at_to_users last_online_at:datetime
+```
+
+"Throttle" writes to the database: do not write `last_online_at` to the database more than once in 5 minutes:
+
+```ruby
+# app/controllers/application_controller.rb
+class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
+  after_action :update_user_online, if: :user_signed_in?
+
+  private
+
+  def update_user_online
+    return if session[:last_online_at] && session[:last_online_at] > 5.minutes.ago
+
+    current_user.update!(last_online_at: Time.current)
+    session[:last_online_at] = Time.current
+  end
+end
+```
+
+That's much better!
