@@ -13,7 +13,7 @@ Yaroslav lives in Chernihiv, Ukraine with his wife and [puppy](https://www.insta
 In his free time he likes reading literature, hiking, practicing and excelling his language skills. 
 ### Polyglot
 
-Yaroslav profecitently speaks seven languages:
+Yaroslav proficiently speaks seven languages:
 1. Ukrainian
 2. English
 3. German
