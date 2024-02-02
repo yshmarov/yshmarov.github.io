@@ -319,6 +319,8 @@ For heroku, you can add google-chrome buildpack with the command:
 heroku buildpacks:add heroku/google-chrome -a myappname
 ```
 
+🚨 **IMPORTANT**: this buildpack has to be added **ABOVE** the ruby buildpack!
+
 ### 7. [Github CI](https://github.com/rubycdp/ferrum/blob/main/.github/workflows/tests.yml#L30)
 
 ```yml
