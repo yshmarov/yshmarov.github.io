@@ -75,9 +75,9 @@ Inbox.find_each(&:save)
 #app/models/inbox.rb
   extend FriendlyId
 --  friendly_id :name, use: [:finders, :slugged]
-++  friendly_id :random_hex, use: [:finders, :slugged]
-++  def random_hex
-++    SecureRandom.hex
+++  friendly_id :generate_random_slug, use: [:finders, :slugged]
+++  def generate_random_slug
+++    slug? ? slug : SecureRandom.uuid
 ++  end
 ```
 
