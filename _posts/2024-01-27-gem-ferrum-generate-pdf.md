@@ -1,61 +1,178 @@
 ---
 layout: post
-title: Generate PDF with Ferrum (headless Chrome API)
+title: Generate PDF and PNG with Ferrum (headless Chrome API)
 author: Yaroslav Shmarov
 tags: ruby-on-rails ferrum pdf html-to-pdf headless-chrome
 thumbnail: /assets/thumbnails/pdf.png
 ---
 
-Usually I would use an HTML-to-PDF library to to generate and display a PDF.
+Usually I would use an HTML-to-PDF library to to generate and display a PDF of a web page.
 
-**An absolutely different**, alternative way to view or download a page as PDF would be via a **headless browser API**.
+**An absolutely different**, alternative way to view or download a page as `PDF`/`PNG (screenshot)` would be via a **headless browser API**.
 
-[Gem Ferrum](https://github.com/rubycdp/ferrum) lets you open a headless chrome browser and perform different actions (click link, take screenshot, open as PDF, etc.)
+You could use [gem Grover](https://github.com/Studiosity/grover) that uses a Node.js API for Chrome named ["Puppeteer"](https://github.com/puppeteer/puppeteer). However Grover/Puppeteer has a **NodeJS depencency** 👎🚩🚩🚩
 
-Why not use Ferrum to open or save a file as PDF?
+[Gem Ferrum](https://github.com/rubycdp/ferrum) does the same, but **without** a NodeJS dependency! 🟢
 
-Here's how it could work:
+As a browser API tool, Ferrum lets you open a headless chrome browser and perform different actions:
+* visit web page
+* HTTP authenticate
+* find element by css/id
+* click link
+* take screenshot
+* open as PDF
 
-Example of an HTML page ⤵️
+Yes, we can use Ferrum to open or save a file as PDF! Here's a basic flow:
+
+When a user clicks on "View as PDF" link ⤵️
 
 ![Ferrum HTML page](/assets/images/ferrum-page-html.png)
 
-Clicking the *"View as PDF"* link would open a link as PDF ⤵️
+Ferrum visits this page, opens it as PDF, and opens it as PDF in a new tab ⤵️
 
 ![Ferrum page turned into PDF](/assets/images/ferrum-page-pdf.png)
 
-### Install and use [Gem Ferrum](https://github.com/rubycdp/ferrum)
+Or downloads it as PDF ⤵️
 
-Install the gem:
+YAROYARO
+
+Or saves it as a screenshot ⤵️
+
+YAROYARO
+
+Let's try to make it work
+
+### 1. Generate a PDF from any URL and store the file in your apps **root folder**
+
+Install the [gem Ferrum](https://github.com/rubycdp/ferrum):
 
 ```ruby
-# Gemfile
-gem "ferrum"
+# terminal
+# gem "ferrum"
+bundle add ferrum
+# create a job to generate PDFs
+rails g job UrlToPdf
 ```
 
-Add a route:
+A basic job to visit an URL and save is as PDF:
 
 ```ruby
-# config/routes.rb
-get 'home/index'
+# ToPdfJob.perform_now("https://superails.com/posts")
+class ToPdfJob < ApplicationJob
+  queue_as :default
+
+  def perform(url)
+    browser = Ferrum::Browser.new
+    browser.goto(url)
+    sleep(0.3)
+    browser.pdf(
+                path: "#{url.parameterize}.pdf",
+                landscape: false,
+                format: :A4,
+                preferCSSPageSize: false,
+                printBackground: true)
+    browser.quit
+  end
+end
 ```
 
-Add an HTML page.
+### 2. **Download** or **Open** PDF in a new browser tab
 
-You can add a `link_to` render the page as PDF.
+Display users a `link_to` download or open the URL as PDF:
 
-Notice I add a class `.no-print`, so that the link does not get displayed in `print` media type.
-
-```html
-<!-- app/views/home/index.html.erb -->
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<div class="no-print">
-  <%= link_to "View as PDF", home_index_path(format: :pdf) %>
-</div>
+```ruby
+link_to 'PDF', home_path(format: :pdf), target: :_blank
+# link_to 'PDF', invoice_path(invoice, format: :pdf), target: :_blank
 ```
 
-Add `.no-print ` CSS class to elements that should not be printable:
+Handle the request in the controller
+
+```ruby
+# app/controllers/home_controller.rb
+class HomeController < ApplicationController
+  def index
+    respond_to do |format|
+      format.html
+      format.pdf do
+        # url = "https://superails.com/posts"
+        url = home_url
+        pdf_data = ToPdfJob.perform_now(url)
+        send_data(pdf_data,
+                  filename: "#{url.parameterize}.pdf",
+                  type: "application/pdf",
+                  disposition: "inline") # open in browser
+                  # disposition: "attachment") # default # download
+      end
+    end
+  end
+end
+```
+
+Finally, generate a "pdf string" with Ferrum:
+
+```ruby
+# ToPdfJob.perform_now("https://superails.com/posts")
+class ToPdfJob < ApplicationJob
+  queue_as :default
+
+  def perform(url)
+    tmp = Tempfile.new
+    browser = Ferrum::Browser.new(headless: true,
+      process_timeout: 30,
+      timeout: 200,
+      pending_connection_errors: true)
+    browser.goto(url)
+    sleep(0.3)
+    browser.pdf(
+                path: tmp.path,
+                landscape: false,
+                format: :A4,
+                preferCSSPageSize: false,
+                printBackground: true)
+    File.read(tmp.path)
+  ensure
+    browser.quit
+    tmp.close
+    tmp.unlink
+  end
+end
+```
+
+ℹ️ we added `process_timeout: 30, timeout: 200, pending_connection_errors: true` and `sleep(0.3)` to try preventing this error: 
+
+```ruby
+  Ferrum::PendingConnectionsError (Request to http://localhost:3000/home/index reached server, but there are still pending connections: http://localhost:3000/home/index)
+```
+
+Result:
+
+YAROYARO
+
+### ℹ️ `send_file` vs `send_data`
+
+* Use `send_data` if you already did `File.read(path)`
+* Use `send_file` and you **don't need** to do `File.read(path)`
+
+### 3. PNG/screenshots
+
+```diff
+# ToImageJob
+- browser.pdf
++ browser.screenshot(path: tmp.path, full: true, quality: 60, format: "png")
+```
+
+```ruby
+# controller
+  url = "https://superails.com"
+  image_data = ToImageJob.perform(url)
+  send_data image_data, type: "image/png", disposition: "attachment", filename: "#{url.parameterize}.png"
+```
+
+### 4. CSS Print OPTIONS
+
+You can add CSS that will apply only to "Print/PDF" using `@media print`.
+
+Add `.no-print ` CSS class to elements that should not be displayed in `print` media type:
 
 ```css
 /* app/assets/stylesheets/application.css */
@@ -64,8 +181,23 @@ Add `.no-print ` CSS class to elements that should not be printable:
     display: none !important;
   }
 }
+```
 
-/* other css classes you might want to add */
+Example:
+
+```diff
+<!-- app/views/home/index.html.erb -->
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+-<div>
++<div class="no-print">
+  <%= link_to "View as PDF", home_index_path(format: :pdf) %>
+</div>
+```
+
+Other css classes you might want to consider:
+
+```css
 @media print {
   body {
     -webkit-print-color-adjust: exact;
@@ -77,9 +209,6 @@ Add `.no-print ` CSS class to elements that should not be printable:
   .no_margin {
     padding-left: 0px !important;
   }
-  .no-print {
-    display: none !important;
-  }
   .printer-preview-content,
   .printer-preview-content_landscape {
     max-width: 100% !important;
@@ -88,59 +217,118 @@ Add `.no-print ` CSS class to elements that should not be printable:
     padding: 0 !important;
     margin: 0 !important;
   }
-  .cover_div {
-    display: table;
-  }
 }
 ```
 
-Finally, use Ferrum to navigate to an internal or external URL and display it as PDF:
+### 5. Authentication
+
+It works well for publicly accessible URLs, however it is not so straightforwar for links that require `current_user` authentication.
+
+#### 5.1. Username-Password auth
+
+I did not yet figure out how to sign in a devise user as you would do in tests with `sign_in(User.first)`. 
+
+In this flow we:
+1. create a user
+2. visit the sign in form, fill it in
+3. visit a user-only part of the app
 
 ```ruby
-# app/controllers/home_controller.rb
-class HomeController < ApplicationController
-  def index
+  user = User.create!(email: "foo@bar.com", password: "password", admin: true)
+
+  browser = Ferrum::Browser.new
+  browser.go_to("https://superails.com/users/sign_in")
+  headless_sign_in(user)
+  sleep(0.3)
+  browser.go_to
+  browser.go_to("https://superails.com/admin")
+
+  private
+
+  def headless_sign_in(user)
+    email_input = browser.at_css('input[name="user[email]"]')
+    email_input.focus.type(user.email)
+    password_input = browser.at_css('input[name="user[password]"]')
+    password_input.focus.type("password")
+    login_button = browser.at_css('input[name="commit"]')
+    login_button.click
+  end
+```
+
+#### 5.2. HTTP Basic auth
+
+My idea: make download path public (not require `current_user`), but restrict them with [HTTP basic authentication]({% post_url 2021-09-27-http-basic-authentication %}). Next, perform the authentication with the headless browser to access content.
+
+```ruby
+# app/controllers/export_controller.rb
+class ExportController < ActionController::Base
+  before_action :http_authenticate
+  skip_before_action :http_authenticate, only: :report, if: -> { request.format.pdf? }
+
+  def report
     respond_to do |format|
       format.html
       format.pdf do
-        handle_pdf_format
+        image_data = ToPdfJob.perform(export_report_url)
+        send_data image_data, type: "image/png", disposition: "attachment", filename: "#{filename}.png"
       end
     end
   end
 
   private
 
-  def handle_pdf_format
-    filename = controller_name
-    tmp = Tempfile.new("pdf-chrome-#{filename}")
-    browser = Ferrum::Browser.new
-    # browser.go_to("http://localhost:3000/home/index")
-    browser.go_to(home_index_url)
-    # browser.go_to("https://google.com")
-    # click_on_text "Accept all"
-    # browser.at_css(".QS5gu.sy4vM").click
-    sleep(0.3)
-    browser.pdf(
-      path: tmp.path,
-      format: "A4".to_sym,
-      landscape: false,
-      # margin: {top: 36, right: 36, bottom: 36, left: 36},
-      # preferCSSPageSize: true,
-      # printBackground: true
-    )
-    browser.quit
-    pdf_data = File.read(tmp.path)
-    pdf_filename = "#{filename}.pdf"
-    send_data(pdf_data,
-              filename: pdf_filename,
-              type: "application/pdf",
-              disposition: "inline")
-  ensure
-    tmp.close
-    tmp.unlink
+  def http_authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == Rails.application.credentials.dig(:http_basic_auth, :username) &&
+        password == Rails.application.credentials.dig(:http_basic_auth, :password)
+    end
   end
-end
 ```
 
-It works well for publicly accessible URLs, however it is not so straightforwar for links that require `current_user` authentication. I've asked a question here [https://github.com/rubycdp/ferrum/issues/423
-](https://github.com/rubycdp/ferrum/issues/423) and am hoping for an easy enough solution 🤠
+```yml
+http_basic_auth:
+  username: # generate something with SecureRandom.hex
+  password: # generate something with SecureRandom.hex
+```
+
+```ruby
+  browser = Ferrum::Browser.new
+  browser.network.authorize(user: Rails.application.credentials.dig(:http_basic_auth, :username),
+    password: Rails.application.credentials.dig(:http_basic_auth, :password)) { |req| req.continue }
+  browser.go_to(url)
+```
+
+### 5.3.  Bearer token auth
+
+If users of your app can use [Bearer token authentication]({% post_url 2023-04-10-rails-api-bearer-authentication %}) to access API endpoints in your app, you can add auth headers to the browser:
+
+```ruby
+# *This is not fully tested
+  browser.headers.add({"Authorization" => "Bearer MyBearerToken123"})
+  browser.headers.add({"accept" => "application/html"})
+  browser.go_to(url)
+```
+
+### 6. Heroku 
+
+To make Ferrum work in production, you need to install `google-chrome` in your production ENV.
+
+For heroku, you can add google-chrome buildpack with the command:
+
+```shell
+heroku buildpacks:add heroku/google-chrome -a myappname
+```
+
+### 7. [Github CI](https://github.com/rubycdp/ferrum/blob/main/.github/workflows/tests.yml#L30)
+
+```yml
+    steps:
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@latest
+        with:
+          chrome-version: stable
+```
+
+### 7. Other usecases
+
+* [Automating Jekyll card generation with ruby's Ferrum gem](https://jay.gooby.org/2022/05/11/automating-jekyll-card-generation-with-ruby-ferrum)
