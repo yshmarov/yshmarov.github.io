@@ -32,13 +32,9 @@ Ferrum visits this page, opens it as PDF, and opens it as PDF in a new tab ⤵�
 
 ![Ferrum page turned into PDF](/assets/images/ferrum-page-pdf.png)
 
-Or downloads it as PDF ⤵️
+Or downloads it as PDF 📄
 
-YAROYARO
-
-Or saves it as a screenshot ⤵️
-
-YAROYARO
+Or saves it as a screenshot 🖼️
 
 Let's try to make it work
 
@@ -144,10 +140,6 @@ end
   Ferrum::PendingConnectionsError (Request to http://localhost:3000/home/index reached server, but there are still pending connections: http://localhost:3000/home/index)
 ```
 
-Result:
-
-YAROYARO
-
 ### ℹ️ `send_file` vs `send_data`
 
 * Use `send_data` if you already did `File.read(path)`
@@ -168,7 +160,44 @@ YAROYARO
   send_data image_data, type: "image/png", disposition: "attachment", filename: "#{url.parameterize}.png"
 ```
 
-### 4. CSS Print OPTIONS
+### 4. Store PDF/PNG with ActiveStorage
+
+Generating documents "on the fly" can actually take some time (you spin up a browser each time), and can be expensive for popular pages. Instead, you can store the generated files.
+
+Scenario: when an **Invoice** is created, generate a PDF/PNG and attach it to the record.
+
+```ruby
+# app/models/invoice.rb
+  has_one_attached :document
+
+  after_create_commit do
+    self.generate_and_attach_pdf
+  end
+
+  def generate_and_attach_pdf
+    browser = Ferrum::Browser.new(headless: true)
+    browser.goto(Rails.application.routes.url_helpers.invoice_url(self))
+    tmp = Tempfile.new
+
+    # browser.pdf(path: tmp.path)
+    browser.screenshot(path: tmp.path, full: true, quality: 60, format: "png")
+    # browser.screenshot(path: tmp.path, full: true, quality: 60, format: "png", selector: "#invoice")
+
+    self.document.attach(io: File.open(tmp), filename: "invoice_#{id}.png")
+
+    browser.quit
+    tmp.close
+    tmp.unlink
+  end
+```
+
+A download link:
+
+```ruby
+link_to "Download", rails_blob_path(@invoice.pdf, disposition: "attachment") if @invoice.pdf.attached?
+```
+
+### 5. CSS Print OPTIONS
 
 You can add CSS that will apply only to "Print/PDF" using `@media print`.
 
@@ -220,11 +249,11 @@ Other css classes you might want to consider:
 }
 ```
 
-### 5. Authentication
+### 6. Authentication
 
 It works well for publicly accessible URLs, however it is not so straightforwar for links that require `current_user` authentication.
 
-#### 5.1. Username-Password auth
+#### 6.1. Username-Password auth
 
 I did not yet figure out how to sign in a devise user as you would do in tests with `sign_in(User.first)`. 
 
@@ -255,7 +284,7 @@ In this flow we:
   end
 ```
 
-#### 5.2. HTTP Basic auth
+#### 6.2. HTTP Basic auth
 
 My idea: make download path public (not require `current_user`), but restrict them with [HTTP basic authentication]({% post_url 2021-09-27-http-basic-authentication %}). Next, perform the authentication with the headless browser to access content.
 
@@ -298,7 +327,7 @@ http_basic_auth:
   browser.go_to(url)
 ```
 
-### 5.3.  Bearer token auth
+### 6.3.  Bearer token auth
 
 If users of your app can use [Bearer token authentication]({% post_url 2023-04-10-rails-api-bearer-authentication %}) to access API endpoints in your app, you can add auth headers to the browser:
 
@@ -309,7 +338,7 @@ If users of your app can use [Bearer token authentication]({% post_url 2023-04-1
   browser.go_to(url)
 ```
 
-### 6. Heroku 
+### 7. Heroku 
 
 To make Ferrum work in production, you need to install `google-chrome` in your production ENV.
 
@@ -321,7 +350,7 @@ heroku buildpacks:add heroku/google-chrome -a myappname
 
 🚨 **IMPORTANT**: this buildpack has to be added **ABOVE** the ruby buildpack!
 
-### 7. [Github CI](https://github.com/rubycdp/ferrum/blob/main/.github/workflows/tests.yml#L30)
+### 8. [Github CI](https://github.com/rubycdp/ferrum/blob/main/.github/workflows/tests.yml#L30)
 
 ```yml
     steps:
@@ -331,6 +360,8 @@ heroku buildpacks:add heroku/google-chrome -a myappname
           chrome-version: stable
 ```
 
-### 7. Other usecases
+### 9. Other usecases
 
 * [Automating Jekyll card generation with ruby's Ferrum gem](https://jay.gooby.org/2022/05/11/automating-jekyll-card-generation-with-ruby-ferrum)
+
+That's it! I might be adding more to this article later.
