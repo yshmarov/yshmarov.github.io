@@ -194,7 +194,8 @@ Scenario: when an **Invoice** is created, generate a PDF/PNG and attach it to th
 A download link:
 
 ```ruby
-link_to "Download", rails_blob_path(@invoice.pdf, disposition: "attachment") if @invoice.pdf.attached?
+link_to "View", rails_blob_path(@invoice.document, disposition: "inline"), target: :_blank if @invoice.document.attached?
+link_to "Download", rails_blob_path(@invoice.document, disposition: "attachment"), target: :_blank if @invoice.document.attached?
 ```
 
 ### 5. CSS Print OPTIONS
