@@ -54,6 +54,7 @@ module CalendarHelper
   # if month starts on Monday => 0
   # if month starts on Wed => 2
   def month_offset(date)
+    # you might want to update this based on your first day of the week (Sun/Mon)
     date.beginning_of_month.wday - 1
   end
 
@@ -81,7 +82,7 @@ Finally, display the calendar and events per day:
 <% end %>
 
 <%= tag.div class: "grid grid-cols-7" do %>
-  <% Date::ABBR_DAYNAMES.each do |day| %>
+  <% Date::ABBR_DAYNAMES.rotate.each do |day| %>
     <%= tag.div class: "border" do %>
       <%= day %>
     <% end %>
@@ -100,6 +101,15 @@ Finally, display the calendar and events per day:
 <% end %>
 ```
 
+```ruby
+ℹ️
+Date::ABBR_DAYNAMES
+=> ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+irb(main):002> Date::ABBR_DAYNAMES.rotate
+=> ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+Date::ABBR_DAYNAMES.rotate(3)
+=> ["Wed", "Thu", "Fri", "Sat", "Sun", "Mon", "Tue"]
+```
 
 ### Abstraction: 
 
@@ -125,7 +135,7 @@ First, abstract the month calendar wrapper:
 <% end %>
 
 <%= tag.div class: "grid grid-cols-7" do %>
-  <% Date::ABBR_DAYNAMES.each do |day| %>
+  <% Date::ABBR_DAYNAMES.rotate.each do |day| %>
     <%= tag.div class: "border" do %>
       <%= day %>
     <% end %>
