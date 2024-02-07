@@ -32,7 +32,13 @@ Ferrum visits this page, opens it as PDF, and opens it as PDF in a new tab ⤵�
 
 ![Ferrum page turned into PDF](/assets/images/ferrum-page-pdf.png)
 
-Or downloads it as PDF 📄
+Full flow #1: click to download as PDF
+
+![download PDF](/assets/images/ferrum-pdf-download.gif)
+
+Full flow #2: click to open as PDF
+
+![open as PDF PDF](/assets/images/ferrum-pdf-open.gif)
 
 Or saves it as a screenshot 🖼️
 
