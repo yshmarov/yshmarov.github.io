@@ -34,8 +34,7 @@ If you add a `date` param in the URL like [`http://localhost:3000/calendar/month
 class CalendarController < ApplicationController
   def month
     @date = Date.parse(params.fetch(:date, Date.today.to_s))
-    @all_month = @date.all_month
-    @events = Event.where(start_date: @all_month)
+    @events = Event.where(start_date: @date.all_month)
   end
 
   # def week
@@ -90,7 +89,7 @@ Finally, display the calendar and events per day:
   <% month_offset(@date).times do %>
     <%= tag.div %>
   <% end %>
-  <% @all_month.each do |day| %>
+  <% @date.all_month.each do |day| %>
     <%= tag.div class: "border min-h-24 #{today_class(day)}" do %>
       <%= day.strftime('%d') %>
       <% @events.where(start_date: day.all_day).each do |event| %>
