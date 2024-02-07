@@ -31,6 +31,8 @@ plugins:
   - jekyll-pwa-plugin
   - jekyll-tagging-related_posts
   - jekyll-target-blank
+  - jekyll-postfiles
+  - jekyll-og-image
 
 tagline: Ruby on Rails tips and tricks
 
@@ -58,6 +60,19 @@ pwa:
   precache_glob_ignores: # Optional
     - sw-register.js
     - "fonts/**/*"
+
+og_image:
+  output_dir: "assets/images/og"
+  image: "/assets/static-pages/yaro-avatar.png"
+  domain: "superails.com"
+  border_bottom:
+    width: 20
+    fill:
+      - "#820C02"
+      - "#A91401"
+      - "#D51F06"
+      - "#DE3F24"
+      - "#EDA895"
 
 #jekyll_admin:
 #  hidden_links:
