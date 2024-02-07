@@ -1,6 +1,6 @@
 ---
 layout: post
-title: API Tracking & Usage limiting
+title: API Tracking and Usage limiting
 author: Yaroslav Shmarov
 tags: ruby-on-rails rails-api
 thumbnail: /assets/thumbnails/api.png
