@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Realtime Online User Tracking with Actioncable & Rails"
+title: "Realtime Online User Tracking with Actioncable and Rails"
 author: Yaroslav Shmarov
 tags: ruby rails kredis action-cable hotwire turbo broadcasts
 thumbnail: /assets/thumbnails/users-online-symbol.png
