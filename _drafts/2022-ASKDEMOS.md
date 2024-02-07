@@ -1,6 +1,53 @@
+AskVote.io
 https://www.upvoty.com/
+pollanywhere
+pigeonholelive
+A lot like substack?
 
-A lot like substack
+imboxify
+imboxly
+imboxes $150
+
+audience engagement and feedback tool
+
+Inbox
+- visibility
+    public
+    unlisted (default)
+    password-protected
+- status
+    upcoming starts_at?
+    active
+    finished (locked) ends_at?
+- message visibility
+    admin only
+    public (default)
+- message creation
+    admin only
+    signed in users
+    anonymous (default)
+- message commenting [on/off]
+- message voting [on/off]
+
+
+SUPPORT FEATURES:
+- QR codes to scan?
+- Live dashboard?
+
+PRO:
+- message moderation before public visibility
+- messages kanban
+- send invite emails?
+- embed on website? branding?
+
+Templates (not finished):
+- collect user feedback about your tool
+- (wall of love) collect reviews
+- vote for initiatives
+- questions
+- contact form
+- idea board `status:active visibility:unlisted message_visibility:public message_creation:signed_in message_commenting:on message_voting:on`
+- event `status:active_between visibility:password_protected message_visibility:public message_creation:anonymous message_commenting:on message_voting:on`
 
 <h1>Create a public inbox</h1>
 
@@ -9,7 +56,7 @@ Inbox types:
     Public inbox
     You post public messages
     Vote/like feature
-  2. Collect leads
+  2. Collect leads / contact form
     Public inbox
     Users post private messages
   3. Voting
@@ -57,7 +104,7 @@ Inbox
 
 Message settings:
   -- messages can be added by owner or other users?
-  - visible to inbox owner (and message creator?) or everybody (make_messages_public:boolean)
+  -- visible to inbox owner (and message creator?) or everybody (make_messages_public:boolean)
   -- messages can be voted up/down on (votable:boolean feature flag)
   -- messages can be filtered by created_at/votes (top rated / recent-oldest)
   -- messages can be searched for by body
@@ -67,6 +114,7 @@ Price
 - Free
 - Pro $12/year for all features
 - Enterprise + custom domain
+**$99/year all featuers**
 
 V2 
 - Messages can be answered
@@ -86,73 +134,72 @@ V7
 - SEO
 - breadcrumb navigation
 
-imboxify
-imboxly
-imboxes $150
 
 participants
 messages - poll view (chart - votes per message)
 PDF/XLSX download
 json/rss
 
-
-- bootstrap?
-- view components?
-- fontawesome?
-- rack-attack
-
 ******
 
 ### Input password to enter a room
 
-button {
-  display: inline-block;
-  padding: 5px 15px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 8px;
-}
-
-button:hover {background-color: #3e8e41}
-
-button:active {
-  background-color: #3e8e41;
-  transform: translateY(4px);
-}
-
-****
-
-ASKDEMOS?!
+any view
+```ruby
+<%= form_with url: search_inboxes_path, method: :get do |form| %>
+  <%= form.text_field :passkey %>
+  <%= form.submit "GO" %>
+<% end %>
+```
 
 posts_controller.rb
 ```ruby
-  def password
-    post = Post.find_by(id: params[:post_id])
-    if post.present?
-      redirect_to post_path(post), notice: "Success"
+  def search
+    inbox = Inbox.find_by(passkey: params[:passkey])
+    if inbox.present?
+      redirect_to inboxes_path(inbox), notice: "Success"
     else
-      redirect_to posts_path, alert: "Failure"
+      redirect_to inboxes_path, alert: "Failure"
     end
   end
 ```
 
 routes.rb
 ```ruby
-  resources :posts do
-    get :password, on: :collection
+  resources :inboxes do
+    get :search, on: :collection
   end
 ```
 
-any view
-```ruby
-<%= form_tag password_posts_path, method: :get do %>
-  <%= text_field_tag "post_id" %>
-  <%= submit_tag "GO" %>
-<% end %>
-```
+****
 
+Canny analysis
+
+    User avatarUpload name
+  Member (Team) (roles)
+Company (account, tenant, workspace, organization) / logoUpload faviconUpload name subdomain brand_color
+  Inbox (board) (name, url, visibility:private/public, seo_index:boolean, display_on_homepage:boolean)
+    Message
+      Comment
+
+
+invitations
+
+remove branding
+
+integrations
+  omniauth
+    microsoft "azure active directory"
+    gsuite
+  notifications
+    teams
+    slack
+    discord
+    github issues
+
+
+Onboarding
+  use for
+    public feedback (customer)
+    private feedback (customer)
+    internal feedback (employees)

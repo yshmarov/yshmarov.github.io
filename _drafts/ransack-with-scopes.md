@@ -1,3 +1,5 @@
+Notes on using ransack
+
 ransack scopes
 
 app/models/inbox.rb

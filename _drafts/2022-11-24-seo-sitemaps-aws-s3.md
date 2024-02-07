@@ -1,5 +1,3 @@
-https://twitter.com/joemasilotti/status/1475462283409170440
-
 https://www.sitepoint.com/start-your-seo-right-with-sitemaps-on-rails/
 https://github.com/kjvarga/sitemap_generator
 
