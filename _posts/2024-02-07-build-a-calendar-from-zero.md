@@ -100,11 +100,10 @@ Finally, display the calendar and events per day:
 <% end %>
 ```
 
-### Next steps:
 
-1. Abstraction: 
+### Abstraction: 
 
-Wrap the calendar into a helper like [excid3/simple_calendar](https://github.com/excid3/simple_calendar) does:
+We can wrap the calendar into a similar helper like [excid3/simple_calendar](https://github.com/excid3/simple_calendar) does:
 
 ```ruby
 <%= month_calendar do |date| %>
@@ -112,8 +111,52 @@ Wrap the calendar into a helper like [excid3/simple_calendar](https://github.com
 <% end %>
 ```
 
-2. Day, Week views
-3. Hotwire scroll up/down to prev/next period
-4. Select First day of week
-5. i18n
-6. Dedicatet stylesheet to style the calendar in isolation
+First, abstract the month calendar wrapper: 
+
+```ruby
+# app/views/calendar/_month.html.erb
+<%= tag.div class: "flex justify-between" do %>
+  <%= date.strftime('%B %Y') %>
+  <%= tag.div class: "flex space-x-4" do %>
+    <%= link_to "<", calendar_month_path(date: date - 1.month) %>
+    <%= link_to "Today", calendar_month_path %>
+    <%= link_to ">", calendar_month_path(date: date + 1.month) %>
+  <% end %>
+<% end %>
+
+<%= tag.div class: "grid grid-cols-7" do %>
+  <% Date::ABBR_DAYNAMES.each do |day| %>
+    <%= tag.div class: "border" do %>
+      <%= day %>
+    <% end %>
+  <% end %>
+  <% month_offset(date).times do %>
+    <%= tag.div %>
+  <% end %>
+  <% date.all_month.each do |day| %>
+    <%= tag.div class: "border min-h-24 #{today_class(day)}" do %>
+      <%= yield day %>
+    <% end %>
+  <% end %>
+<% end %>
+```
+
+Next, render the `day` (the thing you want to have whole control of) inside the wrapper:
+
+```ruby
+# app/views/calendar/month.html.erb
+<%= render 'calendar/month', date: @date do |day| %>
+  <%= day.strftime('%d') %>
+  <% @events.where(start_date: day.all_day).each do |event| %>
+    <%= render 'events/event', event: event %>
+  <% end %>
+<% end %>
+```
+
+### Next steps:
+
+1. Day, Week views
+2. Hotwire scroll up/down to prev/next period
+3. Select First day of week
+4. i18n
+5. Dedicatet stylesheet to style the calendar in isolation
