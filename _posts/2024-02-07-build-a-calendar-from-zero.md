@@ -162,6 +162,38 @@ Next, render the `day` (the thing you want to have whole control of) inside the 
 <% end %>
 ```
 
+### Improve query performance
+
+With the above approach, we perform an additional query for each day in the calendar:
+
+![too-many-queries](/assets/images/calendar-too-many-queries.png)
+
+Instead, we can **group events by day** in the controller, and display events per day in the view:
+
+```diff
+# app/controllers/calendar_controller.rb
+class CalendarController < ApplicationController
+  def month
+    @date = Date.parse(params.fetch(:date, Date.today.to_s))
+-    @events = Event.where(start_date: @date.all_month)
++    @events = Event.where(start_date: @date.all_month).group_by{ |e| e.start_date.to_date }
+  end
+end
+```
+
+```diff
+# app/views/calendar/month.html.erb
+<%= render 'calendar/month', date: @date do |day| %>
+  <%= day.strftime('%d') %>
+-  <% @events.where(start_date: day.all_day).each do |event| %>
++  <% @events[day]&.each do |event| %>
+    <%= render 'events/event', event: event %>
+  <% end %>
+<% end %>
+```
+
+1 query in the controller + 31 queries in the view => 1 query in the controller!
+
 ### Next steps:
 
 1. Day, Week views
@@ -169,3 +201,4 @@ Next, render the `day` (the thing you want to have whole control of) inside the 
 3. Select First day of week
 4. i18n
 5. Dedicatet stylesheet to style the calendar in isolation
+6. Drag & drop events between days
