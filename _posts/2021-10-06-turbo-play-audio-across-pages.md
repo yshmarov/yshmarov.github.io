@@ -4,6 +4,7 @@ title: "#3 Turbo: Keep the audio playing after changing the page with data-turbo
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo audio mp3 turbo-drive
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: uw8FHVjXnSE
 ---
 
 Task: when you switch the page the audio should be still playing like here [https://www.rework.fm/](https://www.rework.fm/)

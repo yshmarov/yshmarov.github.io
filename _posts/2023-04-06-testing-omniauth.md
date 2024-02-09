@@ -10,6 +10,7 @@ tags:
 - github
 - azure
 thumbnail: /assets/thumbnails/oauth.png
+youtube_id: kW-AEo6V15M
 ---
 
 ### 1. Mock oAuth responce with Faker

@@ -4,6 +4,7 @@ title: "Telegram Part 2. Notification for CRUD actions"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails telegram bots httparty
 thumbnail: /assets/thumbnails/telegram.png
+youtube_id: t0U0CPZH8ZU
 ---
 
 ### TODO: Telegram bot notifies group chat whenever a new post is created.

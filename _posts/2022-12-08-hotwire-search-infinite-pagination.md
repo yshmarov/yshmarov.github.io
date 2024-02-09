@@ -4,6 +4,7 @@ last_name: "Hotwire Turbo: Search & Infinite Scroll Pagination (Ransack + Pagy)"
 author: Yaroslav Shmarov
 tags: ruby-on-rails-7 hotwire turbo
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: sQBRkduaezo
 ---
 
 We'll build **search** and **infinite pagination** that work well together. Basically a similar UI:

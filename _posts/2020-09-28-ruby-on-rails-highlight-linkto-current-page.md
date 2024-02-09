@@ -6,6 +6,7 @@ tags:
 - ruby on rails
 - html
 thumbnail: /assets/thumbnails/rails-logo.png
+youtube_id: yvB2ZQh1HVY
 ---
 
 Often to improve your navigation UI (user experience), you will want to mark the link to current page "active":
