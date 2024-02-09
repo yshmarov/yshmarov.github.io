@@ -4,6 +4,7 @@ title: "Select or Create Tags with Tom-Select without jQuery (VanillaJS)"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails vanilla-js no-jquery stimulus
 thumbnail: /assets/thumbnails/javascript.png
+youtube_id: dB5Fw1lftHU
 ---
 
 [Tom Select](https://tom-select.js.org/) is an improved FORK of SelectizeJS that I have been using for many years.

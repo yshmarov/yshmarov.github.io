@@ -4,6 +4,7 @@ title: "#14 Turbo + Devise"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails devise turbo hotwire
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: -fWTYoVfTEA
 ---
 
 MISSION:

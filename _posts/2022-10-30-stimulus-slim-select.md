@@ -4,6 +4,7 @@ title: "Slim Select with StimulusJS"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails turbo stimulusjs
 thumbnail: /assets/thumbnails/stimulus-logo.png
+youtube_id: F0au2jk7Skw
 ---
 
 **Goal**: Use [slim-select](https://slimselectjs.com/){:target="blank"} for searchable dropdowns and multiselect:

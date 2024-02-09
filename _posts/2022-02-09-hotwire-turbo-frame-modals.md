@@ -5,6 +5,7 @@ author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo tldr modals tailwind viewcomponent
 thumbnail: /assets/thumbnails/turbo.png
 canonical_url: https://www.bearer.com/blog/how-to-build-modals-with-hotwire-turbo-frames-stimulusjs
+youtube_id: 1QQ9j3z7NGw
 ---
 
 The **MOST** important thing about handling a modals **CORRECTLY** - closing it only when the form submission is successful with `turbo:submit-end`.
