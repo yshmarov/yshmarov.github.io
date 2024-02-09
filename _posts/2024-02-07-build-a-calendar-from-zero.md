@@ -4,6 +4,7 @@ title: Build a calendar from zero (Month view)
 author: Yaroslav Shmarov
 tags: ruby-on-rails calendar
 thumbnail: /assets/thumbnails/calendar.png
+youtube_id: 08UCWWGKl8k
 ---
 
 A long time ago I thought it impossible to build a calendar on your own; I thought you need an external library. However building a calendar is much easier than you think!

@@ -4,6 +4,7 @@ title: Does Turbo 8 morphing make sense?
 author: Yaroslav Shmarov
 tags: rails hotwire turbo morphing
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: ltoAB6vnZ5o
 ---
 
 At Rails World I presented the [Hotwire Cookbook](https://superails.com/posts/rails-world-hotwire-cookbook-yaroslav-shmarov-common-uses-essential-patterns-best-practices) - a collection of UI behaviours that you can achieve **today** with Turbo Drive, Frames, Streams, and Stimulus.

@@ -4,6 +4,7 @@ title: "Revised: Hotwire Turbo Modals with HTML Dialog"
 author: Yaroslav Shmarov
 tags: hotwire turbo modals dialog
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: DmBBjEQJ2u8
 ---
 
 Previously I wrote about:

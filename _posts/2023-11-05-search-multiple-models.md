@@ -4,6 +4,7 @@ title: "Search multiple models"
 author: Yaroslav Shmarov
 tags: ruby-on-rails
 thumbnail: /assets/thumbnails/search.png
+youtube_id: 7XPbihY6HGI
 ---
 
 On [superails.com](https://superails.com/) you can search for **Posts**, **Playlists** and **Tags** in one single search field:

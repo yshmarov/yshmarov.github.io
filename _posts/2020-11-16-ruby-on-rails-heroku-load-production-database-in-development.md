@@ -9,9 +9,6 @@ tags:
 thumbnail: /assets/thumbnails/heroku.png
 youtube_id: qSYLJhe2nO4
 ---
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen src="https://www.youtube.com/embed/{{page.youtube_id}}"></iframe>
-</div>
 
 Sometimes you want to run a copy of your **production database in development**. 
 

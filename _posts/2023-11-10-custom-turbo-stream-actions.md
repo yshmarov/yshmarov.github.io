@@ -4,6 +4,7 @@ title: "Custom Turbo Stream Actions"
 author: Yaroslav Shmarov
 tags: rails hotwire turbo-streams modals
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: OZuLvOYy1Ss
 ---
 
 Hotwire Turbo Streams [let you](https://github.com/hotwired/turbo/pull/479) create custom turbo stream actions.

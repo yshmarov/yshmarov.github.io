@@ -4,6 +4,7 @@ title: "Calendar pagination with Pagy"
 author: Yaroslav Shmarov
 tags: ruby rails calendar pagination
 thumbnail: /assets/thumbnails/calendar.png
+youtube_id: EDyZIB8FU-g
 ---
 
 Peviously I wrote about [paginating records by date]({% post_url 2021-11-04-paginate-tab-by-any-attribute %}).
