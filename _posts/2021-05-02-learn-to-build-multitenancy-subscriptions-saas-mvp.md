@@ -15,7 +15,6 @@ tags:
 - startup
 - boilerplate
 thumbnail: https://www.strattic.com/wp-content/uploads/2019/05/gumroad.jpg
-cover_image: /assets/launching-learn-to-build-a-multitenancy-saas-mvp/saas-book-cover.png
 description: Launching Course and Black Friday sale
 ---
 
@@ -31,4 +30,4 @@ After 6 months of work, ressearch and trials **I'm officially launching the cour
 |--|--|
 | Link  | [https://gumroad.com/l/ror6saas/presale33](https://gumroad.com/l/ror6saas/presale33){:target="blank"}  |
 
-![{{page.cover_image}}]({{page.cover_image}})
+![saas-book-cover](/assets/launching-learn-to-build-a-multitenancy-saas-mvp/saas-book-cover.png)

@@ -7,7 +7,6 @@ tags:
 - credentials
 - secrets
 thumbnail: /assets/thumbnails/encryption-lock.png
-cover_image: /assets/thumbnails/how-to-use-credentials.png
 description: Quickest guide to credentials and secrets for Rails 6
 youtube_id: nDJE8WG0auE
 ---

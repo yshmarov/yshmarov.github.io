@@ -4,8 +4,8 @@ title: "counter_cache - count how many children a records has"
 author: Yaroslav Shmarov
 description: conter_cache in Ruby on Rails the easy way
 tags: ruby rails ruby-on-rails
-cover_image: https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7ufvyyw7hq13rg4s983o.png
 thumbnail: /assets/thumbnails/counter-cache.png
+youtube_id: 30FZFU3oTiQ
 ---
 Often you want to count how many child records a record has (`user.posts.count`, `user.comments.count`). 
 
