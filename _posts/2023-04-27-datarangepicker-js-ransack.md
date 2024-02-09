@@ -4,6 +4,7 @@ title: DateRangePicker with StimulusJS, Importmaps, gem Ransack
 author: Yaroslav Shmarov
 tags: ruby-on-rails stimulusjs daterangepicker
 thumbnail: /assets/thumbnails/clock.png
+youtube_id: 07XQY8nRvd0
 ---
 
 Recently I've integrated "search between dates" into a Ruby on Rails application:

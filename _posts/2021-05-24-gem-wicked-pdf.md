@@ -4,6 +4,7 @@ title: Complete guide to generating PDFs with gem wicked_pdf
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails pdf wicked_pdf
 thumbnail: /assets/thumbnails/pdf.png
+youtube_id: tFvtwEmW-GE
 ---
 
 [wicked_pdf](https://github.com/mileszs/wicked_pdf) - gem to generate PDF from HTML.

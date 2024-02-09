@@ -8,6 +8,7 @@ tags:
 - azure
 - omniauth
 thumbnail: /assets/thumbnails/windows-logo.png
+youtube_id: 3BNJ3G226_o
 ---
 
 While @google emails are popular among tech startups, most corporations use Microsoft to manage their employees email addresses. These companies often want to enable their employees to single-sign-on to work-related services with their Microsoft account.

@@ -4,6 +4,7 @@ title: Push to github without re-entering password (connect SSH key)
 author: Yaroslav Shmarov
 tags: github git ssh
 thumbnail: https://e7.pngegg.com/pngimages/951/741/png-clipart-secure-shell-ssh-keygen-computer-servers-computer-network-computer-software-shell-text-computer.png
+youtube_id: q-90GlLPBBI
 ---
 
 **I hate re-entering the password when pushing to Github!**

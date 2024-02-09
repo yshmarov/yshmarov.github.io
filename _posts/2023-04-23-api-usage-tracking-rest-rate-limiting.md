@@ -4,6 +4,7 @@ title: API Tracking and Usage limiting
 author: Yaroslav Shmarov
 tags: ruby-on-rails rails-api
 thumbnail: /assets/thumbnails/api.png
+youtube_id: GNRkG-Rc2IE
 ---
 
 If you don't **limit** your API usage, bad users can DDOS your server.

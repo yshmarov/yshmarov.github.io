@@ -4,6 +4,7 @@ title: "#17 Turbo Streams: Broadcasts"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo broadcasts
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: xSkq9vQgT7k
 ---
 
 **Turbo Streams in Controller VS Broadcasts: When to use which?**

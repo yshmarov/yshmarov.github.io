@@ -4,6 +4,7 @@ title: "Export CSV from Rails"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails export excel xls xlsx csv download
 thumbnail: /assets/thumbnails/xlsx.png
+youtube_id: E_8BBAvVCqw
 ---
 
 In a

@@ -4,6 +4,7 @@ title: API pagination with Pagy
 author: Yaroslav Shmarov
 tags: ruby-on-rails rails-api pagination
 thumbnail: /assets/thumbnails/api.png
+youtube_id: Qoq6HZ8gdDE
 ---
 
 If you don't paginate GET LIST data in your API, most likely you will be giving your API consumers too much data, and adding too much load on your API.

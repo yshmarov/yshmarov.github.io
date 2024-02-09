@@ -8,6 +8,7 @@ tags:
 - encryption
 - secrets
 thumbnail: /assets/thumbnails/encryption-lock.png
+youtube_id: SZCuEfvs9rc
 ---
 
 **PII** (personal identifiable information) and **PHI** (personal health information) is considered very sensitive, and if you are processing it, there can be **requirements** to protect it.

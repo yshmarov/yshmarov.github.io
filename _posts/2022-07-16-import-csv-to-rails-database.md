@@ -4,6 +4,7 @@ title: "Import CSV to Rails"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails export excel xls xlsx csv download
 thumbnail: /assets/thumbnails/xlsx.png
+youtube_id: EJ8FZMLsVVQ
 ---
 
 Let's **import** data from a CSV to a database table.

@@ -4,6 +4,7 @@ title: "Broadcaster pattern for Turbo Streams Broadcasts"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo broadcasts
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: xSkq9vQgT7k
 ---
 
 [Previously]({% post_url 2021-12-09-turbo-hotwire-broadcasts %}){:target="blank"} I said that it's an **awful practice** to render a turbo stream broadcast form a **model**, and suggested doing it from a **controller**. That's better, however that makes the controller much more complex. I would like to introduce the **`Broadcaster`** pattern.

@@ -4,6 +4,7 @@ title: "Send SMS with Twilio in Rails"
 author: Yaroslav Shmarov
 tags: ruby rails twilio
 thumbnail: /assets/thumbnails/sms-twilio-logo.png
+youtube_id: 1Hfaq2vH2EQ
 ---
 
 Over the years SMS has become a much less important way of **communication**, but it can still be useful for receiving important **system notifications**.

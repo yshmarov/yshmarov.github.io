@@ -4,6 +4,7 @@ title: Rails CRUD API requests with cURL
 author: Yaroslav Shmarov
 tags: ruby-on-rails rails-api curl
 thumbnail: /assets/thumbnails/api.png
+youtube_id: rKJvms0lFmI
 ---
 
 cURL let's you make HTTP requests from the command-line/terminal.

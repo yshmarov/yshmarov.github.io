@@ -4,6 +4,7 @@ title: "Trello Clone: drag, drop and save changes with Ranked-Model, SortableJs 
 author: Yaroslav Shmarov
 tags: trello requestjs sortable-js request-js ranked-model acts_as_list sort
 thumbnail: /assets/thumbnails/trello.png
+youtube_id: OZWhN4Gtjos
 ---
 
 The goal here is to create a board like Trello, where we have Lists and Tasks within lists.

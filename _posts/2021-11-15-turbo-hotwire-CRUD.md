@@ -4,6 +4,7 @@ title: "#15 Turbo Streams CRUD"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo CRUD
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: csvaYIaBYpw
 ---
 
 ![CRUD with turbo streams](/assets/images/turbo-streams-crud.gif)

@@ -4,6 +4,7 @@ title: Build a Public-facing Rails API with Bearer token authentication
 author: Yaroslav Shmarov
 tags: ruby-on-rails rails-api bearer
 thumbnail: /assets/thumbnails/api.png
+youtube_id: nrYg7ldwOzM
 ---
 
 Let's say you've got a Rails app, and you want to allow other apps read/write data to your app.

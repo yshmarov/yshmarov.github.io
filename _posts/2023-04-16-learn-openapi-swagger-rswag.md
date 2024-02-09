@@ -4,6 +4,7 @@ title: API documentation with OpenAPI and Swagger using gem Rswag
 author: Yaroslav Shmarov
 tags: ruby-on-rails rails-api swagger openapi
 thumbnail: /assets/thumbnails/api.png
+youtube_id: 4_s66AeuM5c
 ---
 
 Good API documentation is crucial for helping others adopt and use your public API.

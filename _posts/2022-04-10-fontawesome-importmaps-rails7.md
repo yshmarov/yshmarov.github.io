@@ -4,6 +4,7 @@ title: "Fontawesome + Importmaps + Rails 7"
 author: Yaroslav Shmarov
 tags: ruby-on-rails fontawesome
 thumbnail: /assets/thumbnails/fontawesome-logo.png
+youtube_id: c-EbQDB0RsQ
 ---
 
 I love [Fontawesome free icon library](https://fontawesome.com/search?m=free){:target="blank"}

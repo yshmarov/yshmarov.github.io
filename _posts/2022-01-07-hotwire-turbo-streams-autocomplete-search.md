@@ -4,6 +4,7 @@ title: "#20 Turbo Streams: autocomplete search"
 author: Yaroslav Shmarov
 tags: ruby-on-rails-7 hotwire turbo autocomplete
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: PfCU0Nni8fI
 ---
 
 It's very easy to add autocomplete search with turbo streams:
