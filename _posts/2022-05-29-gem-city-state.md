@@ -4,6 +4,7 @@ title: "Chained select fields for gem City-State"
 author: Yaroslav Shmarov
 tags: ruby-on-rails hotwire turbo city-state chained-select
 thumbnail: /assets/thumbnails/numbered-list.png
+youtube_id: vKjWXMHzOoA
 ---
 
 [Gem City-State](https://github.com/loureirorg/city-state/){:target="blank"} is a great library of relationships between countries-states-cities.

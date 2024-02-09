@@ -10,6 +10,7 @@ tags:
 thumbnail: /assets/thumbnails/encryption-lock.png
 cover_image: /assets/thumbnails/how-to-use-credentials.png
 description: Quickest guide to credentials and secrets for Rails 6
+youtube_id: nDJE8WG0auE
 ---
 
 [See complete version of this article]({% post_url 2020-12-07-ruby-on-rails-6-credentials-full %}){:target="blank"}
