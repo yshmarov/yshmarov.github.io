@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Basic page transition animation with StimulusJS and TailwindCSS"
+title: "Crazy, stupid page transition animation with StimulusJS and TailwindCSS"
 author: Yaroslav Shmarov
 tags: rails tailwindcss animation page-transition
 thumbnail: /assets/thumbnails/tailwindcss.png

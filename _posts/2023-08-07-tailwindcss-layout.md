@@ -4,6 +4,7 @@ title: "TailwindCSS on Rails 01: Responsive layout with sidebar"
 author: Yaroslav Shmarov
 tags: rails tailwindcss
 thumbnail: /assets/thumbnails/tailwindcss.png
+youtube_id: mKNb7G-8jL8
 ---
 
 > Tailwind CSS: It looks awful, and it works.

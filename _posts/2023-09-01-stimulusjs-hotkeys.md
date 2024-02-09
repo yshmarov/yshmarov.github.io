@@ -4,6 +4,7 @@ title: "StimulusJS Keyboard Hotkeys"
 author: Yaroslav Shmarov
 tags: tabs stimulusjs
 thumbnail: /assets/thumbnails/stimulus-logo.png
+youtube_id: OlMtq6yRmI4
 ---
 
 Some apps let you click keyboard buttons or combinations to quickly navigate around.

@@ -4,6 +4,7 @@ title: "TailwindCSS on Rails 03: Responsive content layout. Grid, Flex, Center"
 author: Yaroslav Shmarov
 tags: rails tailwindcss grid flex
 thumbnail: /assets/thumbnails/tailwindcss.png
+youtube_id: STfxP4YJc6g
 ---
 
 ### Content grid (columns)

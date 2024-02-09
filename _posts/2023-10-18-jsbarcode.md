@@ -4,6 +4,7 @@ title: "Generate barcodes on the frontend with JsBarcode"
 author: Yaroslav Shmarov
 tags: barcode jsbarcode stimulusjs
 thumbnail: /assets/thumbnails/barcode.png
+youtube_id: urqESWSVzH0
 ---
 
 Previously I wrote about [**generating barcodes on the server and storing them in ActiveStorage**]({% post_url 2021-09-24-ruby-on-rails-generate-barcodes %}){:target="blank"}.

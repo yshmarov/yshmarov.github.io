@@ -4,6 +4,7 @@ title: "Modals with HTML dialog element, TailwindCSS and StimulusJS"
 author: Yaroslav Shmarov
 tags: rails dialog modal tailwindcss
 thumbnail: /assets/thumbnails/tailwindcss.png
+youtube_id: 1Op2ZdYGaGA
 ---
 
 Safari has finally adopted the [`<dialog>` HTML element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog), and now it is supported by all browsers!

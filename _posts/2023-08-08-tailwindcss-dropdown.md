@@ -4,6 +4,7 @@ title: "TailwindCSS on Rails 02: Responsive dropdown menu"
 author: Yaroslav Shmarov
 tags: rails tailwindcss
 thumbnail: /assets/thumbnails/tailwindcss.png
+youtube_id: vTut_lQJlFE
 ---
 
 Previously we created a responsive layout: [TailwindCSS on Rails 01: Responsive layout with sidebar]({% post_url 2023-08-07-tailwindcss-layout %})
