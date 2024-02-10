@@ -22,9 +22,9 @@ I've been hearing that "devise & turbo don't play well yet" for many months, and
 
 Well, it's been 12 months since turbo was announced (Dec 20, 2020).
 
-Now we have Turbo 7.0, Rails 7 alpha2, and [the Devise maintainer says that Devise is ready](https://twitter.com/heartcombo/status/1446256070306013186){:target="blank"}.
+Now we have Turbo 7.0, Rails 7, and [the Devise maintainer says that Devise is ready](https://twitter.com/heartcombo/status/1446256070306013186){:target="blank"}.
 
-So, let's try to install devise on a Rails 7 alpha2 app (that uses Turbo by default).
+So, let's try to install devise on a Rails 7 app (that uses Turbo by default).
 
 ### 1. Install `gem devise`
 
