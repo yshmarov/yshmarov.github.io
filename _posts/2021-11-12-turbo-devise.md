@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Make Devise work with Turbo in Rails 7"
+title: "Make Devise work with Hotwire Turbo and Rails 7"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails devise turbo hotwire
 thumbnail: /assets/thumbnails/turbo.png
