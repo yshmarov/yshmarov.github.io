@@ -4,6 +4,7 @@ title: "Passwordless: log in with magic link"
 author: Yaroslav Shmarov
 tags: passwordless authentication magic-link
 thumbnail: /assets/thumbnails/lock.png
+youtube_id: 00xl7yP7Yvs
 ---
 
 Passwordless authentication via magic link is an interesting alternative to email-password authentication solutions like Devise.

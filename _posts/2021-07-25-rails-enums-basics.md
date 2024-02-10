@@ -4,6 +4,7 @@ title: "Rails enums - different approaches"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails enums
 thumbnail: /assets/thumbnails/select-options.png
+youtube_id: Ac8syCb01ys
 ---
 
 Other good posts on the topic:

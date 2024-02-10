@@ -4,6 +4,7 @@ title: "Deploy to DigitalOcean App Platform in Production"
 author: Yaroslav Shmarov
 tags: ruby-on-rails production digitalocean
 thumbnail: /assets/thumbnails/digitalocean.png
+youtube_id: TJhvbAI0P8k
 ---
 
 ### Decline of Heroku

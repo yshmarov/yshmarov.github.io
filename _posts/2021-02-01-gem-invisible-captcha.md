@@ -4,6 +4,7 @@ title: "Install and use gem invisible_captcha with devise"
 author: Yaroslav Shmarov
 tags: ruby-on-rails devise invisible_captcha
 thumbnail: /assets/thumbnails/invisiblecaptcha.png
+youtube_id: 4Z4yVSXDRyw
 ---
 
 Quick guide to add [gem invisible_captcha](https://github.com/markets/invisible_captcha){:target="blank"} to your devise registrations.

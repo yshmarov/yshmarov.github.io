@@ -4,6 +4,7 @@ title: "gem MapkickJS for beautiful JavaScript maps with one line of Ruby"
 author: Yaroslav Shmarov
 tags: ruby rails mapkick
 thumbnail: /assets/thumbnails/map-marker.png
+youtube_id: FEj0cJqgcRs
 ---
 
 [MapkickJS](https://github.com/ankane/mapkick.js){:target="blank"} is a javascript adapter to display coordinates on Mapbox maps. It requires a [Mapbox API key](https://account.mapbox.com/auth/signup/){:target="blank"}.

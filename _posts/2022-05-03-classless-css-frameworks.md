@@ -4,6 +4,7 @@ title: 'Classless CSS frameworks'
 author: Yaroslav Shmarov
 tags: rails html css
 thumbnail: /assets/thumbnails/css.png
+youtube_id: dqwg0sdQHZ4
 ---
 
 When building a small website or rails app, sometimes adding a CSS framework and styling your pages can be a time-consuming overkill.

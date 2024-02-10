@@ -4,6 +4,7 @@ title: "SVG in Rails. Gem inline_svg"
 author: Yaroslav Shmarov
 tags: ruby-on-rails inline_svg svg
 thumbnail: /assets/thumbnails/html.png
+youtube_id: HEDBhzlrhF8
 ---
 
 In some cases you don't want to use external SVG libraries like

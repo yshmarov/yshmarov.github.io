@@ -4,6 +4,7 @@ title: "gem acts_as_votable 2: reddit-style up and down voting"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails acts_as_votable ajax js-erb
 thumbnail: /assets/thumbnails/like.png
+youtube_id: gbbGhBUBftE
 ---
 
 Also see [part 1 of this post]({% post_url 2021-05-03-gem-acts-as-votable %}){:target="blank"}

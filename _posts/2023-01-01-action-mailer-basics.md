@@ -4,6 +4,7 @@ title: "Notes on using ActionMailer"
 author: Yaroslav Shmarov
 tags: ruby-on-rails action_mailer
 thumbnail: /assets/thumbnails/gmail.png
+youtube_id: yqxORosQQbo
 ---
 
 ### 1. Mailer setup for localhost/`development`

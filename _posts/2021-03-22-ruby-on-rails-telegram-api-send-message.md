@@ -4,6 +4,7 @@ title: "Telegram Part 1. Button to send group messages"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails telegram bots httparty
 thumbnail: /assets/thumbnails/telegram.png
+youtube_id: mEUHKcTeO-c
 ---
 
 ### TODO: Telegram bot that sends messages to a telegram group when an event in your Rails app happens

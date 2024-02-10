@@ -4,6 +4,7 @@ title: "Generate a QR code for a Product and store it in ActiveStorage. Service 
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails service-objects active-storage qr-code
 thumbnail: /assets/thumbnails/qr-superails-com.png
+youtube_id: 2AG-JR_zbSU
 ---
 
 Flow:

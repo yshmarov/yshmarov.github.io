@@ -4,6 +4,7 @@ title: "StimulusJS - Display or hide HMTL based on field input"
 author: Yaroslav Shmarov
 tags: stimulus
 thumbnail: /assets/thumbnails/stimulus-logo.png
+youtube_id: Ku_SVWl_u64
 ---
 
 Task: unhide some HTML (or a form field) based on your selection.

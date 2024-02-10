@@ -4,6 +4,7 @@ title: "Add social log in with Github (Omniauth)"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails devise omniauth github
 thumbnail: /assets/thumbnails/github-logo.png
+youtube_id: ijFAWWD4_JM
 ---
 
 If we are using Devise for user authentication, it's easy to add omniauth authentication (via a social provider). Let's use [**omniauth github gem**](https://github.com/omniauth/omniauth-github){:target="blank"} to allow "Login via Github".

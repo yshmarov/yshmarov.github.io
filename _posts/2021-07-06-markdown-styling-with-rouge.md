@@ -4,6 +4,7 @@ title: "Markdown Level 2. Style markdown css with gem Rouge"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails markdown redcarpet rouge
 thumbnail: /assets/thumbnails/markdown.png
+youtube_id: CqlVuoYIgEg
 ---
 
 [Part 1: Basic markdown with gem redcarpet]({% post_url 2021-06-10-markdown %}){:target="blank"}

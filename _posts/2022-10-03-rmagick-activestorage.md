@@ -4,6 +4,7 @@ title: "Autogenerate and store images with Rmagick and Imagemagick with ActiveSt
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails turbo stimulusjs
 thumbnail: /assets/thumbnails/placeholder-image.png
+youtube_id: nM3CE1AiIFU
 ---
 
 Imagine an app for live streaming sports games (ESPN/Netflix/Twitch app).

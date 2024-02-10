@@ -4,6 +4,7 @@ title: 'Hotwire Turbo Frames: Hovercards'
 author: Yaroslav Shmarov
 tags: ruby hotwire
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: _T6uOL9L7NM
 ---
 
 Let's make github-styled hovercards/tooltips that load content **only** when you hover on an element, using lazy-loaded turbo frames and a bit of CSS:

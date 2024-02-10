@@ -4,6 +4,7 @@ title:  Add custom error pages in a Rails app
 author: Yaroslav Shmarov
 tags: ruby-on-rails, error-pages, 404
 thumbnail: /assets/thumbnails/404.png
+youtube_id: moeJ_0WQZxo
 ---
 
 Series:

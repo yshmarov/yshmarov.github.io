@@ -4,6 +4,7 @@ title: "How to use the Browser Geolocation API with Rails"
 author: Yaroslav Shmarov
 tags: ruby rails geolocation geocoder
 thumbnail: /assets/thumbnails/map-marker.png
+youtube_id: cAEzzpvm43Y
 ---
 
 Task: get users **coordinates** from browser, redirect to page with coordinates in params:

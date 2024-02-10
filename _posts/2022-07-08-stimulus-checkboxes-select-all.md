@@ -4,6 +4,7 @@ title: "StimulusJS checkboxes. Select all. Deselect all"
 author: Yaroslav Shmarov
 tags: bulk-actions mass-params stimulusjs
 thumbnail: /assets/thumbnails/checkboxes.png
+youtube_id: Li4ag6xNKdk
 ---
 
 With StimulusJS it's easy to add `Select all`, `Deselect all`:

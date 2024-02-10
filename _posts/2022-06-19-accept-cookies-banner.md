@@ -4,6 +4,7 @@ title: "Accept cookies consent banner in Rails"
 author: Yaroslav Shmarov
 tags: ruby-on-rails gdpr cookies
 thumbnail: /assets/thumbnails/gdpr-cookie.png
+youtube_id: Udkil4287pM
 ---
 
 According to GDPR regulations you might need to add a banner on your site where a website visitor can `accept`/`reject` cookies.

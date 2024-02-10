@@ -4,6 +4,7 @@ title: "Gem Public Activity: Complete guide to total surveillance"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails public_activity surveillance
 thumbnail: /assets/thumbnails/big-brother.png
+youtube_id: oxdgYIHtlFc
 ---
 
 A gem to track any activity in your application and record it to the database.

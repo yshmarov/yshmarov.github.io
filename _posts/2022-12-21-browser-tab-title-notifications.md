@@ -4,6 +4,7 @@ title: "Browser tab title notifications"
 author: Yaroslav Shmarov
 tags: stimulusjs html rails
 thumbnail: /assets/thumbnails/linkedin-bell.png
+youtube_id: CmNj_BZGGUg
 ---
 
 The other day I was browsing LinkedIn and I thought of the best way to reproduce it's iconic way of showing the new notifications counter in the browser tab:

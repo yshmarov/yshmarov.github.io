@@ -4,6 +4,7 @@ title: "Chained select fields for custom data structures"
 author: Yaroslav Shmarov
 tags: ruby-on-rails hotwire turbo chained-select
 thumbnail: /assets/thumbnails/numbered-list.png
+youtube_id: vKjWXMHzOoA
 ---
 
 In this post I want to demonstrate:

@@ -4,6 +4,7 @@ title: "StimulusJS Dropdown"
 author: Yaroslav Shmarov
 tags: stimulusjs
 thumbnail: /assets/thumbnails/stimulus-logo.png
+youtube_id: XgHXmZbyLvs
 ---
 
 Previously I've created a [Stimulus ReadMore]({% post_url 2021-07-30-stimulus-read-more %}){:target="blank"} controller.

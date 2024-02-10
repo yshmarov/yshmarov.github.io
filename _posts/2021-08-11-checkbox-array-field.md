@@ -2,8 +2,9 @@
 layout: post
 title: "Boolean Checkbox array - easier than you think!"
 author: Yaroslav Shmarov
-gdpr: ruby rails ruby-on-rails checkboxes array
+tags: ruby rails ruby-on-rails checkboxes array
 thumbnail: /assets/thumbnails/checkboxes.png
+youtube_id: nFJZuqqBlds
 ---
 
 Easy way to edit and persist an array of pre-defined booleans as a string.

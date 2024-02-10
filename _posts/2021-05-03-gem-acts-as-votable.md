@@ -4,6 +4,7 @@ title: "gem acts_as_votable 1: Like and Dislike posts with Vanilla JS"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails acts_as_votable ajax js-erb
 thumbnail: /assets/thumbnails/like.png
+youtube_id: gbbGhBUBftE
 ---
 
 NO jQuery. ONLY vanilla JS

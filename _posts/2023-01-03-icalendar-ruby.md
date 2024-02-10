@@ -4,6 +4,7 @@ title: "Complete guide to iCalendar events with Ruby"
 author: Yaroslav Shmarov
 tags: ical icalendar ruby-on-rails
 thumbnail: /assets/thumbnails/calendar.png
+youtube_id: CVt5LQfi8Dk
 ---
 
 It's common to receive a calendar invita via email:

@@ -4,6 +4,7 @@ title: "Hotwire Turbo: Edit each attribute inline"
 author: Yaroslav Shmarov
 tags: ruby-on-rails-7 hotwire turbo
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: bkFoYOMSlCU
 ---
 
 Allow user to easily edit an attribute by just clicking on it!

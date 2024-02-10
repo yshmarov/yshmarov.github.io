@@ -4,6 +4,7 @@ title: "Sending emails in production with Amazon SES"
 author: Yaroslav Shmarov
 tags: ruby-on-rails action_mailer amazon-ses aws sendgrid
 thumbnail: /assets/thumbnails/aws.png
+youtube_id: 1ncuRodXi88
 ---
 
 get the API keys here:

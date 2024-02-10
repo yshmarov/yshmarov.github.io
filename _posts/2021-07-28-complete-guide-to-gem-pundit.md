@@ -4,6 +4,7 @@ title: "Rails authorization with gem Pundit"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails pundit authorization roles
 thumbnail: /assets/thumbnails/stop-sign.png
+youtube_id: xxkx57-vbQI
 ---
 
 [Link - Great Pundit docs](https://www.rubydoc.info/gems/pundit/0.2.3){:target="blank"}

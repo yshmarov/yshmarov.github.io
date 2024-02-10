@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Migrating from Bootstrap 4 with Bootstrap 5"
+title: "Migrating from Bootstrap 4 to Bootstrap 5"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails markdown
 thumbnail: /assets/thumbnails/bootstrap.png

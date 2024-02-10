@@ -4,6 +4,7 @@ title: "Generate a BARCODE for a Product"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails active-storage barcode service-objects
 thumbnail: /assets/thumbnails/barcode.png
+youtube_id: 2AG-JR_zbSU
 ---
 
 Imagine if you could generate a barcode for each of your products... Well, that's easy!

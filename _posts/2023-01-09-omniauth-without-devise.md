@@ -4,6 +4,7 @@ title: "Omniauth without Devise"
 author: Yaroslav Shmarov
 tags: ruby-on-rails devise omniauth github testing
 thumbnail: /assets/thumbnails/devise.png
+youtube_id: 9bOzMgkULXs
 ---
 
 Previously I've covered [Github omniauth with Devise]({% post_url 2021-05-31-devise-omniauth-github %}){:target="blank"}, and [only github omniauth with Devise (without email-based registration)]({% post_url 2021-10-23-devise-login-only-with-omniauth %}){:target="blank"}.

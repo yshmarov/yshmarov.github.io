@@ -4,6 +4,7 @@ title: "Slack API. Send text, markdown and files to Slack"
 author: Yaroslav Shmarov
 tags: ruby-on-rails slack
 thumbnail: /assets/thumbnails/slack-logo.png
+youtube_id: RHn1UzwLqMw
 ---
 
 Most companies that I've worked with use Slack for internal communication.

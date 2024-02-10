@@ -4,6 +4,7 @@ title: "Edit Rolify roles for a User"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails rolify
 thumbnail: /assets/thumbnails/ransack.png
+youtube_id: URDKxGn0pxo
 ---
 
 Let's say you assing User roles via Rolify.

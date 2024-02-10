@@ -4,6 +4,7 @@ title: "Realtime Online User Tracking with Actioncable and Rails"
 author: Yaroslav Shmarov
 tags: ruby rails kredis action-cable hotwire turbo broadcasts
 thumbnail: /assets/thumbnails/users-online-symbol.png
+youtube_id: rK7kyXgV8o8
 ---
 
 Some time ago I wrote about [**Tracking Online Users using Timestamps**]({% post_url 2020-08-16-set-user-status-online %}){:target="blank"}. However these "timestamps" would require constantly hitting the relational database whenever a user does an action. This could cause performance issues.

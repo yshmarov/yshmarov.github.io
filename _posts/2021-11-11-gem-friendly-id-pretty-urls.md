@@ -4,6 +4,7 @@ title: "Pretty URLs with gem friendly_id"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails friendly_id
 thumbnail: /assets/thumbnails/url.png
+youtube_id: 6orj2qU6JdA
 ---
 
 ![friendly id url example](/assets/images/friendly_id_urls.png)

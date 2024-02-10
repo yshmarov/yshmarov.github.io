@@ -4,6 +4,7 @@ title: Testing Devise authentication with Minitest and Faker
 author: Yaroslav Shmarov
 tags: ruby rails minitest faker
 thumbnail: /assets/thumbnails/ladybug.png
+youtube_id: 9lD2d97cqt0
 ---
 
 When setting up a new Rails app with Devise, you should set up your test suite to work with **authentication** and write **controller** (integration) and **system** tests for the authentication flow.

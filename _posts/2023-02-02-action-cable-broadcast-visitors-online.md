@@ -4,6 +4,7 @@ title: "Live Visit Count for website or page. ActionCable, Turbo Broadcasts, Kre
 author: Yaroslav Shmarov
 tags: ruby rails kredis action-cable hotwire turbo broadcasts
 thumbnail: /assets/thumbnails/users-online-symbol.png
+youtube_id: rK7kyXgV8o8
 ---
 
 It's amazing that now you can add advanced javascript/websockets features like "Live visitor count" without writing a single extra line of javascript!

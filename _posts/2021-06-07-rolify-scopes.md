@@ -4,6 +4,7 @@ title: "Role scopes with gem Rolify"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails rolify
 thumbnail: /assets/thumbnails/ransack.png
+youtube_id: URDKxGn0pxo
 ---
 
 The magic of Rolify is not in just **assigning user roles**, but in assigning user roles to resources. 

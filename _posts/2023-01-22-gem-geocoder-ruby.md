@@ -4,6 +4,7 @@ title: "gem Geocoder - calculate coordinates, distances, search nearby"
 author: Yaroslav Shmarov
 tags: ruby rails geocoder
 thumbnail: /assets/thumbnails/map-marker.png
+youtube_id: oeeqEA_mdJs
 ---
 
 [Geocoder gem](https://github.com/alexreisner/geocoder){:target="blank"} allows you to preform different operations with **coordinates**.

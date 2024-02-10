@@ -4,6 +4,7 @@ title: "#10 Turbo Streams - Create and stream records. Flash messages. Reusable 
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails hotwire turbo turbo-streams flash
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: mAANmoNgOKA
 ---
 
 ![turbo-flash](/assets/images/turbo-flash.gif)

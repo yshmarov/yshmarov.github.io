@@ -4,6 +4,7 @@ title: 'Semantic HTML in Ruby on Rails'
 author: Yaroslav Shmarov
 tags: rails html
 thumbnail: /assets/thumbnails/html.png
+youtube_id: _7Hk8EPpr-U
 ---
 
 Often when writing an HTML page we resort to `div` and `span`, whereas there are many other HTML tags that we just tend to overlook or forget.
