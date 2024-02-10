@@ -4,6 +4,7 @@ title: "Stimulus JS: A Basic Dropdown controller"
 author: Yaroslav Shmarov
 tags: stimulusjs
 thumbnail: /assets/thumbnails/stimulus-logo.png
+youtube_id: XgHXmZbyLvs
 ---
 
 Today I had a challenge to create a button to open/hide content on the frontend side:
