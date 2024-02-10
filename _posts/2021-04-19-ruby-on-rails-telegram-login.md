@@ -4,6 +4,7 @@ title: "Telegram Part 3. Authentication. Bot to send private messages"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails telegram bots httparty
 thumbnail: /assets/thumbnails/telegram.png
+youtube_id: qFgVu9KK4XY
 ---
 
 ### TODO: 
