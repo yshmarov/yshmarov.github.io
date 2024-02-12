@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "#22 Hotwire Turbo: Tips & Tricks"
+title: "#22 Hotwire Turbo: Tips and Tricks"
 author: Yaroslav Shmarov
 tags: ruby-on-rails-7 hotwire turbo
 thumbnail: /assets/thumbnails/turbo.png
