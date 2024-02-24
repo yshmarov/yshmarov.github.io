@@ -170,6 +170,8 @@ Preview tools:
 
 [Facebook OG](https://developers.facebook.com/tools/debug/)
 
+![meta-tags-facebook](assets/images/meta-tags-facebook.png)
+
 [Linkedin OG](https://www.linkedin.com/post-inspector/inspect/https:%2F%2Fsuperails.com%2Fposts%2Frails-159-access-localhost-anywhere-with-ngrok)
 
 ![meta-tags-linkedin](assets/images/meta-tags-linkedin-post-inspector.png)
