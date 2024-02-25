@@ -30,6 +30,11 @@ Here's how basic meta tags can look in the `<head>` of an HMTL document:
 
   <meta name="description" content="Gem Meta Tags for better SEO">
   <meta name="author" content="Yaroslav Shmarov">
+  <meta name='copyright' content='SupeRails'>
+  <meta name='language' content='EN'>
+  <meta name='robots' content='index,follow'>
+  <meta name='revised' content='Sunday, July 18th, 2010, 5:15 pm'>
+  <!-- <meta name='revised' content="<%= @post.updated_at.strftime('%A, %B %eth, %Y, %l:%M %P')"> -->
 
   <meta property="og:title" content="Title of the shared link">
   <meta property="og:description" content="Description of the content">
@@ -67,15 +72,14 @@ First, add the favicon image into the `app/assets/images/thumbnail.png` folder.
 
 Great in-depth article: [How to Favicon in 2024: Six files that fit most needs](https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs)
 
-### Dynamic `<title>`
+### Dynamic `<title>` and other meta tags
 
 If a page has a custom title, display it. Otherwise display just *"SupeRails"*:
 
 ```ruby
 # app/views/layouts/application.html.erb
-<title>
-  <%= content_for?(:title) ? yield(:title) : "SupeRails" %>
-</title>
+<title><%= content_for?(:title) ? yield(:title) : "SupeRails" %></title>
+<%= yield :meta_tags %>
 ```
 
 Now you can add a title tag to any page:
@@ -87,7 +91,18 @@ Now you can add a title tag to any page:
   |
   <%#= Rails.application.class.parent_name %>
 <% end %>
-# => "5 posts | SupeRails"
+```
+
+The above generates a title `5 posts | SupeRails`.
+
+Set other meta tags; assuming you stored an image in `app/assets/images/banner.png`:
+
+```ruby
+# app/views/posts/index.html.erb
+<% content_for :meta_tags do %>
+  <meta name="og:description" content="<%= @event.location %>">
+  <meta name="og:image" content="<%= asset_url('banner.png') %>">
+<% end %>
 ```
 
 ```ruby
@@ -100,6 +115,20 @@ Now you can add a title tag to any page:
 # => "How to create meta tags | SupeRails"
 ```
 
+### Image meta tag
+
+Assuming you have a `Post` model that `has_one_attached :cover_image`, you can use it OR fallback to a default image if nothing is attached:
+
+```ruby
+def og_image(post)
+  post.cover_image.attached? ? url_for(post.cover_image) : asset_url('banner.png')
+end
+```
+
+```ruby
+  <meta name="og:image" content="<%= og_image(post) %>">
+```
+
 ### Use [gem meta-tags](https://github.com/kpumuk/meta-tags)
 
 For more complex behaviour and more meta_tag types (like `description`, `tags/keywords`, `image`, [OpenGraph](https://ogp.me/)), better use [gem meta-tags](https://github.com/kpumuk/meta-tags).
@@ -110,20 +139,25 @@ bundle add meta-tags
 rails generate meta_tags:install
 ```
 
-Add `display_meta_tags` to the layout, where you can set
-
-`reverse: true` - app name at the end like `5 posts | SupeRails`
+Add `display_meta_tags` to the layout, where you can set the default meta tags for all pages:
 
 ```ruby
 # app/views/layouts/application.html.erb
 <head>
   <%= display_meta_tags site: Rails.application.class.module_parent.name,
                         description: 'Modern Ruby on Rails screencasts',
-                        keywords: 'ruby, rails, ruby-on-rails', reverse: true %>
+                        keywords: 'ruby, rails, ruby-on-rails',
+                        reverse: true, # app name at the end like `5 posts | SupeRails`
+                        image: asset_url("logo.png"),
+                        og: {
+                          image: asset_url("logolong.png"),
+                        }
+                        icon: "/favicon.png", type: "image/png"
+  %>
 </head>
 ```
 
-Override the default meta tags from a controller action with `set_meta_tags`
+Override the default meta tags from a controller action with `set_meta_tags`:
 
 ```ruby
 # app/controllers/posts_controller.rb
@@ -134,11 +168,11 @@ Override the default meta tags from a controller action with `set_meta_tags`
   def show
     set_meta_tags title: @post.name,
                   description: @post.description,
-                  keywords: 'seo, rails, ruby, meta-tags'
-   end
+                  keywords: @post.tags.pluck(:name).split(', ')
+  end
 
    def new
-     set_meta_tags title: "#{action_name.capitalize} #{controller_name.singularize.capitalize}"
+     set_meta_tags title: "#{action_name.capitalize} #{controller_name.singularize}" # New post
    end
 ```
 
@@ -179,3 +213,11 @@ Preview tools:
 [Twitter OG cards docs](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards). They have discontinued their preview tool. Log in, click on "create post", paste a link, and wait for it to render.
 
 ![meta-tags-twitter](assets/images/meta-tags-twitter.png)
+
+### Final thoughts
+
+💡 There are many tags and it can seem a bit overwhelming to set them all. First focus on the more important meta tags, than do the other ones.
+
+💡 Open Graph image generator sounds like a good indie SaaS idea:
+
+![alt text](assets/images/meta-tags-opengraph-generator.png)
