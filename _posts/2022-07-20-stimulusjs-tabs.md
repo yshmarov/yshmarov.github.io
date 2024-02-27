@@ -31,11 +31,18 @@ HOWTO:
 rails g stimulus tabs
 ```
 
+install `stimulus-use` to add the "click outside to close tab(s) behaviour:
+
+```sh
+bin/importmap pin stimulus-use
+```
+
 2. the stimulus controller:
 
 ```js
 // app/javascript/controllers/tabs_controller.js
 import { Controller } from "@hotwired/stimulus"
+import { useClickOutside } from "stimulus-use";
 
 // Connects to data-controller="tabs"
 export default class extends Controller {
@@ -51,6 +58,7 @@ export default class extends Controller {
       selectedTab.hidden = false
       selectedBtn.classList.add("active")
     } catch { }
+    useClickOutside(this)
   }
 
   select(event) {
@@ -69,6 +77,11 @@ export default class extends Controller {
       selectedTab.hidden = true // hide current tab
       event.currentTarget.classList.remove("active") // deactive current btn
     }
+  }
+
+  clickOutside() {
+    this.tabTargets.forEach(x => x.classList.add("hidden")); // hide all tabs
+    this.btnTargets.forEach(x => x.classList.remove("active")); // deactivate all btns
   }
 }
 ```
@@ -91,9 +104,9 @@ export default class extends Controller {
 
 ```html
 <div data-controller="tabs" data-tabs-default-tab-value="two">
-  <button id="one" data-tabs-target="btn" data-action="click->tabs#select">UK</button>
-  <button id="two" data-tabs-target="btn" data-action="click->tabs#select">France</button>
-  <button id="abc" data-tabs-target="btn" data-action="click->tabs#select">Ukraine</button>
+  <button type="button" id="one" data-tabs-target="btn" data-action="click->tabs#select">UK</button>
+  <button type="button" id="two" data-tabs-target="btn" data-action="click->tabs#select">France</button>
+  <button type="button" id="abc" data-tabs-target="btn" data-action="click->tabs#select">Ukraine</button>
   <div data-tabs-target="tab" id="one">
     London, Glasgow
   </div>
