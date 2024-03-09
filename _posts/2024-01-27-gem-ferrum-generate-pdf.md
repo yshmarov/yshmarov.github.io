@@ -4,6 +4,7 @@ title: Generate PDF and PNG with Ferrum (headless Chrome API)
 author: Yaroslav Shmarov
 tags: ruby-on-rails ferrum pdf html-to-pdf headless-chrome
 thumbnail: /assets/thumbnails/pdf.png
+youtube_id: QjPwaIK-sgQ
 ---
 
 Usually I would use an HTML-to-PDF library to to generate and display a PDF of a web page.
@@ -156,7 +157,9 @@ end
 ```diff
 # ToImageJob
 - browser.pdf
-+ browser.screenshot(path: tmp.path, full: true, quality: 60, format: "png")
++ browser.screenshot(path: tmp.path, quality: 60, format: "png", full: true)
+# not full page, only element with <id="posts_list">
+# browser.screenshot(path: tmp.path, quality: 60, format: "png", selector: "#posts_list")
 ```
 
 ```ruby

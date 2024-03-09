@@ -4,6 +4,7 @@ title: "Import ICS events to calendar"
 author: Yaroslav Shmarov
 tags: rails icalendar ics
 thumbnail: /assets/thumbnails/calendar.png
+youtube_id: 9qLpix5XDLc
 ---
 
 Previously I wrote the [Complete guide to iCalendar events with Ruby]({% post_url 2023-01-03-icalendar-ruby %}) that focused on **creating** events that can be **exported** to a calendar in the `.ics` format.
