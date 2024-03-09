@@ -18,6 +18,10 @@ Use [`gem 'letter_opener'`](https://github.com/ryanb/letter_opener){:target="bla
   config.action_mailer.perform_deliveries = true
 ```
 
+On top of that, [`gem 'letter_opener_web'`](https://github.com/fgrehm/letter_opener_web) provides a beautiful UI for emails in your tmp folder 🤩
+
+![gem letter opener web](/assets/images/gem-letter-opener-web.png)
+
 If you still have an error `missing host to link to`, you can add this:
 
 ```diff
