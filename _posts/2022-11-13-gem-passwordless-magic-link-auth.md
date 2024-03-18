@@ -149,4 +149,6 @@ Passwordless.configure do |config|
 end
 ```
 
+### 5. [Sign in via QR](https://github.com/mikker/passwordless/wiki/sign-in-via-QR-code-%F0%9F%93%B8)
+
 That's it!
