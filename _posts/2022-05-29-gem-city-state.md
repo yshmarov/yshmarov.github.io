@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Chained select fields for gem City-State"
+title: "Chained select fields for gem City-State. Dynamic forms"
 author: Yaroslav Shmarov
 tags: ruby-on-rails hotwire turbo city-state chained-select
 thumbnail: /assets/thumbnails/numbered-list.png
