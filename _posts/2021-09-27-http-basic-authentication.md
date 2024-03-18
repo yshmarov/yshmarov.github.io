@@ -130,6 +130,42 @@ class TasksController < ApplicationController
 +  include HttpAuthConcern
 ```
 
+### 3. Bypass authentication by providing username and password in url
+
+As mentioned [here](https://serverfault.com/a/371918), you can append username and password in an URL like `http://username:password@example.com/` to auto-sign in.
+
+Here's how you can do it in a Rails app:
+
+```ruby
+class HomeController < ApplicationController
+  NAME = 'superails'
+  PASSWORD = '12345678'
+
+  http_basic_authenticate_with name: NAME, password: PASSWORD, only: :dashboard
+
+  def landing_page
+  end
+
+  def dashboard
+  end
+
+  def pricing
+  end
+
+  private
+
+  # "http://localhost:3000/home/dashboard"
+  # http://NAME:PASSWORD@localhost:3000/home/dashboard/
+
+  # add_http_basic_auth(home_dashboard_path) => http://superails:12345678@localhost:3000/home/dashboard/
+  def add_http_basic_auth(url)
+    uri = URI.parse(url)
+    uri.userinfo = "#{NAME}:#{PASSWORD}"
+    uri.to_s
+  end
+end
+```
+
 ### Sources:
 * [MDN: Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization#basic_authentication)
 * [api.rubyonrails/HttpAuthentication example](https://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic.html)
