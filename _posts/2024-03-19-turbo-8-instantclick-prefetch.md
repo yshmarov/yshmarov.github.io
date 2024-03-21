@@ -49,6 +49,13 @@ link_to "Admin", admin_path, data: {turbo: false}
 Caution:
 * wrong assumptions can lead to more server load
 * you would not want to count these prefetch requests as page visits
-* whenever you re-hover on a link, it will trigger yet another request
+* whenever you re-hover on a link, it will trigger yet another request (to always have updated content)
 
 ![turbo-8-instantclick-prefetch-weird-revisits](/assets/images/turbo-8-instantclick-prefetch-weird-revisits.gif)
+
+Mentions:
+- https://www.mskog.com/posts/instant-page-loads-with-turbolinks-and-prefetch
+- https://twitter.com/docusealco/status/1747563403516723517
+- https://twitter.com/dhh/status/1754518694066266398
+- https://twitter.com/dhh/status/1755263774062526747
+- https://twitter.com/dhh/status/1755363667120734643
