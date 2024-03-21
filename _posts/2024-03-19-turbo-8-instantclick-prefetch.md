@@ -54,8 +54,8 @@ Caution:
 ![turbo-8-instantclick-prefetch-weird-revisits](/assets/images/turbo-8-instantclick-prefetch-weird-revisits.gif)
 
 Mentions:
-- https://www.mskog.com/posts/instant-page-loads-with-turbolinks-and-prefetch
-- https://twitter.com/docusealco/status/1747563403516723517
-- https://twitter.com/dhh/status/1754518694066266398
-- https://twitter.com/dhh/status/1755263774062526747
-- https://twitter.com/dhh/status/1755363667120734643
+- [instant-page-loads-with-turbolinks-and-prefetch](https://www.mskog.com/posts/instant-page-loads-with-turbolinks-and-prefetch)
+- [twitter docusealco](https://twitter.com/docusealco/status/1747563403516723517)
+- [twitter DHH 1](https://twitter.com/dhh/status/1754518694066266398)
+- [twitter DHH 2](https://twitter.com/dhh/status/1755263774062526747)
+- [twitter DHH 3](https://twitter.com/dhh/status/1755363667120734643)
