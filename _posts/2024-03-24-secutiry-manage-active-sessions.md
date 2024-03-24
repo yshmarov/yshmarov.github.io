@@ -6,7 +6,7 @@ tags: security pentest
 thumbnail: /assets/thumbnails/encryption-lock.png
 ---
 
-Ok, so sometimes to enchance security of your application you will want to allow users to see all the devices/browsers they are logged in with. You would also provided a button to sign out of a device/browser.
+In some cases to enhance security of your application you will want to allow users to see all the devices/browsers they are logged in with. You would also provided a button to sign out of a device/browser.
 
 Here's how you can manage your login activity in Meta/Facebook:
 
