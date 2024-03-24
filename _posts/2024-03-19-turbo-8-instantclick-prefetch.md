@@ -4,6 +4,7 @@ title: "Turbo 8 Prefetch (InstantClick)"
 author: Yaroslav Shmarov
 tags: turbo-rails prefetch instantclick
 thumbnail: /assets/thumbnails/turbo.png
+youtube_id: CxWPMnRoud0
 ---
 
 Inspired by [instaclick.io](http://instantclick.io/), instaclick [has been added](https://github.com/hotwired/turbo/pull/1101) as a default behaviour in Turbo 8.

@@ -8,7 +8,19 @@ thumbnail: /assets/thumbnails/encryption-lock.png
 
 Ok, so sometimes to enchance security of your application you will want to allow users to see all the devices/browsers they are logged in with. You would also provided a button to sign out of a device/browser.
 
-Here's how you can do it:
+Here's how you can manage your login activity in Meta/Facebook:
+
+![meta-account-login-activity](/assets/images/meta-account-login-activity.png) 
+
+![meta-where-youre-logged-in](/assets/images/meta-where-youre-logged-in.png)
+
+Here's how it can look in a Rails app using devise:
+
+![manage active sessions](/assets/images/manage-active-sessions.gif)
+
+- Sign in creates a login
+- Sign out deletes a login
+- Deleting a login will log the user out of a device
 
 ### 1. Store current login (device/browser) info and ensure the current device/browser has not been logged out.
 
@@ -83,6 +95,8 @@ rails generate devise:controllers users -c=sessions
 ```ruby
 # app/controllers/users/sessions_controller.rb
 class Users::SessionsController < Devise::SessionsController
+  # skip_before_action :require_login, only: :create
+
   def create
     super do |resource|
       create_login if resource.persisted?
@@ -172,3 +186,4 @@ That's it! 🤗
 Inspired by:
 - [vitobotta - Manage active sessions in Rails](https://vitobotta.com/2016/10/19/manage-active-sessions-)
 - [adamcooke/authie](https://github.com/adamcooke/authie)
+- [Facebook Login activity](https://accountscenter.facebook.com/password_and_security/login_activity)
