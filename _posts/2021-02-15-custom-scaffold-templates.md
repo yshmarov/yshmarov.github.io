@@ -10,6 +10,14 @@ Since Hotwire was released, Rails scaffolds generate **LISTS** with **CARDS**, n
 
 To continue having tables in your scaffolds, paste [this code](https://github.com/rails/rails/blob/ecb2850a04adc6c6665f9a30a1d60ca73965ccfa/railties/lib/rails/generators/erb/scaffold/templates/index.html.erb.tt) into `lib/templates/erb/scaffold/index.html.erb.tt` within your Rails app.
 
+You can do it in the console by running the following commands:
+
+```sh
+mkdir -p lib/templates/erb/scaffold && touch lib/templates/erb/scaffold/index.html.erb.tt
+
+curl https://raw.githubusercontent.com/rails/rails/ecb2850a04adc6c6665f9a30a1d60ca73965ccfa/railties/lib/rails/generators/erb/scaffold/templates/index.html.erb.tt > lib/templates/erb/scaffold/index.html.erb.tt
+```
+
 If you are using `tailwindcss-rails`, you will also want to specify that you want to use your own `template_engine`:
 
 ```ruby
