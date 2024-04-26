@@ -23,6 +23,7 @@ minima:
     - { platform: linkedin, user_url: "https://www.linkedin.com/in/yshmarov/" }
     - { platform: mastodon, user_url: "https://ruby.social/@yarotheslav/" }
     - { platform: twitter, user_url: "https://twitter.com/yarotheslav/" }
+    - { platform: youtube, user_url: "https://www.youtube.com/@SupeRails/" }
 
 plugins:
   - jekyll-feed
@@ -41,7 +42,7 @@ feed:
 
 author:
   name: Yaroslav Shmarov
-  email: yashm@outlook.com
+  email: hello@superails.com
 
 #logo: /assets/corsego-saas-tree-logo.png
 

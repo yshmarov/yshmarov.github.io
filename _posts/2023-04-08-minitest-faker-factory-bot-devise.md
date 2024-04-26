@@ -16,9 +16,9 @@ First, fix the user fixtures to have unique emails:
 ```ruby
 # test/fixtures/users.yml
 one:
-  email: yaro@superails.com
+  email: hello@superails.com
 two:
-  email: shm@superails.com
+  email: shm@example.com
 ```
 
 Importing devise into your `test_helper` will enable the `sign_in @user` method.
