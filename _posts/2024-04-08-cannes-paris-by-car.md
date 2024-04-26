@@ -53,4 +53,8 @@ A lot of extra actions and stress than going by plane, but still better than by 
 
 ### Conclusion
 
-Next time we travel by train and rent a car upon arrival. Hotels offer EVs for 45+EUR/day.
+Next time we travel by train and rent a car upon arrival (if needed). Hotels offer EVs for 45+EUR/day.
+
+Parking is expensive (EUR 1,5 / 15 min), but thanks to that you can always find a place to park.
+
+If you are not in a hurry, Lyon is a good place to stay overnight (that's what we did on the way back)!
