@@ -7,6 +7,10 @@ thumbnail: /assets/thumbnails/pdf.png
 youtube_id: QjPwaIK-sgQ
 ---
 
+Thanks to URLBOX for sponsoring this blogpost! Convert URL to PNG/PDF with [UrlBox screenshot API](https://urlbox.com/screenshot-api). Urlbox also helps to block Ads & Popups, Bypass Captchas, Auto-Accept Cookies.
+
+****
+
 Usually I would use an HTML-to-PDF library to to generate and display a PDF of a web page.
 
 **An absolutely different**, alternative way to view or download a page as `PDF`/`PNG (screenshot)` would be via a **headless browser API**.
