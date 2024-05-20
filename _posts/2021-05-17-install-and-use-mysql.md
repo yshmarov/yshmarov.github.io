@@ -49,6 +49,7 @@ note that above we set a password `root` - we need it to make it work correctly
 console
 ```
 sudo mysql
+
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 ```
 
@@ -60,4 +61,25 @@ console
 ```
 rails db:create
 rails db:migrate
+```
+
+6. Troubleshooting
+
+```shell
+# log in with user "root" and input password on next step
+mysql -u root -p
+# view all mysql users
+SELECT user,authentication_string,plugin,host FROM mysql.user;
+
+# start/stop/restart mysql
+brew services start mysql
+brew services stop mysql
+brew services restart mysql
+
+# find socket for connecting to mysql for database.yml
+mysqladmin variables | grep socket
+
+# socket: /var/run/mysqld/mysqld.sock
+# socket: /tmp/mysqld.sock
+socket: /tmp/mysql.sock
 ```
