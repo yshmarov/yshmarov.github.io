@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "CFP: Hotwire Datatables with Rails. Frontend tips & tricks"
+title: "CFP - Hotwire Datatables with Rails. Frontend tips & tricks"
 author: Yaroslav Shmarov
 tags: cfp
 thumbnail: /assets/static-pages/yaro-avatar.png
