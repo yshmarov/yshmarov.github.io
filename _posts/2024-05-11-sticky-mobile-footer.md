@@ -62,4 +62,6 @@ Here's the code for sticky bottom navigation, like in a mobile app:
 </html>
 ```
 
+Here's a [best practices](https://m2.material.io/components/bottom-navigation#behavior) guide.
+
 That's it! Now you should go and make a [Turbo Native](https://github.com/hotwired/turbo-ios) app!
