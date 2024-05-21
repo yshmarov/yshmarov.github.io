@@ -18,6 +18,8 @@ Learn how to build **maintainable** reactive Rails frontends
 
 5/6 of my latest clients needed to solve the "datatables problem": having tables (or lists) of data that can be searched, sorted, filtered, paginated, bulk and individual actions.
 
+![Datatables example](/assets/images/cfp-datatables.png)
+
 I will show my approach to creating Hotwire datatables while solving common problems.
 
 We will cover:
