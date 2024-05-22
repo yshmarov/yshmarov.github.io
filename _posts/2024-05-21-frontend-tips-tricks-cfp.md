@@ -1,20 +1,20 @@
 ---
 layout: post
-title: "CFP - Hotwire Datatables with Rails. Frontend tips & tricks"
+title: "CFP - Hotwire Datatables with Rails. Frontend tips and tricks"
 author: Yaroslav Shmarov
 tags: cfp life
 thumbnail: /assets/static-pages/yaro-avatar.png
 ---
 
-##### Topic
+#### Topic
 
 Hotwire Datatables with Rails. Frontend tips & tricks
 
-##### Short description
+#### Short description
 
 Learn how to build **maintainable** reactive Rails frontends
 
-##### Description
+#### Description
 
 5/6 of my latest clients needed to solve the "datatables problem": having tables (or lists) of data that can be searched, sorted, filtered, paginated, bulk and individual actions.
 
