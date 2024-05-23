@@ -43,6 +43,11 @@ link_to "Admin", admin_path, data: {turbo: false}
   link_to "Admin", admin_path
 </div>
 
+# might also work
+<div data-turbo-prefetch="false>
+  link_to "Admin", admin_path
+</div>
+
 # disable globally in application.html.erb
 <meta name="turbo-prefetch" content="true" />
 ```
