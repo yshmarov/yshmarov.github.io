@@ -120,3 +120,9 @@ Result:
 1. Do not copy button styles with Tailwind all around
 2. Do not create a button component
 3. Use a bootstrap-like CSS API for buttons
+
+### Resources:
+
+- [BootstrapCSS buttons](https://getbootstrap.com/docs/5.3/components/buttons/)
+- [Polaris buttons](https://polarisviewcomponents.org/lookbook/inspect/button/basic)
+- [Reusing TailwindCSS styles](https://tailwindcss.com/docs/reusing-styles)
