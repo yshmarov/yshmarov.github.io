@@ -35,11 +35,22 @@ username = 'secretpray'
 client.collaborators("#{owner}/#{repo}")
 # Add collaborator
 client.add_collaborator("#{owner}/#{repo}", username)
-# Remove collaborator
-client.remove_collaborator("#{owner}/#{repo}", username)
 # Get the list of repository invitations
 invitations = client.repository_invitations("#{owner}/#{repo}")
 pending_invitations = invitations.map { |inv| { login: inv.invitee.login, email: inv.invitee.email } }
+```
+
+When removing a collaborator, be sure to remove an invitation, if the user has not yet accepted the invitation!
+
+```ruby
+# Remove collaborator
+# ensure that there is no pending invitation
+# there is no way to remove invitation by username
+invitations = client.repository_invitations("#{owner}/#{repo}")
+invitation = invitations.find { |inv| inv.invitee.login == username }
+client.delete_repository_invitation("#{owner}/#{repo}", invitation.id) if invitation
+# finally, remove collaborator
+client.remove_collaborator("#{owner}/#{repo}", username)
 ```
 
 Double check! View the users in the Github UI who have access/are invited to your repository inside `/settings/access` (`https://github.com/owner/repo/settings/access`):
