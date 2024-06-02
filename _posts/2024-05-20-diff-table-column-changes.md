@@ -18,7 +18,11 @@ Sometimes in a Rails app we want to track changes to attributes on a database ta
 
 ![audited-diff-column-split-views](/assets/images/audited-diff-column-split-views.gif)
 
-Here's how you can do it!
+Google Docs have a great implementation for change history:
+
+![version control in google docs](/assets/images/version-control-google-sheets.png)
+
+Here's how you can add version control and display changes in your app!
 
 ### Store changes
 
