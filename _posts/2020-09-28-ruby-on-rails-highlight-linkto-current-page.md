@@ -13,6 +13,69 @@ Often to improve your navigation UI (user experience), you will want to mark the
 
 ![2020-10-27-ruby-on-rails-highlight-linkto-current-page.png](/assets/2020-10-27-ruby-on-rails-highlight-linkto-current-page/highlight-active-link-to-current-page.png)
 
+### 2024 Update
+
+Active link_to where that has `font-bold underline` assigned as default `active_classes`. You can override them by manually setting `active_classes`.
+
+```ruby
+# app/helpers/application_helper.rb
+  def active_link_to(text = nil, path = nil, active_classes: '', **options, &)
+    path ||= text
+
+    classes = active_classes.presence || 'font-bold underline'
+    options[:class] = class_names(options[:class], classes) if current_page?(path)
+
+    return link_to(path, options, &) if block_given?
+
+    link_to text, path, options
+  end
+```
+
+Test all scenarios:
+
+```ruby
+# test/helpers/application_helper_test.rb
+require 'test_helper'
+
+class ApplicationHelperTest < ActionView::TestCase
+  test 'active_link_to' do
+    def current_page?(link)
+      true
+    end
+
+    assert_equal(
+      active_link_to('Home', root_path),
+      link_to('Home', root_path, class: 'font-bold underline')
+    )
+
+    assert_equal(
+      active_link_to(root_path) { 'Home' },
+      link_to(root_path, class: 'font-bold underline') { 'Home' }
+    )
+
+    # override the default active classes
+    assert_equal(
+      active_link_to('Home', root_path, active_classes: 'bg-rose-400', class: 'foo'),
+      link_to('Home', root_path, class: 'foo bg-rose-400')
+    )
+
+    def current_page?(link)
+      false
+    end
+
+    assert_equal(
+      active_link_to('Home', root_path),
+      link_to('Home', root_path)
+    )
+
+    assert_equal(
+      active_link_to(root_path) { 'Home' },
+      link_to(root_path) { 'Home' }
+    )
+  end
+end
+```
+
 ### 2023 Update
 
 Use `active_link_to` instead of `link_to` to apply classes `underline font-bold` to links in your app.
