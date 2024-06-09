@@ -64,7 +64,7 @@ This process had a lot of friction, but the last drop was when they spiked up th
 
 In complete desparation, I [asked](https://twitter.com/yarotheslav/status/1798289447584518331) on Twitter, and I was recommended the [gem i18n-tasks](https://github.com/glebm/i18n-tasks).
 
-### [gem i18n-tasks](https://github.com/glebm/i18n-tasks)
+### Finally, the perfect [gem i18n-tasks](https://github.com/glebm/i18n-tasks)
 
 The new workflow looks like this:
 1. Developer adds translation in app like `<%= I18n.t('posts.index.title) %>`
@@ -96,3 +96,5 @@ Be sure to have your application i18n defaults set:
 ```
 
 Gem i18n-tasks is great and I award it my personal gem of the month award! 🥇
+
+P.S. I also tried [gem instant18n](https://github.com/obie/instant18n), but the approach is "Too AI-dependent, too non-canon". You can learn more about Rails i18n conventions [here](https://guides.rubyonrails.org/i18n.html).
