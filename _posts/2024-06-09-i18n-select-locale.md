@@ -21,6 +21,15 @@ First, be sure to have your application i18n defaults set:
 
 Now you need to override the `default_locale` by setting `I18n.locale = :de` in `application_controller`.
 
+### Rubocop
+
+The `Rails/I18nLocaleTexts` helps you find untranslated strings. An error can look like this:
+
+```shell
+app/controllers/stripe/checkout_controller.rb:40:49: C: Rails/I18nLocaleTexts: Move locale texts to the locale files in the config/locales directory.
+    redirect_to user_url(current_user), notice: "foo"
+```
+
 ### Set locale from URL
 
 Namespace ALL the translatable routes:
