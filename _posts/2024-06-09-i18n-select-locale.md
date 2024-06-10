@@ -81,6 +81,14 @@ Finally, add links to open page in a different locale:
 <%= link_to 'Spanish', url_for(request.parameters.merge(locale: :es)) %>
 ```
 
+My current best approach:
+
+```ruby
+<% I18n.available_locales.each do |locale| %>
+  <%= link_to locale_to_flag(locale), url_for(locale:), class: (locale == I18n.locale ? "border-b" : "") %>
+<% end %>
+```
+
 ### Set locale from session/cookies, or User preferences
 
 The official Rails Guides [do not](https://guides.rubyonrails.org/i18n.html#storing-the-locale-from-the-session-or-cookies) store locale in session/cookie.
