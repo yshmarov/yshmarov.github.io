@@ -77,6 +77,8 @@ Here I just added a translation key and run the command. It was auto-translated 
 
 The task does not override existing translations, so you can override a translation manually if required 🤠.
 
+Generate OpenAI API keys [here](https://platform.openai.com/settings/profile?tab=api-keys).
+
 To make the API work, keys should be kept in `/.env`. To ensure they work in your environment, run:
 
 ```shell

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Github API. Automatically add/remove collaborators for a repository"
+title: "Sell access to a GitHub repo. Automatically add/remove collaborators"
 author: Yaroslav Shmarov
 tags: github api
 thumbnail: /assets/thumbnails/github-logo.png
