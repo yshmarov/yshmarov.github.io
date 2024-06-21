@@ -4,6 +4,7 @@ title: "i18n basics. Change current app language."
 author: Yaroslav Shmarov
 tags: i18n translations locales
 thumbnail: /assets/thumbnails/globe.png
+youtube_id: 4m64FHUrEhg
 ---
 
 Previously I wrote about [managing translations with gem i18n-tasks]({% post_url 2024-06-08-i18n-translation-tools %})
@@ -20,6 +21,8 @@ First, be sure to have your application i18n defaults set:
 ```
 
 Now you need to override the `default_locale` by setting `I18n.locale = :de` in `application_controller`.
+
+🔔 Install [`gem rails-i18n`](https://github.com/svenfuchs/rails-i18n) to auto-translate stuff like `time_ago_in_words`.
 
 ### Rubocop
 

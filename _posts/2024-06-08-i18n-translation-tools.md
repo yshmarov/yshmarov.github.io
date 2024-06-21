@@ -4,6 +4,7 @@ title: "Automatic i18n. Gem i18n-tasks. Phrase. Weglot."
 author: Yaroslav Shmarov
 tags: i18n translations locales phrase weglot
 thumbnail: /assets/thumbnails/globe.png
+youtube_id: ovH0ROXC1cI
 ---
 
 Here's my experience with some premium translation tools, or why gem i18n-tasks is the best.

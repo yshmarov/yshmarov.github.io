@@ -4,6 +4,7 @@ title: "TailwindCSS on Rails: reusable button variants"
 author: Yaroslav Shmarov
 tags: rails tailwindcss
 thumbnail: /assets/thumbnails/tailwindcss.png
+youtube_id: pLwieJE7_54
 ---
 
 ### Styling buttons with Tailwind SUCKS ⛔️

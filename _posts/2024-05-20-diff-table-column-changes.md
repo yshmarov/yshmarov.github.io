@@ -4,6 +4,7 @@ title: "Track change history of attributes and display diff"
 author: Yaroslav Shmarov
 tags: rails git diff frontend diffy audited
 thumbnail: /assets/thumbnails/diff.png
+youtube_id: 1rwKn0Figuo
 ---
 
 There are lots of "text compare tools" online, some of them are even monetized.
