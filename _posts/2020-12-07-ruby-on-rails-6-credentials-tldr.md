@@ -16,15 +16,37 @@ youtube_id: nDJE8WG0auE
 
 ### create credentials & edit:
 
-```
+```shell
 rails credentials:edit 
 EDITOR=vim rails credentials:edit
 rails credentials:show
+EDITOR='code --wait' rails credentials:edit --environment=development
+EDITOR='code --wait' rails credentials:edit --environment=production
 ```
+
+### see credentials diff
+
+Create a `.gitattributes` file in your Rails root folder & add these lines:
+
+```diff
+# See https://git-scm.com/docs/gitattributes for more about git attribute files.
+
+# Mark the database schema as having been generated.
+db/schema.rb linguist-generated
+
+# Mark any vendored files as having been vendored.
+vendor/* linguist-vendored
++config/credentials/*.yml.enc diff=rails_credentials
++config/credentials.yml.enc diff=rails_credentials
+```
+
+Now you will see credentails diff!
+
+![readable rails credentials diff](/assets/images/readable-credentials.png)
 
 ### `config/credentials.yml` example:
 
-```
+```yml
 awss3:
   access_key_id: YOUR_CODE_FOR_S3_STORAGE
   secret_access_key: YOUR_CODE_FOR_S3_STORAGE
