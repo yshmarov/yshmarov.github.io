@@ -10,7 +10,11 @@ A ruby friend named Daniel emailed me a request for this feature:
 
 ![email request for this blogpost](/assets/images/tailwind-sidebar-request.png)
 
-Here's my solution, Daniel:
+Here's how I implemented this feature before:
+
+![Trezy collapsible sidebar](/assets/images/trezy-collapsible-sidebar.gif)
+
+Here's my simplified solution, Daniel:
 
 ![Tailwind collapsible sidebar](/assets/images/taiwlind-sidebar-toggle-save.gif)
 
