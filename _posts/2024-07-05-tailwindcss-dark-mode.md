@@ -90,3 +90,7 @@ export default class extends Controller {
 Final result:
 
 ![toggle dark mode](/assets/images/toggle-dark-mode.gif)
+
+If you want to go deeper and set `[:light, :dark, :system_default]` varians, you can read these:
+- [Tailwind: dark mode](https://tailwindcss.com/docs/dark-mode)
+- [Flowbite: dark mode](https://flowbite.com/docs/customize/dark-mode/)
