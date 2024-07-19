@@ -33,6 +33,17 @@ Create pages that should be accessible with & without authentication:
 rails g controller home index dashboard
 ```
 
+Now your routes should look like this:
+
+```ruby
+# config/routes.rb
+Rails.application.routes.draw do
+  get "dashboard", to: "home#dashboard"
+  resource :session, only: %i[new create destroy]
+  root "home#index"
+end
+```
+
 Only authenticated users can visit dashboard:
 
 ```diff
@@ -69,6 +80,43 @@ Display sign in/out links:
     <%= yield %>
   </main>
 </body>
+```
+
+Test the new controller.
+
+For some reason, Current attributes are not available for me in the controller test.
+
+```ruby
+# test/controllers/home_controller_test.rb
+require "test_helper"
+
+class HomeControllerTest < ActionDispatch::IntegrationTest
+  test "should get index" do
+    get root_url
+    assert_response :success
+  end
+
+  test "should get dashboard" do
+    get dashboard_url
+    assert_redirected_to new_session_url
+
+    user = User.create!(email_address: "yaro@example.com", password: "123abc")
+    post session_url, params: { email_address: 'yaro@example.com', password: '123abc' }
+
+    get dashboard_url
+    assert_response :success
+    assert_match user.email_address, response.body
+    # assert_equal user.email_address, Current.user.email_address
+
+    delete session_url
+    assert_redirected_to new_session_url
+    get dashboard_url
+    assert_redirected_to new_session_url
+
+    # assert_nil Current.session
+    # assert_nil Current.user
+  end
+end
 ```
 
 Fix `undefined method 'destroy' for nil:NilClass` when trying to log out:
