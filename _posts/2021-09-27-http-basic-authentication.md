@@ -4,6 +4,7 @@ title: "HTTP Basic authentication"
 author: Yaroslav Shmarov
 tags: ruby rails ruby-on-rails http-authentication
 thumbnail: /assets/thumbnails/lock.png
+youtube_id: N7HZ-4zGNe4
 ---
 
 ![http-authentication-example](assets/images/http-basic-auth-example.png)
