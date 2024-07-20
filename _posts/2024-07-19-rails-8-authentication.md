@@ -4,6 +4,7 @@ title: "Rails 8 Authentication generator"
 author: Yaroslav Shmarov
 tags: rails devise authentication
 thumbnail: /assets/thumbnails/lock.png
+youtube_id: bD2oL1lUnKA
 ---
 
 Recently DHH [merged a PR](https://github.com/rails/rails/pull/52328) that adds an authentication generator to Rails.

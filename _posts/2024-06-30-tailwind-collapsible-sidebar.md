@@ -4,6 +4,7 @@ title: "TailwindCSS on Rails: Minimize Collapsible Sidebar"
 author: Yaroslav Shmarov
 tags: rails tailwindcss
 thumbnail: /assets/thumbnails/tailwindcss.png
+youtube_id: y1eDh0iELao
 ---
 
 A ruby friend named Daniel emailed me a request for this feature:

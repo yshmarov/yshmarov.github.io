@@ -4,6 +4,7 @@ title: "Sign in with Apple in a Rails app"
 author: Yaroslav Shmarov
 tags: oauth apple ios omniauth
 thumbnail: /assets/thumbnails/apple-logo.png
+youtube_id: __d_15rP16M
 ---
 
 ### Get Apple API keys
