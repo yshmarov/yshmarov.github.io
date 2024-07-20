@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Rails 8 Authentication generator"
+title: "Rails 8 Authentication generator: user sign in"
 author: Yaroslav Shmarov
 tags: rails devise authentication
 thumbnail: /assets/thumbnails/lock.png
