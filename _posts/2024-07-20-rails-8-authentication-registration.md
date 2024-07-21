@@ -4,6 +4,7 @@ title: "Rails 8 Authentication generator: user registration"
 author: Yaroslav Shmarov
 tags: rails devise authentication
 thumbnail: /assets/thumbnails/lock.png
+youtube_id: P2_GMNgHVUg
 ---
 
 Previously I wrote about the [new Rails Sessions generator]({% post_url 2024-07-19-rails-8-authentication %}).
