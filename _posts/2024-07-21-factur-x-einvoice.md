@@ -6,26 +6,20 @@ tags: invoice regulation eu facturx zugferd
 thumbnail: /assets/thumbnails/factur-x-extended.png
 ---
 
-I build a tool to convert Invoices to JSON data! Here's how you can do it.
+Reading invoice data from PDF is a $1B+ problem.
 
-![facturx upload demo](/assets/images/facturx-upload-demo.gif)
-
-Extracting data from PDF invoices is a **billion** dollar problem.
-
-The most common solutions:
-- Paid softwarre like [Mindee](https://www.mindee.com), where you upload the PDF and they return a JSON with data. (I do not recommend Mindee)
+Currently, the most common solutions are:
+- Paid specialized software like [Mindee](https://www.mindee.com), where you upload the PDF and they return a JSON with data. (I do not recommend Mindee)
 - OpenAI or similar tools that have OCR (optical character recognition) (Good solution)
 - You can use Ruby gem like [pdf-reader](https://github.com/yob/pdf-reader) to extract text from the PDF, but you still need to turn it into an object with key-value pairs.
 
-But if the PDF document is FacturX-compliant, there's no problem at all!
+🇪🇺EU eInvoicing standard has a solution: Attach XML metadata to PDF. No need for AI, OCR and other invoice-parsing dependencies. Just upload PDF & read XML.
 
-*Factur-X is a Franco-German standard for hybrid e-invoice (PDF for users and XML data for process automation), the first implementation of the European Semantic Standard EN 16931 published by the European Commission on October 16th 2017.*
+2025+ France & Germany will accept only eInvocice (facturX) for B2G transactions.
 
-A factur-x-compliant PDF will have an XML file named `factur-x.xml` or `xrechnung.xml` attached in it's metadata.
+A facturX-compliant PDF will have an XML file named `factur-x.xml` or `xrechnung.xml` attached in it's metadata.
 
 This XML file will contain **ALL** the important data that is visible in the PDF structured as an object in XML format.
-
-In the near future having an attached XML document will be mandatory when sending invoices to government agencies in France & Germany.
 
 I hope **other countries** will catch up soon. 
 
@@ -33,11 +27,17 @@ I hope **invoicing software** will catch up soon, to stay competitive.
 
 Useful links:
 
-➡️ Read about [🇪🇺 EU eInvoicing](https://ec.europa.eu/digital-building-blocks/sites/display/DIGITAL/eInvoicing) 
-➡️ [🇫🇷 La facturation électronique entre entreprises](https://www.economie.gouv.fr/cedef/facturation-electronique-entreprises)
-➡️ Download [technical documentation](http://fnfe-mpe.org/factur-x/)
+- Read about [🇪🇺 EU eInvoicing](https://ec.europa.eu/digital-building-blocks/sites/display/DIGITAL/eInvoicing) 
+- [🇫🇷 La facturation électronique entre entreprises](https://www.economie.gouv.fr/cedef/facturation-electronique-entreprises)
+- Download [technical documentation](http://fnfe-mpe.org/factur-x/)
 
 ![facturx-download-docs](/assets/images/facturx-download.png)
+
+I build a small tool to convert eInvoices to JSON data:
+
+![facturx upload demo](/assets/images/facturx-upload-demo.gif)
+
+Here's how you can do it.
 
 ### Extract XML from PDF with Ruby
 
