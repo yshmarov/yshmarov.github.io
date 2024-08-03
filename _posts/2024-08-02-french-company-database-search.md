@@ -35,11 +35,11 @@ bundle add faraday
 # rails c
 require 'faraday'
 name = "887553303"
-BASE_URL = 'https://recherche-entreprises.api.gouv.fr'
+base_url = 'https://recherche-entreprises.api.gouv.fr'
 page = 1
 per_page = 25
 encoded_name = ERB::Util.url_encode(name)
-url = "#{BASE_URL}/search?q=#{encoded_name}&page=#{page}&per_page=#{per_page}"
+url = "#{base_url}/search?q=#{encoded_name}&page=#{page}&per_page=#{per_page}"
 response = Faraday.get(url)
 results = JSON.parse(response.body)
 names = results["results"].map { |h| h["nom_complet"] }
@@ -60,24 +60,11 @@ rails g stimulus company-search
 bundle add requestjs-rails
 ./bin/rails requestjs:install
 
-# perform company search and display results
-rails g controller CompanySearch search
-
 # make HTTP requests from Rails controller
 bundle add faraday
 
 # copypaste selected company info
 rails g stimulus company-autocomplete
-```
-
-Add the routes:
-
-```ruby
-# config/routes.rb
-Rails.application.routes.draw do
-  resources :companies
-  get "company_search/search", to: "company_search#search"
-end
 ```
 
 The form:
@@ -130,37 +117,37 @@ export default class extends Controller {
 }
 ```
 
-Perform search, display results in a `turbo_stream`
+Add the routes for search:
 
 ```ruby
-# app/controllers/company_search_controller.rb
-class CompanySearchController < ApplicationController
-  def search
-    @query = params[:query]
-    search = search_company(@query)
-    @results = search["results"]
-
-    respond_to do |format|
-      format.turbo_stream do
-        # render turbo_stream: turbo_stream.update('search_results', html: @results)
-      end
-      format.html
+# config/routes.rb
+Rails.application.routes.draw do
+  resources :companies do
+    collection do
+      get :search
     end
   end
+end
+```
 
-  private
+Perform search, display results in a `turbo_stream`:
 
-  def search_company(query, page = 1, per_page = 25)
+```ruby
+# app/models/company.rb
+class Company < ApplicationRecord
+  validates :info, presence: true
+
+  def self.search_fr(name)
     base_url = 'https://recherche-entreprises.api.gouv.fr'
-    encoded_query = ERB::Util.url_encode(query)
-    url = "#{base_url}/search?q=#{encoded_query}&page=#{page}&per_page=#{per_page}"
-
-    response = Faraday.get(url) do |req|
-      req.headers['Accept'] = 'application/json'
-    end
+    page = 1
+    per_page = 25
+    encoded_name = ERB::Util.url_encode(name)
+    url = "#{base_url}/search?q=#{encoded_name}&page=#{page}&per_page=#{per_page}"
+    response = Faraday.get(url)
 
     if response.success?
       JSON.parse(response.body)
+      # names = results["results"].map { |h| h["nom_complet"] }
     else
       { error: response.status, message: response.reason_phrase }
     end
@@ -168,12 +155,24 @@ class CompanySearchController < ApplicationController
 end
 ```
 
-Display results:
+Perform search
+
+```ruby
+# app/controllers/companies_controller.rb
+class CompaniesController < ApplicationController
+  def search
+    query = params[:query]
+    @results = Company.search_fr(query)
+  end
+end
+```
+
+And render results:
 
 ```ruby
 # app/views/company_search/search.turbo_stream.erb
 <%= turbo_stream.update 'search_results' do %>
-  <% @results.each do |result| %>
+  <% @results["results"].each do |result| %>
     <div style="border: 1px solid black; margin: 10px; padding: 10px;" class="hover:bg-blue-300 cursor-pointer" role="button" data-action="click->company-autofill#autofill">
       <%= result["nom_complet"] %>
       <%= result["siren"] %>
@@ -185,7 +184,7 @@ Display results:
 <% end %>
 ```
 
-Finally, fill in the 
+Finally, fill in the text field with the selected results' content:
 
 ```js
 // app/javascript/controllers/company_autofill_controller.js
@@ -196,8 +195,7 @@ export default class extends Controller {
   static targets = [ "collection", "paste" ]
 
   autofill(e) {
-    let content = e.target.textContent
-    this.pasteTarget.value = content
+    this.pasteTarget.value = e.target.textContent
 
     this.collectionTarget.innerHTML = ''
   }
