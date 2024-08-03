@@ -24,4 +24,6 @@ Also, going south is not worth it. Stay in the North!
 
 ![corsica-commented-map](/assets/images/corsica-commented-map.png) 
 
-Hope it helps!
+I also highly recommend the hotel [LANGLEY RESORT NAPOLÉON BONAPARTE](https://www.langleyhotels.eu/en/our-hotels/resort-napoleon-bonaparte/). Their food, service & location are great! 
+
+Hope this small guide helps!
