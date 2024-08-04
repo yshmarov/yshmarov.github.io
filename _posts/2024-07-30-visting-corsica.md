@@ -8,7 +8,7 @@ thumbnail: /assets/static-pages/yaro-avatar.png
 
 This year we went for vacation to Corsica by car.
 
-We boarded a ferry im Nice. It took us 6 hours to arrive in Ile Russe in Corsica. There were some restaurants aboard the ship. The views were great.
+We boarded a ferry im Nice. It took us 6 hours to arrive in Île Rousse in Corsica. There were some restaurants aboard the ship. The views were great.
 
 **Tip: pay for a room. It's worth it.**
 
