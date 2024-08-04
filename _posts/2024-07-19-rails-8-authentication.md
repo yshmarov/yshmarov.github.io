@@ -22,7 +22,7 @@ rails new authy -c=tailwind --main
 Run the generator & create a user
 
 ```shell
-bin/rails generate sessions
+bin/rails generate authentication
 rails db:create db:migrate
 rails c
 User.create(email_address: "foo@bar", password: "foo@bar")
