@@ -356,7 +356,7 @@ If users of your app can use [Bearer token authentication]({% post_url 2023-04-1
 
 To make Ferrum work in production, you need to install `google-chrome` in your production ENV.
 
-For heroku, you can add google-chrome buildpack with the command:
+For heroku, you can add [heroku-buildpack-google-chrome](https://github.com/heroku/heroku-buildpack-google-chrome) buildpack with the command:
 
 ```shell
 heroku buildpacks:add heroku/google-chrome -a myappname
@@ -374,7 +374,28 @@ heroku buildpacks:add heroku/google-chrome -a myappname
           chrome-version: stable
 ```
 
-### 9. Other usecases
+### 9. Gitlab CI
+
+You might need these additional lines to make it work on CI:
+
+```yml
+# .gitlab-ci.yml
+before_script:
+  - ruby -v
+  - apt-get update -q && apt-get install -y -q chromium # ferrum
+  - which chromium || true # ferrum
+
+tests:
+  variables:
+    BROWSER_PATH: /usr/bin/chromium # ferrum
+
+staging_deploy:
+  stage: deploy
+  variables:
+    BROWSER_PATH: "/app/.apt/usr/bin/google-chrome" # ferrum
+```
+
+### 10. Other usecases
 
 * [Automating Jekyll card generation with ruby's Ferrum gem](https://jay.gooby.org/2022/05/11/automating-jekyll-card-generation-with-ruby-ferrum)
 
