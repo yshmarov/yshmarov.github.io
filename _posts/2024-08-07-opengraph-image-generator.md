@@ -63,6 +63,10 @@ class UrlToImageJob < ApplicationJob
     # sleep 0.5
     # browser.screenshot(path: "app/assets/images/opengraph/#{url.parameterize}.jpg", quality: 40, format: "jpg", selector: "main")
     browser.screenshot(path: "app/assets/images/opengraph/#{url.parameterize}.jpg", quality: 40, format: 'jpg')
+
+    # tempfile = Tempfile.new
+    # browser.screenshot(path: tempfile.path, format: 'jpg', quality: 40)
+    # Post.first.image.attach(io: File.open(tempfile.path), filename: "#{post.url.parameterize}.jpg")
   ensure
     browser.quit
   end
@@ -76,7 +80,7 @@ And here's a helper to access the generated image based on the current URL:
 ```ruby
 # app/helpers/application_helper.rb
   def meta_opengraph_image_asset_path
-    base_url = Rails.application.config_for(:settings).dig(:site, :url, :production)
+    base_url = "https://superails.com"
     image_name = [base_url, request.path].join.parameterize
     full_path = "opengraph/#{image_name}.png"
     helpers.image_url(full_path)
@@ -87,10 +91,21 @@ And here's a helper to access the generated image based on the current URL:
 
 Display the image in meta tags
 
+```diff
+# app/views/layouts/application.html.erb
+<!DOCTYPE html>
+<html>
+  <head>
++    <%= yield :head %>
+  </head>
+</html>
+```
+
 ```ruby
 # posts/show.html.erb
 <%= content_for :head do %>
   <%= tag.meta(property: 'og:image', content: meta_opengraph_image_asset_path) %>
+  <%#= tag.meta(property: 'og:image', content: rails_blob_url(@event.og_image)) %>
   <%= tag.meta(property: 'twitter:card', content: "summary_large_image") %>
 <% end %>
 ```
@@ -150,12 +165,24 @@ A template for generating post images:
     <%= @post.title %>
   </div>
   <div style="width: 100%; display: flex; justify-content: center; margin-bottom: 1rem;">
-    <%= image_tag post_image_path(@post), style: 'max-width: 100%; height: auto; border-radius: 10px;' %>
+    <%= image_tag local_image_url(@post), style: 'max-width: 100%; height: auto; border-radius: 10px;' %>
   </div>
   <div style="font-size: 0.8rem; color: #777; font-style: italic; font-weight: bold;">
     <%= @post.published_at.strftime('%B %d, %Y') %>
   </div>
 </div>
+```
+
+Notice the `asset_url` & `local_image_url`. Ferrum needs absolute, not relative image urls to display images 
+
+```ruby
+def local_image_url(post)
+  "http://localhost:3000#{rails_blob_path(post.image)}"
+  # "http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MSwicHVyIjoiYmxvYl9pZCJ9fQ==--8a5968eca5f43d315dfe06b402d555eddbcbc994/https-www-railsconf-com.jpg"
+  # url_for(post.image)
+  # rails_blob_url(post.image)
+  # "#{request.base_url}#{rails_blob_path(post.image)}"
+end
 ```
 
 Finally, here's the job to generate a screenshot from the above HMTL:
@@ -182,36 +209,15 @@ class PostToImageJob < ApplicationJob
     # ensure all images are loaded!
     browser.network.wait_for_idle
     # double check if all images are loaded!!
-    browser.evaluate(%(
-      function waitForImages() {
-        return new Promise((resolve) => {
-          const images = document.querySelectorAll('img');
-          let loaded = 0;
-          images.forEach((img) => {
-            if (img.complete) {
-              loaded += 1;
-            } else {
-              img.onload = () => {
-                loaded += 1;
-                if (loaded === images.length) {
-                  resolve();
-                }
-              };
-            }
-          });
-          if (loaded === images.length) {
-            resolve();
-          }
-        });
-      }
-      waitForImages();
-    ))
-    # tripple check if all images are loaded!!!
     sleep 1
 
     browser.screenshot(path: Rails.root.join('tmp', 'screenshot.png'))
     browser.screenshot(path: "app/assets/images/opengraph/posts/#{post.id}.png", quality: 40, format: 'jpg')
-  ensure
+
+    # tempfile = Tempfile.new
+    # browser.screenshot(path: tempfile.path, format: 'jpg', quality: 40)
+    # Post.first.og_image.attach(io: File.open(tempfile.path), filename: "#{post.url.parameterize}.jpg")
+ensure
     browser.quit
   end
 end
