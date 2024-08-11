@@ -2,7 +2,7 @@
 layout: post
 title: Use Gem Rack-attack with Devise and Rails 7
 author: Yaroslav Shmarov
-tags: rack-attack
+tags: rack-attack rate-limiting
 thumbnail: /assets/thumbnails/lock.png
 ---
 
