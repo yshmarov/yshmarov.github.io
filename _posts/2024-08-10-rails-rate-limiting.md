@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rails 8 native rate limiting
+title: Rails 7.2 native rate limiting
 author: Yaroslav Shmarov
 tags: rack-attack rate-limiting
 thumbnail: /assets/thumbnails/lock.png
@@ -56,6 +56,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_user_registration_url, alert: "Try again later." }
 end
 ```
+
+**Enable rate limiting in dev mode with the `rails dev:cache` command.**
 
 Now, when one user submits the sign_in or sign_up form >10 times within 3 minutes, he will get a blank page with a `429 Too Many Requests` error:
 
