@@ -25,19 +25,30 @@ Conference talks worth watching:
 
 Blogs about Turbo Native:
 - [Joe Masilotti](https://masilotti.com/articles/)
-- [Miles Woodroffe](https://mileswoodroffe.com/tags/turbo-native)
 - [William Kennedy](https://williamkennedy.ninja/posts/)
+- [Miles Woodroffe](https://mileswoodroffe.com/tags/turbo-native)
 
 Youtube playlists:
-- [Indigo Tech](https://www.youtube.com/watch?v=O9G0cQomrfQ&list=PL2jr-nMCjDOuzwrs4KiO3N5xnahHZherM)
+- [Joe Masilotti](https://www.youtube.com/@joemasilotti)
 - [William Kennedy](https://www.youtube.com/@williamkennedy9)
+- [Indigo Tech](https://www.youtube.com/watch?v=O9G0cQomrfQ&list=PL2jr-nMCjDOuzwrs4KiO3N5xnahHZherM)
 
 Templates/example apps:
-- Free [Daily Log](https://github.com/joemasilotti/daily-log)
+- [Official demo app](https://github.com/hotwired/turbo-ios/tree/main/Demo)
+- Open source [Daily Log](https://github.com/joemasilotti/daily-log)
 - Paid [Jumpstart Pro iOS](https://jumpstartrails.com/ios) - has bottom tab navigation, push notifications, native sign up screen, can integrate google oauth
+
+### Before you write any code
+
+1. Download Xcode - the app for developing iOS apps.
+2. Clone [hotwired/turbo-ios](https://github.com/hotwired/turbo-ios), run `open Demo/Demo.xcodeproj/`.
+3. Play around with the example native app
 
 ### Get started coding!
 
-- Follow the [Quick Start Guide](https://github.com/hotwired/turbo-ios/blob/main/Docs/QuickStartGuide.md)
-- Or even better, use the Quick Start Guide from [the Turbo Navigator branch](https://github.com/hotwired/turbo-ios/pull/158). Hopefully this gets merged soon!
-- Point the URL to [this demo app](https://github.com/hotwired/turbo-native-demo)
+1. Run your `rails s` on any Rails 7 app that has Turbo Drive enabled
+2. Follow the [Quick Start Guide](https://github.com/hotwired/turbo-ios/blob/main/Docs/QuickStartGuide.md)
+3. Or even better, use the Quick Start Guide from [the Turbo Navigator branch](https://github.com/hotwired/turbo-ios/pull/158). Hopefully this gets merged soon!
+4. Set `URL` in `SceneDelegate.swift` to `http://localhost:3000` and see how your app looks on mobile!
+
+That's a good start!
