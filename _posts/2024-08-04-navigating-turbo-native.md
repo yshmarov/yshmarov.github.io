@@ -36,6 +36,7 @@ Youtube playlists:
 Templates/example apps:
 - [Official demo app](https://github.com/hotwired/turbo-ios/tree/main/Demo)
 - Open source [Daily Log](https://github.com/joemasilotti/daily-log)
+- Open source [Northwind](https://github.com/matthewblott/northwind-on-rails)
 - Paid [Jumpstart Pro iOS](https://jumpstartrails.com/ios) - has bottom tab navigation, push notifications, native sign up screen, can integrate google oauth
 
 ### Before you write any code
