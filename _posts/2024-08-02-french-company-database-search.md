@@ -6,7 +6,7 @@ tags: france open-data company-search
 thumbnail: /assets/thumbnails/france.png
 ---
 
-Let's build a tool to find 🇫🇷French complanies and autocomplete their data into a form field. Here's how it will work: 
+Let's build a tool to find 🇫🇷French companies and autocomplete their data into a form field. Here's how it will work: 
 
 ![french company data autocomplete](/assets/images/fr-company-search.gif)
 
