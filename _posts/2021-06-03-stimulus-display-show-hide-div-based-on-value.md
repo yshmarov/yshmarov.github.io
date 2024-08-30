@@ -5,6 +5,7 @@ author: Yaroslav Shmarov
 tags: stimulus
 thumbnail: /assets/thumbnails/stimulus-logo.png
 youtube_id: Ku_SVWl_u64
+updated: 2024-08-30
 ---
 
 Task: unhide some HTML (or a form field) based on your selection.
@@ -125,3 +126,100 @@ Rails form example:
 ```
 
 P.S. Don't forget that you are free to have multiple same stimulus controllers on a page ;)
+
+## September 2024 update
+
+This is a battle-tested, perfected approach:
+
+```js
+import { Controller } from "@hotwired/stimulus"
+
+// Connects to data-controller="showifvalue"
+// show div if value of input is equal to data-showif-value
+// hidden divs have all inputs and selects disabled
+export default class extends Controller {
+  static targets = ['input', 'output']
+
+  connect() {
+    this.toggle()
+  }
+
+  toggle() {
+    var value = this.inputTarget.value
+
+    this.outputTargets.forEach(outputTarget => {
+      var selectedValue = outputTarget.dataset.showifValue
+      if (selectedValue === value) {
+        this.showOutputTarget(outputTarget)
+      } else {
+        this.hideOutputTarget(outputTarget)
+      }
+    })
+  }
+
+  hideOutputTarget(outputTarget) {
+    outputTarget.hidden = true
+    outputTarget.disabled = true
+    outputTarget.querySelectorAll('select').forEach(select => {
+      select.setAttribute('disabled', true)
+    })
+    outputTarget.querySelectorAll('input').forEach(input => {
+      input.setAttribute('disabled', true)
+    })
+  }
+
+  showOutputTarget(outputTarget) {
+    outputTarget.hidden = false
+    outputTarget.disabled = false
+    outputTarget.querySelectorAll('select').forEach(select => {
+      select.removeAttribute('disabled')
+    })
+    outputTarget.querySelectorAll('input').forEach(input => {
+      input.removeAttribute('disabled')
+    })
+  }
+
+  inputTargetConnected() {
+    this.toggle()
+  }
+
+  inputTargetDisconnected() {
+    this.toggle()
+  }
+
+  outputTargetConnected() {
+    this.toggle()
+  }
+
+  outputTargetDisconnected() {
+    this.toggle()
+  }
+}
+```
+
+HTML
+
+```ruby
+<%= form_with(model: company, data: { controller: "showifvalue" }) do |form| %>
+  <div>
+    <%= form.label :country %>
+    <%= form.select :country, ["FR", "GB"], { include_blank: true }, data: { showifvalue_target: "input", action: "change->showifvalue#toggle" } %>
+  </div>
+
+  <div data-showifvalue-target="output" data-showif-value="FR">
+    <%= form.label :search_fr %>
+    <%= form.text_field :search_fr %>
+  </div>
+
+  <div data-showifvalue-target="output" data-showif-value="GB">
+    <%= form.label :search_gb %>
+    <%= form.text_field :search_gb %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+```
+
+Try it out!
