@@ -55,6 +55,7 @@ private extension ButtonComponent {
 ```
 
 ```diff
+# app/javascript/controllers/bridge/button_controller.js
 import { BridgeComponent } from "@hotwired/hotwire-native-bridge"
 
 export default class extends BridgeComponent {
@@ -72,6 +73,10 @@ export default class extends BridgeComponent {
   }
 }
 ```
+
+With this approach, if you want to use text over image, **leave the image blank**.
+
+You still have to keep the image attribute for the button to render!
 
 ```diff
 # old text-only button that worked
