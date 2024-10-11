@@ -95,6 +95,18 @@ You still have to keep the image attribute for the button to render!
 +</a>
 ```
 
+The Native button will click whatever element you apply the `bridge--button` on. It does not have to be a `<a href="">`!
+
+```
+<div data-controller="bridge--button" data-bridge-title="Search" data-bridge-ios-image="magnifyingglass.circle" class="hidden" data-action="click->dialog#open">
+  Search
+</div>
+```
+
+Hotwire native button clicking a div that triggers JS, not a link:
+
+![Hotwire native button clicking a div that triggers JS, not a link](/assets/images/hotwire-native-btn.gif)
+
 [Subscribe to SupeRails.com](https://superails.com/pricing) for more Hotwire Native content!
 
 That's it for now!
