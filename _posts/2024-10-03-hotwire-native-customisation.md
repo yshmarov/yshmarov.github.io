@@ -147,4 +147,6 @@ Let's disable it.
 ...
 ```
 
+[Subscribe to SupeRails.com](https://superails.com/pricing) for more Hotwire Native content!
+
 That's it for now!
