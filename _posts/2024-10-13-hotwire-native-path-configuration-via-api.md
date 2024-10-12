@@ -14,6 +14,8 @@ Making changes in a Native app requires an additional release-review.
 
 The hotwire native demo app has a `path-configuration.json` file that controls some navigation patterns.
 
+[Official Path Configuration Docs](https://native.hotwired.dev/reference/path-configuration)
+
 Let's deliver this file via API from our Web app!
 
 To do this, add a `server` url to your pathConfiguration:
