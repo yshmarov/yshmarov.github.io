@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "StimulusJS Keyboard Hotkeys"
+title: "StimulusJS Keyboard Hotkeys (Keyboard navigation)"
 author: Yaroslav Shmarov
 tags: tabs stimulusjs
 thumbnail: /assets/thumbnails/stimulus-logo.png
