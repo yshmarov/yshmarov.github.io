@@ -9,3 +9,8 @@ post import_insta_user_path(@insta_user, format: :turbo_stream)
 assert_response :success
 assert_match 'Posts are being imported. This can take a few minutes', @response.body
 ```
+
+
+https://rubydoc.info/github/hotwired/turbo-rails/Turbo/TestAssertions
+
+assert_turbo_stream action: "remove", target: "message_1"

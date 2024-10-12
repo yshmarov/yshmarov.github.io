@@ -1,3 +1,8 @@
+Create new Rails app
+Scaffold posts
+Add authentication
+Admin user
+
 Do you need admin?
 - display static data, use as CMS
 - admin for a big app
