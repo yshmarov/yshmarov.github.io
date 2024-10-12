@@ -83,6 +83,48 @@ class V1::Turbo::Ios::PathConfigurationsController < ApplicationController
 end
 ```
 
+Adding more advanced behaviours:
+
+```diff
+# app/controllers/v1/turbo/ios/path_configurations_controller.rb
+class V1::Turbo::Ios::PathConfigurationsController < ApplicationController
+  def show
+    render json: {
++      "settings": {
++        "screenshots_enabled": true
++      },
+      "rules": [
+        {
+          "patterns": [
+            "/new$",
+            "/edit$",
+          ],
+          "properties": {
+            "context": "modal"
+          }
+        },
+        {
+          "patterns": [
+            "^/users/edit$"
+          ],
+          "properties": {
+            "context": "default"
+          }
+        },
++        {
++          "patterns": [
++            "/pricing$"
++          ],
++          "properties": {
++            "pull_to_refresh_enabled": false
++          }
++        }
+      ]
+    }
+  end
+end
+```
+
 [Subscribe to SupeRails.com](https://superails.com/pricing) for more Hotwire Native content!
 
 That's it for now!
