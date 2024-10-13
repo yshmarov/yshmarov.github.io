@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hotwire Native TailwindCSS variants (conditionals)
+title: Hotwire Native CSS and TailwindCSS variants (conditionals)
 author: Yaroslav Shmarov
 tags: hotwire-native
 thumbnail: /assets/thumbnails/turbo.png
@@ -18,6 +18,24 @@ We can achieve it by addin custom variants like `non-turbo-native:` & `turbo-nat
   Visible only on Desktop
 </div>
 ```
+
+### CSS
+
+```css
+/* application.css */
+body.turbo-native .turbo-native:hidden {
+  display: none;
+}
+```
+
+```html
+<body class="<%%= "turbo-native" if turbo_native_app? %>">
+<h1 class="turbo-native:hidden">Hello, world!</h1>
+```
+
+Source: [masilotti.com](https://masilotti.com/hide-web-rendered-content-on-turbo-native-apps/)
+
+### Tailwind
 
 To enable this, update your tailwind config file:
 
