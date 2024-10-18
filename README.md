@@ -34,3 +34,6 @@ jekyll build --trace
 
 git remote set-url origin git@github.com:yshmarov/yshmarov.github.io.git
 git remote set-url origin https://github.com/yshmarov/yshmarov.github.io
+
+TODO:
+* add https://github.com/gjtorikian/jekyll-last-modified-at
