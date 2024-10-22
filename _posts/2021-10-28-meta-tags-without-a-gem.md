@@ -218,6 +218,6 @@ Preview tools:
 
 💡 There are many tags and it can seem a bit overwhelming to set them all. First focus on the more important meta tags, than do the other ones.
 
-💡 Open Graph image generator sounds like a good indie SaaS idea:
+💡 Open Graph image generator sounds like a good SaaS idea:
 
 ![alt text](assets/images/meta-tags-opengraph-generator.png)
