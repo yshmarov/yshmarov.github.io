@@ -76,7 +76,21 @@ To add timestamps/chapters on Youtube, you simply edit a video description and t
 
 Next, Youtube parses your video description and extracts the timestamp `time` and `description` values.
 
-We can parse a video description with Regex:
+We can parse a video description with Regex, and turn timestamps into buttons:
+
+```ruby
+# app/helpers/application_helper.rb
+  # find all timestamps (0:00, 5:31, etc) in a text and convert them to buttons
+  def timestamps_to_buttons(text)
+    text.gsub(/(\d+:\d+)/) do |match|
+      time = match.split(':').map(&:to_i)
+      seconds = time[0] * 60 + time[1]
+      "<button data-action=\"vimeo#setCurrentTime\" data-time=\"#{seconds}\" style=\"color: blue;\">#{match}</button>"
+    end
+  end
+```
+
+You can even turn the timestamps & titles into JSON:
 
 ```ruby
 # app/helpers/application_helper.rb
