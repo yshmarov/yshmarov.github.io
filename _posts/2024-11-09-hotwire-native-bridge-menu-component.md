@@ -10,6 +10,8 @@ Hotwire Native ships with a default `Menu` and `OverflowMenu` component.
 
 `Menu` let's you invoke a native dropdown with links and buttons that you define in HTML.
 
+In SwiftUI it is called [Action sheets](https://developer.apple.com/design/human-interface-guidelines/action-sheets)
+
 ![hotwire-native-menu-example](/assets/images/hotwire-native-menu-example.gif)
 
 `OverflowMenu` invokes the same menu, but as a native button on the top-right corner of your screen.
