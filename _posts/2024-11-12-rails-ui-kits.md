@@ -2,7 +2,7 @@
 layout: post
 title: Rails UI Frameworks and Component libraries
 author: Yaroslav Shmarov
-tags: hotwire-native
+tags: frontend
 thumbnail: /assets/thumbnails/css.png
 ---
 
