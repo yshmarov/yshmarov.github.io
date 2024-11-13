@@ -44,12 +44,16 @@ By [ahmednadar](http://twitter.com/ahmednadar)
 
 By [lazaronixon](http://twitter.com/lazaronixon)
 
+### [RailsUI](https://railsui.com)
+
+By [justalever](https://x.com/justalever)
+
 ### [zestui.com](https://zestui.com)
 
-By ????????
+By ???????? 🥸
 
 ### [railsdesigner.com](https://railsdesigner.com)
 
-By ????????
+By ???????? 🥸
 
 ![yoda ui wars](/assets/images/rails-ui-wars.png)
