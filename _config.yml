@@ -37,6 +37,8 @@ plugins:
 
 tagline: Ruby on Rails tips and tricks
 
+github_edit_url: "https://github.com/yshmarov/yshmarov.github.io/blob/master/"
+
 feed:
   posts_limit: 1000
 
