@@ -30,11 +30,9 @@ By [mikker](https://x.com/mikker)
 
 By [SethHorsley](https://x.com/SethHorsley) & [cirdesh](https://x.com/cirdesh)
 
-### [polaris_view_components](https://github.com/baoagency/polaris_view_components)
+### [ui.darksea.dev](https://ui.darksea.dev)
 
-By [kirplatonov](https://x.com/kirplatonov) & co
-
-Polaris is based on the Shopify design system.
+By [@darkseadev](https://x.com/darkseadev)
 
 ### [http://rapidrails.cc](rapidrails.cc)
 
@@ -47,6 +45,12 @@ By [lazaronixon](http://twitter.com/lazaronixon)
 ### [RailsUI](https://railsui.com)
 
 By [justalever](https://x.com/justalever)
+
+### [polaris_view_components](https://github.com/baoagency/polaris_view_components)
+
+By [kirplatonov](https://x.com/kirplatonov) & co
+
+Polaris is based on the Shopify design system.
 
 ### [zestui.com](https://zestui.com)
 
