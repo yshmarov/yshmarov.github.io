@@ -10,9 +10,6 @@ url: "https://blog.corsego.com"
 
 remote_theme: jekyll/minima
 
-disqus:
-  shortname: corsego
-
 links_to_prev_next: true
 
 minima:
