@@ -3,7 +3,7 @@ layout: default
 ---
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header" style="padding-top: 2em;">
+  <header class="post-header" style="">
     <h1 class="post-title p-name" itemprop="name headline">
       {%- if page.thumbnail -%}
       <img src="{{ page.thumbnail }}" style="width:25px;height:25px;">
@@ -29,14 +29,12 @@ layout: default
             <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
             {%- if forloop.last == false %}, {% endif -%}
         {% endfor %}
-      {%- endif -%}</p>
-  </header>
-
-  {% if page.path %}
-    <p>
-      <a href="{{ site.github_edit_url }}{{ page.path }}" target="_blank">Edit this page</a>
+      {%- endif -%}
+      {% if page.path %}
+      • <a href="{{ site.github_edit_url }}{{ page.path }}" target="_blank">Edit this page</a>
+      {% endif %}
     </p>
-  {% endif %}
+  </header>
 
   {%- if page.youtube_id -%}
     <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
