@@ -21,7 +21,6 @@ layout: default
   {%- if page.list_title -%}
   <h2 class="post-list-heading">{{ page.list_title }}</h2>
   {%- endif -%}
-  <!-- smaller space between elements -->
   <ul class="post-list" style="">
     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
     {%- for post in posts -%}
