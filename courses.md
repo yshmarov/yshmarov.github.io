@@ -2,6 +2,7 @@
 layout: post
 title: Courses
 permalink: /courses/
+author: Yaroslav Shmarov
 ---
 
 Short HOW-to blogposts and screencasts are informative, but it takes much more skill to connect multiple technologies together into a product that brings **value**.

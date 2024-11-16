@@ -2,6 +2,7 @@
 layout: post
 title: Screencasts
 permalink: /screencasts/
+author: Yaroslav Shmarov
 ---
 
 ## SupeRails.com

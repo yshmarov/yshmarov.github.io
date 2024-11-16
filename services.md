@@ -2,6 +2,7 @@
 layout: post
 title: Services
 permalink: /services/
+author: Yaroslav Shmarov
 ---
 
 🤠 Yes, I do some consulting! You can hire me for €800/day.
