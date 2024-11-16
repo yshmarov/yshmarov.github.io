@@ -21,10 +21,11 @@ layout: default
   {%- if page.list_title -%}
   <h2 class="post-list-heading">{{ page.list_title }}</h2>
   {%- endif -%}
-  <ul class="post-list">
+  <!-- smaller space between elements -->
+  <ul class="post-list" style="">
     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
     {%- for post in posts -%}
-    <li>
+    <li style="border: 1px solid #ccc; padding-left: 10px; border-radius: 10px;">
       <span class="post-meta">{{ post.date | date: date_format }}</span>
       <span>
         #{{ forloop.rindex }}
