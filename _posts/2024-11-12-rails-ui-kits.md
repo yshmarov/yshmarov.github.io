@@ -46,7 +46,7 @@ By [lazaronixon](http://twitter.com/lazaronixon)
 
 By [justalever](https://x.com/justalever)
 
-### [shadcn.rails-components.com]([https://railsui.com](https://shadcn.rails-components.com/))
+### [shadcn.rails-components.com]([https://railsui.com](https://shadcn.rails-components.com/)
 
 By [Avi Flombaum](https://x.com/aviflombaum)
 
