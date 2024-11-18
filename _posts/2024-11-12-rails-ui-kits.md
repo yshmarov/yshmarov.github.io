@@ -32,7 +32,7 @@ By [SethHorsley](https://x.com/SethHorsley) & [cirdesh](https://x.com/cirdesh)
 
 ### [ui.darksea.dev](https://ui.darksea.dev)
 
-By [@darkseadev](https://x.com/darkseadev)
+By [darkseadev](https://x.com/darkseadev)
 
 ### [rapidrails.cc](http://rapidrails.cc)
 
@@ -45,6 +45,10 @@ By [lazaronixon](http://twitter.com/lazaronixon)
 ### [RailsUI](https://railsui.com)
 
 By [justalever](https://x.com/justalever)
+
+### [shadcn.rails-components.com]([https://railsui.com](https://shadcn.rails-components.com/))
+
+By [Avi Flombaum](https://x.com/aviflombaum)
 
 ### [polaris_view_components](https://github.com/baoagency/polaris_view_components)
 
