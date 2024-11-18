@@ -34,7 +34,7 @@ By [SethHorsley](https://x.com/SethHorsley) & [cirdesh](https://x.com/cirdesh)
 
 By [@darkseadev](https://x.com/darkseadev)
 
-### [http://rapidrails.cc](rapidrails.cc)
+### [rapidrails.cc](http://rapidrails.cc)
 
 By [ahmednadar](http://twitter.com/ahmednadar)
 
