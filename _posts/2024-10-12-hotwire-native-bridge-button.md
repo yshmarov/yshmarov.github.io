@@ -40,8 +40,8 @@ final class ButtonComponent: BridgeComponent {
         let action = UIAction { [unowned self] _ in
             self.reply(to: "connect")
         }
--        let item = UIBarButtonItem(title: data.title, image: image, primaryAction: action)
-+        let item = UIBarButtonItem(title: data.title, primaryAction: action)
++        let item = UIBarButtonItem(title: data.title, image: image, primaryAction: action)
+-        let item = UIBarButtonItem(title: data.title, primaryAction: action)
         viewController.navigationItem.rightBarButtonItem = item
     }
 }
