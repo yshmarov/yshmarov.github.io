@@ -5,11 +5,11 @@ permalink: /about/
 author: Yaroslav Shmarov
 ---
 
-Yaroslav (Yaro) Shmarov is an experienced Ruby on Rails developer, [speaker](https://www.youtube.com/watch?v=F75k4Oc6g9Q&ab_channel=RubyonRails), host of [@SupeRails youtube channel](https://www.youtube.com/@SupeRails) and [Friendly Show podcast](https://www.friendly.show/)
+Yaroslav (Yaro) Shmarov is an experienced Ruby on Rails developer, host of [@SupeRails youtube channel](https://www.youtube.com/@SupeRails) and [Friendly Show podcast](https://www.friendly.show/).
 
 Apart of coding, Yaroslav has a passion for sharing knowledge and giving back to the community.
 
-Yaroslav lives in Chernihiv, Ukraine 🇺🇦 with his wife and [puppy](https://www.instagram.com/maltipoo_land/).
+Yaroslav lives in Chernihiv, Ukraine 🇺🇦 with his wife, kid and [puppy](https://www.instagram.com/maltipoo_land/).
 
 In his free time he likes writing, windsurfing 🏄‍♂️, hiking with his dog 🐶 and excelling his language skills. 
 
