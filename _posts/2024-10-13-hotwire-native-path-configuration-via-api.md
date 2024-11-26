@@ -49,6 +49,13 @@ end
 
 Finally render the JSON in your controller action.
 
+```sh
+mkdir app/controllers/v1
+mkdir app/controllers/v1/turbo
+mkdir app/controllers/v1/turbo/ios
+echo > app/controllers/v1/turbo/ios/path_configurations_controller.rb
+```
+
 Be sure that this URL is accessible without restrictions like `authenticate_user!`.
 
 ```ruby

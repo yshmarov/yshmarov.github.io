@@ -72,10 +72,6 @@ On touchscreens you will most likely want to disable zoom with fingers.
     content << 'maximum-scale=1, user-scalable=0' if turbo_native_app? || browser.device.mobile?
     tag.meta(name: 'viewport', content: content.join(','))
   end
-
-  def platform_identifier
-    'data-turbo-native' if turbo_native_app?
-  end
 ```
 
 ```diff
