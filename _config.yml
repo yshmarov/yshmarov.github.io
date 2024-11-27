@@ -73,6 +73,10 @@ og_image:
       - "#DE3F24"
       - "#EDA895"
 
+tag_page_layout: tag_page
+tag_page_dir: tag
+ignored_tags: [tags,to,ignore]
+
 #jekyll_admin:
 #  hidden_links:
 #    - posts

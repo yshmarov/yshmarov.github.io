@@ -38,7 +38,7 @@ layout: default
           {{ post.title | escape }}
         </a>
         <small>
-          {{ post.tags | array_to_sentence_string }}
+          {{ post | tags }}
         </small>
       </h3>
       {%- if site.show_excerpts -%}
