@@ -2,7 +2,7 @@
 layout: post
 title: Authentication Zero vs Devise
 author: Yaroslav Shmarov
-tags: hotwire-native
+tags: authentication devise
 thumbnail: /assets/thumbnails/devise.png
 ---
 

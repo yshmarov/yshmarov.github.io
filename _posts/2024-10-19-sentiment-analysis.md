@@ -2,7 +2,7 @@
 layout: post
 title: Sentiment Analysis. Analyze Udemy course reviews
 author: Yaroslav Shmarov
-tags: hotwire-native
+tags: sentiment-analysis
 thumbnail: https://about.udemy.com/wp-content/uploads/2017/10/NewUlogo-large-1.png
 ---
 
