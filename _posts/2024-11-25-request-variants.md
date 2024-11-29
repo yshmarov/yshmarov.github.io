@@ -10,7 +10,7 @@ thumbnail: /assets/thumbnails/rails-logo.png
 
 Sometimes you will want to render completely different views on **Desktop browser**, **Mobile browser**, and **Native**.
 
-[Request Variants](https://guides.rubyonrails.org/layouts_and_rendering.html#the-variants-option) allow you to conditionally render different templates, like `index.html` & `index+mobile.html`.
+[Request Variants](https://guides.rubyonrails.org/layouts_and_rendering.html#the-variants-option) allow you to conditionally render different templates, like `index.html.erb` & `index.html+mobile.erb`.
 
 [Gem Browser](https://github.com/fnando/browser) helps to determine whether the browser: 
 
@@ -59,7 +59,17 @@ end
 Now you can render:
 
 - `app/views/posts/index.html.erb` by default
-- `app/views/posts/index+mobile.html.erb` on mobile browsers / native apps
+- `app/views/posts/index.html+mobile.erb` on mobile browsers / native apps
+
+To test this, emulate user agent from your browser.
+
+Safari:
+
+![safari-user-agent](/assets/images/safari-user-agent.png)
+
+Chromium:
+
+![chromium-user-agent](/assets/images/chromium-user-agent.png)
 
 ### Viewport scaling
 
