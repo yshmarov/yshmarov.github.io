@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Hotwire Native Bridge Menu Component
+title: Hotwire Native Bridge Menu (Action Sheet) Component
 author: Yaroslav Shmarov
 tags: hotwire-native
 thumbnail: /assets/thumbnails/turbo.png
