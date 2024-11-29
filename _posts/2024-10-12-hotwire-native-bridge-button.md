@@ -111,6 +111,14 @@ You still have to keep the image attribute for the button to render!
 </a>
 ```
 
+**Icon** button on the **left** (**right** by default):
+
+```html
+<a href="/posts" data-controller="bridge--button" data-bridge-title="Posts" data-bridge-ios-image="play.circle" data-bridge-side="left">
+  Posts
+</a>
+```
+
 The Native button will click whatever element you apply the `bridge--button` on. It does not have to be a `<a href="">`!
 
 ```html
