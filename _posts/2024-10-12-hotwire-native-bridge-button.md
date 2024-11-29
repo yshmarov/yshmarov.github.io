@@ -10,14 +10,18 @@ The [Hotwire Native Bridge Components docs](https://native.hotwired.dev/ios/brid
 
 The button is always presented as clickable **text**.
 
-![hotwire-native-button-icon](/assets/images/hotwire-native-button-icon.png)
+![hotwire-native-button-text](/assets/images/hotwire-native-button-text.png)
 
 But to turn it into a clickable **icon**, we would have to do some modifications/extend our component.
 
-![hotwire-native-button-text](/assets/images/hotwire-native-button-text.png)
+![hotwire-native-button-icon](/assets/images/hotwire-native-button-icon.png)
 
-```diff
-# ios/ButtonComponent.swift
+We will extend the button from the example to also:
+- display icon instead of text
+- place icon on right or left
+
+```swift
+// ios/ButtonComponent.swift
 import HotwireNative
 import UIKit
 
@@ -36,26 +40,38 @@ final class ButtonComponent: BridgeComponent {
     private func addButton(via message: Message, to viewController: UIViewController) {
         guard let data: MessageData = message.data() else { return }
 
-+        let image = UIImage(systemName: data.image)
+       let image: UIImage?
+
+       if let imageName = data.image {
+           image = UIImage(systemName: imageName)
+       } else {
+           image = nil
+       }
+
         let action = UIAction { [unowned self] _ in
             self.reply(to: "connect")
         }
-+        let item = UIBarButtonItem(title: data.title, image: image, primaryAction: action)
--        let item = UIBarButtonItem(title: data.title, primaryAction: action)
-        viewController.navigationItem.rightBarButtonItem = item
+        let item = UIBarButtonItem(title: data.title, image: image, primaryAction: action)
+
+        if data.side == "right" {
+            viewController.navigationItem.rightBarButtonItem = item
+        } else {
+            viewController.navigationItem.leftBarButtonItem = item
+        }
     }
 }
 
 private extension ButtonComponent {
     struct MessageData: Decodable {
         let title: String
-+        let image: String
+        let image: String?
+        let side: String
     }
 }
 ```
 
-```diff
-# app/javascript/controllers/bridge/button_controller.js
+```js
+// app/javascript/controllers/bridge/button_controller.js
 import { BridgeComponent } from "@hotwired/hotwire-native-bridge"
 
 export default class extends BridgeComponent {
@@ -66,8 +82,9 @@ export default class extends BridgeComponent {
 
     const element = this.bridgeElement
     const title = element.bridgeAttribute("title")
-+    const image = element.bridgeAttribute("ios-image")
-    this.send("connect", {title, image}, () => {
+    const image = element.bridgeAttribute("ios-image")
+    const side = element.bridgeAttribute("side") || "right"
+    this.send("connect", {title, image, side}, () => {
       this.element.click()
     })
   }
@@ -78,26 +95,25 @@ With this approach, if you want to use text over image, **leave the image blank*
 
 You still have to keep the image attribute for the button to render!
 
-```diff
-# old text-only button that worked
--<a href="/posts" data-controller="bridge--button" data-bridge-title="Posts" class="hidden">
--  Posts
--</a>
+**Text** button:
 
-# text button that works
-+<a href="/posts" data-controller="bridge--button" data-bridge-title="Posts" data-bridge-ios-image="" class="hidden">
-+  Posts
-+</a>
+```html
+<a href="/posts" data-controller="bridge--button" data-bridge-title="Posts">
+  Posts
+</a>
+```
 
-# icon button that works
-+<a href="/posts" data-controller="bridge--button" data-bridge-title="Posts" data-bridge-ios-image="play.circle" class="hidden">
-+  Posts
-+</a>
+**Icon** button:
+
+```html
+<a href="/posts" data-controller="bridge--button" data-bridge-title="Posts" data-bridge-ios-image="play.circle">
+  Posts
+</a>
 ```
 
 The Native button will click whatever element you apply the `bridge--button` on. It does not have to be a `<a href="">`!
 
-```
+```html
 <div data-controller="bridge--button" data-bridge-title="Search" data-bridge-ios-image="magnifyingglass.circle" class="hidden" data-action="click->dialog#open">
   Search
 </div>
