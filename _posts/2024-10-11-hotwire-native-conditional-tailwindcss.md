@@ -93,6 +93,24 @@ That's it! Now you can apply the CSS variant:
 </div>
 ```
 
+### Enable for a block
+
+```js
+// config/tailwind.config.js
+      addVariant('mobile', '&[data-turbo-native="true"]'),
+      addVariant('non-mobile', '&[data-turbo-native="false"]'),
+```
+
+```html
+<div data-turbo-native="true" class="mobile:bg-black non-mobile:bg-red-400">
+  This is mobile
+</div>
+
+<div data-turbo-native="false" class="mobile:bg-black non-mobile:bg-red-400">
+  This is non-mobile
+</div>
+```
+
 [Subscribe to SupeRails.com](https://superails.com/pricing) for more Hotwire Native content!
 
 That's it for now!
