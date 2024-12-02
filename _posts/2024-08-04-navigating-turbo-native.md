@@ -2,7 +2,7 @@
 layout: post
 title: "Navigating Turbo Native: where to start"
 author: Yaroslav Shmarov
-tags: turbo-native
+tags: hotwire-native
 thumbnail: /assets/thumbnails/strada.png
 ---
 
@@ -18,7 +18,13 @@ Turbo Native is the easiest way to turn your Rails app (that uses responsive CSS
 
 You can browse existing Turbo Native apps in the [Turbo Native Directory](https://turbonative.directory/).
 
+Top resources:
+- [Hotwire Native screencasts](https://superails.com/playlists/turbo-native) - learn step by step
+- [Hotwire Native text series](https://blog.corsego.com/tag/hotwire-native.html) - same as above, but in text
+- [Gem `hotwire_native_rails`](https://github.com/yshmarov/hotwire_native_rails) - generate helpers to make your Rails app ready for Native
+
 Conference talks worth watching:
+- [Intro to Hotwire Native - Rails World 2024, Yaroslav Shmarov](https://superails.com/posts/yaroslav-shmarov-hotwire-native-rails-world-2024-lightning-talk-unofficial-recording?playlist=turbo-native)
 - [Joe Masilotti - Just enough Turbo Native to be dangerous - Rails World 2023](https://www.youtube.com/watch?v=hAq05KSra2g)
 - [Jay Ohms - Strada: Bridging the web and native worlds - Rails World 2023](https://www.youtube.com/watch?v=LKBMXqc43Q8)
 - [RailsConf 2024 - Insights Gained from Developing a Hybrid Application Using Turbo Native by John Pollard](https://www.youtube.com/watch?v=xJO36dD9lj4)
