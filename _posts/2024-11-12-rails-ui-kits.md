@@ -26,7 +26,7 @@ In no particular order
 
 By [mikker](https://x.com/mikker)
 
-### [rbui.dev](https://rbui.dev)
+### [rubyui.com](https://rubyui.com)
 
 By [SethHorsley](https://x.com/SethHorsley) & [cirdesh](https://x.com/cirdesh)
 
