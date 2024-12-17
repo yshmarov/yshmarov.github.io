@@ -2,7 +2,7 @@
 layout: post
 title: StimulusJS Cmd Enter to submit form
 author: Yaroslav Shmarov
-tags: rails markdown
+tags: keyboard hotkeys stimulusjs stimulus
 thumbnail: /assets/thumbnails/stimulus-logo.png
 ---
 
