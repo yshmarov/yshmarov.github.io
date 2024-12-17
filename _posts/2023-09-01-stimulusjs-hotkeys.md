@@ -21,7 +21,35 @@ Example 2:
 
 In our example a user will always have to click `⌘ Command` + `yourKey` (Mac), or `Ctrl` + `yourKey` (Linux/Windows).
 
-#### Option 1: With event listeners
+### 2025 Update
+
+```sh
+rails g stimulus click
+```
+
+```js
+// app/javascript/controllers/click_controller.js
+import { Controller } from "@hotwired/stimulus"
+
+export default class extends Controller {
+  click() {
+    this.element.click()
+  }
+}
+```
+
+```html
+<!-- clicking "n" will click the link -->
+<a href="/posts/new" data-controller="click" data-action="keydown.n@window->click#click">New Post</a>
+
+<!-- clicking "Ctrl+K" will click the button -->
+<button data-controller="click" data-action="keydown.meta+k@window->click#click keydown.ctrl+k@window->click#click">Search</button>
+
+<!-- clicking "Ctrl+Enter" will click the button -->
+<button data-controller="click" data-action="keydown.cmd+enter@window->click#click keydown.ctrl+enter@window->click#click">Submit</button>
+```
+
+### Option 1: With event listeners
 
 ```js
 import { Controller } from "@hotwired/stimulus"
@@ -65,7 +93,7 @@ HTML usage example:
 </body>
 ```
 
-#### Option 2 (better): with Stimulus actions
+### Option 2 (better): with Stimulus actions
 
 Instead of EventListeners, we can use [Stimulus KeyboardEvent Filter](https://stimulus.hotwired.dev/reference/actions#keyboardevent-filter)
 
