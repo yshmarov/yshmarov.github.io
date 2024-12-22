@@ -31,7 +31,7 @@ Update DNS settings of your domain name:
 View active DNS settings via terminal:
 
 ```sh
-dig EWLIT.COM +noall +answer -t A
+dig CORSEGO.COM +noall +answer -t A
 ```
 
 [Docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages#verifying-a-domain-for-your-user-site)
@@ -48,6 +48,7 @@ Value = your github handle + `.github.io.`
 |-------|------|----------------------|
 | CNAME | @ | yshmarov.github.io. |
 | CNAME | www | yshmarov.github.io. |
+| TXT | _github-pages-... | vgwemr4fi24f23 |
 
 In your code repo, create a file named CNAME and add your domain name with `www`:
 
@@ -84,6 +85,7 @@ DNS settings:
 | Type  | Host | Value                |
 |-------|------|----------------------|
 | CNAME | blog2 | yshmarov.github.io. |
+| TXT | _github-pages-... | vgwemr4fi24f23 |
 
 #### 5. Finish
 
