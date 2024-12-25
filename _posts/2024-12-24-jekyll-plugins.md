@@ -164,6 +164,10 @@ Use [gem jekyll-tagging-related_posts](https://github.com/toshimaru/jekyll-taggi
 
 On a post page, display list of similar posts (based on amount of matching tags).
 
+### Add anchor tags to headings
+
+[Copy this](https://github.com/yshmarov/yshmarov.github.io/pull/3)
+
 ### Other plugins & features to consider:
 
 - Link to prev, next post
