@@ -8,6 +8,8 @@ thumbnail: /assets/thumbnails/turbo.png
 
 Hotwire Native ships with a default `Menu` and `OverflowMenu` component.
 
+![ios action sheet](/assets/images/ios-action-sheet.png)
+
 `Menu` let's you invoke a native dropdown with links and buttons that you define in HTML.
 
 In SwiftUI it is called [Action sheets](https://developer.apple.com/design/human-interface-guidelines/action-sheets)
