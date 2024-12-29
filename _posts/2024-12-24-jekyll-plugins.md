@@ -115,11 +115,7 @@ github_edit_url: "https://github.com/yshmarov/yshmarov.github.io/blob/master/"
 
 ```html
 <!-- _layouts/post.html -->
-{% if page.path %}
-<a href="{{ site.github_edit_url }}{{ page.path }}" target="_blank"
-  >Edit this page
-</a>
-{% endif %}
+<a href="{{ site.github_edit_url }}{{ page.path }}" target="_blank">Edit this page</a>
 ```
 
 ### Discovery feature: Tag pages
