@@ -42,8 +42,6 @@ author:
   name: Yaroslav Shmarov
   email: hello@superails.com
 
-#logo: /assets/corsego-saas-tree-logo.png
-
 permalink: "/:title"
 
 pwa:
@@ -76,34 +74,3 @@ og_image:
 tag_page_layout: tag_page
 tag_page_dir: tag
 ignored_tags: [tags,to,ignore]
-
-#jekyll_admin:
-#  hidden_links:
-#    - posts
-#    - pages
-#    - staticfiles
-#    - datafiles
-#    - configuration
-
-# SEO tag useful info
-# https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
