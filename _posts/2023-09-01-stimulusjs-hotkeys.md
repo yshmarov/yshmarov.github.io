@@ -32,7 +32,11 @@ rails g stimulus click
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  click() {
+  click(event) {
+    const formElements = ['INPUT', 'TEXTAREA', 'SELECT']
+    if (formElements.includes(event.target.tagName)) {
+      return
+    }
     this.element.click()
   }
 }
