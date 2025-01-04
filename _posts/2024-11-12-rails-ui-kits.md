@@ -22,6 +22,10 @@ You will want a Rails UI component library.
 
 In no particular order
 
+### [phlexyui.com](https://phlexyui.com)
+
+By [itsdavidramos](https://x.com/itsdavidramos)
+
 ### [nitrokit.dev](https://nitrokit.dev/) 
 
 By [mikker](https://x.com/mikker)
