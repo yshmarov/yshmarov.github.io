@@ -2,7 +2,7 @@
 layout: post
 title: Start a blog with Jekyll and Github Pages for free
 author: Yaroslav Shmarov
-tags: hotwire-native mobile ruby-on-rails
+tags: jekyll
 thumbnail: /assets/thumbnails/html.png
 ---
 

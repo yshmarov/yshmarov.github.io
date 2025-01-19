@@ -1,6 +1,6 @@
 ---
 layout: post
-title: My first Ruby gem
+title: My first Ruby gem. hotwire_native_rails
 author: Yaroslav Shmarov
 tags: hotwire-native rubygems
 thumbnail: /assets/thumbnails/ruby.png

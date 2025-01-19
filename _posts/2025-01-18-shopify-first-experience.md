@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Starting an ecommerce store: not so easy. My story"
-categories: shopify ecommerce
-tags: ruby rails
+tags: shopify ecommerce
 ---
 
 So, my friend sells & ships books in his country.
