@@ -8,7 +8,7 @@ If you want to search millions of records by multiple attributes, disregard typo
 
 Popular search providers are [Typesense](https://typesense.org), ElasticSearch, Algolia, and MeiliSearch.
 
-Typesense is [fully open source](https://github.com/typesense/typesense).
+Typesense is [fully open source](https://fnf.dev/3ZIAjId).
 
 Typesense is very easy to install & run locally.
 
@@ -28,7 +28,7 @@ brew services start typesense-server@27.1
 # brew services stop typesense-server@27.1
 ```
 
-In your Rails app, install gem [typesense-ruby](http://github.com/typesense/typesense-ruby)
+In your Rails app, install gem [typesense-ruby](https://fnf.dev/3PHqHcb)
 
 ```
 bundle add typesense
@@ -288,7 +288,7 @@ Basic views (assuming you have Hotwire installed):
 
 Voila! Now you have a Typesense search server running locally, connected to search in your Rails app!
 
-ℹ️ Typesense is working on [gem typesense-rails](https://github.com/typesense/typesense-rails) that will make interacting with the API even easier. I'm really looking forward for that. In the meantime, I think my `TypesenseService` approach is very good.
+ℹ️ Typesense is working on [gem typesense-rails](https://fnf.dev/4jBiZhw) that will make interacting with the API even easier. I'm really looking forward for that. In the meantime, I think my `TypesenseService` approach is very good.
 
 🙏 Thanks a lot for [Typesense](https://typesense.org) for sponsoring this blogpost.
 I wanted to get deeper into search engines, and this was the perfect opportunity.
