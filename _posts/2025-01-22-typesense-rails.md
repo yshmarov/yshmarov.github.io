@@ -2,6 +2,7 @@
 layout: post
 title: "Typesense search in a Rails app"
 tags: typesense search rails
+youtube_id: vS-F1PlLyTk
 ---
 
 If you want to search millions of records by multiple attributes, disregard typos like "JSON"/"Jason", it makes sense to integrate separate **search server**, rather than overloading your Postgres database.
