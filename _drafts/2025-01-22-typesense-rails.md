@@ -4,6 +4,18 @@ title: "Typesense search in a Rails app"
 tags: typesense search rails
 ---
 
+If you want to search millions of records by multiple attributes, disregard typos like "JSON"/"Jason", it makes sence to integrate separate **search server**, rather than overloading your Postgres database.
+
+Popular search providers are [Typesense](https://typesense.org), ElasticSearch, Algolia, and MeiliSearch.
+
+Typesense is fully open source.
+
+Typesense is very easy to install & run locally.
+
+For production, you can deploy on your own servers, or on [Typesense Cloud](https://cloud.typesense.org) (20+$/mo).
+
+Here's how I integrated Typesense into my Ruby on Rails app to search Posts table by `title` and `description`.
+
 ### 1. Install Typesense, interact with API, search Posts
 
 [Install Typesense](https://typesense.org/docs/guide/install-typesense.html) and start server on port 8108:
@@ -37,7 +49,9 @@ TYPESENSE_CLIENT = Typesense::Client.new(
 )
 ```
 
-Create a service to interact with the Typesense API. In this case, we use Typesense only for `Posts` model, and attributes `title` and `body`:
+Create a service to interact with the Typesense API.
+
+In this case, we use Typesense only for `Posts` model, and attributes `title` and `body`:
 
 ```ruby
 # app/services/typesense_service.rb
@@ -122,7 +136,7 @@ class TypesenseService
 end
 ```
 
-Here's a rake task to create a Typesense table of Posts and add all Posts from our ActiveRecord Model/Postgres to the Typesense database
+Here's a rake task to create a Typesense table of Posts and add all Posts from our ActiveRecord Model/Postgres to the Typesense database:
 
 ```ruby
 # lib/tasks/typesense.rake
@@ -141,7 +155,7 @@ end
 
 Run `rails typesense:setup` in the console to trigger the task, or manually run the commands in the `rails console`.
 
-Now you can search posts with Typesence:
+Now you can search posts with Typesense:
 
 ```ruby
 # rails c
