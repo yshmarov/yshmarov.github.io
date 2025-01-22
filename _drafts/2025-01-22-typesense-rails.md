@@ -4,17 +4,17 @@ title: "Typesense search in a Rails app"
 tags: typesense search rails
 ---
 
-If you want to search millions of records by multiple attributes, disregard typos like "JSON"/"Jason", it makes sence to integrate separate **search server**, rather than overloading your Postgres database.
+If you want to search millions of records by multiple attributes, disregard typos like "JSON"/"Jason", it makes sense to integrate separate **search server**, rather than overloading your Postgres database.
 
 Popular search providers are [Typesense](https://typesense.org), ElasticSearch, Algolia, and MeiliSearch.
 
 Typesense is [fully open source](https://fnf.dev/3ZIAjId).
 
-Typesense is very easy to install & run locally.
+Typesense is very easy to install and run locally.
 
 For production, you can deploy on your own servers, or on [Typesense Cloud](https://cloud.typesense.org) (20+$/mo).
 
-Here's how I integrated Typesense into my Ruby on Rails app to search Posts table by `title` and `description`.
+Here's how I integrated Typesense into my Ruby on Rails app to search the `Posts` table by `title` and `description`.
 
 ### 1. Install Typesense, interact with API, search Posts
 
@@ -286,10 +286,10 @@ Basic views (assuming you have Hotwire installed):
 <% end %>
 ```
 
-Voila! Now you have a Typesense search server running locally, connected to search in your Rails app!
+Voila! Now you have a Typesense search server running locally and connected to your Rails app for search.
 
-ℹ️ Typesense is working on [gem typesense-rails](https://fnf.dev/4jBiZhw) that will make interacting with the API even easier. I'm really looking forward for that. In the meantime, I think my `TypesenseService` approach is very good.
+ℹ️ Typesense is working on [gem typesense-rails](https://fnf.dev/4jBiZhw) that will make interacting with the API even easier. I'm really looking forward to that. In the meantime, I think my `TypesenseService` approach is very good.
 
-🙏 Thanks a lot for [Typesense](https://typesense.org) for sponsoring this blogpost.
+🙏 Thanks a lot to [Typesense](https://typesense.org) for sponsoring this blogpost.
 I wanted to get deeper into search engines, and this was the perfect opportunity.
 I know what I'm using next time I need "advanced search"!
