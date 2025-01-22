@@ -8,7 +8,7 @@ If you want to search millions of records by multiple attributes, disregard typo
 
 Popular search providers are [Typesense](https://typesense.org), ElasticSearch, Algolia, and MeiliSearch.
 
-Typesense is fully open source.
+Typesense is [fully open source](https://github.com/typesense/typesense).
 
 Typesense is very easy to install & run locally.
 
