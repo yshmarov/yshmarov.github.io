@@ -288,4 +288,8 @@ Basic views (assuming you have Hotwire installed):
 
 Voila! Now you have a Typesense search server running locally, connected to search in your Rails app!
 
-⚠️ Typesense is working on [gem typesense-rails](https://github.com/typesense/typesense-rails) that will make interacting with the API even easier. I'm really looking forward for that. In the meantime, I think my `TypesenseService` approach is very good.
+ℹ️ Typesense is working on [gem typesense-rails](https://github.com/typesense/typesense-rails) that will make interacting with the API even easier. I'm really looking forward for that. In the meantime, I think my `TypesenseService` approach is very good.
+
+🙏 Thanks a lot for [Typesense](https://typesense.org) for sponsoring this blogpost.
+I wanted to get deeper into search engines, and this was the perfect opportunity.
+I know what I'm using next time I need "advanced search"!
