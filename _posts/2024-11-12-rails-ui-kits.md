@@ -26,7 +26,7 @@ In no particular order
 
 By [itsdavidramos](https://x.com/itsdavidramos)
 
-### [nitrokit.dev](https://nitrokit.dev/) 
+### [nitrokit.dev](https://nitrokit.dev/)
 
 By [mikker](https://x.com/mikker)
 
@@ -66,6 +66,6 @@ By ???????? 🥸
 
 ### [railsdesigner.com](https://railsdesigner.com)
 
-By ???????? 🥸
+By Eelco
 
 ![yoda ui wars](/assets/images/rails-ui-wars.png)
