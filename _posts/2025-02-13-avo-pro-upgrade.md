@@ -19,6 +19,16 @@ group :avo, optional: true do
     gem "avo-pro"
   end
 end
+group :development, :test do
+  gem "dotenv"
+end
+```
+
+```sh
+# .env
+RAILS_GROUPS=avo
+BUNDLE_WITH=avo
+BUNDLE_PACKAGER__DEV=foobar
 ```
 
 ```ruby
