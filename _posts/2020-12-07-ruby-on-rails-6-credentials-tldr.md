@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 'How to use Credentials in Ruby on Rails 6? TLDR'
+title: "How to use Credentials in Ruby on Rails 6? TLDR"
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails
-- credentials
-- secrets
-- tldr
+tags:
+  - ruby on rails
+  - credentials
+  - secrets
+  - tldr
 thumbnail: /assets/thumbnails/encryption-lock.png
 description: Quickest guide to credentials and secrets for Rails 6
 youtube_id: nDJE8WG0auE
@@ -17,11 +17,24 @@ youtube_id: nDJE8WG0auE
 ### create credentials & edit:
 
 ```shell
-rails credentials:edit 
-EDITOR=vim rails credentials:edit
+rails credentials:edit
 rails credentials:show
+
+# vim
+EDITOR=vim bin/rails credentials:edit
+
+# vscode
+EDITOR="code --wait" bin/rails credentials:edit
 EDITOR='code --wait' rails credentials:edit --environment=development
+EDITOR='code --wait' rails credentials:edit --environment=test
 EDITOR='code --wait' rails credentials:edit --environment=production
+
+# cursor
+export EDITOR="/Applications/Cursor.app/Contents/MacOS/Cursor --wait"
+bin/rails credentials:edit
+bin/rails credentials:edit --environment=development
+bin/rails credentials:edit --environment=test
+bin/rails credentials:edit --environment=production
 ```
 
 ### see credentials diff
@@ -84,14 +97,16 @@ For exiting with saving press `Esc` & `:wq` & `Enter`
 
 For exiting without saving press `Esc` & `:q!` & `Enter`
 
-To make Ctrl+V work properly `Esc` & `:set paste` & `i` & Ctrl` + `V`
+To make Ctrl+V work properly `Esc` & `:set paste` & `i` & Ctrl`+`V`
 
-* Example of using credentials in `devise.rb`:
+- Example of using credentials in `devise.rb`:
 
 ```
 config.omniauth :github, Rails.application.credentials.dig(Rails.env.to_sym, :github, :id), Rails.application.credentials.dig(Rails.env.to_sym, :github, :secret)
 ```
+
 or
+
 ```
 if Rails.application.credentials[Rails.env.to_sym].present? && Rails.application.credentials[Rails.env.to_sym][:github].present?
   config.omniauth :github, Rails.application.credentials[Rails.env.to_sym][:github][:id], Rails.application.credentials[Rails.env.to_sym][:github][:secret]
@@ -118,6 +133,7 @@ Rails.application.credentials.production[:aws][:id]
 ```
 
 ### See credentials changes in local git:
+
 ```
 rails credentials:diff --enroll
 git diff config/credentials.yml.enc
