@@ -25,5 +25,20 @@ flash[:post_status] = { title: "Success", subtitle: "Post created" } # a hash!
 <% end %>
 ```
 
-* More about [ActionDispatch::Flash](https://api.rubyonrails.org/classes/ActionDispatch/Flash.html){:target="blank"} (official docs)
-* [Dismissable Flash Messages with Hotwire without page refresh]({% post_url 2021-10-29-turbo-hotwire-flash-messages %}){:target="blank"}
+You can also register new flash types with [add_flash_types](https://api.rubyonrails.org/classes/ActionController/Flash/ClassMethods.html)
+
+```ruby
+# app/controllers/application_controller.rb
+class ApplicationController < ActionController::Base
+  add_flash_types :toast
+```
+
+This lets you use
+
+```diff
+-redirect_to root_path, flash: { toast: "success" }
++redirect_to root_path, toast: "success"
+```
+
+- More about [ActionDispatch::Flash](https://api.rubyonrails.org/classes/ActionDispatch/Flash.html){:target="blank"} (official docs)
+- [Dismissable Flash Messages with Hotwire without page refresh]({% post_url 2021-10-29-turbo-hotwire-flash-messages %}){:target="blank"}
