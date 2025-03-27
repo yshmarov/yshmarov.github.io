@@ -34,8 +34,10 @@ export default class extends Controller {
       decimalCharacter: ".",
       decimalPlaces: 2,
       digitGroupSeparator: ",",
+      minimumValue: this.minValue,
       maximumValue: this.maxValue,
       unformatOnSubmit: true,
+      unformatOnHover: false,
       currencySymbol: "€",
       currencySymbolPlacement: "p", // 'p' for prefix
       modifyValueOnWheel: false,
