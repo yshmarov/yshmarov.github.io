@@ -12,20 +12,21 @@ thumbnail: /assets/thumbnails/rails-logo.png
 
 Here's how to implement it in your Rails application with Stimulus:
 
-```ruby
-<%= form.text_field :amount, data: { controller: "autonumeric" }, class: "" %>
+```sh
+bin/importmap pin autonumeric
+rails g stimulus autonumeric
 ```
 
 The Stimulus controller:
 
 ```js
-// rails g stimulus autonumeric
 import { Controller } from "@hotwired/stimulus";
 import AutoNumeric from "autonumeric";
 
 export default class extends Controller {
   static values = {
-    max: { type: Number, default: 99999999 },
+    min: { type: Number, default: 0 },
+    max: { type: Number, default: 999999.99 },
   };
 
   connect() {
@@ -44,6 +45,12 @@ export default class extends Controller {
     new AutoNumeric(this.element, autoNumericOptions);
   }
 }
+```
+
+Use in a rails text_field. Autonumeric requires you to use `text_field`, not `number_field`.
+
+```ruby
+<%= form.text_field :amount, data: { controller: "autonumeric" }, class: "" %>
 ```
 
 This will:
