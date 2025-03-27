@@ -17,6 +17,14 @@ bin/importmap pin autonumeric
 rails g stimulus autonumeric
 ```
 
+The importmap pin might fail, so a valid import from an url would be
+
+```diff
+# config/importmap.rb
+-pin "autonumeric"
++pin "autonumeric", to: "https://ga.jspm.io/npm:autonumeric@4.6.0/dist/autoNumeric.min.js"
+```
+
 The Stimulus controller:
 
 ```js
@@ -27,6 +35,7 @@ export default class extends Controller {
   static values = {
     min: { type: Number, default: 0 },
     max: { type: Number, default: 999999.99 },
+    currency: { type: String, default: "€" },
   };
 
   connect() {
@@ -37,11 +46,9 @@ export default class extends Controller {
       minimumValue: this.minValue,
       maximumValue: this.maxValue,
       unformatOnSubmit: true,
-      unformatOnHover: false,
-      currencySymbol: "€",
+      currencySymbol: this.currencyValue,
       currencySymbolPlacement: "p", // 'p' for prefix
       modifyValueOnWheel: false,
-      rawValueDivisor: 0.01,
     };
 
     new AutoNumeric(this.element, autoNumericOptions);
@@ -52,7 +59,11 @@ export default class extends Controller {
 Use in a rails text_field. Autonumeric requires you to use `text_field`, not `number_field`.
 
 ```ruby
-<%= form.text_field :amount, data: { controller: "autonumeric" }, class: "" %>
+<%= form.text_field :name,
+                    data: { controller: "autonumeric",
+                            autonumeric_currency_value: "€",
+                            autonumeric_min_value: 0, autonumeric_max_value: 999999.99 },
+                    class: "" %>
 ```
 
 This will:
