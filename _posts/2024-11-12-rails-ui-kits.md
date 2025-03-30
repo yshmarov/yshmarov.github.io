@@ -69,3 +69,7 @@ By ???????? 🥸
 By Eelco
 
 ![yoda ui wars](/assets/images/rails-ui-wars.png)
+
+### [railscomponents.co](https://www.railscomponents.co)
+
+By [sm_startups](https://x.com/sm_startups)
