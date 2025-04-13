@@ -224,3 +224,15 @@ Rails.cache.fetch("foo-123")
 Rails.cache.fetch("foo-123456",expires_in: 10.seconds){ "bar" }
 
 bin/rails dev:cache
+
+---
+
+### One Click
+
+Use the button below to deploy Forem on Render.
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
+
+https://render.com/deploy?repo=https://github.com/render-examples/forem
+
+https://github.com/render-examples/forem
