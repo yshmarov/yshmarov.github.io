@@ -6,7 +6,7 @@ tags: rails solid_queue solid_cache solid_cable
 thumbnail: /assets/thumbnails/rails-logo.png
 ---
 
-I've been using Heroku since 2015 - that's 10 years of experience. However, over the years, new Platform as a Service (PaaS) providers have emerged that offer better value and pricing than Heroku. Most notably - [Render.com](https://render.com).
+I've been using Heroku since 2015 - that's 10 years of experience. However, over the years, new Platform as a Service (PaaS) providers have emerged that offer better value and pricing than Heroku. Most notably - [Render.com](https://fnf.dev/4i8skLA).
 
 ### Production Experience
 
@@ -50,7 +50,7 @@ One of the coolest features of Solid Queue is its Puma adapter. When you set `EN
 
 ### Deploy to Render
 
-While you can manually create and connect services (Web, Worker, Database, Redis, etc.), my preferred deployment method on Render is using a `render.yaml` [blueprint](https://dashboard.render.com/blueprints). This allows you to manage your entire Render deployment through a single file that's committed to Git!
+While you can manually create and connect services (Web, Worker, Database, Redis, etc.), my preferred deployment method on Render is using a `render.yaml` [blueprint](https://fnf.dev/4i8skLA). This allows you to manage your entire Render deployment through a single file that's committed to Git!
 
 Here's my [`render.yaml`](https://github.com/yshmarov/moneygun/blob/main/render.yaml) for deploying my Rails 8 Boilerplate app:
 
@@ -124,7 +124,7 @@ However, the free plan has limitations, and you won't have access to features li
 
 The basic plan ($6 + $7 = $13) would be enough to deploy a fully-featured web app with a database and Solid Queue worker to production.
 
-🤠 That's it! Time to move your apps from Heroku to Render!
+🤠 That's it! Time to move your apps from Heroku to [Render](https://fnf.dev/4i8skLA)!
 
 ### Additional Resources
 
@@ -133,4 +133,4 @@ The basic plan ($6 + $7 = $13) would be enough to deploy a fully-featured web ap
 
 ---
 
-P.S. A big thank you to [Render.com](https://render.com) for sponsoring this article! It gave me the opportunity to dive deeper into deploying Solid with PostgreSQL and explore Render.
+P.S. A big thank you to [Render.com](https://fnf.dev/4i8skLA) for sponsoring this article! It gave me the opportunity to dive deeper into deploying Solid with PostgreSQL and explore Render.
