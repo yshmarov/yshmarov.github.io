@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Deploy Rails 8 on Render.com"
+title: "Deploying Rails 8 on Render.com"
 author: Yaroslav Shmarov
 tags: rails solid_queue solid_cache solid_cable
 thumbnail: /assets/thumbnails/rails-logo.png
@@ -8,9 +8,9 @@ thumbnail: /assets/thumbnails/rails-logo.png
 
 I've been using Heroku since 2015 - that's 10 years of experience. However, over the years, new Platform as a Service (PaaS) providers have emerged that offer better value and pricing than Heroku. Most notably - [Render.com](https://render.com).
 
-### SupeRails on Render
+### Production Experience
 
-I've been hosting [SupeRails.com](https://superails.com) on Render for 2 years now, and the experience has been excellent.
+[SupeRails.com](https://superails.com) has been running on Render for two years. The architecture is simple:
 
 The setup is straightforward:
 
@@ -20,7 +20,7 @@ The setup is straightforward:
 
 ![Render setup](/assets/render/render-sr-1-setup.png)
 
-It costs me $21/month, which perfectly covers my current workload.
+Current infrastructure costs $21/month and handles our workload efficiently.
 
 ![Render billing](/assets/render/render-sr-2-billing.png)
 
@@ -129,3 +129,8 @@ The basic plan ($6 + $7 = $13) would be enough to deploy a fully-featured web ap
 ---
 
 P.S. A big thank you to [Render.com](https://render.com) for sponsoring this article! It gave me the opportunity to dive deeper into deploying Solid with PostgreSQL and explore `render.yaml`.
+
+Related readings:
+
+- [Reddit thread - many Rails devs choose Render](https://www.reddit.com/r/rails/comments/1jwanqp/please_recommend_a_paas_that_is_not_heroku/)
+- [Render config for a Rails app](https://businessclasskit.com/docs/how-to-deploy-rails-sidekiq-render/)
