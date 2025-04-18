@@ -20,21 +20,21 @@ The setup is simple:
 - a Postgres database
 - a Worker, running ActiveJob with [good_job](https://blog.corsego.com/background-jobs-good-job) on Postgres
 
-render-sr-1-setup.png
+![Render setup](/assets/render/render-sr-1-setup.png)
 
 It's costing me $21/month, and it covers my small workload.
 
-render-sr-2-billing.png
+![Render billing](/assets/render/render-sr-2-billing.png)
 
 I'm not deploying the application via Dockerfile, so I don't have buildpacks (`jemallock`, `headless chrome` enabled).
 
 It would be great if Render could support buildpacks like Heroku does:
 
-render-heroku-buildpacks.png
+![Heroku buildpacks](/assets/render/render-heroku-buildpacks.png)
 
 ### Rails 8 "No PaaS"
 
-render-nopaas.png
+![No PaaS](/assets/render/render-nopaas.png)
 
 In his 2024 RailsWorld keynote, DHH introduced Kamal 2 - a way to deploy Rails apps on your own metal, rather than in the cloud. That sounds fun, however realistically you'd be still renting hardware from something like Hetzner. And you'd be in charge of everything - servers, SSL, mutliple SQLIte databases and backups. More DevOps work. And a new learning curve.
 
@@ -42,7 +42,7 @@ Ease of production deployment and maintanance have always been very improtant fo
 
 > A problem that can be solved with money is not really a problem
 
-render-kamal-maybe.png
+![Kamal maybe](/assets/render/render-kamal-maybe.png)
 
 ### Rails 8 Solid Cache, Queue, Cable
 
@@ -97,7 +97,7 @@ services:
 
 If you have a `render.yaml` file in your github repo source, you can add a One-click deploy button to your readme!
 
-render-deploy-button.png
+![Deploy button](/assets/render/render-deploy-button.png)
 
 Example script:
 
@@ -116,11 +116,11 @@ If you are just getting started, the free plan will be enough to Deploy an app t
 
 You get a free web server
 
-render-free-web.png
+![Free web](/assets/render/render-free-web.png)
 
 And **one** free database
 
-render-free-db.png
+![Free database](/assets/render/render-free-db.png)
 
 However the free plan is limited, and you won't have access to features like `rails c`
 
