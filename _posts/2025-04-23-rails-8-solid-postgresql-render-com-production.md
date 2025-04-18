@@ -44,7 +44,7 @@ For me, ease of production deployment and maintenance has always been crucial. I
 
 ### Rails 8 Solid Cache, Queue, Cable
 
-By default, Rails 8 configures Solid to work with SQLite. If you want to use it with PostgreSQL on Render, check out my tutorial: [Solid Trifecta with PostgreSQL]({% post_url 2025-04-22-solid-trifecta-with-postgresql %})
+Rails 8 introduces Solid Queue, Solid Cache, and Solid Cable as built-in options for background jobs, caching, and real-time features. By default, these tools are configured to work with SQLite. If you want to use them with PostgreSQL on Render, check out my tutorial: [Solid Trifecta with PostgreSQL]({% post_url 2025-04-22-solid-trifecta-with-postgresql %})
 
 One of the coolest features of Solid Queue is its Puma adapter. When you set `ENV["SOLID_QUEUE_IN_PUMA"]` to `true`, jobs will run in the same process as your web app, reducing the resources needed!
 
