@@ -126,11 +126,11 @@ The basic plan ($6 + $7 = $13) would be enough to deploy a fully-featured web ap
 
 🤠 That's it! Time to move your apps from Heroku to Render!
 
----
-
-P.S. A big thank you to [Render.com](https://render.com) for sponsoring this article! It gave me the opportunity to dive deeper into deploying Solid with PostgreSQL and explore `render.yaml`.
-
-Related readings:
+### Additional Resources
 
 - [Reddit thread - many Rails devs choose Render](https://www.reddit.com/r/rails/comments/1jwanqp/please_recommend_a_paas_that_is_not_heroku/)
 - [Render config for a Rails app](https://businessclasskit.com/docs/how-to-deploy-rails-sidekiq-render/)
+
+---
+
+P.S. A big thank you to [Render.com](https://render.com) for sponsoring this article! It gave me the opportunity to dive deeper into deploying Solid with PostgreSQL and explore Render.
