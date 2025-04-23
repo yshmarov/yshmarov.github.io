@@ -4,6 +4,7 @@ title: "Deploying Rails 8 on Render.com"
 author: Yaroslav Shmarov
 tags: rails solid_queue solid_cache solid_cable
 thumbnail: /assets/thumbnails/rails-logo.png
+youtube_id: eTgE5ClYK9s
 ---
 
 I've been using Heroku since 2015 - that's 10 years of experience. However, over the years, new Platform as a Service (PaaS) providers have emerged that offer better value and pricing than Heroku. Most notably - [Render.com](https://fnf.dev/4i8skLA).
