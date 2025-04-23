@@ -24,11 +24,17 @@ Current infrastructure costs $21/month and handles our workload efficiently.
 
 ![Render billing](/assets/render/render-sr-2-billing.png)
 
-I'm not using Docker for deployment, so I don't have access to buildpacks like `jemalloc` or `headless chrome`.
-
-It would be great if Render could support buildpacks like Heroku does:
+When I was deploying the app to heroku, I used `jemallock` to decrease RAM usage and `headless chrome` to take screenshots in a headless browser:
 
 ![Heroku buildpacks](/assets/render/render-heroku-buildpacks.png)
+
+To use [`jemallock`](https://community.render.com/t/how-to-use-jemalloc-in-ruby-web-service/1183) on Render, add ENV VAR:
+
+```sh
+LD_PRELOAD: /usr/lib/x86_64-linux-gnu/libjemalloc.so
+```
+
+You can also add buildpacks if you use Docker for deployment.
 
 ### Rails 8 "No PaaS"
 
@@ -125,6 +131,14 @@ However, the free plan has limitations, and you won't have access to features li
 The basic plan ($6 + $7 = $13) would be enough to deploy a fully-featured web app with a database and Solid Queue worker to production.
 
 🤠 That's it! Time to move your apps from Heroku to [Render](https://fnf.dev/4i8skLA)!
+
+### Render vs Heroku
+
+- Render has Disks -> you can persist data across deploys!
+- Render has 100 minutes HTTP request timeout (vs 30 seconds on Heroku)
+- Render is cheaper when scaling
+
+Here is a more detailed comparison of [Render vs Heroku](https://render.com/docs/render-vs-heroku-comparison).
 
 ### Additional Resources
 
