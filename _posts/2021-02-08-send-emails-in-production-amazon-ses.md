@@ -24,6 +24,7 @@ Getting the API Keys:
 HOWTO
 
 production.rb:
+
 ```
 config.action_mailer.default_url_options = {host: "corsego.herokuapp.com", protocol: "https"}
 config.action_mailer.perform_deliveries = true
@@ -39,10 +40,13 @@ config.action_mailer.smtp_settings = {
   enable_starttls_auto: true
 }
 ```
+
 app/mailers/application_mailer.rb:
+
 ```
-default from: "Corsego <hello@corsego.com>"
+default from: "Corsego <hello@superails.com>"
 ```
 
 useful links:
-*	[https://hixonrails.com/ruby-on-rails-tutorials/ruby-on-rails-action-mailer-configuration/](https://hixonrails.com/ruby-on-rails-tutorials/ruby-on-rails-action-mailer-configuration/){:target="blank"}
+
+- [https://hixonrails.com/ruby-on-rails-tutorials/ruby-on-rails-action-mailer-configuration/](https://hixonrails.com/ruby-on-rails-tutorials/ruby-on-rails-action-mailer-configuration/){:target="blank"}

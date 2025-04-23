@@ -84,9 +84,9 @@ class PostMailer < ApplicationMailer
     # mail options
     mail(
       from: "Yaroslav <hello@superails.com>",
-      to: email_address_with_name(User.first.email, User.first.full_name), 
-      cc: User.all.pluck(:email), 
-      bcc: "secret@superails.com", 
+      to: email_address_with_name(User.first.email, User.first.full_name),
+      cc: User.all.pluck(:email),
+      bcc: "secret@superails.com",
       subject: "New post created"
     )
   end
@@ -175,7 +175,7 @@ end
 
 ```ruby
 # app/mailers/application_mailer.rb
-  default from: 'Yaro <hello@corsego.com>'
+  default from: 'Yaro <hello@superails.com>'
 ```
 
 ```diff
