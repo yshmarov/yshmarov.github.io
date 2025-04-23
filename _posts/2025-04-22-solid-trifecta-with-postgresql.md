@@ -6,7 +6,7 @@ tags: rails solid_queue solid_cache solid_cable
 thumbnail: /assets/thumbnails/rails-logo.png
 ---
 
-I love [gem good_job](https://blog.corsego.com/background-jobs-good-job) for processing jobs in Postgresql. No need for Redis as a dependency!
+I love [gem good_job](https://blog.superails.com/background-jobs-good-job) for processing jobs in Postgresql. No need for Redis as a dependency!
 
 However as of Rails 8 we have [Solid Queue](https://github.com/rails/solid_queue), [Solid Cache](https://github.com/rails/solid_cache), [Solid Cable](https://github.com/rails/solid_cable) present by default in a new Rails app.
 

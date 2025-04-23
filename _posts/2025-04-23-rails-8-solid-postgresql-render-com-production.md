@@ -16,7 +16,7 @@ The setup is straightforward:
 
 - A web server
 - A PostgreSQL database
-- A worker running ActiveJob with [good_job](https://blog.corsego.com/background-jobs-good-job) on PostgreSQL
+- A worker running ActiveJob with [good_job](https://blog.superails.com/background-jobs-good-job) on PostgreSQL
 
 ![Render setup](/assets/render/render-sr-1-setup.png)
 

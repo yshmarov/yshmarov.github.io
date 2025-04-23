@@ -13,13 +13,14 @@ A very common feature request is to receive a Slack messagewhen something happen
 
 This can be though of as receiving "webhooks" by your Slack app.
 
-*Incoming webhooks are a simple way to post messages from external sources into Slack*.
+_Incoming webhooks are a simple way to post messages from external sources into Slack_.
 
 Example notifications:
-* "{email} signed up!"
-* "{email} bought {product} for {price}"
-* "daily stats" (cron job)
-* "daily income CSV" (cron job)
+
+- "{email} signed up!"
+- "{email} bought {product} for {price}"
+- "daily stats" (cron job)
+- "daily income CSV" (cron job)
 
 To implement this kind of functionality, we can use Slack API.
 
@@ -55,7 +56,7 @@ settings:
 
 Alternatively - **create an app from scratch**.
 
-After creation go to "OAuth & Permissions" tab: 
+After creation go to "OAuth & Permissions" tab:
 
 ![slack-2-oath-and-permissions](assets/images/slack-2-oath-and-permissions.png)
 
@@ -145,7 +146,7 @@ The main difference between sending inline text and markdown is the inclusion of
 
 This can be accomplished with squiggly heredoc (`<<~`). This way you can have a string with `\n` line breaks:
 
-```ruby
+````ruby
 def text
   <<~TEXT
     :alert: *#something happened*
@@ -155,19 +156,20 @@ def text
     code block
     ```
     that's it!
-    a link: https://blog.corsego.com
+    a link: https://blog.superails.com
     a video: https://www.youtube.com/watch?v=dVbDkWbHX6M
   TEXT
 end
 
-# => ":alert: *#something happened*\n`code inline`\nand\n```\ncode block\n```\nthat's it!\na link: https://blog.corsego.com\na video: https://www.youtube.com/watch?v=dVbDkWbHX6M\n"
+# => ":alert: *#something happened*\n`code inline`\nand\n```\ncode block\n```\nthat's it!\na link: https://blog.superails.com\na video: https://www.youtube.com/watch?v=dVbDkWbHX6M\n"
 
 SlackClient.client.chat_postMessage(channel: '#general', text:, as_user: true)
-```
+````
 
 ### Send a file
 
 Sending an image from assets:
+
 ```ruby
 filename = 'sample-image.png'
 file_path = Rails.root.join('app', 'assets', 'images', filename).to_s
@@ -194,13 +196,15 @@ Faraday::UploadIO.new(file_to_upload, 'text/plain')
 ```
 
 If your app **generates a new file**, that you want to send, you can:
-* save it to an external storage like S3 and attach form there (best option)
-* save it directly into your app and attach it from there
+
+- save it to an external storage like S3 and attach form there (best option)
+- save it directly into your app and attach it from there
 
 In the below example I:
-* use `gem caxlsx` to [export all users created today into an Excel file]({% post_url 2021-08-20-export-from-database-to-excel %}){:target="blank"}
-* save the file to `app/assets/csv/filename.xlsx` using `IO.binwrite`
-* send the `xls` file to Slack
+
+- use `gem caxlsx` to [export all users created today into an Excel file]({% post_url 2021-08-20-export-from-database-to-excel %}){:target="blank"}
+- save the file to `app/assets/csv/filename.xlsx` using `IO.binwrite`
+- send the `xls` file to Slack
 
 ```ruby
 # requires gem caxlsx

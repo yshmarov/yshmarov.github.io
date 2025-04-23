@@ -9,14 +9,14 @@ youtube_id: uTLKlgUVD1I
 
 From my experience, here are some best practices when working on git with a team:
 
-* Disable pushing directly to `main` branch;
-* All changes should come via Pull Request (PR);
-* A PR should have at least 1 approval (if more than 1 collaborator);
-* Disable merging a PR until **checks** pass;
+- Disable pushing directly to `main` branch;
+- All changes should come via Pull Request (PR);
+- A PR should have at least 1 approval (if more than 1 collaborator);
+- Disable merging a PR until **checks** pass;
 
 ![git-branch-protection.png](/assets/images/git-branch-protection.png)
 
-* Also, preferably, "update with rebase" when you can (not "update with merge commit");
+- Also, preferably, "update with rebase" when you can (not "update with merge commit");
 
 ![git-rebase.png](/assets/images/git-rebase.png)
 
@@ -38,14 +38,15 @@ The above script would run `rubocop` on your app whenever a pull request is crea
 
 ![git-rubocop-action.png](/assets/images/git-rubocop-action.png)
 
-Setting up the CI to run for linters is usally straightforward. You can find the code version of the above script in the article [Install and use Rubocop](https://blog.corsego.com/install-and-use-rubocop).
+Setting up the CI to run for linters is usally straightforward. You can find the code version of the above script in the article [Install and use Rubocop](https://blog.superails.com/install-and-use-rubocop).
 
 The common **"Checks"** are:
-* rspec/minitest tests
-* [rubocop linting](https://blog.corsego.com/install-and-use-rubocop)
-* [erb linting](https://blog.corsego.com/erb-linting)
-* javascript linting
-* deploying to a PR app
+
+- rspec/minitest tests
+- [rubocop linting](https://blog.superails.com/install-and-use-rubocop)
+- [erb linting](https://blog.superails.com/erb-linting)
+- javascript linting
+- deploying to a PR app
 
 ![git-all-checks.png](/assets/images/git-all-checks.png)
 
@@ -54,14 +55,16 @@ The common **"Checks"** are:
 This is usually harder, because it requires **running** the app.
 
 Common "problems" are:
-* installing Redis
-* installing Postgresql
-* adding credentials
+
+- installing Redis
+- installing Postgresql
+- adding credentials
 
 Now let's
-* add a basic page to a Rails app
-* test the page locally
-* finally add a script to test the page with Github Actions
+
+- add a basic page to a Rails app
+- test the page locally
+- finally add a script to test the page with Github Actions
 
 ```shell
 rails g controller static_pages landing_page
@@ -199,7 +202,8 @@ jobs:
 {% endraw %}
 
 Finally, here are example CI scripts from open source RoR projects:
-* [avo-hq/avo CI](https://github.com/avo-hq/avo/tree/main/.github/workflows)
-* [joemasilotti/railsdevs.com CI](https://github.com/joemasilotti/railsdevs.com/tree/main/.github/workflows)
+
+- [avo-hq/avo CI](https://github.com/avo-hq/avo/tree/main/.github/workflows)
+- [joemasilotti/railsdevs.com CI](https://github.com/joemasilotti/railsdevs.com/tree/main/.github/workflows)
 
 That's it!

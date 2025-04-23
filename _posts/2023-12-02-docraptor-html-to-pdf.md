@@ -9,13 +9,14 @@ youtube_id: i_cNw4APRDg
 
 I often design PDFs for emailing tickets, invoices, certificates, reports. Heck, I even had the whole business idea of building [CertificateOwl](https://www.youtube.com/watch?v=C3fB8LzNst8&t=1193s) that is centered around generating and sending PDFs!
 
-**Todays mission:** *"When an invoice is created, generate a PDF and email it to the client"*. Example:
+**Todays mission:** _"When an invoice is created, generate a PDF and email it to the client"_. Example:
 
 ![docraptor-generate-pdf-full-flow](/assets/images/docraptor-generate-pdf-full-flow.gif)
 
 How would you do that?
 
 Usually I would:
+
 - **generate** PDF from HTML with **gem wicked_pdf**
 - **store** the PDF with **ActiveStorage**
 - **send** the PDF with **ActionMailer**
@@ -24,21 +25,21 @@ But there's a problem:
 
 ### 1. 💀 Gem WickedPDF is dead.
 
-Since 2015 I have always relied on the [gem wicked_pdf]({% post_url 2021-05-24-gem-wicked-pdf %}){:target="blank"} for generating PDFs out of my HTML templates. With wicked_pdf, we could design an `app/views/invoices/show.pdf.erb` HTML document, and `format.pdf` would render more-less what we designed. Designing PDFs felt like *WYSIWYG* (what you see is what you get).
+Since 2015 I have always relied on the [gem wicked_pdf]({% post_url 2021-05-24-gem-wicked-pdf %}){:target="blank"} for generating PDFs out of my HTML templates. With wicked_pdf, we could design an `app/views/invoices/show.pdf.erb` HTML document, and `format.pdf` would render more-less what we designed. Designing PDFs felt like _WYSIWYG_ (what you see is what you get).
 
 **However** in 2023 the underlying technology behind this gem, [wkhtmltopdf](https://github.com/wkhtmltopdf/wkhtmltopdf), has been **archived**. This means that `gem "wicked_pdf"` is [**no longer recommended**](https://github.com/mileszs/wicked_pdf/issues/1081#issuecomment-1781918070) for any new projects. In fact, we should consider replacing it in existing projects!
 
 ### 2. So, what are the alternatives?
 
-1. [Gem DocRaptor](https://github.com/DocRaptor/docraptor-ruby) - ruby API wrapper around the advanced [Prince](https://en.wikipedia.org/wiki/Prince_(software)) HTML-to-PDF technology.
+1. [Gem DocRaptor](https://github.com/DocRaptor/docraptor-ruby) - ruby API wrapper around the advanced [Prince](<https://en.wikipedia.org/wiki/Prince_(software)>) HTML-to-PDF technology.
 2. [Gem Prawn](https://github.com/prawnpdf/prawn) - DSL to script PDF documents with plain Ruby.
 3. [Gem Ferrum](https://github.com/rubycdp/ferrum) - virtual "headless" browser opens a page in "Print"/"Save to PDF" view.
 
-While **Prawn** and **Ferrum** offer *fundamentally* different approaches to generating PDF, I think **DocRaptor** might be the the best **"plug-and-play"** replacement for wicked_pdf, because it uses the same technological principle (HTML-to-PDF). 
+While **Prawn** and **Ferrum** offer _fundamentally_ different approaches to generating PDF, I think **DocRaptor** might be the the best **"plug-and-play"** replacement for wicked_pdf, because it uses the same technological principle (HTML-to-PDF).
 
 I think that [CSS Paged Media](https://docraptor.com/css-paged-media) is the killer feature of DocRaptor/Prince technology: it allows us to have maximum CSS control of what is rendered on a single PDF page.
 
-By the way, I first casually heard about DocRaptor on [IndieRails Podcast: Matt Gordon - Going from Consulting to Products](https://www.indierails.com/15). Let's give it a try! 
+By the way, I first casually heard about DocRaptor on [IndieRails Podcast: Matt Gordon - Going from Consulting to Products](https://www.indierails.com/15). Let's give it a try!
 
 ### 3. [DocRaptor.com](https://docraptor.com/) basic usage
 
@@ -56,7 +57,7 @@ gem "docraptor"
 
 Create a job that would generate a PDF for an `Invoice` record.
 
-`DocRaptor::DocApi.new.create_doc` makes an API request to DocRaptor. 
+`DocRaptor::DocApi.new.create_doc` makes an API request to DocRaptor.
 
 The API request will try to turn the `app/views/invoices/show.html.erb` template into PDF.
 
@@ -134,7 +135,7 @@ My easiest solution: create a separate PDF layout that will not contain internal
 <html>
   <head>
     <title>DocraptorHtmlToPdf</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
   </head>
   <style>
     /* your inline CSS goes here */
@@ -175,12 +176,13 @@ Finally, instead of storing a file locally, upload it to ActiveStorage!
 ```
 
 Now that we have a generated & attached PDF, we can:
+
 - add Download link
 - View metadata (name, size, format)
 - [Preview PDF as image](https://edgeguides.rubyonrails.org/active_storage_overview.html#displaying-images-videos-and-pdfs)
 - Send via email
 
-To make PDF *preview* work, add gem image_processing:
+To make PDF _preview_ work, add gem image_processing:
 
 ```ruby
 # Gemfile
@@ -262,6 +264,7 @@ Are using ActiveStorage only for DocRaptor-generated documents?
 You can host generated documents directly with DocRaptor and have fewer dependencies (no need for ActiveStorage, AWS S3...)
 
 According to the docs:
+
 - `.create_doc` returns a pdf string
 - `.create_hosted_doc` returns a URL to the hosted document
 
@@ -284,7 +287,7 @@ Instead of rendering an internal template, we can create pdf from any **public**
 ```diff
 # # app/jobs/invoices/to_pdf_job.rb
 - document_content: document_content,
-+ document_url: 'https://blog.corsego.com/ruby-on-rails-developer-interview-questions',
++ document_url: 'https://blog.superails.com/ruby-on-rails-developer-interview-questions',
 + document_url: invoice_url(@invoice),
 ```
 
@@ -292,7 +295,7 @@ Instead of rendering an internal template, we can create pdf from any **public**
 
 ### 9. DocRaptor is not free?
 
-To remove the *"TEST DOCUMENT"* branding from the generated PDFs, we will need to register a DocRaptor account and get an API key:
+To remove the _"TEST DOCUMENT"_ branding from the generated PDFs, we will need to register a DocRaptor account and get an API key:
 
 ![docraptor-api-key](/assets/images/docraptor-api-key.png)
 
@@ -312,6 +315,7 @@ Purchasing Prince directly is an expensive upfront ~~payment~~ investment:
 ![princexml-pricing](/assets/images/princexml-pricing.png)
 
 Via DocRaptor, we can get "pay-as-you-go" access to:
+
 - Prince technology
 - a Ruby wrapper
 - document hosting

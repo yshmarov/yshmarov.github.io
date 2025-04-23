@@ -86,8 +86,7 @@ https://github.com/corsego/87-stimulus-select-all/blob/main/app/javascript/contr
 
 delayed-submit
 
-https://blog.corsego.com/turbo-hotwire-custom-search-without-page-refresh
-
+https://blog.superails.com/turbo-hotwire-custom-search-without-page-refresh
 
 ```ruby
 rails app:template LOCATION='https://railsbytes.com/script/x7ms44'

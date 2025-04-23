@@ -21,6 +21,7 @@ rails g controller static_pages landing_page
 ```
 
 routes.rb
+
 ```ruby
   root 'static_pages#landing_page'
 ```
@@ -33,6 +34,7 @@ rails db:migrate
 ```
 
 application.html.erb
+
 ```ruby
   <%= notice %>
   <%= alert %>
@@ -45,19 +47,21 @@ application.html.erb
   <% end %>
 ```
 
-### 2. [Add login with github](https://blog.corsego.com/devise-omniauth-github)
+### 2. [Add login with github](https://blog.superails.com/devise-omniauth-github)
 
 ### 3. Finally, allow login ONLY with social (github in our case)
 
 [Devise Wiki - only omniauth](https://github.com/heartcombo/devise/wiki/OmniAuth:-Overview#using-omniauth-without-other-authentications)
 
 Disable unused devise routes in routes.rb:
+
 ```ruby
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"},
     skip: [:sessions, :registrations]
 ```
 
 Disable unused devise resources in user.rb:
+
 ```ruby
 devise :database_authenticatable,
        #:registerable,
@@ -94,6 +98,7 @@ destroy_user_session DELETE   /users/sign_out(.:format)   devise/sessions#destro
 That translate to:
 
 routes.rb
+
 ```
   devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"},
     skip: [:sessions, :registrations]

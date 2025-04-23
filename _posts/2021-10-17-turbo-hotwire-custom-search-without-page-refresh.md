@@ -21,9 +21,10 @@ rails s
 
 ### 1. Without Ransack
 
-* case-insensitive search, like [in this post](https://blog.corsego.com/ruby-on-rails-search-field-without-gems)
+- case-insensitive search, like [in this post](https://blog.superails.com/ruby-on-rails-search-field-without-gems)
 
 #app/controllers/inboxes_controller.rb
+
 ```ruby
   def index
     if params[:name].present?
@@ -34,31 +35,33 @@ rails s
   end
 ```
 
-* stimulus controller to submit form with 500ms delay, [inspired by this post](https://www.colby.so/posts/filtering-tables-with-rails-and-hotwire)
+- stimulus controller to submit form with 500ms delay, [inspired by this post](https://www.colby.so/posts/filtering-tables-with-rails-and-hotwire)
 
 ```js
 // app/javascript/controllers/debounce_controller.js
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = [ "form" ]
+  static targets = ["form"];
 
-  connect() { console.log("debounce controller connected") }
+  connect() {
+    console.log("debounce controller connected");
+  }
 
   search() {
-  clearTimeout(this.timeout)
-  this.timeout = setTimeout(() => {
-      this.formTarget.requestSubmit()
-    }, 500)
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      this.formTarget.requestSubmit();
+    }, 500);
   }
 }
 ```
 
-* initialize stimulus controller on form
-* stimulus target - this form
-* on input - fire the stimulus controller to submit this form
-* form target - `turbo_frame: 'search'` with list of inboxes
-* wrap list of inboxes into a `turbo_frame_tag 'search'`
+- initialize stimulus controller on form
+- stimulus target - this form
+- on input - fire the stimulus controller to submit this form
+- form target - `turbo_frame: 'search'` with list of inboxes
+- wrap list of inboxes into a `turbo_frame_tag 'search'`
 
 ```ruby
 #app/views/inboxes/index.html.erb
@@ -84,7 +87,7 @@ export default class extends Controller {
 <% end %>
 ```
 
-* Next, you **will** want to use `target: '_top'` on such a "global" turbo_frame, so that when you click a link on content inside the frame, it does not look for a `turbo_frame_tag "search"`
+- Next, you **will** want to use `target: '_top'` on such a "global" turbo_frame, so that when you click a link on content inside the frame, it does not look for a `turbo_frame_tag "search"`
 
 ```diff
 #app/views/inboxes/index.html.erb
@@ -131,12 +134,12 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 
 ### 2.1. ADD TURBO
 
-* wrap the results into a frame
-* search/sort should be in the frame - so that the sort direction images get updated
-* `target: "_top"` - explicitly target what you need by the frame
-* the search links should have a turbo_frame 'search' target
-* connect the stimulus controller to the FORM
-* stimulus - submit `search_field` on INBPUT
+- wrap the results into a frame
+- search/sort should be in the frame - so that the sort direction images get updated
+- `target: "_top"` - explicitly target what you need by the frame
+- the search links should have a turbo_frame 'search' target
+- connect the stimulus controller to the FORM
+- stimulus - submit `search_field` on INBPUT
 
 ```diff
 #app/views/inboxes/index.html.erb
@@ -171,12 +174,13 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 
 ### 2.2. Reset search
 
-* currently, if search_form is not in the turbo_frame, clear_search does not clear the input field
-* add a stimulus controller to **"click a button -> reset an input field"**
+- currently, if search_form is not in the turbo_frame, clear_search does not clear the input field
+- add a stimulus controller to **"click a button -> reset an input field"**
 
 #app/javascript/controllers/reset_controller.js
+
 ```js
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 //<div data-controller="reset">
 //  <input data-reset-target=clearme>
@@ -184,20 +188,22 @@ import { Controller } from "@hotwired/stimulus"
 //</div>
 
 export default class extends Controller {
-  static targets = [ "clearme" ]
+  static targets = ["clearme"];
 
-  connect() { console.log("reset controller connected") }
+  connect() {
+    console.log("reset controller connected");
+  }
 
   clean() {
-    console.log(this.clearmeTarget)
-    this.clearmeTarget.value=''
+    console.log(this.clearmeTarget);
+    this.clearmeTarget.value = "";
   }
 }
 ```
 
-* wrap the content into the new controller: `<div data-controller="reset">`
-* add a target to the input field that should be reset: `data: { reset_target: 'clearme',`
-* add an action to the button that should reset the input: `action: "click->reset#clean"`
+- wrap the content into the new controller: `<div data-controller="reset">`
+- add a target to the input field that should be reset: `data: { reset_target: 'clearme',`
+- add an action to the button that should reset the input: `action: "click->reset#clean"`
 
 ```diff
 ++<div data-controller="reset">
@@ -207,7 +213,7 @@ export default class extends Controller {
   <%= f.label :name_cont %>
   <%= f.search_field :name_cont,
                      autocomplete: "off",
-++                     data: { reset_target: 'clearme', 
+++                     data: { reset_target: 'clearme',
                      action: "input->debounce#search" } %>
   <%= f.submit %>
 <% end %>

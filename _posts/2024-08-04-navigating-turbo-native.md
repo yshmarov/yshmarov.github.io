@@ -19,27 +19,32 @@ Turbo Native is the easiest way to turn your Rails app (that uses responsive CSS
 You can browse existing Turbo Native apps in the [Turbo Native Directory](https://turbonative.directory/).
 
 Top resources:
+
 - [Hotwire Native screencasts](https://superails.com/playlists/turbo-native) - learn step by step
-- [Hotwire Native text series](https://blog.corsego.com/tag/hotwire-native.html) - same as above, but in text
+- [Hotwire Native text series](https://blog.superails.com/tag/hotwire-native.html) - same as above, but in text
 - [Gem `hotwire_native_rails`](https://github.com/yshmarov/hotwire_native_rails) - generate helpers to make your Rails app ready for Native
 
 Conference talks worth watching:
+
 - [Intro to Hotwire Native - Rails World 2024, Yaroslav Shmarov](https://superails.com/posts/yaroslav-shmarov-hotwire-native-rails-world-2024-lightning-talk-unofficial-recording?playlist=turbo-native)
 - [Joe Masilotti - Just enough Turbo Native to be dangerous - Rails World 2023](https://www.youtube.com/watch?v=hAq05KSra2g)
 - [Jay Ohms - Strada: Bridging the web and native worlds - Rails World 2023](https://www.youtube.com/watch?v=LKBMXqc43Q8)
 - [RailsConf 2024 - Insights Gained from Developing a Hybrid Application Using Turbo Native by John Pollard](https://www.youtube.com/watch?v=xJO36dD9lj4)
 
 Blogs about Turbo Native:
+
 - [Joe Masilotti](https://masilotti.com/articles/)
 - [William Kennedy](https://williamkennedy.ninja/posts/)
 - [Miles Woodroffe](https://mileswoodroffe.com/tags/turbo-native)
 
 Youtube playlists:
+
 - [Joe Masilotti](https://www.youtube.com/@joemasilotti)
 - [William Kennedy](https://www.youtube.com/@williamkennedy9)
 - [Indigo Tech](https://www.youtube.com/watch?v=O9G0cQomrfQ&list=PL2jr-nMCjDOuzwrs4KiO3N5xnahHZherM)
 
 Templates/example apps:
+
 - [Official demo app](https://github.com/hotwired/turbo-ios/tree/main/Demo)
 - Open source [Daily Log](https://github.com/joemasilotti/daily-log)
 - Open source [Northwind](https://github.com/matthewblott/northwind-on-rails)

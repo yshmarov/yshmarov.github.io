@@ -25,6 +25,7 @@ I will show my approach to creating Hotwire datatables while solving common prob
 We will cover:
 
 Common Hotwire mistakes & best practices:
+
 - unnessesary declarations
 - full page reload VS frames VS streams
 - Fat VS skinny stimulus controllers
@@ -32,6 +33,7 @@ Common Hotwire mistakes & best practices:
 - etc.
 
 Common frontend questions:
+
 - When to use ViewComponents vs Partials?
 - When to use Helpers?
 - When to abstract a TailwindCSS class?
@@ -39,11 +41,13 @@ Common frontend questions:
 - etc.
 
 Common paterns:
+
 - Helpers I wish rails had (`active_link_to`, etc.)
 - Stimulus controllers every app should have (`remove_element`, `debounce`, etc.)
 - etc.
 
 Bonus (if time allows):
+
 - HTML tips that will make your Hotwire journey easier.
 - Useful tools in the ecosystem (stimulus-use, stimulus-components, turbo_boost-commands, custom turbo stream actions)
 
@@ -54,18 +58,21 @@ Yaro met 💎 Ruby in 🇵🇱 Warsaw on a bootcamp back in 2015 and it was love
 Yaro works as an independent consultant. In the last few projects he assumed the role of Lead **Frontend** RoR developer, overseeing all the frontend development, focusing on migrating from webpacker, rails-ujs, jquery, bootstrap to modern tools like esbuild, importmaps, Hotwire, TailwindCSS.
 
 Apart of doing client work, Yaro loves sharing his knowledge with the community:
+
 - He released 200+ screencasts on the SupeRails youtube channel
 - Over 5.000 people have bought his RoR courses on Udemy
 - He has written 250 blogposts about RoR
 
 Interesting facts:
+
 - Yaro speaks 7 languages very vell
 - Yaro is from Chernihiv, Ukraine
 - Yaro goes windsurfing 🏄‍♂️ 4-5 days a week
 
 Links:
+
 - SupeRails: https://superails.com/
-- Blog: https://blog.corsego.com/
+- Blog: https://blog.superails.com/
 - Youtube: https://www.youtube.com/@superails
 - Twitter: https://twitter.com/yarotheslav
 - Linkedin: http://linkedin.com/in/yshmarov/

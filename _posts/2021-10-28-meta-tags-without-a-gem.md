@@ -26,30 +26,37 @@ Here's how basic meta tags can look in the `<head>` of an HMTL document:
 <head>
   <title>Playlists | SupeRails</title>
 
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
 
-  <meta name="description" content="Gem Meta Tags for better SEO">
-  <meta name="author" content="Yaroslav Shmarov">
-  <meta name='copyright' content='SupeRails'>
-  <meta name='language' content='EN'>
-  <meta name='robots' content='index,follow'>
-  <meta name='revised' content='Sunday, July 18th, 2010, 5:15 pm'>
+  <meta name="description" content="Gem Meta Tags for better SEO" />
+  <meta name="author" content="Yaroslav Shmarov" />
+  <meta name="copyright" content="SupeRails" />
+  <meta name="language" content="EN" />
+  <meta name="robots" content="index,follow" />
+  <meta name="revised" content="Sunday, July 18th, 2010, 5:15 pm" />
   <!-- <meta name='revised' content="<%= @post.updated_at.strftime('%A, %B %eth, %Y, %l:%M %P')"> -->
 
-  <meta property="og:title" content="Title of the shared link">
-  <meta property="og:description" content="Description of the content">
-  <meta property="og:image" content="URL of the image">
-  <meta property="og:url" content="URL of the shared link">
-  <meta property="og:type" content="Type of content">
-  <meta property="og:site_name" content="Name of the website">
-  <meta property="og:locale" content="Language and country of the content">
-  <meta name="twitter:card" content="Type of Twitter card">
-  <meta name="twitter:title" content="Title of the shared link">
-  <meta name="twitter:description" content="Description of the content">
-  <meta name="twitter:image" content="http://blog.corsego.com/assets/images/og/posts/meta-tags-without-a-gem.png">
-  <meta name="twitter:url" content="https://blog.corsego.com/meta-tags-without-a-gem">
-  <meta name="twitter:site" content="@rails">
-  <meta name="twitter:creator" content="@yarotheslav"></head> 
+  <meta property="og:title" content="Title of the shared link" />
+  <meta property="og:description" content="Description of the content" />
+  <meta property="og:image" content="URL of the image" />
+  <meta property="og:url" content="URL of the shared link" />
+  <meta property="og:type" content="Type of content" />
+  <meta property="og:site_name" content="Name of the website" />
+  <meta property="og:locale" content="Language and country of the content" />
+  <meta name="twitter:card" content="Type of Twitter card" />
+  <meta name="twitter:title" content="Title of the shared link" />
+  <meta name="twitter:description" content="Description of the content" />
+  <meta
+    name="twitter:image"
+    content="http://blog.superails.com/assets/images/og/posts/meta-tags-without-a-gem.png"
+  />
+  <meta
+    name="twitter:url"
+    content="https://blog.superails.com/meta-tags-without-a-gem"
+  />
+  <meta name="twitter:site" content="@rails" />
+  <meta name="twitter:creator" content="@yarotheslav" />
+</head>
 ```
 
 ℹ️ the `keywords` meta tags is [no longer relevant](https://ahrefs.com/blog/meta-keywords/#:~:text=Meta%20keywords%20are%20meta%20tags,are%20not%20visible%20to%20visitors.&text=It%27s%20easy%20to%20add%20meta,%27%2C%20but%20should%20you%20bother%3F) ☠️
@@ -74,7 +81,7 @@ Great in-depth article: [How to Favicon in 2024: Six files that fit most needs](
 
 ### Dynamic `<title>` and other meta tags
 
-If a page has a custom title, display it. Otherwise display just *"SupeRails"*:
+If a page has a custom title, display it. Otherwise display just _"SupeRails"_:
 
 ```ruby
 # app/views/layouts/application.html.erb
@@ -187,8 +194,9 @@ end
 ```
 
 Example implementations:
-* [insta2blog.com](https://github.com/yshmarov/insta2blog.com/commit/64d690a0e967027c87de13de8cb39113d28cf538){:target="blank"}
-* [old SupeRails](https://github.com/yshmarov/superails-rails6/commit/d489756cc1f1b181e90f86c909d5ba9ce113ff1b){:target="blank"}
+
+- [insta2blog.com](https://github.com/yshmarov/insta2blog.com/commit/64d690a0e967027c87de13de8cb39113d28cf538){:target="blank"}
+- [old SupeRails](https://github.com/yshmarov/superails-rails6/commit/d489756cc1f1b181e90f86c909d5ba9ce113ff1b){:target="blank"}
 
 ### Testing OpenGraph
 
