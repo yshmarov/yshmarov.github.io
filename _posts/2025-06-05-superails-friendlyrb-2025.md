@@ -9,8 +9,8 @@ thumbnail: /assets/thumbnails/friendlyrb.png
 Last year at FriendlyRB 2024, pair coding in the hallway was one of the most memorable experiences. This year, we're taking it to the next level!
 
 <div style="display: flex; gap: 20px; margin: 20px 0;">
-  <img src="/assets/images/friendly-superails-1.jpeg" alt="Friendly.rb SupeRails 1" style="width: 50%;">
-  <img src="/assets/images/friendly-superails-2.jpg" alt="Friendly.rb SupeRails 2" style="width: 50%;">
+  <img src="/assets/images/friendly-superails-1.jpeg" alt="Friendly.rb SupeRails 1" style="width: 50%; height: 300px; object-fit: cover; border-radius: 8px;">
+  <img src="/assets/images/friendly-superails-2.jpg" alt="Friendly.rb SupeRails 2" style="width: 50%; height: 300px; object-fit: cover; border-radius: 8px;">
 </div>
 
 ## 🎯 What's New This Year?
