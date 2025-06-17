@@ -6,8 +6,6 @@ tags: conference superails friendlyrb
 thumbnail: /assets/thumbnails/friendlyrb.png
 ---
 
-# 🚀 SupeRails Hack Space @ Friendly.rb 2025
-
 Last year at FriendlyRB 2024, pair coding in the hallway was one of the most memorable experiences. This year, we're taking it to the next level!
 
 <div style="display: flex; gap: 20px; margin: 20px 0;">
