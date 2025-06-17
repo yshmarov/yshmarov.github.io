@@ -22,14 +22,14 @@ SupeRails will be leading the **hallway track** with our brand new **Hack Space*
 ### Day 1
 
 - **09:00 - 18:00** 🚀 Launch your own SaaS app in a day
-- **18:00** 🤫 Surprise 🎁
+- **18:00** 🤫 Surprise for attendees 🎁
 
 ### Day 2
 
 - **09:00 - 12:00** 💻 Hack session: let's help each other
 - **12:00 - 13:00** 🥑 Showcase: how I use Avo
 - **13:00 - 18:00** 🎙️ Start a Podcast (come with a friend)
-- **18:00** 🤫 Surprise 🎁
+- **18:00** 🤫 Surprise for attendees 🎁
 
 _Note: Schedule times are subject to change_
 
