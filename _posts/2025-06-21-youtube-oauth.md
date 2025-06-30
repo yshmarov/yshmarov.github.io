@@ -1,31 +1,31 @@
 ---
 layout: post
-title: "Separate Google and Youtube oAuth"
+title: "Separate Google and YouTube OAuth Strategies in Rails"
 author: Yaroslav Shmarov
-tags: oauth omniauth devise google youtube
-thumbnail: /assets/thumbnails/turbo.png
+tags: oauth omniauth devise google youtube rails
+thumbnail: /assets/thumbnails/oauth.png
 ---
 
-In this scenario, I want to allow users to authenticate with **google**, but also connect **Youtube** accounts.
+Sometimes you need to allow users to authenticate with **Google** while also connecting their **YouTube** accounts separately. This can be tricky because the `omniauth-google-oauth2` gem doesn't provide a separate YouTube OAuth strategy.
 
-google-and-youtube-oauth.png
+## The Challenge
 
-gem "omniauth-google-oauth2" does not provide a separate youtube oauth strategy.
+The Google OAuth strategy distinguishes between Google and YouTube OAuth only by scopes:
 
-The google oauth strategy distinguishes Google vs Youtube oauth only by scopes.
+- `https://www.googleapis.com/auth/youtube.readonly` - Access basic YouTube account data (can be used for auth or "validate ownership")
+- `https://www.googleapis.com/auth/youtube.force-ssl` - Write access to YouTube account
 
-- `https://www.googleapis.com/auth/youtube.readonly` - scope to access basic youtube account data. can be used for auth or "validate ownership".
-- `https://www.googleapis.com/auth/youtube.force-ssl` - write access to youtube account
+Here's what the OAuth screens look like:
 
-Google oauth screen:
+**Google OAuth screen:**
+![Google OAuth Personal](/assets/images/google-oauth-personal.png)
 
-google-oauth-personal.png
+**YouTube OAuth screen:**
+![Google OAuth YouTube](/assets/images/google-oauth-youtube.png)
 
-Youtube oauth screen
+## Solution: Custom YouTube OAuth Strategy
 
-assets/images/google-oauth-youtube.png
-
-So to separate these oauth strategies, we can create a custom youtube oauth strategy on top of google:
+To separate these OAuth strategies, we can create a custom YouTube OAuth strategy on top of the Google OAuth2 strategy:
 
 ```ruby
 # config/initializers/omniauth.rb
@@ -40,6 +40,7 @@ module OmniAuth
       def initialize(app, *args, &block)
         super
         options.scope = "email,profile,https://www.googleapis.com/auth/youtube.readonly"
+        # For write access, use:
         # options.scope = "email,profile,https://www.googleapis.com/auth/youtube.force-ssl,https://www.googleapis.com/auth/youtube.readonly"
 
         # Use the same redirect URI as Google OAuth2
@@ -52,7 +53,9 @@ module OmniAuth
 end
 ```
 
-Add it as a separate oauth strategy in devise:
+## Configure Devise
+
+Add YouTube as a separate OAuth strategy in your Devise configuration:
 
 ```ruby
 # config/initializers/devise.rb
@@ -67,20 +70,28 @@ Add it as a separate oauth strategy in devise:
                   Rails.application.credentials.dig(:google_oauth2, :secret)
 ```
 
-Ensure that youtube is also present in the list of devise oauth providers in the User model:
+## Update User Model
+
+Ensure that YouTube is included in the list of Devise OAuth providers:
 
 ```ruby
 # app/models/user.rb
-    devise :database_authenticatable, :registerable,
-           :recoverable, :rememberable, :validatable,
-           :omniauthable, omniauth_providers: Devise.omniauth_configs.keys
+class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: Devise.omniauth_configs.keys
+end
 ```
 
-In the google cloud console, add separate callback urls to both providers:
+## Google Cloud Console Setup
 
-google-and-youtube-oauth-callbacks.png
+In the Google Cloud Console, add separate callback URLs for both providers:
 
-Handle
+![Google and YouTube OAuth Callbacks](/assets/images/google-and-youtube-oauth-callbacks.png)
+
+## Handle OAuth Callbacks
+
+Create a controller to handle both Google and YouTube OAuth callbacks:
 
 ```ruby
 # app/controllers/users/omniauth_callbacks_controller.rb
@@ -100,10 +111,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def handle_auth(kind)
     auth_payload = request.env["omniauth.auth"]
 
-    # NOT IMPLEMENTED: handle logic for User having multiple oauth providers here
+    # TODO: Handle logic for User oAuth
     user = User.from_omniauth(auth_payload)
+
     if user.persisted?
-      flash[:notice] = "Success"
+      flash[:notice] = "Successfully authenticated with #{kind.titleize}!"
       sign_in_and_redirect user, event: :authentication
     else
       redirect_to new_user_registration_url, alert: user.errors.full_messages.join("\n")
@@ -111,3 +123,5 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 end
 ```
+
+This way users can authenticate with **Google** or **Youtube**
