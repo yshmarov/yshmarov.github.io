@@ -99,7 +99,7 @@ end
     query_embedding = RubyLLM.embed(query_text).vectors
 
     # distance: :inner_product
-    nearest_neighbors(:embedding, query_to_vector, distance: :cosine).limit(5)
+    nearest_neighbors(:embedding, query_embedding, distance: :cosine).limit(5)
   }
 
   # def text_for_embedding
