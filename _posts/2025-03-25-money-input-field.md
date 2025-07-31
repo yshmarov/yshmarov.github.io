@@ -25,6 +25,12 @@ The importmap pin might fail, so a valid import from an url would be
 +pin "autonumeric", to: "https://ga.jspm.io/npm:autonumeric@4.6.0/dist/autoNumeric.min.js"
 ```
 
+```js
+// app/javascript/controllers/index.js
+import AutoNumeric from "autonumeric";
+application.register("autonumeric", AutoNumeric);
+```
+
 The Stimulus controller:
 
 ```js
