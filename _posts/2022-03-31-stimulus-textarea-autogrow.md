@@ -14,16 +14,26 @@ thumbnail: /assets/thumbnails/stimulus-logo.png
 
 ![text area with autogrow](/assets/images/with-autogrow-good.gif)
 
+CSS [has `"field-sizing: content"`](https://developer.mozilla.org/en-US/docs/Web/CSS/field-sizing), that lets you autogrow your text inputs.
+
+TailwindCSS [has `field-sizing-content`](https://tailwindcss.com/docs/field-sizing#sizing-based-on-content).
+
+But `field-sizing` is not supported by all browsers.
+
+So you do have to use JS instead.
+
+After many iterations, here's my perfected JS approach:
+
 ### 31.12.2024 version:
 
 ```js
 // autogrow_controller.js
-import { Controller } from '@hotwired/stimulus'
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static values = {
-    maxHeight: { type: Number, default: 15 }
-  }
+    maxHeight: { type: Number, default: 15 },
+  };
 
   connect() {
     this.resize();
@@ -31,17 +41,27 @@ export default class extends Controller {
 
   resize() {
     const textarea = this.element;
-    textarea.style.height = 'auto';
-    textarea.style.overflowY = 'hidden';
+    textarea.style.height = "auto";
+    textarea.style.overflowY = "hidden";
 
     // while textarea scrollHeight > textarea offsetHeight & textarea offsetHeight < this.maxHeightValue (5) rows * height of 1 row
-    while (textarea.scrollHeight > textarea.offsetHeight && textarea.offsetHeight < this.maxHeightValue * parseFloat(getComputedStyle(textarea).lineHeight)) {
+    while (
+      textarea.scrollHeight > textarea.offsetHeight &&
+      textarea.offsetHeight <
+        this.maxHeightValue * parseFloat(getComputedStyle(textarea).lineHeight)
+    ) {
       // increase height of textarea by one row
-      textarea.style.height = `${textarea.offsetHeight + parseFloat(getComputedStyle(textarea).lineHeight)}px`;
+      textarea.style.height = `${
+        textarea.offsetHeight +
+        parseFloat(getComputedStyle(textarea).lineHeight)
+      }px`;
     }
     // if textarea already has > maxHeight rows, activate scroll
-    if (textarea.offsetHeight >= this.maxHeightValue * parseFloat(getComputedStyle(textarea).lineHeight)) {
-      textarea.style.overflowY = 'auto';
+    if (
+      textarea.offsetHeight >=
+      this.maxHeightValue * parseFloat(getComputedStyle(textarea).lineHeight)
+    ) {
+      textarea.style.overflowY = "auto";
     }
   }
 }
@@ -58,16 +78,16 @@ rails g stimulus autogrow
 StimulusJS controller inspired by [MDN HTMLTextAreaElement example](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement#autogrowing_textarea_example):
 
 ```js
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   connect() {
-    this.element.style.overflow = 'hidden';
+    this.element.style.overflow = "hidden";
     this.grow();
   }
 
   grow() {
-    this.element.style.height = 'auto';
+    this.element.style.height = "auto";
     this.element.style.height = `${this.element.scrollHeight}px`;
   }
 }
@@ -86,7 +106,7 @@ Usage with `html.erb`:
 
 ```js
 // app/javascript/controllers/autogrow.js
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="autogrow"
 // <%= form.text_area :content, data: {controller: "autogrow" } %>
@@ -98,18 +118,18 @@ export default class extends Controller {
   }
 
   connect() {
-    this.element.style.overflow = 'hidden';
+    this.element.style.overflow = "hidden";
     this.autogrow();
-    this.element.addEventListener('input', this.autogrow);
-    window.addEventListener('resize', this.autogrow);
+    this.element.addEventListener("input", this.autogrow);
+    window.addEventListener("resize", this.autogrow);
   }
 
   disconnect() {
-    window.removeEventListener('resize', this.autogrow);
+    window.removeEventListener("resize", this.autogrow);
   }
 
   autogrow() {
-    this.element.style.height = 'auto';
+    this.element.style.height = "auto";
     this.element.style.height = `${this.element.scrollHeight}px`;
   }
 }
