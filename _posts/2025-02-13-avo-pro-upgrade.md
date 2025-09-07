@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Upgrading to Avo Pro"
+title: "Conditinally include Avo Pro in your Gemfile"
 tags: avo
 ---
 
@@ -70,4 +70,10 @@ RAILS_GROUPS=avo
 BUNDLE_WITH=avo
 BUNDLE_PACKAGER__DEV=foobar
 AVO_LICENSE_KEY=bizzbazz
+```
+
+Run rails server with Avo Pro directly
+
+```sh
+RAILS_GROUPS=avo BUNDLE_WITH=avo rails s
 ```
