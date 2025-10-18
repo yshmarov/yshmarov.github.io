@@ -32,7 +32,6 @@ echo > .rubocop.yml
 My basic setup:
 
 ```yml
-# .rubocop.yml - basic setup example
 plugins:
   - rubocop-rails
 
@@ -91,6 +90,14 @@ Metrics/ParameterLists:
   Enabled: false
 
 Naming/PredicateMethod:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+# important for erb lint not to remove opening <% tags in html.erb files
+
+Layout/LeadingEmptyLines:
   Enabled: false
 
 # would like to enable these later
