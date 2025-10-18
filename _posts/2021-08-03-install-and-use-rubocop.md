@@ -33,40 +33,72 @@ My basic setup:
 
 ```yml
 # .rubocop.yml - basic setup example
-require: 
+plugins:
   - rubocop-rails
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.3.0
+  TargetRubyVersion: 3.4
   Exclude:
-    - vendor/bundle/**/*
     - '**/db/schema.rb'
     - '**/db/**/*'
     - 'config/**/*'
     - 'bin/*'
-    - 'config.ru'
-    - 'Rakefile'
+    - 'vendor/bundle/**/*'
+    - 'node_modules/**/*'
+    - app/models/concerns/obfuscates_id.rb
 
-Style/Documentation:
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/ClassAndModuleChildren:
   Enabled: false
 
-Rails/Output:
+Metrics/BlockLength:
   Enabled: false
 
-Style/EmptyMethod:
+Layout/LineLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Style/Documentation:
   Enabled: false
 
 Bundler/OrderedGems:
   Enabled: false
-  
-Lint/UnusedMethodArgument:
+
+Lint/MissingSuper:
   Enabled: false
 
-Style/FrozenStringLiteralComment:
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Rails/RenderInline:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Naming/PredicateMethod:
+  Enabled: false
+
+# would like to enable these later
+
+Style/OpenStructUse:
+  Enabled: false
+
+Rails/OutputSafety:
   Enabled: false
 ```
 
