@@ -72,4 +72,10 @@ By Eelco
 
 By [sm_startups](https://x.com/sm_startups)
 
+### [RailsbootUI](https://railsbootui.com)
+Rails View Components for Bootstrap
+
+By [DotRuby](https://www.dotruby.com)
+
+
 ![yoda ui wars](/assets/images/rails-ui-wars.png)
