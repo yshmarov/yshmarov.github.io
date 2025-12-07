@@ -77,5 +77,8 @@ Rails View Components for Bootstrap
 
 By [DotRuby](https://www.dotruby.com)
 
+### [Rails Blocks](https://railsblocks.com)
+
+By [Alexandru Golovatenco](https://dev.to/sandu)
 
 ![yoda ui wars](/assets/images/rails-ui-wars.png)
