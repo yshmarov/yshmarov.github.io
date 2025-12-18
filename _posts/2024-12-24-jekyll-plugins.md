@@ -71,6 +71,23 @@ og_image:
       - "#EDA895"
 ```
 
+Add libvips to CI:
+
+```yml
+# .github/workflows/jekyll.yml
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      # ADD THIS ->
+      - name: Install libvips
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: sudo apt-get install --fix-missing libvips
+```
+
 ### [gem Jekyll Sitemap](https://github.com/jekyll/jekyll-sitemap)
 
 Important for search engines.
