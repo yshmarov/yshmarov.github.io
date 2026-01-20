@@ -2,13 +2,7 @@
 layout: post
 title: Test Omniauth authentication (github, azure)
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails
-- omniauth
-- testing
-- minitest
-- github
-- azure
+tags: ruby-on-rails omniauth testing minitest github azure
 thumbnail: /assets/thumbnails/oauth.png
 youtube_id: kW-AEo6V15M
 ---

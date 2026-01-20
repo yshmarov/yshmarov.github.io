@@ -2,11 +2,7 @@
 layout: post
 title: 'TLDR: Rails 7 Active Record Encryption'
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails
-- credentials
-- encryption
-- secrets
+tags: ruby-on-rails credentials encryption secrets
 thumbnail: /assets/thumbnails/encryption-lock.png
 youtube_id: SZCuEfvs9rc
 ---

@@ -1,0 +1,121 @@
+// Post list card styling
+.post-list li {
+  border: 1px solid #ccc;
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+
+  h3 {
+    margin: 8px 0 4px;
+  }
+}
+
+// Thumbnail in post list
+.post-thumbnail {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+// Post content image styling
+.post-content img {
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem 0;
+}
+
+// Code block styling
+.post-content pre {
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+// Prev/Next navigation
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ccc;
+}
+
+.post-nav-item {
+  flex: 1 1 0;
+  width: 45%;
+
+  &--prev {
+    padding-right: 0.5em;
+  }
+
+  &--next {
+    padding-left: 0.5em;
+    text-align: right;
+  }
+}
+
+// Search component
+.search-container {
+  margin-bottom: 1.5rem;
+}
+
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: #6c757d;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 40px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+
+  &:focus {
+    outline: none;
+    border-color: #820C02;
+  }
+
+  &::placeholder {
+    color: #6c757d;
+  }
+}
+
+.search-clear {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 4px;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
+
+.search-results-count {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+// Hide posts when filtering
+.post-list li.hidden {
+  display: none;
+}

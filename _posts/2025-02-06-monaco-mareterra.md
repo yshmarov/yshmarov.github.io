@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "Monaco Mareterra"
+author: Yaroslav Shmarov
 tags: monaco
+thumbnail: /assets/thumbnails/globe.png
 ---
 
 In the 18th century, Monaco sold 90% of its land to France.

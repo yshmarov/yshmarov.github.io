@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "2025 is the year of Markdown. Avo built Marksmith Markdown editor for Rails"
+author: Yaroslav Shmarov
 tags: avo
+thumbnail: /assets/thumbnails/markdown.png
 ---
 
 ### The age of Markdown

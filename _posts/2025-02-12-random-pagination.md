@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "Random Pagination"
+author: Yaroslav Shmarov
 tags: pagination pagy
+thumbnail: /assets/thumbnails/rails-logo.png
 ---
 
 Sometimes you want to display records in a random order, but also paginate them.

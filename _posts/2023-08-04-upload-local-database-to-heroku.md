@@ -2,10 +2,7 @@
 layout: post
 title: Heroku upload local database to production
 author: Yaroslav Shmarov
-tags: 
-  - ruby on rails
-  - heroku
-  - postgresql
+tags: ruby-on-rails heroku postgresql
 thumbnail: /assets/thumbnails/heroku.png
 ---
 

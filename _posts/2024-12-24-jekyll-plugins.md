@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "My recommended Jekyll plugins in 2025"
+author: Yaroslav Shmarov
 categories: jekyll theming
 tags: ruby rails
+thumbnail: /assets/thumbnails/cog.png
 ---
 
 ### Extend [Minima](https://github.com/jekyll/minima) theme

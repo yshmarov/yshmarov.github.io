@@ -73,4 +73,26 @@ og_image:
 
 tag_page_layout: tag_page
 tag_page_dir: tag
-ignored_tags: [tags, to, ignore]
+ignored_tags:
+  - "ruby on rails"
+  - "dark mode"
+  - "dark theme"
+
+# Suppress Sass deprecation warnings from minima theme
+sass:
+  quiet_deps: true
+  silence_deprecations:
+    - import
+    - color-functions
+
+# Build optimization
+incremental: true
+lsi: false
+
+# Exclude unnecessary files
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CLAUDE.md
+  - vendor/

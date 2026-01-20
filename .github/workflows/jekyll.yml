@@ -30,6 +30,11 @@ jobs:
         with:
           ruby-version: "3.3.3"
           bundler-cache: true
+      - name: Cache OG Images
+        uses: actions/cache@v4
+        with:
+          path: assets/images/og
+          key: og-images-${{ hashFiles('_posts/**') }}
       - name: Install libvips
         env:
           DEBIAN_FRONTEND: noninteractive

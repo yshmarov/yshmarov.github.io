@@ -2,13 +2,7 @@
 layout: post
 title: "Install Ruby on Rails 6 with Webpacker and Yarn on Ubuntu: TLDR"
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails 6
-- installation
-- ubuntu
-- webpacker
-- yarn
-- tldr
+tags: ruby-on-rails-6 installation ubuntu webpacker yarn tldr
 thumbnail: /assets/thumbnails/rails-logo.png
 ---
 

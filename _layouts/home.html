@@ -21,19 +21,19 @@ layout: default
   {%- if page.list_title -%}
   <h2 class="post-list-heading">{{ page.list_title }}</h2>
   {%- endif -%}
-  <ul class="post-list" style="">
+
+  {% include search.html %}
+
+  <ul class="post-list">
     {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
     {%- for post in posts -%}
-    <li style="border: 1px solid #ccc; padding-left: 10px; border-radius: 10px;">
+    <li>
       <span class="post-meta">{{ post.date | date: date_format }}</span>
-      <span>
-        #{{ forloop.rindex }}
-      </span>
+      <span class="post-number">#{{ forloop.rindex }}</span>
       <h3>
         <a class="post-link" href="{{ post.url | relative_url }}">
           {%- if post.thumbnail -%}
-          <img src="{{ post.thumbnail }}" style="width:25px;height:25px;">
-          &#160;
+          <img src="{{ post.thumbnail }}" class="post-thumbnail" alt="">
           {%- endif -%}
           {{ post.title | escape }}
         </a>
@@ -47,6 +47,8 @@ layout: default
     </li>
     {%- endfor -%}
   </ul>
+
+  <script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>
 
   {% if site.paginate %}
   <div class="pager">

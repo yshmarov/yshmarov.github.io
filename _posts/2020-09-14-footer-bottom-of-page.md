@@ -2,12 +2,7 @@
 layout: post
 title: "Quick tip: Footer on the bottom of the page: TLDR"
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails
-- tldr
-- footer
-- html
-- css
+tags: ruby-on-rails tldr footer html css
 thumbnail: https://icon-library.com/images/white-down-arrow-icon/white-down-arrow-icon-5.jpg
 ---
 

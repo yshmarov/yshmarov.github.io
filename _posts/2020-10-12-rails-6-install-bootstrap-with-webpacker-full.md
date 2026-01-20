@@ -2,12 +2,7 @@
 layout: post
 title: 'Rails 6: Install Bootstrap with Yarn and Webpacker: Full guide'
 author: Yaroslav Shmarov
-tags:
-- webpacker
-- yarn
-- bootstrap
-- ruby on rails 6
-- ruby on rails
+tags: webpacker yarn bootstrap ruby-on-rails-6 ruby-on-rails
 thumbnail: /assets/thumbnails/bootstrap.png
 ---
 

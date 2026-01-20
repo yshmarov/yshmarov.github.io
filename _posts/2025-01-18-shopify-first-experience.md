@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "Starting an ecommerce store: not so easy. My story"
+author: Yaroslav Shmarov
 tags: shopify ecommerce
+thumbnail: /assets/thumbnails/money.png
 ---
 
 So, my friend sells & ships books in his country.

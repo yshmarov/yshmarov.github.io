@@ -2,9 +2,7 @@
 layout: post
 title:  Navbar with Devise and Bootstrap (4, 5) 
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails
-- devise
+tags: ruby-on-rails devise
 thumbnail: /assets/thumbnails/devise.png
 ---
 

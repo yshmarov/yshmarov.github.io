@@ -2,16 +2,7 @@
 layout: post
 title: "Discount coupon: Ruby on Rails 6: Learn 25+ gems and build a Startup MVP 2020"
 author: Yaroslav Shmarov
-tags: 
-- udemy
-- ruby on rails
-- premium tutorial
-- screencasts
-- video course
-- elearning
-- mvp
-- startup
-- boilerplate
+tags: udemy ruby-on-rails premium-tutorial screencasts video-course elearning mvp startup boilerplate
 thumbnail: https://about.udemy.com/wp-content/uploads/2017/10/NewUlogo-large-1.png
 ---
 

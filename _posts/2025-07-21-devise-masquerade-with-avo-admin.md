@@ -3,6 +3,7 @@ layout: post
 title: Devise Masquerade (Login as) with Avo
 author: Yaroslav Shmarov
 tags: avo impersonation
+thumbnail: /assets/thumbnails/devise.png
 ---
 
 ### Basic [devise masquerade](https://github.com/oivoodoo/devise_masquerade) (Login as)

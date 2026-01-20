@@ -2,11 +2,7 @@
 layout: post
 title: '14 Ruby on Rails and 7 Hotwire interview questions in 2023'
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails
-- interview
-- recruiting
-- HR
+tags: ruby-on-rails interview recruiting HR
 thumbnail: /assets/thumbnails/interview.png
 ---
 

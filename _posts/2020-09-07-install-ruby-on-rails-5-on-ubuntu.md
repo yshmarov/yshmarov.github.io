@@ -2,13 +2,7 @@
 layout: post
 title: "Install Ruby on Rails 5 on Ubuntu: TLDR"
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails 5
-- installation
-- ubuntu
-- webpacker
-- yarn
-- tldr
+tags: ruby-on-rails-5 installation ubuntu webpacker yarn tldr
 thumbnail: /assets/thumbnails/rails-logo.png
 ---
 

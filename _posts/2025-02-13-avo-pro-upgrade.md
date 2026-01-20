@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "Conditinally include Avo Pro in your Gemfile"
+author: Yaroslav Shmarov
 tags: avo
+thumbnail: /assets/thumbnails/admin.png
 ---
 
 So the other day I purchased an Avo Pro license and needed to update my app to use it.

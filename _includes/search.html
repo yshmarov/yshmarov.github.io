@@ -1,0 +1,21 @@
+<div class="search-container">
+  <div class="search-wrapper">
+    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.35-4.35"></path>
+    </svg>
+    <input
+      type="text"
+      id="search-input"
+      class="search-input"
+      placeholder="Search {{ site.posts.size }} posts by title..."
+      autocomplete="off"
+    >
+    <button id="search-clear" class="search-clear" type="button" aria-label="Clear search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6 6 18M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+  <div id="search-results-count" class="search-results-count"></div>
+</div>

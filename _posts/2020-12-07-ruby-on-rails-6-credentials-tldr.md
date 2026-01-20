@@ -2,11 +2,7 @@
 layout: post
 title: "How to use Credentials in Ruby on Rails 6? TLDR"
 author: Yaroslav Shmarov
-tags:
-  - ruby on rails
-  - credentials
-  - secrets
-  - tldr
+tags: ruby-on-rails credentials secrets tldr
 thumbnail: /assets/thumbnails/encryption-lock.png
 description: Quickest guide to credentials and secrets for Rails 6
 youtube_id: nDJE8WG0auE

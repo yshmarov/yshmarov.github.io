@@ -2,9 +2,7 @@
 layout: post
 title: 'ChatGPT exists. Should I stop writing?'
 author: Yaroslav Shmarov
-tags: 
-- writing
-- chatgpt
+tags: writing chatgpt
 thumbnail: /assets/static-pages/yaro-avatar.png
 ---
 

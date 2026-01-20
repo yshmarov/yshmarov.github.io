@@ -2,10 +2,7 @@
 layout: post
 title: "Just hit 100 sales and $900 on Udemy!!! [RoR course]"
 author: Yaroslav Shmarov
-tags: 
-- udemy
-- online courses
-- elearning
+tags: udemy online-courses elearning
 thumbnail: https://about.udemy.com/wp-content/uploads/2017/10/NewUlogo-large-1.png
 ---
 

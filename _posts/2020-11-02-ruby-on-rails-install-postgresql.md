@@ -2,12 +2,7 @@
 layout: post
 title:  "Ruby on Rails: How to setup Postgresql? TLDR"
 author: Yaroslav Shmarov
-tags:
-- ubuntu
-- postgres
-- pg
-- postgresql
-- ruby on rails
+tags: ubuntu postgres pg postgresql ruby-on-rails
 thumbnail: https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/1200px-Postgresql_elephant.svg.png
 ---
 

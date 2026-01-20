@@ -2,10 +2,7 @@
 layout: post
 title: "How to load Heroku production database in development?"
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails
-- heroku
-- postgresql
+tags: ruby-on-rails heroku postgresql
 thumbnail: /assets/thumbnails/heroku.png
 youtube_id: qSYLJhe2nO4
 ---

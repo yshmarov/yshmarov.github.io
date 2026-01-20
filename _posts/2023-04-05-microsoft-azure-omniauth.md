@@ -2,11 +2,7 @@
 layout: post
 title: 'Omniauth with Microsoft (Azure Active Directory)'
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails
-- microsoft
-- azure
-- omniauth
+tags: ruby-on-rails microsoft azure omniauth
 thumbnail: /assets/thumbnails/windows-logo.png
 youtube_id: 3BNJ3G226_o
 ---

@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "My VS Code / Cursor plugins in 2025"
+author: Yaroslav Shmarov
 categories: cursor ide vscode
 tags: ruby rails
+thumbnail: /assets/thumbnails/rails-logo.png
 ---
 
 I always add [rubocop]({% post_url 2021-08-03-install-and-use-rubocop %}) & [erb_lint]({% post_url 2022-08-06-erb-linting %}) to my projects.

@@ -2,12 +2,7 @@
 layout: post
 title: Build a Trello clone with Ruby on Rails, RankedModel and jQuery Sortable
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails
-- jquery
-- ranked-model
-- drag and drop
-- sortable
+tags: ruby-on-rails jquery ranked-model drag-and-drop sortable
 thumbnail: /assets/thumbnails/trello.png
 ---
 

@@ -2,14 +2,7 @@
 layout: post
 title: "SaaS: How to code the subscriptions business model?"
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails
-- tutorial
-- premium
-- subscription
-- saas
-- mvp
-- startup
+tags: ruby-on-rails tutorial premium subscription saas mvp startup
 thumbnail: https://cdn.shopify.com/s/files/1/1061/1924/products/Money_Bag_Emoji_grande.png?v=1571606064
 ---
 

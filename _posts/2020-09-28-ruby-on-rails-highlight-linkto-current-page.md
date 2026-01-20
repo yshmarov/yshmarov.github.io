@@ -2,9 +2,7 @@
 layout: post
 title: 'Highlight link to current page'
 author: Yaroslav Shmarov
-tags:
-- ruby on rails
-- html
+tags: ruby-on-rails html
 thumbnail: /assets/thumbnails/rails-logo.png
 youtube_id: yvB2ZQh1HVY
 ---

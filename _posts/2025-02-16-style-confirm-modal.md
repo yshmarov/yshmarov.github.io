@@ -1,7 +1,9 @@
 ---
 layout: post
 title: "Style window.confirm() with Turbo"
+author: Yaroslav Shmarov
 tags: javascript turbo
+thumbnail: /assets/thumbnails/javascript.png
 ---
 
 In Rails we often use

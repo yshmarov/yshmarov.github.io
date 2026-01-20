@@ -2,18 +2,7 @@
 layout: post
 title: "Launching course: Ruby on Rails - Learn to Build a Multitenancy Subscriptions SaaS app MVP"
 author: Yaroslav Shmarov
-tags: 
-- gumroad
-- ruby on rails
-- premium tutorial
-- screencasts
-- video course
-- multitenancy
-- saas
-- subscription
-- mvp
-- startup
-- boilerplate
+tags: gumroad ruby-on-rails premium-tutorial screencasts video-course multitenancy saas subscription mvp startup boilerplate
 thumbnail: https://www.strattic.com/wp-content/uploads/2019/05/gumroad.jpg
 description: Launching Course and Black Friday sale
 ---

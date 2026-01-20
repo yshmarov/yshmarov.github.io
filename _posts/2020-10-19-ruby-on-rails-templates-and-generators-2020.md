@@ -2,11 +2,7 @@
 layout: post
 title: 'Ruby on Rails: templates and generators in 2020'
 author: Yaroslav Shmarov
-tags:
-- ruby on rails
-- templates
-- generators
-- boilerplates
+tags: ruby-on-rails templates generators boilerplates
 thumbnail: /assets/2020-10-21-ruby-on-rails-templates-and-generators-2020/templates-generators-logo.png
 ---
 

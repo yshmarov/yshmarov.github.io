@@ -2,12 +2,7 @@
 layout: post
 title:  "Ruby on Rails: Dark Mode: TLDR"
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails
-- dark mode
-- dark theme
-- bootstrap
-- tldr
+tags: ruby-on-rails dark-mode dark-theme bootstrap tldr
 thumbnail: /assets/thumbnails/dark-mode.png
 youtube_id: N2y3AglGKQ4
 ---

@@ -2,8 +2,7 @@
 layout: post
 title:  Memo - Rails ActiveRecord data types
 author: Yaroslav Shmarov
-tags: 
-- ruby on rails
+tags: ruby-on-rails
 thumbnail: https://pbs.twimg.com/media/CZGHPChUAAA3jqE.png
 ---
 
