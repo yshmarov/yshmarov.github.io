@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-gem "jekyll"
+gem "jekyll", "~> 4.4"
 gem "minima", git: "https://github.com/jekyll/minima"
 group :jekyll_plugins do
   gem "jekyll-feed"
@@ -13,10 +13,15 @@ group :jekyll_plugins do
   gem 'jekyll-og-image'
 end
 
+group :test do
+  gem 'rake'
+  gem 'nokogiri'
+end
+
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
 platforms :mingw, :x64_mingw, :mswin, :jruby do
-  gem "tzinfo", "~> 1.2"
+  gem "tzinfo", ">= 1.2"
   gem "tzinfo-data"
 end
 

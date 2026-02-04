@@ -14,6 +14,11 @@ links_to_prev_next: true
 minima:
   skin: classic
   date_format: "%a, %b %-d, %Y"
+  nav_pages:
+    - about.md
+    - courses.md
+    - screencasts.md
+    - services.md
   social_links:
     - { platform: github, user_url: "https://github.com/yshmarov/" }
     - { platform: linkedin, user_url: "https://www.linkedin.com/in/yshmarov/" }
@@ -36,7 +41,7 @@ tagline: Ruby on Rails tips and tricks
 github_edit_url: "https://github.com/yshmarov/yshmarov.github.io/blob/master/"
 
 feed:
-  posts_limit: 1000
+  posts_limit: 50
 
 author:
   name: Yaroslav Shmarov
@@ -95,4 +100,6 @@ exclude:
   - Gemfile.lock
   - README.md
   - CLAUDE.md
+  - Rakefile
   - vendor/
+  - node_modules/
