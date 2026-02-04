@@ -20,11 +20,11 @@ minima:
     - screencasts.md
     - services.md
   social_links:
-    - { platform: github, user_url: "https://github.com/yshmarov/" }
-    - { platform: linkedin, user_url: "https://www.linkedin.com/in/yshmarov/" }
-    - { platform: mastodon, user_url: "https://ruby.social/@yarotheslav/" }
-    - { platform: twitter, user_url: "https://twitter.com/yarotheslav/" }
-    - { platform: youtube, user_url: "https://www.youtube.com/@SupeRails/" }
+    - { icon: github, url: "https://github.com/yshmarov/", title: "GitHub" }
+    - { icon: linkedin, url: "https://www.linkedin.com/in/yshmarov/", title: "LinkedIn" }
+    - { icon: mastodon, url: "https://ruby.social/@yarotheslav/", title: "Mastodon" }
+    - { icon: x-twitter, url: "https://twitter.com/yarotheslav/", title: "Twitter" }
+    - { icon: youtube, url: "https://www.youtube.com/@SupeRails/", title: "YouTube" }
 
 plugins:
   - jekyll-feed
