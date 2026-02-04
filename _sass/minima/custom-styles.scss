@@ -64,6 +64,10 @@
   --radius-lg: 12px;
   --radius-xl: 16px;
   --radius-full: 9999px;
+
+  // System font stack
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
 
 // =============================================================================
@@ -76,6 +80,7 @@ html {
 }
 
 body {
+  font-family: var(--font-family-sans);
   font-size: var(--font-size-base);
   line-height: 1.7;
   color: var(--color-gray-800);
@@ -85,6 +90,10 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
   line-height: 1.3;
   color: var(--color-gray-900);
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-family-mono);
 }
 
 // =============================================================================
@@ -143,39 +152,69 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // =============================================================================
+// HOMEPAGE INTRO
+// =============================================================================
+
+.home-intro {
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.home-tagline {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-gray-900);
+  margin-bottom: var(--space-1);
+  letter-spacing: -0.01em;
+}
+
+.home-post-count {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+  margin-bottom: 0;
+}
+
+// =============================================================================
 // POST LIST CARDS
 // =============================================================================
 
-.post-list li {
-  background: white;
-  border: 1px solid var(--color-gray-200);
-  border-left: 3px solid transparent;
-  padding: var(--space-4) var(--space-5);
-  border-radius: var(--radius-lg);
-  margin-bottom: var(--space-4);
-  box-shadow: var(--shadow-sm);
-  transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base),
-    border-color var(--transition-base);
+.post-list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    border-left-color: var(--color-brand);
-  }
+  li {
+    background: white;
+    border: 1px solid var(--color-gray-200);
+    border-left: 3px solid transparent;
+    padding: var(--space-4) var(--space-5);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-4);
+    box-shadow: var(--shadow-sm);
+    transition:
+      transform var(--transition-base),
+      box-shadow var(--transition-base),
+      border-color var(--transition-base);
 
-  h3 {
-    margin: var(--space-2) 0 var(--space-1);
-    font-size: var(--font-size-lg);
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-left-color: var(--color-brand);
+    }
 
-    a {
-      color: var(--color-gray-900);
-      text-decoration: none;
-      transition: color var(--transition-fast);
+    h3 {
+      margin: var(--space-2) 0 var(--space-1);
+      font-size: var(--font-size-lg);
 
-      &:hover {
-        color: var(--color-brand);
+      a {
+        color: var(--color-gray-900);
+        text-decoration: none;
+        transition: color var(--transition-fast);
+
+        &:hover {
+          color: var(--color-brand);
+        }
       }
     }
   }
@@ -253,6 +292,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 2px solid transparent;
   border-radius: var(--radius-lg);
   font-size: 16px; // Prevent iOS zoom
+  font-family: var(--font-family-sans);
   color: var(--color-gray-800);
   transition:
     background-color var(--transition-fast),
@@ -315,6 +355,41 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // =============================================================================
+// POST TITLE THUMBNAIL
+// =============================================================================
+
+.post-title-thumbnail {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  vertical-align: middle;
+  margin-right: var(--space-2);
+  object-fit: cover;
+}
+
+// =============================================================================
+// VIDEO EMBED
+// =============================================================================
+
+.video-embed {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  margin-bottom: var(--space-4);
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: var(--radius-md);
+  }
+}
+
+// =============================================================================
 // POST CONTENT TYPOGRAPHY
 // =============================================================================
 
@@ -339,7 +414,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: var(--font-size-lg);
   }
 
-  // Images
+  // Images - allow breakout from 65ch
   img {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
@@ -364,10 +439,11 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 
-  // Code blocks
+  // Code blocks - allow breakout from 65ch
   div.highlight, figure.highlight {
     position: relative;
     border: none;
+    max-width: none;
   }
 
   pre {
@@ -377,6 +453,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow-x: auto;
     margin: var(--space-5) 0;
     box-shadow: var(--shadow-md);
+    max-width: none;
 
     // Custom scrollbar
     &::-webkit-scrollbar {
@@ -433,6 +510,7 @@ h1, h2, h3, h4, h5, h6 {
     margin: var(--space-6) 0;
     border-collapse: collapse;
     font-size: var(--font-size-sm);
+    max-width: none;
 
     th, td {
       padding: var(--space-3) var(--space-4);
@@ -449,6 +527,133 @@ h1, h2, h3, h4, h5, h6 {
       background: var(--color-gray-50);
     }
   }
+}
+
+// =============================================================================
+// SUPPORT CTA
+// =============================================================================
+
+.post-support-cta {
+  margin-top: var(--space-10);
+  padding: var(--space-6);
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  text-align: center;
+
+  p {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+    margin-bottom: var(--space-4);
+    font-weight: 500;
+  }
+}
+
+// =============================================================================
+// RELATED POSTS
+// =============================================================================
+
+.related-posts {
+  margin-top: var(--space-10);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-gray-200);
+
+  h3 {
+    font-size: var(--font-size-base);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-4);
+    font-weight: 600;
+  }
+}
+
+.related-posts-list {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+
+  li {
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--color-gray-100);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    a {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-4);
+      padding: var(--space-3) 0;
+      text-decoration: none;
+      color: var(--color-gray-800);
+      transition: color var(--transition-fast);
+
+      &:hover {
+        color: var(--color-brand);
+      }
+    }
+  }
+}
+
+.related-post-title {
+  font-weight: 500;
+}
+
+.related-post-date {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-400);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+// =============================================================================
+// EDIT PAGE LINK (Post footer)
+// =============================================================================
+
+.post-footer-meta {
+  margin-top: var(--space-8);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.edit-page-link {
+  font-size: var(--font-size-xs);
+  color: var(--color-gray-400);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-brand);
+  }
+}
+
+// =============================================================================
+// TABLE OF CONTENTS (auto-generated anchor headings)
+// =============================================================================
+
+.anchor {
+  color: var(--color-gray-300);
+  text-decoration: none;
+  margin-left: var(--space-2);
+  font-weight: 400;
+  opacity: 0;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-brand);
+  }
+}
+
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+  opacity: 1;
 }
 
 // =============================================================================
@@ -527,7 +732,7 @@ h1, h2, h3, h4, h5, h6 {
 .site-footer {
   background: var(--color-gray-50);
   border-top: 1px solid var(--color-gray-200);
-  padding: var(--space-12) 0 var(--space-8);
+  padding: var(--space-10) 0 var(--space-8);
   margin-top: var(--space-16);
 }
 
@@ -560,13 +765,17 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid var(--color-gray-200);
     border-radius: var(--radius-md);
     text-decoration: none;
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
     transition:
       transform var(--transition-fast),
-      box-shadow var(--transition-fast);
+      box-shadow var(--transition-fast),
+      color var(--transition-fast);
 
     &:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-sm);
+      color: var(--color-brand);
     }
 
     .svg-icon {
@@ -609,9 +818,7 @@ h1, h2, h3, h4, h5, h6 {
 @media screen and (max-width: 600px) {
   .post-content {
     pre {
-      margin-left: calc(-1 * var(--space-4));
-      margin-right: calc(-1 * var(--space-4));
-      border-radius: 0;
+      border-radius: var(--radius-sm);
       padding: var(--space-4);
     }
   }
@@ -623,6 +830,15 @@ h1, h2, h3, h4, h5, h6 {
 
   .post-nav-item {
     max-width: 100%;
+  }
+
+  .related-posts-list li a {
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .related-post-date {
+    align-self: flex-start;
   }
 }
 
@@ -716,7 +932,7 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0;
   transition: opacity var(--transition-fast), background-color var(--transition-fast);
   z-index: 1;
-  font-family: inherit;
+  font-family: var(--font-family-sans);
   line-height: 1.4;
 
   &:hover {

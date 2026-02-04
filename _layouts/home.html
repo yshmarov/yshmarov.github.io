@@ -9,6 +9,10 @@ layout: default
 
   {{ content }}
 
+  <div class="home-intro">
+    <p class="home-tagline">{{ site.tagline | default: site.description }}</p>
+    <p class="home-post-count">{{ site.posts.size }} posts and counting.</p>
+  </div>
 
   {% if site.paginate %}
   {% assign posts = paginator.posts %}
@@ -29,7 +33,6 @@ layout: default
     {%- for post in posts -%}
     <li>
       <span class="post-meta">{{ post.date | date: date_format }}</span>
-      <span class="post-number">#{{ forloop.rindex }}</span>
       <h3>
         <a class="post-link" href="{{ post.url | relative_url }}">
           {%- if post.thumbnail -%}
@@ -37,10 +40,10 @@ layout: default
           {%- endif -%}
           {{ post.title | escape }}
         </a>
-        <small>
-          {{ post | tags }}
-        </small>
       </h3>
+      <div class="post-tags">
+        {{ post | tags }}
+      </div>
       {%- if site.show_excerpts -%}
       {{ post.excerpt }}
       {%- endif -%}
