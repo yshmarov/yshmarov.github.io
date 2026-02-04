@@ -3,26 +3,22 @@ layout: default
 ---
 <h2>{{ page.tag }}</h2>
 
-<ul class="post-list" style="">
+<ul class="post-list">
   {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
   {%- for post in page.posts -%}
-  <li style="border: 1px solid #ccc; padding-left: 10px; border-radius: 10px;">
+  <li>
     <span class="post-meta">{{ post.date | date: date_format }}</span>
-    <span>
-      #{{ forloop.rindex }}
-    </span>
     <h3>
       <a class="post-link" href="{{ post.url | relative_url }}">
         {%- if post.thumbnail -%}
-        <img src="{{ post.thumbnail }}" style="width:25px;height:25px;">
-        &#160;
+        <img src="{{ post.thumbnail }}" class="post-thumbnail" alt="">
         {%- endif -%}
         {{ post.title | escape }}
       </a>
-      <small>
-        {{ post | tags }}
-      </small>
     </h3>
+    <div class="post-tags">
+      {{ post | tags }}
+    </div>
     {%- if site.show_excerpts -%}
     {{ post.excerpt }}
     {%- endif -%}

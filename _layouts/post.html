@@ -1,13 +1,16 @@
 ---
 layout: default
 ---
+{%- assign words = content | number_of_words -%}
+{%- assign reading_time = words | divided_by: 200 -%}
+{%- if reading_time == 0 -%}{%- assign reading_time = 1 -%}{%- endif -%}
+
 <article class="post h-entry" itemscope itemtype="https://schema.org/BlogPosting">
 
-  <header class="post-header" style="">
+  <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">
       {%- if page.thumbnail -%}
-      <img src="{{ page.thumbnail }}" style="width:25px;height:25px;">
-      &#160;
+      <img src="{{ page.thumbnail }}" class="post-title-thumbnail" alt="">
       {%- endif -%}
       {{ page.title | escape }}
     </h1>
@@ -17,7 +20,7 @@ layout: default
         {{ page.date | date: date_format }}
       </time>
       {%- if page.modified_date -%}
-        ~ 
+        ~
         {%- assign mdate = page.modified_date | date_to_xmlschema -%}
         <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
           {{ mdate | date: date_format }}
@@ -30,37 +33,37 @@ layout: default
             {%- if forloop.last == false %}, {% endif -%}
         {% endfor %}
       {%- endif -%}
-      {% if page.path %}
-      • <a href="{{ site.github_edit_url }}{{ page.path }}" target="_blank">Edit this page</a>
-      {% endif %}
+      • {{ reading_time }} min read
     </p>
   </header>
 
   {%- if page.youtube_id -%}
-    <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-      <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" allowfullscreen src="https://www.youtube.com/embed/{{page.youtube_id}}"></iframe>
+    <div class="video-embed">
+      <iframe allowfullscreen src="https://www.youtube.com/embed/{{page.youtube_id}}"></iframe>
     </div>
     <hr>
-  {%- endif -%}</p>
+  {%- endif -%}
 
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
 
-  <hr>
-  <p style="font-weight: bold;">
-    Did you like this article? Did it save you some time?
-  </p>
-
-  <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="yshmarov" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+  <div class="post-support-cta">
+    <p>Did you like this article? Did it save you some time?</p>
+    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="yshmarov" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+  </div>
 
   {% if site.related_posts.size >= 1 %}
-  <hr>
-  <div>
-    <h3>You might also like:</h3>
-    <ul>
+  <div class="related-posts">
+    <h3>You might also like</h3>
+    <ul class="related-posts-list">
     {% for related_post in site.related_posts limit: 5 %}
-      <li><a href="{{ related_post.url }}">{{ related_post.title }}</a></li>
+      <li>
+        <a href="{{ related_post.url }}">
+          <span class="related-post-title">{{ related_post.title }}</span>
+          <span class="related-post-date">{{ related_post.date | date: date_format }}</span>
+        </a>
+      </li>
     {% endfor %}
     </ul>
   </div>
@@ -69,6 +72,12 @@ layout: default
   {%- if site.links_to_prev_next -%}
     {%- include links_to_prev_next.html -%}
   {%- endif -%}
+
+  <div class="post-footer-meta">
+    {% if page.path %}
+    <a href="{{ site.github_edit_url }}{{ page.path }}" target="_blank" class="edit-page-link">Edit this page on GitHub</a>
+    {% endif %}
+  </div>
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
