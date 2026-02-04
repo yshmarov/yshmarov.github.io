@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3.3"
+          bundler-cache: true
+      - name: Install libvips
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: sudo apt-get install --fix-missing libvips
+      - name: Build
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+      - name: Smoke tests
+        run: bundle exec ruby -e "require 'rake'; Rake.application.init; Rake.application.load_rakefile; Rake.application['smoke'].invoke"
