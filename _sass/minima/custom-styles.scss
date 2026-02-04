@@ -365,6 +365,11 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   // Code blocks
+  div.highlight, figure.highlight {
+    position: relative;
+    border: none;
+  }
+
   pre {
     background: var(--color-gray-900) !important;
     border-radius: var(--radius-md);
@@ -396,6 +401,7 @@ h1, h2, h3, h4, h5, h6 {
       background: transparent;
       padding: 0;
       font-size: var(--font-size-sm);
+      color: #c9d1d9;
     }
   }
 
@@ -633,4 +639,98 @@ h1, h2, h3, h4, h5, h6 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+// =============================================================================
+// DARK SYNTAX HIGHLIGHTING (Override light-mode Rouge theme for dark pre blocks)
+// =============================================================================
+
+.highlight {
+  .err   { color: #f97583; background-color: transparent }
+
+  .c, .cm, .cp, .c1, .cs { color: #8b949e }
+  .cs    { font-style: italic }
+
+  .gd    { color: #f85149 }
+  .gd .x { color: #f85149 }
+  .ge    { font-style: italic }
+  .gh    { color: #d2a8ff }
+  .gi    { color: #56d364 }
+  .gi .x { color: #56d364 }
+  .go    { color: #8b949e }
+  .gp    { color: #8b949e }
+  .gr    { color: #f85149 }
+  .gs    { font-weight: bold }
+  .gt    { color: #f85149 }
+  .gu    { color: #79c0ff }
+
+  .k, .kc, .kd, .kp, .kr { color: #ff7b72 }
+  .kt    { color: #ffa657 }
+
+  .n     { color: #c9d1d9 }
+  .na    { color: #79c0ff }
+  .nb    { color: #ffa657 }
+  .bp    { color: #8b949e }
+  .nc    { color: #ffa657 }
+  .ne    { color: #ffa657 }
+  .nf    { color: #d2a8ff }
+  .ni    { color: #ffa657 }
+  .nn    { color: #ffa657 }
+  .no    { color: #79c0ff }
+  .nt    { color: #7ee787 }
+  .nv, .vc, .vg, .vi { color: #79c0ff }
+
+  .o, .ow { color: #ff7b72 }
+
+  .m, .mf, .mh, .mi, .il, .mo { color: #79c0ff }
+
+  .s, .s1, .s2, .sb, .sc, .sd, .se, .sh, .si, .sx { color: #a5d6ff }
+  .sr    { color: #7ee787 }
+  .ss    { color: #79c0ff }
+
+  .w     { color: #c9d1d9 }
+
+  .lineno, .gl { color: #6e7681 }
+  .hll   { background-color: #2d333b }
+}
+
+// =============================================================================
+// COPY TO CLIPBOARD BUTTON
+// =============================================================================
+
+.code-clipboard {
+  position: relative;
+}
+
+.copy-button {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  background: var(--color-gray-700);
+  color: var(--color-gray-300);
+  border: 1px solid var(--color-gray-600);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--transition-fast), background-color var(--transition-fast);
+  z-index: 1;
+  font-family: inherit;
+  line-height: 1.4;
+
+  &:hover {
+    background: var(--color-gray-600);
+    color: #fff;
+  }
+
+  &.copied {
+    background: #1a7f37;
+    border-color: #1a7f37;
+    color: #fff;
+  }
+}
+
+.code-clipboard:hover .copy-button {
+  opacity: 1;
 }

@@ -16,6 +16,31 @@
 
     {%- include footer.html -%}
 
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("div.highlight, figure.highlight").forEach(function (block) {
+        block.classList.add("code-clipboard");
+        var btn = document.createElement("button");
+        btn.className = "copy-button";
+        btn.textContent = "Copy";
+        btn.setAttribute("aria-label", "Copy code to clipboard");
+        btn.addEventListener("click", function () {
+          var code = block.querySelector("code");
+          if (!code) return;
+          var text = code.innerText;
+          navigator.clipboard.writeText(text).then(function () {
+            btn.textContent = "Copied!";
+            btn.classList.add("copied");
+            setTimeout(function () {
+              btn.textContent = "Copy";
+              btn.classList.remove("copied");
+            }, 2000);
+          });
+        });
+        block.appendChild(btn);
+      });
+    });
+    </script>
   </body>
 
 </html>
