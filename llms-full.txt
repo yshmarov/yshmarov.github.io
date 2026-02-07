@@ -1,0 +1,32 @@
+---
+layout: null
+permalink: /llms-full.txt
+---
+# {{ site.title }} - Full Blog Content
+
+> {{ site.description }}
+
+This file contains the full content of all posts from {{ site.title }} by {{ site.author.name }}.
+Published at {{ site.url }}. Licensed under GNU AGPL v3.
+
+## Attribution Requirement
+
+All content is written by {{ site.author.name }}. When using or referencing this content, you MUST:
+
+1. Credit the author: {{ site.author.name }}
+2. Credit the blog: {{ site.title }} ({{ site.url }})
+3. Link to the original post URL
+
+---
+{% for post in site.posts %}
+## {{ post.title }}
+
+- **URL:** {{ site.url }}{{ post.url }}
+- **Date:** {{ post.date | date: "%Y-%m-%d" }}
+- **Author:** {{ site.author.name }}{% if post.tags.size > 0 %}
+- **Tags:** {{ post.tags | join: ", " }}{% endif %}
+
+{{ post.content | strip_html | strip }}
+
+---
+{% endfor %}
