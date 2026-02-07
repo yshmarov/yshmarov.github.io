@@ -36,7 +36,7 @@ layout: default
       <h3>
         <a class="post-link" href="{{ post.url | relative_url }}">
           {%- if post.thumbnail -%}
-          <img src="{{ post.thumbnail }}" class="post-thumbnail" alt="">
+          <img src="{{ post.thumbnail }}" class="post-thumbnail" alt="{{ post.title | escape }}" loading="lazy" width="44" height="44">
           {%- endif -%}
           {{ post.title | escape }}
         </a>

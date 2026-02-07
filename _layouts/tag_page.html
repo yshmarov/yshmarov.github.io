@@ -1,7 +1,8 @@
 ---
 layout: default
 ---
-<h2>{{ page.tag }}</h2>
+<h1>Posts tagged "{{ page.tag }}"</h1>
+<p class="tag-description">{{ page.posts.size }} article{% if page.posts.size != 1 %}s{% endif %} about {{ page.tag }} on {{ site.title }}.</p>
 
 <ul class="post-list">
   {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
@@ -11,7 +12,7 @@ layout: default
     <h3>
       <a class="post-link" href="{{ post.url | relative_url }}">
         {%- if post.thumbnail -%}
-        <img src="{{ post.thumbnail }}" class="post-thumbnail" alt="">
+        <img src="{{ post.thumbnail }}" class="post-thumbnail" alt="{{ post.title | escape }}" loading="lazy" width="44" height="44">
         {%- endif -%}
         {{ post.title | escape }}
       </a>
@@ -25,3 +26,34 @@ layout: default
   </li>
   {%- endfor -%}
 </ul>
+
+{%- capture tag_page_name -%}Posts tagged {{ page.tag }}{%- endcapture -%}
+{%- capture tag_page_desc -%}{{ page.posts.size }} articles about {{ page.tag }} on {{ site.title }}{%- endcapture -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": {{ tag_page_name | jsonify }},
+  "description": {{ tag_page_desc | jsonify }},
+  "url": "{{ page.url | absolute_url }}",
+  "isPartOf": {
+    "@type": "Blog",
+    "name": {{ site.title | jsonify }},
+    "url": {{ site.url | jsonify }}
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": {{ page.posts.size }},
+    "itemListElement": [
+      {% for post in page.posts %}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "url": "{{ post.url | absolute_url }}",
+        "name": {{ post.title | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
