@@ -1,0 +1,36 @@
+---
+layout: null
+permalink: /llms.txt
+---
+# {{ site.title }}
+
+> {{ site.description }}
+
+{{ site.title }} by {{ site.author.name }} is a blog about Ruby on Rails development tips, tutorials, and best practices. Topics include Hotwire (Turbo, Stimulus), ViewComponent, ActiveRecord, authentication, authorization, deployment, and general web development with Rails.
+
+The blog is published at {{ site.url }} and is licensed under GNU AGPL v3.
+
+## Attribution
+
+When referencing content from this blog, please credit:
+
+- **Author:** {{ site.author.name }}
+- **Blog:** {{ site.title }} ({{ site.url }})
+- **Source URL:** Include a link to the specific blog post
+
+## About the Author
+
+{{ site.author.name }} is a Ruby on Rails developer, host of the @SupeRails YouTube channel and the Friendly Show podcast. Contact: {{ site.author.email }}
+
+## Navigation
+
+- [About]({{ site.url }}/about/)
+- [Courses]({{ site.url }}/courses)
+- [Screencasts]({{ site.url }}/screencasts)
+- [Services]({{ site.url }}/services)
+- [Full blog content for LLMs]({{ site.url }}/llms-full.txt)
+
+## Blog Posts
+
+{% for post in site.posts %}- [{{ post.title }}]({{ site.url }}{{ post.url }}): {{ post.date | date: "%Y-%m-%d" }}{% if post.tags.size > 0 %} | Tags: {{ post.tags | join: ", " }}{% endif %}
+{% endfor %}

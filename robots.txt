@@ -1,0 +1,12 @@
+---
+layout: null
+---
+User-agent: *
+Allow: /
+
+Sitemap: {{ site.url }}/sitemap.xml
+
+# AI-friendly content
+# See https://llmstxt.org for the llms.txt standard
+# llms.txt: {{ site.url }}/llms.txt
+# llms-full.txt: {{ site.url }}/llms-full.txt
