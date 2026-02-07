@@ -47,6 +47,33 @@ author:
   name: Yaroslav Shmarov
   email: hello@superails.com
 
+# SEO settings
+lang: en
+twitter:
+  username: yarotheslav
+  card: summary_large_image
+social:
+  name: Yaroslav Shmarov
+  links:
+    - https://github.com/yshmarov
+    - https://www.linkedin.com/in/yshmarov
+    - https://twitter.com/yarotheslav
+    - https://www.youtube.com/@SupeRails
+    - https://ruby.social/@yarotheslav
+
+# Auto-generate meta descriptions from post excerpts
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      image: /assets/static-pages/yaro-cindy.jpg
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      image: /assets/static-pages/yaro-cindy.jpg
+
 permalink: "/:title"
 
 pwa:

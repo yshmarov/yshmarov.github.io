@@ -1,0 +1,81 @@
+---
+layout: default
+title: All Topics
+permalink: /tags/
+description: Browse all Ruby on Rails topics and tags on SupeRails Blog. Find tutorials on Hotwire, Turbo, Stimulus, ActiveRecord, deployment, and more.
+---
+
+<div class="tags-page">
+  <h1>All Topics</h1>
+  <p class="tags-intro">Browse {{ site.tags.size }} topics covering Ruby on Rails development tips, tutorials, and best practices.</p>
+
+  {% comment %} Sort tags by post count (descending) {% endcomment %}
+  {% assign sorted_tags = site.tags | sort: "last" %}
+
+  <div class="tags-cloud">
+    {% for tag in sorted_tags reversed %}
+    {% assign tag_name = tag | first %}
+    {% assign posts = tag | last %}
+    <a href="/tag/{{ tag_name | slugify }}/" class="tag-cloud-item" title="{{ posts.size }} post{% if posts.size != 1 %}s{% endif %} about {{ tag_name }}">
+      {{ tag_name }}
+      <span class="tag-count">{{ posts.size }}</span>
+    </a>
+    {% endfor %}
+  </div>
+
+  <hr>
+
+  {% for tag in sorted_tags reversed %}
+  {% assign tag_name = tag | first %}
+  {% assign posts = tag | last %}
+  <div class="tag-section" id="{{ tag_name | slugify }}">
+    <h2>
+      <a href="/tag/{{ tag_name | slugify }}/">{{ tag_name }}</a>
+      <span class="tag-section-count">({{ posts.size }})</span>
+    </h2>
+    <ul class="tag-posts-list">
+      {% for post in posts limit: 5 %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+      </li>
+      {% endfor %}
+      {% if posts.size > 5 %}
+      <li class="view-all"><a href="/tag/{{ tag_name | slugify }}/">View all {{ posts.size }} posts &rarr;</a></li>
+      {% endif %}
+    </ul>
+  </div>
+  {% endfor %}
+</div>
+
+{%- capture tags_page_name -%}All Topics - {{ site.title }}{%- endcapture -%}
+{%- capture tags_page_desc -%}Browse all Ruby on Rails topics and tags on {{ site.title }}{%- endcapture -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": {{ tags_page_name | jsonify }},
+  "description": {{ tags_page_desc | jsonify }},
+  "url": "{{ site.url }}/tags/",
+  "isPartOf": {
+    "@type": "Blog",
+    "name": {{ site.title | jsonify }},
+    "url": {{ site.url | jsonify }}
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": {{ site.tags.size }},
+    "itemListElement": [
+      {% for tag in sorted_tags reversed %}
+      {% assign tag_name = tag | first %}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "url": "{{ site.url }}/tag/{{ tag_name | slugify }}/",
+        "name": {{ tag_name | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]
+  }
+}
+</script>

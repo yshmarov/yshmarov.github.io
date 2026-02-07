@@ -10,7 +10,7 @@ layout: default
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">
       {%- if page.thumbnail -%}
-      <img src="{{ page.thumbnail }}" class="post-title-thumbnail" alt="">
+      <img src="{{ page.thumbnail }}" class="post-title-thumbnail" alt="{{ page.title | escape }}" width="28" height="28">
       {%- endif -%}
       {{ page.title | escape }}
     </h1>
@@ -39,7 +39,7 @@ layout: default
 
   {%- if page.youtube_id -%}
     <div class="video-embed">
-      <iframe allowfullscreen src="https://www.youtube.com/embed/{{page.youtube_id}}"></iframe>
+      <iframe allowfullscreen loading="lazy" src="https://www.youtube-nocookie.com/embed/{{page.youtube_id}}?rel=0&modestbranding=1&iv_load_policy=3" title="{{ page.title | escape }} - Video"></iframe>
     </div>
     <hr>
   {%- endif -%}
