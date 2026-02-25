@@ -37,43 +37,57 @@ gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-apple'
 ```
 
-Add a callback route. Apple login should go via POST, not GET.
+Add a callback route. **Apple login goes via POST, not GET**, so you need both:
 
-```diff
+```ruby
 # config/routes.rb
--  get 'auth/apple/callback', to: 'sessions#create'
-+  post 'auth/apple/callback', to: 'sessions#create'
+get 'auth/apple/callback', to: 'sessions#create'
+post 'auth/apple/callback', to: 'sessions#create'
 ```
 
 ```ruby
 button_to 'Login with Apple', '/auth/apple'
 ```
 
-For apple oAuth you will need to set `provider_ignores_state: true`.
+### Why Apple OAuth needs special handling
 
-To fix errors, you will also need to set `nonce: :local`, provided by [this PR](https://github.com/nhosoya/omniauth-apple/pull/111). Use the branch:
+Apple uses `response_mode: form_post` — after authentication, Apple redirects the user's browser to **POST** to your callback URL. This cross-site POST from `appleid.apple.com` causes two problems:
 
-```diff
-- gem 'omniauth-apple'
-+ gem 'omniauth-apple', github: 'bvogel/omniauth-apple', branch: 'fix/apple-session-handling'
-```
+1. **Session cookies are not sent.** Browsers enforce `SameSite=Lax` by default, which blocks cookies on cross-site POST requests. This means any values stored in the session during the request phase (state, nonce) are unavailable during the callback.
+2. **Rails CSRF protection rejects the request.** Rails checks the `Origin` header and sees `https://appleid.apple.com` instead of your domain, raising `ActionController::InvalidAuthenticityToken`.
 
-Next, add your credentials:
+### Configuration
+
+You need three things to handle this:
+
+1. **`provider_ignores_state: true`** — skips the state parameter comparison (which would fail because the session-stored state is lost).
+2. **Skip nonce verification** — the nonce is also stored in the session and lost on callback. Override `verify_nonce!` to skip it. The `id_token` is still verified by JWK signature, audience, issuer, and expiration claims.
+3. **`skip_before_action :verify_authenticity_token`** — skip Rails CSRF check for the callback action.
 
 ```ruby
 # config/initializers/omniauth.rb
+require 'omniauth-apple'
+
+# Apple's form_post response_mode sends a cross-site POST that does not carry
+# session cookies (SameSite=Lax), so the session-stored nonce is lost.
+# Skip nonce verification — the id_token is still verified by signature,
+# audience, issuer, and expiration claims.
+OmniAuth::Strategies::Apple.class_eval do
+  private
+
+  def verify_nonce!(_id_token) = nil
+end
+
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :apple,
-           Rails.application.credentials.dig(:apple, :service_id),
+           Rails.application.credentials.dig(:apple, :client_id),
            '',
-           {
-             scope: 'email name',
-             team_id: Rails.application.credentials.dig(:apple, :team_id),
-             key_id: Rails.application.credentials.dig(:apple, :key_id),
-             pem: Rails.application.credentials.dig(:apple, :pem),
-             provider_ignores_state: true,
-             nonce: :local
-           }
+           scope: 'email name',
+           team_id: Rails.application.credentials.dig(:apple, :team_id),
+           key_id: Rails.application.credentials.dig(:apple, :key_id),
+           pem: Rails.application.credentials.dig(:apple, :pem),
+           authorized_client_ids: [Rails.application.credentials.dig(:apple, :client_id)],
+           provider_ignores_state: true
 end
 ```
 
@@ -82,24 +96,25 @@ Inside `credentials.yml` it can look more-less like this:
 ```yml
 # credentials.yml
 apple:
-  service_id: serviceid
-  client_id: com.example.omniauthable
+  client_id: com.example.auth
   team_id: teamid
   key_id: keyid
-  private_key: |
+  pem: |
     -----BEGIN PRIVATE KEY-----
     foobarfoobarfoobarfoobarfoobar
     foobarfoobarfoobarfoobarfoobar
     foobarfoobarfoobarfoobarfoobar
     foobarfoobarfoobarfoobarfoobar
-    -----END PRIVATE KEY-----"
+    -----END PRIVATE KEY-----
 ```
 
-Now when you click the "Sign in" button, everything should work and your app should receive a callback request to `sessions#create`. 
+The `client_id` is your **Services ID** (e.g. `com.example.auth`), not the App ID. The `pem` must be a YAML multiline string (use `|`) with real newlines — not escaped `\n`.
+
+Now when you click the "Sign in" button, everything should work and your app should receive a callback request to `sessions#create`.
 
 Here's my `SessionsController`.
 
-`skip_before_action :verify_authenticity_token, only: :create` is required for the POST request from Apple.
+`skip_before_action :verify_authenticity_token, only: :create` is required because Apple's cross-site POST carries `Origin: https://appleid.apple.com`, which Rails rejects.
 
 Everything else is applicable for any other oAuth strategy.
 
@@ -147,4 +162,12 @@ end
 
 You can see how I implemented the `from_omniauth` method [here]({% post_url 2023-01-09-omniauth-without-devise %}).
 
-🤠 That's it! You can try to see how "Sign in with Apple" works on [this website](https://superails.com).
+### Common errors and what causes them
+
+| Error | Cause |
+|---|---|
+| `undefined method 'bytesize' for nil` | Missing `provider_ignores_state: true`. The `omniauth-oauth2` gem calls `secure_compare` on the session state, which is `nil` because session cookies are not sent with Apple's cross-site POST. |
+| `invalid_credentials` | Nonce verification failing. The nonce is stored in the session during the request phase but lost during Apple's POST callback. Fix by overriding `verify_nonce!`. |
+| `ActionController::InvalidAuthenticityToken` | Rails CSRF protection rejects the POST because `Origin: https://appleid.apple.com` doesn't match your domain. Fix with `skip_before_action :verify_authenticity_token`. |
+
+That's it! You can try to see how "Sign in with Apple" works on [this website](https://superails.com).
