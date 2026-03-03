@@ -190,10 +190,14 @@ module SessionManager
     # (the session is already revoked in that case)
     return if warden.env["app.revoking_session"]
 
-    session_id = warden.session(scope)&.dig("session_id")
+    # IMPORTANT: Access the raw Rack session directly. Do NOT call
+    # warden.session(scope) here — see "The on_logout footgun" below.
+    scoped_session = warden.raw_session["warden.user.#{scope}.session"]
+    session_id = scoped_session&.dig("session_id")
     return unless session_id
 
-    Session.find_by(session_id: session_id)&.revoke!
+    session_record = Session.find_by(session_id: session_id)
+    session_record&.revoke! unless session_record&.revoked_at?
   rescue ActiveRecord::ActiveRecordError => e
     Rails.logger.error("[SessionManager] on_logout failed: #{e.message}")
   end
@@ -223,6 +227,27 @@ request.remote_ip # => "192.168.1.1"
 warden.request.remote_ip # => NoMethodError
 ```
 
+### The `on_logout` footgun: never call `warden.session(scope)` in `before_logout`
+
+This is the single most important gotcha. In `on_logout`, you **must** read the session_id from `warden.raw_session`, not `warden.session(scope)`. Here's why:
+
+1. `warden.session(scope)` internally calls `authenticated?(scope)` → `user(scope)`.
+2. During `before_logout`, Warden has already cleared `@users[scope]` from memory.
+3. `user(scope)` sees `@users[scope]` is nil, re-fetches the user from the session serializer, and **re-populates `@users[scope]`**.
+4. When `sign_in` is called later in the same request (e.g. a magic-link flow does `sign_out(current_user)` then `sign_in(new_user)`), Warden sees the user already in `@users[scope]` and **skips session storage**.
+5. The next request finds no user in the session cookie → authentication fails.
+
+This bug is particularly insidious because it only manifests when sign-out is immediately followed by sign-in **in the same request** — a pattern common in magic-link and token-based authentication flows.
+
+```ruby
+# CORRECT — reads raw Rack session, no Warden side effects
+scoped_session = warden.raw_session["warden.user.#{scope}.session"]
+session_id = scoped_session&.dig("session_id")
+
+# WRONG — re-populates @users[scope], breaks subsequent sign_in
+session_id = warden.session(scope)&.dig("session_id")
+```
+
 ### The `app.revoking_session` flag
 
 When a revoked session is detected on `:fetch`, we call `proxy.sign_out(scope)` which triggers the `before_logout` hook. Without the flag, `on_logout` would try to `revoke!` a session that's already revoked. The flag skips that:
@@ -235,6 +260,8 @@ When a revoked session is detected on `:fetch`, we call `proxy.sign_out(scope)` 
       → on_logout checks flag → skips revoke (already done)
   → throw :warden redirects to sign-in
 ```
+
+The `on_logout` method also has an `unless session_record&.revoked_at?` guard as a second line of defense — if the flag mechanism fails for any reason, it still won't double-revoke.
 
 ## 5. Warden hooks initializer
 
@@ -592,3 +619,4 @@ The full implementation is 3 files of application code (model, manager, initiali
 - **5-minute write throttle** on `last_active_at` to avoid DB write amplification
 - **Race condition handling** via unique index + retry
 - **Graceful degradation** for sessions that predate the feature
+- **`raw_session` in `on_logout`** — never call `warden.session(scope)` inside `before_logout` hooks; it re-populates Warden's internal user cache and breaks sign-out/sign-in flows
