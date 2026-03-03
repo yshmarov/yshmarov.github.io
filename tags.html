@@ -9,11 +9,11 @@ description: Browse all Ruby on Rails topics and tags on SupeRails Blog. Find tu
   <h1>All Topics</h1>
   <p class="tags-intro">Browse {{ site.tags.size }} topics covering Ruby on Rails development tips, tutorials, and best practices.</p>
 
-  {% comment %} Sort tags by post count (descending) {% endcomment %}
-  {% assign sorted_tags = site.tags | sort: "last" %}
+  {% comment %} Sort tags alphabetically by tag name {% endcomment %}
+  {% assign sorted_tags = site.tags | sort %}
 
   <div class="tags-cloud">
-    {% for tag in sorted_tags reversed %}
+    {% for tag in sorted_tags %}
     {% assign tag_name = tag | first %}
     {% assign posts = tag | last %}
     <a href="/tag/{{ tag_name | slugify }}/" class="tag-cloud-item" title="{{ posts.size }} post{% if posts.size != 1 %}s{% endif %} about {{ tag_name }}">
@@ -25,7 +25,7 @@ description: Browse all Ruby on Rails topics and tags on SupeRails Blog. Find tu
 
   <hr>
 
-  {% for tag in sorted_tags reversed %}
+  {% for tag in sorted_tags %}
   {% assign tag_name = tag | first %}
   {% assign posts = tag | last %}
   <div class="tag-section" id="{{ tag_name | slugify }}">
@@ -66,7 +66,7 @@ description: Browse all Ruby on Rails topics and tags on SupeRails Blog. Find tu
     "@type": "ItemList",
     "numberOfItems": {{ site.tags.size }},
     "itemListElement": [
-      {% for tag in sorted_tags reversed %}
+      {% for tag in sorted_tags %}
       {% assign tag_name = tag | first %}
       {
         "@type": "ListItem",
