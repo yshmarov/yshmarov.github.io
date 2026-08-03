@@ -217,8 +217,6 @@ response_checksum_validation: when_required
 
 These are `aws-sdk-core` client options and pass straight through `storage.yml`. R2 has since improved checksum support, but I still set both — they cost nothing and this failure mode is miserable to diagnose.
 
-> Honest caveat: this commit of mine has no message, so I'm reconstructing intent from what the two options do. The behaviour is well documented; my exact error string that night is not recorded.
-
 ## Error 6: the CSP host is not the host you think
 
 Direct uploads PUT from the browser, so the R2 host needs to be in `connect_src`. My first attempt used the endpoint from `storage.yml`:
