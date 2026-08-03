@@ -30,7 +30,18 @@ Here is the whole thing: the config that works, then every error in the order I 
 
 ## The working setup
 
-### 1. Credentials
+### 1. The gem
+
+R2 speaks the S3 API, so you use Active Storage's S3 service and the AWS SDK — there is no `aws-sdk-r2`:
+
+```ruby
+# Gemfile
+gem "aws-sdk-s3", "~> 1.225", require: false
+```
+
+`require: false` is the Rails default here — Active Storage requires it lazily, only when the S3 service is actually built.
+
+### 2. Credentials
 
 ```bash
 rails credentials:edit
@@ -46,7 +57,7 @@ cloudflare_r2:
 
 Create the API token in the Cloudflare dashboard under **R2 → API → Manage API tokens**, scoped to **Object Read & Write** on that one bucket. The `account_id` is the R2 account hash shown in the bucket's S3 API endpoint.
 
-### 2. `config/storage.yml`
+### 3. `config/storage.yml`
 
 ```yaml
 cloudflare:
@@ -68,7 +79,9 @@ config.active_storage.service = :cloudflare
 
 Note `region: auto` — R2 has no regions, but the SDK insists on a value.
 
-### 3. The compatibility initializer
+Development stays on local disk (`config.active_storage.service = :local`). I only point dev at R2 deliberately, when I need to reproduce something R2-specific — which is the *only* reason `http://localhost:3000` is in the bucket's CORS list below.
+
+### 4. The compatibility initializer
 
 ```ruby
 # config/initializers/active_storage_cloudflare_r2.rb
@@ -100,7 +113,7 @@ rescue NameError, LoadError
 end
 ```
 
-### 4. Bucket settings in the Cloudflare dashboard
+### 5. Bucket settings in the Cloudflare dashboard
 
 Two things that live **only** in the dashboard and will silently sink you:
 
@@ -119,7 +132,7 @@ Two things that live **only** in the dashboard and will silently sink you:
 ]
 ```
 
-### 5. Content Security Policy
+### 6. Content Security Policy
 
 ```ruby
 # config/initializers/content_security_policy.rb
@@ -273,14 +286,33 @@ A long-lived presigned PUT URL is a real (if small) exposure: anyone holding it 
 
 ```ruby
 # app/jobs/active_storage/purge_unattached_blobs_job.rb
+# frozen_string_literal: true
+
 class ActiveStorage::PurgeUnattachedBlobsJob < ApplicationJob
+  queue_as :default
+
+  STALE_AGE = 24.hours
+
   def perform
-    ActiveStorage::Blob.unattached.where(created_at: ..24.hours.ago).find_each(&:purge_later)
+    ActiveStorage::Blob.unattached.where(created_at: ...STALE_AGE.ago).find_each(&:purge_later)
   end
 end
 ```
 
-Run it daily. Give it a generous window (24h) so you never purge a blob whose form is still open.
+Schedule it daily — with good_job:
+
+```ruby
+# config/initializers/good_job.rb
+config.good_job.cron = {
+  cleanup_unattached_active_storage_blobs: {
+    cron: "45 3 * * *", # daily at 3:45am
+    class: "ActiveStorage::PurgeUnattachedBlobsJob",
+    description: "Remove abandoned direct-upload blobs"
+  }
+}
+```
+
+`purge_later` rather than `purge` so one slow R2 delete can't stall the sweep. Give it a generous window (24h) so you never purge a blob whose form is still open — someone with a half-filled form and a picked file is a real scenario.
 
 **Public bucket means public files.** With `public: true` + a custom domain, anyone with the key can read the object — the URLs are unguessable, not private. For anything genuinely private, use a second bucket with no public access and serve through Rails in proxy mode with real authorization. I keep database backups in a separate private bucket (`myapp-backups`) with its own token, precisely so the Active Storage token cannot touch them — and so a mistake in my public-bucket config can never expose a dump.
 
@@ -290,14 +322,15 @@ That token scoping bites once, by the way: an R2 token scoped to one bucket retu
 
 If you're setting this up today, in this order:
 
-1. Create the bucket. Scope an **Object Read & Write** token to it.
-2. Connect a **custom domain** to the bucket — that's what makes it public, not any Rails setting.
-3. `storage.yml`: `region: auto`, `public: true`, both `*_checksum_*` options. No `public_url` key.
-4. Initializer: override `public_url` → custom domain, and `upload_options` → `super.except(:acl)`. Guard on the config *symbol*, never on `ActiveStorage::Blob.service`.
-5. CSP `connect_src`: the **bucket-prefixed** R2 host, plus your CDN domain.
-6. Bucket **CORS**: your app origins + `http://localhost:3000`. Verify with an `OPTIONS` probe.
-7. Extend the direct-upload URL expiry, and require sign-in on the direct-upload endpoint.
-8. Schedule a daily unattached-blob purge.
-9. Put "update R2 bucket CORS" in your domain-migration checklist.
+1. `gem "aws-sdk-s3"` — R2 uses Active Storage's plain S3 service.
+2. Create the bucket. Scope an **Object Read & Write** token to it.
+3. Connect a **custom domain** to the bucket — that's what makes it public, not any Rails setting.
+4. `storage.yml`: `region: auto`, `public: true`, both `*_checksum_*` options. No `public_url` key.
+5. Initializer: override `public_url` → custom domain, and `upload_options` → `super.except(:acl)`. Guard on the config *symbol*, never on `ActiveStorage::Blob.service`.
+6. CSP `connect_src`: the **bucket-prefixed** R2 host, plus your CDN domain.
+7. Bucket **CORS**: your app origins (+ `http://localhost:3000` only if you point dev at R2). Verify with an `OPTIONS` probe.
+8. Extend the direct-upload URL expiry, and require sign-in on the direct-upload endpoint.
+9. Schedule a daily unattached-blob purge.
+10. Put "update R2 bucket CORS" in your domain-migration checklist.
 
-Steps 2, 6 and 9 are dashboard state, not code. They are the ones that break silently, months later, with nothing in your git history to point at.
+Steps 3, 7 and 10 are dashboard state, not code. They are the ones that break silently, months later, with nothing in your git history to point at.
