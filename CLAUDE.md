@@ -57,7 +57,7 @@ categories: category1 category2  # optional
 - `jekyll-pwa-plugin` - Progressive Web App support
 
 ### Deployment
-GitHub Actions workflow (`.github/workflows/jekyll.yml`) automatically builds and deploys to GitHub Pages on push to `master` branch. Uses Ruby 3.3.3.
+GitHub Actions workflow (`.github/workflows/jekyll.yml`) automatically builds and deploys to GitHub Pages on push to `master` branch. Uses Ruby 4.0.6.
 
 ### Comments
 Uses Giscus (GitHub Discussions-based) for post comments.

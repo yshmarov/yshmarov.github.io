@@ -28,7 +28,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3.3"
+          ruby-version: "4.0.6"
           bundler-cache: true
       - name: Cache OG Images
         uses: actions/cache@v4
