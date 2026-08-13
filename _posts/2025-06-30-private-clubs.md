@@ -1,2 +1,0 @@
-- No photos allowed
-- No kids by the pool after 15:00
