@@ -3,7 +3,7 @@ layout: post
 title: "3 months on Skillshare. My results"
 author: Yaroslav Shmarov
 tags: skillshare online-courses elearning
-thumbnail: https://centaur-wp.s3.eu-central-1.amazonaws.com/creativereview/prod/content/uploads/2020/01/SK_Primary_logo_blk_grn.jpg
+thumbnail: /assets/thumbnails/money.png
 ---
 
 ![3-months-on-skillshare](/assets/2020-08-30-3-months-on-skillshare-my-results/3-months-on-skillshare.png)

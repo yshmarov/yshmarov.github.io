@@ -28,8 +28,6 @@ The price of the basic plan is around **$60/year** -> that's what we were aiming
 
 We required an add-on "select a delivery locker".
 
-![select a delivery locker InPost](/assets/images/inpost.png)
-
 The minimal Shopify plan that allows this feature is **$960/year**.
 
 "Select a locker" is the most preferred delivery option by clients today.

@@ -3,7 +3,7 @@ layout: post
 title: Sentiment Analysis. Analyze Udemy course reviews
 author: Yaroslav Shmarov
 tags: sentiment-analysis
-thumbnail: https://about.udemy.com/wp-content/uploads/2017/10/NewUlogo-large-1.png
+thumbnail: /assets/thumbnails/like.png
 ---
 
 I [used to](https://www.udemy.com/user/ya-shm/) create Udemy courses.
