@@ -207,9 +207,14 @@ module LlmReadable
         )
       end
 
-      # llms.txt and llms-full.txt iterate this instead of site.posts, so a
-      # --drafts build cannot leak a draft into them either.
-      site.config["llm_posts"] = posts.map(&:to_liquid)
+      # llms.txt, llms-full.txt and search.json iterate this instead of
+      # site.posts, so a --drafts build cannot leak a draft into them either.
+      #
+      # site.posts.docs is chronological, but Liquid's site.posts is newest
+      # first. Sort the same way Jekyll's SiteDrop#posts does, so ordering and
+      # tie-breaking match: llms-full.txt takes the *recent* 30, not the oldest
+      # 30, and search.json keeps the order the search UI renders in.
+      site.config["llm_posts"] = posts.sort { |a, b| b <=> a }.map(&:to_liquid)
 
       generate_year_shards(site, posts)
     end
