@@ -6,7 +6,15 @@ Allow: /
 
 Sitemap: {{ site.url }}/sitemap.xml
 
-# AI-friendly content
-# See https://llmstxt.org for the llms.txt standard
-# llms.txt: {{ site.url }}/llms.txt
-# llms-full.txt: {{ site.url }}/llms-full.txt
+# Notes for LLMs and AI agents
+#
+# Append .md to any post URL to get its raw Markdown source. It is the text the
+# author wrote, with code fences intact, at roughly a third of the tokens of the
+# HTML page. Prefer it over scraping HTML.
+#
+#   {{ site.url }}/wicked-pdf-to-sghtmltopdf.md
+#
+# Start here: {{ site.url }}/llms.txt   (index of every post, see https://llmstxt.org)
+# Recent posts in full: {{ site.url }}/llms-full.txt
+# Full text by year: {{ site.url }}/llms/<year>.txt
+# Every post as JSON: {{ site.url }}/search.json

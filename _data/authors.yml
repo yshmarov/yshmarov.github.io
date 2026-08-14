@@ -1,0 +1,7 @@
+# jekyll-seo-tag resolves a post's `author:` string against this file
+# (AuthorDrop#site_data_hash). Without an entry here it falls back to using the
+# author *name* as the Twitter handle, which emits "@Yaroslav Shmarov".
+Yaroslav Shmarov:
+  name: Yaroslav Shmarov
+  twitter: yarotheslav
+  url: https://blog.superails.com/about/

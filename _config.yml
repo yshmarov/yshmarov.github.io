@@ -46,6 +46,9 @@ feed:
 author:
   name: Yaroslav Shmarov
   email: hello@superails.com
+  # jekyll-seo-tag falls back to the author *name* for twitter:creator without
+  # this, which emits the broken "@Yaroslav Shmarov".
+  twitter: yarotheslav
 
 # SEO settings
 lang: en
@@ -61,13 +64,10 @@ social:
     - https://www.youtube.com/@SupeRails
     - https://ruby.social/@yarotheslav
 
-# Auto-generate meta descriptions from post excerpts
 defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      image: /assets/static-pages/yaro-cindy.jpg
+  # Posts deliberately set no default `image`: jekyll-og-image does
+  # `item.data["image"] ||= ...`, so a default here would suppress the per-post
+  # OpenGraph image it generates into assets/images/og/posts/.
   - scope:
       path: ""
       type: "pages"

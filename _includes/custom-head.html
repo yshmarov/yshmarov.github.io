@@ -22,26 +22,16 @@
 <!-- Web App Manifest -->
 <link rel="manifest" href="/manifest.json" />
 
-<!-- Twitter Card Meta Tags -->
-<meta name="twitter:site" content="@yarotheslav" />
-<meta name="twitter:creator" content="@yarotheslav" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="{{ page.title | default: site.title | escape }}" />
 {% assign seo_description = page.description | default: page.excerpt | strip_html | truncate: 160 | default: site.description %}
-<meta name="twitter:description" content="{{ seo_description | escape }}" />
-{% if page.thumbnail %}
-<meta name="twitter:image" content="{{ page.thumbnail | absolute_url }}" />
-{% else %}
-<meta name="twitter:image" content="{{ '/assets/static-pages/yaro-cindy.jpg' | absolute_url }}" />
-{% endif %}
 
-<!-- Additional Open Graph tags not covered by jekyll-seo-tag -->
-{% if page.date %}
-<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+<!-- Raw Markdown source, for LLMs and anyone who prefers the text the author wrote -->
+{% if page.md_url %}
+<link rel="alternate" type="text/markdown" href="{{ page.md_url | absolute_url }}" title="{{ page.title | escape }} (Markdown source)" />
 {% endif %}
-{% if page.modified_date %}
-<meta property="article:modified_time" content="{{ page.modified_date | date_to_xmlschema }}" />
-{% endif %}
+<link rel="alternate" type="text/plain" href="{{ '/llms.txt' | absolute_url }}" title="llms.txt" />
+
+<!-- Twitter card and article:published_time/modified_time come from jekyll-seo-tag.
+     Duplicating them here emitted conflicting values for twitter:image. -->
 {% if page.tags.size > 0 %}
 {% for tag in page.tags %}
 <meta property="article:tag" content="{{ tag }}" />
@@ -108,6 +98,8 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
+  "@id": "{{ page.url | absolute_url }}",
+  "url": "{{ page.url | absolute_url }}",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "{{ page.url | absolute_url }}"
@@ -133,14 +125,26 @@
     "name": "Yaroslav Shmarov",
     "url": "{{ site.url }}/about/"
   },
-  {% if page.thumbnail %}
-  "image": "{{ page.thumbnail | absolute_url }}",
-  {% else %}
-  "image": "{{ '/assets/static-pages/yaro-cindy.jpg' | absolute_url }}",
-  {% endif %}
+  {%- comment -%}
+    page.image is the OpenGraph image jekyll-og-image generates per post; prefer
+    it over the small thumbnail logo.
+  {%- endcomment -%}
+  {% assign ld_image = page.image.path | default: page.image | default: page.thumbnail | default: '/assets/static-pages/yaro-cindy.jpg' %}
+  "image": "{{ ld_image | absolute_url }}",
   {% if page.tags.size > 0 %}
-  "keywords": {{ page.tags | join: ', ' | jsonify }},
+  "keywords": {{ page.tags | jsonify }},
+  "articleSection": {{ page.tags.first | jsonify }},
   {% endif %}
+  {% if page.md_url %}
+  "encoding": {
+    "@type": "MediaObject",
+    "encodingFormat": "text/markdown",
+    "contentUrl": "{{ page.md_url | absolute_url }}",
+    "description": "Raw Markdown source of this post"
+  },
+  {% endif %}
+  "license": "https://www.gnu.org/licenses/agpl-3.0.html",
+  "isAccessibleForFree": true,
   "isPartOf": {
     "@type": "Blog",
     "name": {{ site.title | jsonify }},

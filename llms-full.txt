@@ -6,8 +6,16 @@ permalink: /llms-full.txt
 
 > {{ site.description }}
 
-This file contains the full content of all posts from {{ site.title }} by {{ site.author.name }}.
+Full Markdown source of the {{ site.llm_full_text_posts }} most recent posts from {{ site.title }} by {{ site.author.name }}.
 Published at {{ site.url }}. Licensed under GNU AGPL v3.
+
+## Reading the rest of the archive
+
+This file is capped at {{ site.llm_full_text_posts }} posts so it stays inside a single fetch. There are {{ site.posts.size }} posts in total. To read the others:
+
+- **One post:** append `.md` to its URL, e.g. `{{ site.url }}/wicked-pdf-to-sghtmltopdf.md`. Returns the raw Markdown source.
+- **A whole year:** {% for year in site.llm_years %}[{{ year }}]({{ site.url }}/llms/{{ year }}.txt){% unless forloop.last %}, {% endunless %}{% endfor %}
+- **The index of every post:** [{{ site.url }}/llms.txt]({{ site.url }}/llms.txt)
 
 ## Attribution Requirement
 
@@ -18,15 +26,19 @@ All content is written by {{ site.author.name }}. When using or referencing this
 3. Link to the original post URL
 
 ---
-{% for post in site.posts %}
-## {{ post.title }}
 
-- **URL:** {{ site.url }}{{ post.url }}
-- **Date:** {{ post.date | date: "%Y-%m-%d" }}
-- **Author:** {{ site.author.name }}{% if post.tags.size > 0 %}
-- **Tags:** {{ post.tags | join: ", " }}{% endif %}
-
-{{ post.content | strip_html | strip }}
-
+{% for post in site.posts limit: site.llm_full_text_posts %}---
+title: {{ post.title | jsonify }}
+author: {{ site.author.name | jsonify }}
+date: "{{ post.date | date: "%Y-%m-%d" }}"
+canonical_url: "{{ site.url }}{{ post.url }}"
+markdown_url: "{{ site.url }}{{ post.md_url }}"
+description: {{ post.description | jsonify }}
+tags: {{ post.tags | jsonify }}
 ---
+
+# {{ post.title }}
+
+{{ post.md_source }}
+
 {% endfor %}

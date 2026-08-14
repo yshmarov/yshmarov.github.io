@@ -77,6 +77,9 @@ layout: default
     {% if page.path %}
     <a href="{{ site.github_edit_url }}{{ page.path }}" target="_blank" class="edit-page-link">Edit this page on GitHub</a>
     {% endif %}
+    {% if page.md_url %}
+    <a href="{{ page.md_url }}" class="edit-page-link" rel="alternate" type="text/markdown">Read as Markdown</a>
+    {% endif %}
   </div>
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
