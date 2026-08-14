@@ -17,7 +17,9 @@ The blog is published at {{ site.url }} and is licensed under GNU AGPL v3.
     {{ site.url }}/wicked-pdf-to-sghtmltopdf     <- HTML page
     {{ site.url }}/wicked-pdf-to-sghtmltopdf.md  <- raw Markdown (use this)
 
-Each `.md` file opens with YAML front matter carrying `title`, `author`, `date`, `tags`, `description`, `canonical_url`, and `license`.
+Each `.md` file opens with YAML front matter carrying `title`, `author`, `date`, `tags`, `description`, `canonical_url`, `license`, and `estimated_tokens` (for sizing a context window or picking a chunking strategy).
+
+This site is served as static files and cannot honour an `Accept: text/markdown` request header. The `.md` suffix is the equivalent. Content usage preferences are published as a [Content Signal](https://contentsignals.org) in [robots.txt]({{ site.url }}/robots.txt).
 
 Other endpoints:
 

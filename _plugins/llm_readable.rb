@@ -68,6 +68,14 @@ module LlmReadable
       body.gsub(%r{(!?\[[^\]]*\]\()(/(?!/)[^)\s]*)}) { "#{::Regexp.last_match(1)}#{absolute(site, ::Regexp.last_match(2))}" }
     end
 
+    # Rough token count: the static-host equivalent of the x-markdown-tokens
+    # header Cloudflare returns on negotiated Markdown responses, which an agent
+    # can use to size a context window or pick a chunking strategy. 4.04 bytes
+    # per token is measured from that header on a comparable Markdown document.
+    def token_estimate(body)
+      (body.bytesize / 4.04).round
+    end
+
     # A standalone Markdown file: front matter an agent can trust, then the post
     # under its own H1 (post bodies start at H2).
     def markdown_document(site, post, body)
@@ -80,6 +88,7 @@ module LlmReadable
         "markdown_url" => absolute(site, "#{post.url}.md"),
         "description" => post.data["description"].to_s,
         "tags" => Array(post.data["tags"]),
+        "estimated_tokens" => token_estimate(body),
         "license" => LICENSE,
       }
       fields["video_url"] = "https://www.youtube.com/watch?v=#{post.data["youtube_id"]}" if post.data["youtube_id"]
@@ -190,6 +199,7 @@ module LlmReadable
 
         post.data["md_source"] = body
         post.data["md_url"] = "#{post.url}.md"
+        post.data["md_tokens"] = LlmReadable.token_estimate(body)
         post.data["description"] = LlmReadable.description_for(body) if blank?(post.data["description"])
 
         site.pages << SourcePage.new(

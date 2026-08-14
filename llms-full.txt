@@ -35,6 +35,7 @@ canonical_url: "{{ site.url }}{{ post.url }}"
 markdown_url: "{{ site.url }}{{ post.md_url }}"
 description: {{ post.description | jsonify }}
 tags: {{ post.tags | jsonify }}
+estimated_tokens: {{ post.md_tokens }}
 ---
 
 # {{ post.title }}
