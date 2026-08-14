@@ -177,7 +177,15 @@ module LlmReadable
     def generate(site)
       site.config["llm_full_text_posts"] = FULL_TEXT_POSTS
 
-      site.posts.docs.each do |post|
+      # Unpublished work stays out of everything an LLM is pointed at. Drafts are
+      # only in site.posts at all when Jekyll runs with --drafts, but that is
+      # exactly how this blog is served locally, so filter rather than assume.
+      drafts, posts = site.posts.docs.partition(&:draft?)
+      # Keep drafts out of the sitemap too, so a --drafts preview build never
+      # advertises them to a crawler.
+      drafts.each { |draft| draft.data["sitemap"] = false }
+
+      posts.each do |post|
         body = LlmReadable.absolutize(site, LlmReadable.markdown_body(site, post))
 
         post.data["md_source"] = body
@@ -189,15 +197,19 @@ module LlmReadable
         )
       end
 
-      generate_year_shards(site)
+      # llms.txt and llms-full.txt iterate this instead of site.posts, so a
+      # --drafts build cannot leak a draft into them either.
+      site.config["llm_posts"] = posts.map(&:to_liquid)
+
+      generate_year_shards(site, posts)
     end
 
     private
 
     # llms-full.txt only carries recent posts, so the archive would otherwise be
     # reachable only one post at a time. One bounded file per year fixes that.
-    def generate_year_shards(site)
-      by_year = site.posts.docs.group_by { |post| post.date.year }
+    def generate_year_shards(site, posts)
+      by_year = posts.group_by { |post| post.date.year }
       site.config["llm_years"] = by_year.keys.sort.reverse
 
       by_year.each do |year, posts|
