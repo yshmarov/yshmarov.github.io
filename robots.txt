@@ -31,13 +31,9 @@ Sitemap: {{ site.url }}/sitemap.xml
 #
 #   {{ site.url }}/wicked-pdf-to-sghtmltopdf.md
 #
-# Each .md file carries an `estimated_tokens` field in its front matter, for
-# sizing a context window or choosing a chunking strategy.
-#
 # This site is served as static files, so it cannot honour an
 # `Accept: text/markdown` request header. The .md suffix above is the equivalent.
 #
 # Start here: {{ site.url }}/llms.txt   (index of every post, see https://llmstxt.org)
 # Recent posts in full: {{ site.url }}/llms-full.txt
-# Full text by year: {{ site.url }}/llms/<year>.txt
-# Every post as JSON: {{ site.url }}/search.json
+# Every post as JSON, with byte sizes: {{ site.url }}/search.json

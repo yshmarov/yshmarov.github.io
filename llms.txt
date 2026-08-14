@@ -4,54 +4,37 @@ permalink: /llms.txt
 ---
 # {{ site.title }}
 
-> {{ site.description }}
+> {{ site.description }} A blog by {{ site.author.name }} about Ruby on Rails: Hotwire (Turbo, Stimulus), ViewComponent, ActiveRecord, authentication, authorization, deployment, and general web development with Rails.
 
-{{ site.title }} by {{ site.author.name }} is a blog about Ruby on Rails development tips, tutorials, and best practices. Topics include Hotwire (Turbo, Stimulus), ViewComponent, ActiveRecord, authentication, authorization, deployment, and general web development with Rails.
-
-The blog is published at {{ site.url }} and is licensed under GNU AGPL v3.
-
-## How to read this blog efficiently
-
-**Append `.md` to any post URL to get its raw Markdown source.** This is the preferred way to read a post: it is the text the author wrote, with code fences and headings intact, at roughly a third of the tokens of the HTML page. Do not scrape the HTML.
+**Append `.md` to any post URL to get its raw Markdown source.** That is the text the author wrote, with code fences and headings intact, at roughly a third of the bytes of the HTML page. Prefer it over scraping HTML.
 
     {{ site.url }}/wicked-pdf-to-sghtmltopdf     <- HTML page
     {{ site.url }}/wicked-pdf-to-sghtmltopdf.md  <- raw Markdown (use this)
 
-Each `.md` file opens with YAML front matter carrying `title`, `author`, `date`, `tags`, `description`, `canonical_url`, `license`, and `estimated_tokens` (for sizing a context window or picking a chunking strategy).
+Each `.md` file opens with YAML front matter carrying `title`, `author`, `date`, `tags`, `description`, `canonical_url`, `markdown_url`, and `license`.
 
-This site is served as static files and cannot honour an `Accept: text/markdown` request header. The `.md` suffix is the equivalent. Content usage preferences are published as a [Content Signal](https://contentsignals.org) in [robots.txt]({{ site.url }}/robots.txt).
+This site is served as static files, so it cannot honour an `Accept: text/markdown` request header. The `.md` suffix is the equivalent. Content usage preferences are published as a Content Signal in `/robots.txt`.
 
-Other endpoints:
-
-- [{{ site.url }}/llms-full.txt]({{ site.url }}/llms-full.txt): full text of the {{ site.llm_full_text_posts }} most recent posts, in one file.
-- Full text by year, one bounded file each:
-{% for year in site.llm_years %}  - [{{ site.url }}/llms/{{ year }}.txt]({{ site.url }}/llms/{{ year }}.txt)
-{% endfor %}- [{{ site.url }}/search.json]({{ site.url }}/search.json): every post as JSON with title, url, date, tags, excerpt.
-- [{{ site.url }}/feed.xml]({{ site.url }}/feed.xml): Atom feed of recent posts.
-- [{{ site.url }}/sitemap.xml]({{ site.url }}/sitemap.xml): every canonical HTML URL.
-
-## Attribution
-
-When referencing content from this blog, please credit:
-
-- **Author:** {{ site.author.name }}
-- **Blog:** {{ site.title }} ({{ site.url }})
-- **Source URL:** Include a link to the specific blog post
-
-## About the Author
+Licensed under GNU AGPL v3. When referencing this content, credit the author ({{ site.author.name }}), credit the blog ({{ site.title }}, {{ site.url }}), and link the specific post URL.
 
 {{ site.author.name }} is a Ruby on Rails developer, host of the @SupeRails YouTube channel and the Friendly Show podcast. Contact: {{ site.author.email }}
 
-## Navigation
+## Site
 
-- [About]({{ site.url }}/about/)
-- [Courses]({{ site.url }}/courses)
-- [Screencasts]({{ site.url }}/screencasts)
-- [Services]({{ site.url }}/services)
+- [About]({{ site.url }}/about/): who the author is and what this blog covers
+- [Courses]({{ site.url }}/courses): paid Rails courses
+- [Screencasts]({{ site.url }}/screencasts): video tutorials
+- [Services]({{ site.url }}/services): consulting availability
+- [robots.txt]({{ site.url }}/robots.txt): crawl rules and the Content Signals policy
 
-## Blog Posts
+## Bulk endpoints
 
-{{ site.llm_posts.size }} posts, newest first. Append `.md` to any URL below for its Markdown source.
+- [llms-full.txt]({{ site.url }}/llms-full.txt): full Markdown of the {{ site.llm_full_text_posts }} most recent posts in one file
+- [search.json]({{ site.url }}/search.json): every post as JSON with title, url, markdown_url, date, tags, bytes, and excerpt
+- [feed.xml]({{ site.url }}/feed.xml): Atom feed of recent posts
+- [sitemap.xml]({{ site.url }}/sitemap.xml): every canonical HTML URL
+
+## Blog posts
 
 {% for post in site.llm_posts %}- [{{ post.title }}]({{ site.url }}{{ post.url }}): {{ post.date | date: "%Y-%m-%d" }}{% if post.tags.size > 0 %} | Tags: {{ post.tags | join: ", " }}{% endif %}
 {% endfor %}

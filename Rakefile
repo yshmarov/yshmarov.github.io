@@ -2,6 +2,11 @@
 
 require "rake"
 require "nokogiri"
+require "json"
+require "yaml"
+require "date"
+require "uri"
+require "set"
 
 SITE_DIR = "_site"
 
@@ -148,6 +153,156 @@ task :smoke do
     checks_passed += 1
   else
     errors << "No compiled CSS found or CSS files are empty"
+  end
+
+  # --- 11. Every indexed post has a .md companion ---
+  search_path = File.join(SITE_DIR, "search.json")
+  md_files = Dir.glob(File.join(SITE_DIR, "*.md"))
+  index = []
+  begin
+    index = JSON.parse(read_file(search_path))
+  rescue StandardError => e
+    errors << "search.json is not valid JSON: #{e.message}"
+  end
+
+  if index.size < 300
+    errors << "search.json has too few entries (#{index.size}), expected 300+"
+  elsif md_files.size != index.size
+    errors << "#{md_files.size} .md files but #{index.size} search.json entries; they must match"
+  else
+    puts "  OK: #{md_files.size} .md files, one per indexed post"
+    checks_passed += 1
+  end
+
+  missing_md = index.reject { |e| File.exist?(File.join(SITE_DIR, "#{e["url"].to_s.sub(%r{\A/}, "")}.md")) }
+  if missing_md.any?
+    errors << "No .md for: #{missing_md.first(5).map { |e| e["url"] }.join(', ')}"
+  else
+    puts "  OK: every indexed post resolves to a .md"
+    checks_passed += 1
+  end
+
+  # --- 12. search.json rows carry the fields agents are promised ---
+  bad_rows = index.reject { |e|
+    e["title"].to_s != "" && e["url"].to_s != "" && e["markdown_url"].to_s != "" && e["bytes"].is_a?(Integer)
+  }
+  if bad_rows.any?
+    errors << "search.json rows missing title/url/markdown_url/bytes: #{bad_rows.size}"
+  else
+    puts "  OK: search.json rows complete (title, url, markdown_url, bytes)"
+    checks_passed += 1
+  end
+
+  # --- 13. Newest-first ordering (regressed once; site search renders this order) ---
+  dates = index.map { |e| Date.parse(e["date"]) rescue nil }.compact
+  if dates.size == index.size && dates.each_cons(2).all? { |a, b| a >= b }
+    puts "  OK: search.json is newest-first"
+    checks_passed += 1
+  else
+    errors << "search.json is not newest-first (first=#{index.first&.dig("date")}, last=#{index.last&.dig("date")})"
+  end
+
+  llms_txt = File.exist?(File.join(SITE_DIR, "llms.txt")) ? read_file(File.join(SITE_DIR, "llms.txt")) : ""
+  llms_dates = llms_txt.scan(/^- \[.*?\]\(\S+\): (\d{4}-\d{2}-\d{2})/).flatten
+  if llms_dates.size >= 300 && llms_dates.each_cons(2).all? { |a, b| a >= b }
+    puts "  OK: llms.txt lists #{llms_dates.size} posts, newest-first"
+    checks_passed += 1
+  else
+    errors << "llms.txt ordering/count wrong (#{llms_dates.size} posts, first=#{llms_dates.first})"
+  end
+
+  # --- 14. .md files are Markdown source, not converted HTML, with valid front matter ---
+  required_fm = %w[title author date canonical_url markdown_url description license]
+  fm_errors = []
+  md_files.sample(25).each do |path|
+    name = File.basename(path)
+    body = read_file(path)
+    m = body.match(/\A---\n(.*?)\n---\n(.*)\z/m)
+    next fm_errors << "#{name}: no front matter" unless m
+
+    begin
+      fm = YAML.safe_load(m[1])
+      missing = required_fm.reject { |k| fm[k].to_s != "" }
+      fm_errors << "#{name}: missing #{missing.join(',')}" if missing.any?
+    rescue StandardError => e
+      fm_errors << "#{name}: unparseable front matter (#{e.class})"
+    end
+
+    content = m[2].to_s
+    fm_errors << "#{name}: looks like HTML, not Markdown" if content.lstrip.start_with?("<")
+    # {% raw %} blocks legitimately emit {{ }}, so only flag tags that prove
+    # Liquid never ran.
+    fm_errors << "#{name}: unrendered Liquid tag" if content =~ /\{%\s*(post_url|link)\s/
+  end
+  if fm_errors.any?
+    errors << "Bad .md files: #{fm_errors.first(5).join('; ')}"
+  else
+    puts "  OK: sampled .md files are valid Markdown with complete front matter"
+    checks_passed += 1
+  end
+
+  # --- 15. Drafts leak into nothing an agent or crawler is pointed at ---
+  draft_slugs = Dir.glob("_drafts/*.md").map { |f|
+    File.basename(f, ".md").sub(/\A\d{4}-\d{2}-\d{2}-/, "")
+  }
+  # Compare whole URL paths, not substrings. Two earlier attempts false
+  # positived: the draft "request-js" is a tail of the published post
+  # "drag-and-drop-stimulus-request-js", and it is also a legitimate tag page at
+  # /tag/request-js.html.
+  advertised = sitemap.xpath("//xmlns:loc", "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9")
+                      .map { |n| URI.parse(n.text).path rescue nil }
+  advertised += index.flat_map { |e| [e["url"], e["markdown_url"]] }
+  %w[llms.txt llms-full.txt].each do |f|
+    path = File.join(SITE_DIR, f)
+    next unless File.exist?(path)
+
+    advertised += read_file(path).scan(%r{https?://[^/\s)"']+(/[^\s)"'<>]*)}).flatten
+  end
+  advertised = advertised.compact.map { |p|
+    p.sub(%r{\A/}, "").sub(%r{/\z}, "").sub(/\.md\z/, "")
+  }.to_set
+
+  leaks = draft_slugs.select { |slug| advertised.include?(slug) }
+                     .map { |slug| "#{slug} advertised" }
+  leaks += draft_slugs.select { |slug| File.exist?(File.join(SITE_DIR, "#{slug}.md")) }
+                      .map { |slug| "#{slug}.md written" }
+  if leaks.any?
+    errors << "Draft leaked: #{leaks.first(5).join(', ')}"
+  else
+    puts "  OK: none of #{draft_slugs.size} drafts appear among #{advertised.size} advertised URLs"
+    checks_passed += 1
+  end
+
+  # --- 16. Post bodies are not duplicated (a Liquid tag inside an HTML comment
+  #         still renders, which shipped every post twice) ---
+  dupes = sampled.reject { |f| read_file(f).scan(/<article/).size == 1 }
+  if dupes.any?
+    errors << "Post body not exactly once in: #{dupes.first(3).map { |f| File.basename(f) }.join(', ')}"
+  else
+    puts "  OK: #{sampled.size} post pages contain exactly one <article>"
+    checks_passed += 1
+  end
+
+  # --- 17. No conflicting duplicate social meta tags ---
+  meta_dupes = sampled.filter_map { |f|
+    counts = read_file(f).scan(/(?:name|property)="((?:twitter|og):[a-z:]+)"/).flatten
+                         .tally.reject { |k, v| v == 1 || k == "og:image:alt" }
+    "#{File.basename(f)}: #{counts.keys.join(',')}" if counts.any?
+  }
+  if meta_dupes.any?
+    errors << "Duplicate meta tags: #{meta_dupes.first(3).join('; ')}"
+  else
+    puts "  OK: no duplicate og:/twitter: meta tags"
+    checks_passed += 1
+  end
+
+  # --- 18. Content Signals policy is published ---
+  robots = File.exist?(File.join(SITE_DIR, "robots.txt")) ? read_file(File.join(SITE_DIR, "robots.txt")) : ""
+  if robots =~ /^Content-Signal:\s*\S+/ && robots.include?("Sitemap:")
+    puts "  OK: robots.txt publishes a Content-Signal and a Sitemap"
+    checks_passed += 1
+  else
+    errors << "robots.txt missing Content-Signal or Sitemap directive"
   end
 
   # --- Report ---

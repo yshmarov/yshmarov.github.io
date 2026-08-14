@@ -2,17 +2,25 @@
 
 # Makes the blog cheap and lossless for LLMs and AI agents to read.
 #
-# 1. Serves the raw Markdown source of every post at <post-url>.md. An agent
-#    that fetches the HTML gets a lossy Markdown *reconstruction* of the post,
-#    with code fences guessed at and headings often rewritten. This serves the
-#    post itself, at roughly a third of the tokens.
+# 1. Serves the raw Markdown source of every post at <post-url>.md, which is the
+#    form llmstxt.org recommends ("the extension replaced by `.md`"). An agent
+#    that fetches the HTML instead gets a lossy Markdown *reconstruction*, with
+#    code fences guessed at and headings rewritten.
 # 2. Exposes the same Markdown to Liquid as `post.md_source`, so llms-full.txt
-#    and the per-year shards can embed posts with their code fences intact.
+#    can embed posts with their code fences intact.
 # 3. Fills in `page.description` for posts that don't set one, so jekyll-seo-tag
-#    stops using the first line of the post as the entire summary.
+#    stops using the first line of the post as the entire summary. An explicit
+#    `description:` in front matter always wins; this is only a fallback.
 #
 # The Liquid in a post body (`{% post_url %}` and friends) is rendered once here,
-# so the Markdown that ships has real URLs in it.
+# so the Markdown that ships has real URLs in it. That is the reason this is a
+# local plugin rather than the jekyll-aeo gem, which covers similar ground:
+# its auto mode converts rendered HTML back to Markdown for any source
+# containing Liquid (the lossy path), its md2dotmd mode strips Liquid tags and
+# so leaves `{% post_url %}` links empty, it has no notion of drafts, and it
+# wants to generate robots.txt itself, which would drop our Content Signals.
+#
+# Invariants this file is responsible for are asserted by `rake smoke` in CI.
 
 module LlmReadable
   FRONT_MATTER = /\A---\s*\r?\n.*?\r?\n---\s*\r?\n/m
@@ -68,14 +76,6 @@ module LlmReadable
       body.gsub(%r{(!?\[[^\]]*\]\()(/(?!/)[^)\s]*)}) { "#{::Regexp.last_match(1)}#{absolute(site, ::Regexp.last_match(2))}" }
     end
 
-    # Rough token count: the static-host equivalent of the x-markdown-tokens
-    # header Cloudflare returns on negotiated Markdown responses, which an agent
-    # can use to size a context window or pick a chunking strategy. 4.04 bytes
-    # per token is measured from that header on a comparable Markdown document.
-    def token_estimate(body)
-      (body.bytesize / 4.04).round
-    end
-
     # A standalone Markdown file: front matter an agent can trust, then the post
     # under its own H1 (post bodies start at H2).
     def markdown_document(site, post, body)
@@ -88,7 +88,6 @@ module LlmReadable
         "markdown_url" => absolute(site, "#{post.url}.md"),
         "description" => post.data["description"].to_s,
         "tags" => Array(post.data["tags"]),
-        "estimated_tokens" => token_estimate(body),
         "license" => LICENSE,
       }
       fields["video_url"] = "https://www.youtube.com/watch?v=#{post.data["youtube_id"]}" if post.data["youtube_id"]
@@ -199,7 +198,11 @@ module LlmReadable
 
         post.data["md_source"] = body
         post.data["md_url"] = "#{post.url}.md"
-        post.data["md_tokens"] = LlmReadable.token_estimate(body)
+        # Exact byte size of the .md, for search.json. Deliberately not a token
+        # estimate: a bytes-per-token constant differs by model family, so an
+        # integer "token count" would imply precision it does not have. An agent
+        # can divide by ~4 itself if it wants a rough figure.
+        post.data["md_bytes"] = body.bytesize
         post.data["description"] = LlmReadable.description_for(body) if blank?(post.data["description"])
 
         site.pages << SourcePage.new(
@@ -215,38 +218,9 @@ module LlmReadable
       # tie-breaking match: llms-full.txt takes the *recent* 30, not the oldest
       # 30, and search.json keeps the order the search UI renders in.
       site.config["llm_posts"] = posts.sort { |a, b| b <=> a }.map(&:to_liquid)
-
-      generate_year_shards(site, posts)
     end
 
     private
-
-    # llms-full.txt only carries recent posts, so the archive would otherwise be
-    # reachable only one post at a time. One bounded file per year fixes that.
-    def generate_year_shards(site, posts)
-      by_year = posts.group_by { |post| post.date.year }
-      site.config["llm_years"] = by_year.keys.sort.reverse
-
-      by_year.each do |year, posts|
-        site.pages << SourcePage.new(site, "/llms/#{year}.txt", year_shard(site, year, posts))
-      end
-    end
-
-    def year_shard(site, year, posts)
-      header = <<~HEADER
-        # #{site.config["title"]} — every post from #{year}
-
-        #{posts.size} posts, full Markdown source, newest first.
-        License: #{LlmReadable::LICENSE}
-        Index of all posts: #{site.config["url"]}/llms.txt
-      HEADER
-
-      bodies = posts.sort_by(&:date).reverse.map do |post|
-        LlmReadable.markdown_document(site, post, post.data["md_source"])
-      end
-
-      "#{header}\n---\n\n#{bodies.join("\n---\n\n")}"
-    end
 
     def blank?(value)
       value.nil? || value.to_s.strip.empty?
