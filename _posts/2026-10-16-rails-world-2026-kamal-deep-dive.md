@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Kamal Deep Dive (Josef Strzibny)"
 author: Yaroslav Shmarov
 tags: rails-world conference kamal deployment docker
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/CsWQD81i5-c.jpg
+image:
+  path: /assets/images/youtube/CsWQD81i5-c.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Kamal Deep Dive (Josef Strzibny)"
 youtube_id: CsWQD81i5-c
 ---
 

@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Practical Hotwire: Stimulus and Turbo on the Ground (Jeremy Smith)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby-on-rails hotwire turbo stimulus
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/ejOofhbYB3Q.jpg
+image:
+  path: /assets/images/youtube/ejOofhbYB3Q.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Practical Hotwire: Stimulus and Turbo on the Ground (Jeremy Smith)"
 youtube_id: ejOofhbYB3Q
 ---
 

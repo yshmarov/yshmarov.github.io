@@ -3,7 +3,12 @@ layout: post
 title: "Deploying Rails 8 on Render.com"
 author: Yaroslav Shmarov
 tags: rails solid_queue solid_cache solid_cable
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/eTgE5ClYK9s.jpg
+image:
+  path: /assets/images/youtube/eTgE5ClYK9s.jpg
+  width: 1280
+  height: 720
+  alt: "Deploying Rails 8 on Render.com"
 youtube_id: eTgE5ClYK9s
 ---
 

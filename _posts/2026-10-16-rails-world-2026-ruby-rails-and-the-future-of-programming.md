@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Ruby, Rails, and the future of programming (Matz, DHH and Jeremy Daer)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby ruby-on-rails ai
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/IEOqgPfGLQ8.jpg
+image:
+  path: /assets/images/youtube/IEOqgPfGLQ8.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Ruby, Rails, and the future of programming (Matz, DHH and Jeremy Daer)"
 youtube_id: IEOqgPfGLQ8
 ---
 

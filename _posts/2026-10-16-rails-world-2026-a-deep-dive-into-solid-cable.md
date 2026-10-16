@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: A deep dive into Solid Cable (Nick Pezza)"
 author: Yaroslav Shmarov
 tags: rails-world conference action-cable solid-cable hotwire
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/9WEABvHEKws.jpg
+image:
+  path: /assets/images/youtube/9WEABvHEKws.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: A deep dive into Solid Cable (Nick Pezza)"
 youtube_id: 9WEABvHEKws
 ---
 

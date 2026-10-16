@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Closing keynote (Aaron Patterson)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby performance security
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/t0knYnEYBRo.jpg
+image:
+  path: /assets/images/youtube/t0knYnEYBRo.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Closing keynote (Aaron Patterson)"
 youtube_id: t0knYnEYBRo
 ---
 

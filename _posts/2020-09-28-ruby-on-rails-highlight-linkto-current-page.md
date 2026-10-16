@@ -3,7 +3,12 @@ layout: post
 title: 'Highlight link to current page'
 author: Yaroslav Shmarov
 tags: ruby-on-rails html
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/yvB2ZQh1HVY.jpg
+image:
+  path: /assets/images/youtube/yvB2ZQh1HVY.jpg
+  width: 1280
+  height: 720
+  alt: 'Highlight link to current page'
 youtube_id: yvB2ZQh1HVY
 ---
 

@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: How a Designer started shipping production Rails (Alicia Rojas and Arely Rivera)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby-on-rails ai css
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/D1Y3tzhiAkw.jpg
+image:
+  path: /assets/images/youtube/D1Y3tzhiAkw.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: How a Designer started shipping production Rails (Alicia Rojas and Arely Rivera)"
 youtube_id: D1Y3tzhiAkw
 ---
 

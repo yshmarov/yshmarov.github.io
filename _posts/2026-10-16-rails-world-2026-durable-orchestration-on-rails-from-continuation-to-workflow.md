@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Durable orchestration on Rails: from continuation to workflow (Vladimir Dementyev)"
 author: Yaroslav Shmarov
 tags: rails-world conference active-job background-jobs solid-queue
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/4dcv1a7eeMk.jpg
+image:
+  path: /assets/images/youtube/4dcv1a7eeMk.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Durable orchestration on Rails: from continuation to workflow (Vladimir Dementyev)"
 youtube_id: 4dcv1a7eeMk
 ---
 

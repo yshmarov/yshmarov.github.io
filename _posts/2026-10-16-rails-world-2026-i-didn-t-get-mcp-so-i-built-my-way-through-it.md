@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: I Didn't Get MCP, So I Built My Way Through It (Enrique Mogollan)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby-on-rails ai mcp testing
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/km2hEx-HEME.jpg
+image:
+  path: /assets/images/youtube/km2hEx-HEME.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: I Didn't Get MCP, So I Built My Way Through It (Enrique Mogollan)"
 youtube_id: km2hEx-HEME
 ---
 

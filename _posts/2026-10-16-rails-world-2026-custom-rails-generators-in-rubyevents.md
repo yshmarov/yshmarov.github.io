@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Custom Rails Generators in RubyEvents (Rachael Wright-Munn)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby-on-rails ai testing
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/aornGet-EoI.jpg
+image:
+  path: /assets/images/youtube/aornGet-EoI.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Custom Rails Generators in RubyEvents (Rachael Wright-Munn)"
 youtube_id: aornGet-EoI
 ---
 

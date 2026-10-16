@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: The RubyGems Compact Index: What Powers Every `bundle install` (Jenny Shen)"
 author: Yaroslav Shmarov
 tags: rails-world conference rubygems bundler security
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/Z9XUvK8Sr5c.jpg
+image:
+  path: /assets/images/youtube/Z9XUvK8Sr5c.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: The RubyGems Compact Index: What Powers Every `bundle install` (Jenny Shen)"
 youtube_id: Z9XUvK8Sr5c
 ---
 

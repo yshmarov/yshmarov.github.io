@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Shipping is your heartbeat: Rails in the agentic era (Ryan Sherlock)"
 author: Yaroslav Shmarov
 tags: rails-world conference ci testing ai
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/EBJF55TyCVY.jpg
+image:
+  path: /assets/images/youtube/EBJF55TyCVY.jpg
+  width: 640
+  height: 360
+  alt: "Rails World 2026: Shipping is your heartbeat: Rails in the agentic era (Ryan Sherlock)"
 youtube_id: EBJF55TyCVY
 ---
 

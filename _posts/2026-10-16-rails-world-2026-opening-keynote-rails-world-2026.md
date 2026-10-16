@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Opening keynote (DHH)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby-on-rails ai
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/vDjW_dRyKXY.jpg
+image:
+  path: /assets/images/youtube/vDjW_dRyKXY.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Opening keynote (DHH)"
 youtube_id: vDjW_dRyKXY
 ---
 

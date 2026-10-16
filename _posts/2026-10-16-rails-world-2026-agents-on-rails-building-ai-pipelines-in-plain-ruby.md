@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Agents on Rails: Building AI Pipelines in plain Ruby (Daniela Velasquez)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby-on-rails ai active-job
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/OX5coKfra4c.jpg
+image:
+  path: /assets/images/youtube/OX5coKfra4c.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Agents on Rails: Building AI Pipelines in plain Ruby (Daniela Velasquez)"
 youtube_id: OX5coKfra4c
 ---
 

@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Lexxy: a new text editor for Action Text (Jorge Manrubia)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby-on-rails action-text lexxy javascript
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/UIXwabQ9jIU.jpg
+image:
+  path: /assets/images/youtube/UIXwabQ9jIU.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Lexxy: a new text editor for Action Text (Jorge Manrubia)"
 youtube_id: UIXwabQ9jIU
 ---
 

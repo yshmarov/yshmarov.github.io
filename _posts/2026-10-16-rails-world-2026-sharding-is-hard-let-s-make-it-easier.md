@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Sharding Is Hard: Let's Make It Easier! (Tess Griffin)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby-on-rails database postgresql sharding
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/yLoqg7UkryU.jpg
+image:
+  path: /assets/images/youtube/yLoqg7UkryU.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Sharding Is Hard: Let's Make It Easier! (Tess Griffin)"
 youtube_id: yLoqg7UkryU
 ---
 

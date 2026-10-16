@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Hot Cell: Securing Active Storage in the age of AI (Mike Dalessio)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby-on-rails active-storage security kamal
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/swXl8M84YmM.jpg
+image:
+  path: /assets/images/youtube/swXl8M84YmM.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Hot Cell: Securing Active Storage in the age of AI (Mike Dalessio)"
 youtube_id: swXl8M84YmM
 ---
 

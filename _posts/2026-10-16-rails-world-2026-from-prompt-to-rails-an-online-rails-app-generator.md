@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: From Prompt to Rails: An Online Rails App Generator (Paweł Strzałkowski)"
 author: Yaroslav Shmarov
 tags: rails-world conference ai hotwire docker
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/0_ZLKWlc7FY.jpg
+image:
+  path: /assets/images/youtube/0_ZLKWlc7FY.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: From Prompt to Rails: An Online Rails App Generator (Paweł Strzałkowski)"
 youtube_id: 0_ZLKWlc7FY
 ---
 

@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Active Search (Donal McBreen)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby-on-rails search database
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/OlzIyVzmMgI.jpg
+image:
+  path: /assets/images/youtube/OlzIyVzmMgI.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Active Search (Donal McBreen)"
 youtube_id: OlzIyVzmMgI
 ---
 

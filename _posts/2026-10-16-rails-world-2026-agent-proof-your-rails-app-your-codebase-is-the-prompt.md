@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Agent-Proof Your Rails App: Your Codebase Is the Prompt (Kinsey Durham Grace)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby-on-rails ai testing
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/QMkZ2J24XGI.jpg
+image:
+  path: /assets/images/youtube/QMkZ2J24XGI.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Agent-Proof Your Rails App: Your Codebase Is the Prompt (Kinsey Durham Grace)"
 youtube_id: QMkZ2J24XGI
 ---
 

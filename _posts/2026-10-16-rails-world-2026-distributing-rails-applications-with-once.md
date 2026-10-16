@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Distributing Rails applications with ONCE (Kevin McConnell)"
 author: Yaroslav Shmarov
 tags: rails-world conference once self-hosting docker
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/eE4aVg15tbs.jpg
+image:
+  path: /assets/images/youtube/eE4aVg15tbs.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Distributing Rails applications with ONCE (Kevin McConnell)"
 youtube_id: eE4aVg15tbs
 ---
 

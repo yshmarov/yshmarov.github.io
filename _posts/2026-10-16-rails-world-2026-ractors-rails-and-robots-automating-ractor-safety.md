@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Ractors, Rails, and Robots: Automating the Path to Ractor-safety (Andrew Novoselac)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby ractors performance ai
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/MVKUx-B_wHs.jpg
+image:
+  path: /assets/images/youtube/MVKUx-B_wHs.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Ractors, Rails, and Robots: Automating the Path to Ractor-safety (Andrew Novoselac)"
 youtube_id: MVKUx-B_wHs
 ---
 

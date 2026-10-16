@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Harness Engineering on Rails (Joël Quenneville)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby-on-rails ai testing
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/L6-3a_rwLIg.jpg
+image:
+  path: /assets/images/youtube/L6-3a_rwLIg.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Harness Engineering on Rails (Joël Quenneville)"
 youtube_id: L6-3a_rwLIg
 ---
 

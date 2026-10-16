@@ -3,7 +3,12 @@ layout: post
 title: "Rails World 2026: Herb in Rails 8.2: Your ERB views, now HTML-aware (Marco Roth)"
 author: Yaroslav Shmarov
 tags: rails-world conference ruby-on-rails erb hotwire
-thumbnail: /assets/thumbnails/rails-logo.png
+thumbnail: /assets/thumbnails/youtube/REtfdqtW3PY.jpg
+image:
+  path: /assets/images/youtube/REtfdqtW3PY.jpg
+  width: 1280
+  height: 720
+  alt: "Rails World 2026: Herb in Rails 8.2: Your ERB views, now HTML-aware (Marco Roth)"
 youtube_id: REtfdqtW3PY
 ---
 
