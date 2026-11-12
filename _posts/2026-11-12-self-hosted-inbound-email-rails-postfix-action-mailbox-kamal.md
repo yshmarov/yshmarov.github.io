@@ -519,6 +519,8 @@ postmap lmdb:"$list.new" && mv "$list.new.lmdb" "$list.lmdb"
 
 Cron runs it every minute. The `mv` swaps the file at once, so Postfix never reads half a list.
 
+Every minute is 1,440 requests a day to your app. If your APM counts requests against a quota, see "Problems I hit in production" below.
+
 > **Trap: a strict sanity check.** My first pattern only allowed the characters of new addresses. Older addresses used other letters, so one old address made the whole list "invalid", and for two minutes Postfix refused **every** address. Make the pattern match everything Rails can produce, and test it against your real data.
 
 ### renew-certificate: Let's Encrypt inside the container
@@ -811,6 +813,19 @@ bin/kamal accessory reboot mail                     # after an image change
 **S/MIME signatures counted as attachments.** A signed email from Apple Mail reported "1 attachment left out". See the `SIGNATURE_TYPES` filter above.
 
 **Replies to my own confirmations came back as new messages.** The confirmation's `Reply-To` was the inbox address. A reply quoted the whole confirmation, and that became a new record. Now `Reply-To` is an address Postfix refuses.
+
+**The address sync used up my monitoring quota.** The sync calls Rails every minute: 1,440 requests a day, about 43,000 a month. AppSignal counts each one as a request, and its free plan allows 30,000 a month. Together with another job that ran every minute, it used up the quota in under three weeks. AppSignal then locked the account, and I could not read my errors. My normal traffic was about 250 requests a day.
+
+The endpoint only renders a list, so I tell AppSignal to ignore it:
+
+```ruby
+# config/appsignal.rb
+Appsignal.configure do |config|
+  config.ignore_actions << "EmailIntake::RecipientsController#index"
+end
+```
+
+AppSignal then also ignores errors from this action. That is fine here: if the sync breaks, the mail container writes it to its log. With Sentry or another APM, exclude the endpoint from performance tracing in the same way. Check every other job that runs every minute too: in a small app, background jobs on a timer can make more APM requests than your real users.
 
 ## What I deliberately did not do (yet)
 
