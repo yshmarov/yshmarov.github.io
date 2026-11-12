@@ -28,13 +28,13 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "4.0.6"
+          ruby-version: "4.0.9"
           bundler-cache: true
       - name: Cache OG Images
         uses: actions/cache@v6
         with:
           path: assets/images/og
-          key: og-images-${{ hashFiles('_posts/**') }}
+          key: og-images-v3-${{ hashFiles('_posts/**') }}
       - name: Install libvips
         env:
           DEBIAN_FRONTEND: noninteractive
