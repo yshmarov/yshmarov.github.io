@@ -27,6 +27,7 @@ task :smoke do
   checks_passed = 0
 
   # --- 1. Key files exist and are non-empty ---
+  errors_before = errors.size
   %w[
     index.html
     404.html
@@ -39,8 +40,10 @@ task :smoke do
       errors << "Missing or empty: #{path}"
     end
   end
-  puts "  OK: All key files present"
-  checks_passed += 1
+  if errors.size == errors_before
+    puts "  OK: All key files present"
+    checks_passed += 1
+  end
 
   # --- 2. Homepage renders post list ---
   index_html = read_file(File.join(SITE_DIR, "index.html"))
@@ -63,6 +66,7 @@ task :smoke do
   post_files = Dir.glob(File.join(SITE_DIR, "*.html")).reject { |f|
     %w[index.html 404.html].include?(File.basename(f))
   }
+  errors_before = errors.size
   sampled = post_files.sample(5)
   sampled.each do |post_path|
     name = File.basename(post_path)
@@ -73,8 +77,10 @@ task :smoke do
     errors << "#{name}: missing site-header"   unless content.include?("site-header")
     errors << "#{name}: missing site-footer"   unless content.include?("site-footer")
   end
-  puts "  OK: #{sampled.size} post pages have correct structure"
-  checks_passed += 1
+  if errors.size == errors_before
+    puts "  OK: #{sampled.size} post pages have correct structure"
+    checks_passed += 1
+  end
 
   # --- 4. Navigation renders ---
   if index_html.include?("site-nav") && index_html.include?("nav-item")
