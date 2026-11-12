@@ -311,6 +311,26 @@ task :smoke do
     errors << "robots.txt missing Content-Signal or Sitemap directive"
   end
 
+  # --- 19. Topic links resolve (they once pointed at /tag/x/, which 404s on
+  #         GitHub Pages because jekyll-tagging writes tag/x.html) ---
+  tags_index = File.join(SITE_DIR, "tags", "index.html")
+  if File.exist?(tags_index)
+    tag_hrefs = Nokogiri::HTML(read_file(tags_index)).css(%q(.tags-page a[href^="/tag/"])).map { |a| a["href"] }.uniq
+    dead_tags = tag_hrefs.reject { |href|
+      File.file?(File.join(SITE_DIR, URI.decode_www_form_component(URI.parse(href).path)))
+    }
+    if tag_hrefs.empty?
+      errors << "tags/index.html has no topic links"
+    elsif dead_tags.any?
+      errors << "#{dead_tags.size} dead topic links on /tags/, e.g. #{dead_tags.first(3).join(', ')}"
+    else
+      puts "  OK: all #{tag_hrefs.size} topic links on /tags/ resolve"
+      checks_passed += 1
+    end
+  else
+    errors << "Missing tags/index.html"
+  end
+
   # --- Report ---
   puts
   if errors.empty?

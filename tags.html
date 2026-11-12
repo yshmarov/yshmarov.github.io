@@ -16,7 +16,7 @@ description: Browse all Ruby on Rails topics and tags on SupeRails Blog. Find tu
     {% for tag in sorted_tags %}
     {% assign tag_name = tag | first %}
     {% assign posts = tag | last %}
-    <a href="/tag/{{ tag_name | slugify }}/" class="tag-cloud-item" title="{{ posts.size }} post{% if posts.size != 1 %}s{% endif %} about {{ tag_name }}">
+    <a href="{{ tag_name | tag_url }}" class="tag-cloud-item" title="{{ posts.size }} post{% if posts.size != 1 %}s{% endif %} about {{ tag_name }}">
       {{ tag_name }}
       <span class="tag-count">{{ posts.size }}</span>
     </a>
@@ -30,7 +30,7 @@ description: Browse all Ruby on Rails topics and tags on SupeRails Blog. Find tu
   {% assign posts = tag | last %}
   <div class="tag-section" id="{{ tag_name | slugify }}">
     <h2>
-      <a href="/tag/{{ tag_name | slugify }}/">{{ tag_name }}</a>
+      <a href="{{ tag_name | tag_url }}">{{ tag_name }}</a>
       <span class="tag-section-count">({{ posts.size }})</span>
     </h2>
     <ul class="tag-posts-list">
@@ -41,7 +41,7 @@ description: Browse all Ruby on Rails topics and tags on SupeRails Blog. Find tu
       </li>
       {% endfor %}
       {% if posts.size > 5 %}
-      <li class="view-all"><a href="/tag/{{ tag_name | slugify }}/">View all {{ posts.size }} posts &rarr;</a></li>
+      <li class="view-all"><a href="{{ tag_name | tag_url }}">View all {{ posts.size }} posts &rarr;</a></li>
       {% endif %}
     </ul>
   </div>
@@ -71,7 +71,7 @@ description: Browse all Ruby on Rails topics and tags on SupeRails Blog. Find tu
       {
         "@type": "ListItem",
         "position": {{ forloop.index }},
-        "url": "{{ site.url }}/tag/{{ tag_name | slugify }}/",
+        "url": "{{ site.url }}{{ tag_name | tag_url }}",
         "name": {{ tag_name | jsonify }}
       }{% unless forloop.last %},{% endunless %}
       {% endfor %}
