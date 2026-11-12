@@ -409,6 +409,6 @@ Other rmagick topics worth learning (that are not covered here):
 * write generated images directly to AWS S3
 
 Useful resources:
-* [rmagick on Rubydoc](https://www.rubydoc.info/gems/rmagick)
+* [RMagick docs](https://rmagick.github.io/)
 * official example: [colors.rb](https://rmagick.github.io/colors.rb.html) of using rmagick
 * [another great article covering rmagick](https://livefiredev.com/in-depth-guide-rmagick-add-text-to-an-image-with-word-wrap/)

@@ -11,6 +11,6 @@ assert_match 'Posts are being imported. This can take a few minutes', @response.
 ```
 
 
-https://rubydoc.info/github/hotwired/turbo-rails/Turbo/TestAssertions
+https://github.com/hotwired/turbo-rails/blob/main/lib/turbo/test_assertions.rb
 
 assert_turbo_stream action: "remove", target: "message_1"

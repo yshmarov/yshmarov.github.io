@@ -54,7 +54,7 @@ Common channel examples:
 
 https://api.rubyonrails.org/classes/ActionDispatch/Flash/FlashHash.html
 
-[Devise::Models::DatabaseAuthenticatable#after_database_authentication](https://www.rubydoc.info/github/plataformatec/devise/Devise%2FModels%2FDatabaseAuthenticatable:after_database_authentication)
+[Devise::Models::DatabaseAuthenticatable#after_database_authentication](https://github.com/heartcombo/devise/blob/main/lib/devise/models/database_authenticatable.rb)
 
 https://github.com/heartcombo/devise/blob/main/lib/devise/models/database_authenticatable.rb#L168
 

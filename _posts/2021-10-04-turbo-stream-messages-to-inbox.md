@@ -140,5 +140,4 @@ app/controllers/messages_controller.rb
 
 Resources:
 * [Turbo Broadcastable options - GIT](https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb)
-* [Turbo Broadcastable options - Rubydoc](https://www.rubydoc.info/gems/turbo-rails/0.5.2/Turbo/Broadcastable)
 * [post by @davidcolbyatx](https://dev.to/davidcolbyatx/using-hotwire-and-rails-to-build-a-live-commenting-system-aj9)

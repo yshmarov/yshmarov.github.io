@@ -113,4 +113,4 @@ routes.rb
 
 You might want to disable the `get` route to remove `users/sign_in` - Not really recommended.
 
-[Using `devise_for`](https://www.rubydoc.info/github/plataformatec/devise/ActionDispatch%2FRouting%2FMapper:devise_for)
+[Using `devise_for`](https://github.com/heartcombo/devise/blob/main/lib/devise/rails/routes.rb)

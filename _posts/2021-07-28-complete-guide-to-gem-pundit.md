@@ -7,7 +7,7 @@ thumbnail: /assets/thumbnails/stop-sign.png
 youtube_id: xxkx57-vbQI
 ---
 
-[Link - Great Pundit docs](https://www.rubydoc.info/gems/pundit/0.2.3){:target="blank"}
+[Link - Great Pundit docs](https://github.com/varvet/pundit){:target="blank"}
 
 As I know, Pundit and CanCanCan are the 2 best approaches to adding AUTHORIZATION into a Rails app.
 

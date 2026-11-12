@@ -423,6 +423,6 @@ Here's how [ActionView::RecordIdentifier](https://api.rubyonrails.org/v4.2.5/cla
 
 That's it!
 
-[Official Turbo/Broadcastable docs](https://www.rubydoc.info/gems/turbo-rails/0.5.2/Turbo/Broadcastable)
+[Official Turbo/Broadcastable docs](https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb)
 
 Next, I hope to explore Broadcasts + Devise + Authorization
