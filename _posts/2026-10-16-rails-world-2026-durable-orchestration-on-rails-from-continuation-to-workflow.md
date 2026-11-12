@@ -75,3 +75,5 @@ The gem also ships an agent skill, so you can ask your coding agent to find jobs
 - Try `ajdc` on one workflow where you currently keep step state in model columns.
 
 Watch the full talk: [Durable orchestration on Rails: from continuation to workflow](https://www.youtube.com/watch?v=4dcv1a7eeMk)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/durable-orchestration-on-rails-from-continuation-to-workflow) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/durable-orchestration-on-rails-from-continuation-to-workflow.txt)

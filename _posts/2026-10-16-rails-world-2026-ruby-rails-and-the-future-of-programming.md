@@ -60,3 +60,5 @@ Both closed on the same values: motivation, joy and freedom. DHH said he will st
 - Support the open source you depend on. If agents make Ruby and Rails invisible, maintainers become the scarce resource.
 
 Watch the full talk: [Ruby, Rails, and the future of programming](https://www.youtube.com/watch?v=IEOqgPfGLQ8)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/ruby-rails-and-the-future-of-programming) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/ruby-rails-and-the-future-of-programming.txt)

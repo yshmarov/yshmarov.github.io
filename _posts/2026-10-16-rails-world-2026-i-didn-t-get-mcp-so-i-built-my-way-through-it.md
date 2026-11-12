@@ -62,3 +62,5 @@ The last part showed **MCP Apps**, the first official MCP extension. A tool can 
 - Keep an eye on MCP Apps if you'd like your Rails features to appear inside AI chat clients.
 
 Watch the full talk: [I Didn't Get MCP, So I Built My Way Through It](https://www.youtube.com/watch?v=km2hEx-HEME)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/i-didn-t-get-mcp-so-i-built-my-way-through-it) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/i-didn-t-get-mcp-so-i-built-my-way-through-it.txt)

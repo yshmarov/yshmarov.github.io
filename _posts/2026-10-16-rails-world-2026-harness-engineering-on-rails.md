@@ -75,3 +75,5 @@ Drive improvements from real pain. Every time you correct an agent, ask how this
 - For messy data problems, write a rake task that classifies the data first, then hand that to the agent.
 
 Watch the full talk: [Harness Engineering on Rails](https://www.youtube.com/watch?v=L6-3a_rwLIg)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/harness-engineering-on-rails) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/harness-engineering-on-rails.txt)

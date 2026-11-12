@@ -74,3 +74,5 @@ Aaron calls himself an optimist, but he rejects the argument that AI is just the
 - Review the agent-written code you ship. Nothing guarantees it behaves as if you wrote it.
 
 Watch the full talk: [Closing Keynote](https://www.youtube.com/watch?v=t0knYnEYBRo)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/closing-keynote-rails-world-2026) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/closing-keynote-rails-world-2026.txt)

@@ -66,3 +66,5 @@ Ideas include security advisory data in the index, so Bundler can warn about vul
 - Try the RubyGems and Bundler betas so bugs show up before the stable release.
 
 Watch the full talk: [The RubyGems Compact Index: What Powers Every `bundle install`](https://www.youtube.com/watch?v=Z9XUvK8Sr5c)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/the-rubygems-compact-index-what-powers-every-bundle-install) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/the-rubygems-compact-index-what-powers-every-bundle-install.txt)

@@ -64,3 +64,5 @@ Code samples and a resource list are on [practicalhotwire.com](https://practical
 - Move broadcasts out of `after_create_commit` callbacks for anything that can happen in bulk.
 
 Watch the full talk: [Practical Hotwire: Stimulus & Turbo on the Ground](https://www.youtube.com/watch?v=ejOofhbYB3Q)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/practical-hotwire-stimulus-turbo-on-the-ground) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/practical-hotwire-stimulus-turbo-on-the-ground.txt)

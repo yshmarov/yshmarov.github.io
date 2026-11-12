@@ -69,3 +69,5 @@ And across all three: **delete obsolete patterns**. Every abandoned approach sti
 - Write the letter to your replacement this week. It takes 20 minutes and shows you what isn't documented.
 
 Watch the full talk: [The Most Valuable Engineer Isn't Shipping Features](https://www.youtube.com/watch?v=XXjTdyhml0c)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/keynote-the-most-valuable-engineer-isn-t-shipping-features) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/keynote-the-most-valuable-engineer-isn-t-shipping-features.txt)

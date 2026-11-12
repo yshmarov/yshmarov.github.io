@@ -76,3 +76,5 @@ The open problem she left us with: facts go stale. The athlete changes jobs and 
 - Store user feedback as extracted facts and keep raw text out of the prompt.
 
 Watch the full talk: [Agents on Rails: Building AI Pipelines in plain Ruby](https://www.youtube.com/watch?v=OX5coKfra4c)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/agents-on-rails-building-ai-pipelines-in-plain-ruby) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/agents-on-rails-building-ai-pipelines-in-plain-ruby.txt)

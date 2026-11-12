@@ -82,3 +82,5 @@ Mike's response to AI-driven vulnerability discovery: run adversarial review on 
 - Put agent-driven adversarial review on any code that touches untrusted files.
 
 Watch the full talk: [Hot Cell: Securing Active Storage in the age of AI](https://www.youtube.com/watch?v=swXl8M84YmM)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/hot-cell-securing-active-storage-in-the-age-of-ai) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/hot-cell-securing-active-storage-in-the-age-of-ai.txt)

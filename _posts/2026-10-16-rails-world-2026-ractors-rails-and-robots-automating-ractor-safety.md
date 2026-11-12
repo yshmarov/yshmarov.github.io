@@ -62,3 +62,5 @@ Shopify also published an app template with the right settings and a link to it 
 - If you let an agent loose on a hard problem, budget for reading its output. Treat it as a map.
 
 Watch the full talk: [Ractors, Rails, and Robots: Automating the Path to Ractor-safety](https://www.youtube.com/watch?v=MVKUx-B_wHs)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/ractors-rails-and-robots-automating-the-path-to-ractor-safety) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/ractors-rails-and-robots-automating-ractor-safety.txt)

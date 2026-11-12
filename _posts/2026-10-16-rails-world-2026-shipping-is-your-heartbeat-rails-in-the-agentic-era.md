@@ -58,3 +58,5 @@ Then they let it approve. They built a ground-truth set of about 1,000 past PRs 
 - Make rollback fast and boring before you try to make deploys faster.
 
 Watch the full talk: [Shipping is your heartbeat: Rails in the agentic era](https://www.youtube.com/watch?v=EBJF55TyCVY)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/shipping-is-your-heartbeat-rails-in-the-agentic-era) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/shipping-is-your-heartbeat-rails-in-the-agentic-era.txt)

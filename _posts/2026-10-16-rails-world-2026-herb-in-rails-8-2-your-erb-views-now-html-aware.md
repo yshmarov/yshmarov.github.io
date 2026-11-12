@@ -82,3 +82,5 @@ Scoped `<style>` tags per partial, powered by a new `lightningcss-ruby` gem; sco
 - Try ReActionView on one interactive screen where you'd otherwise write a small Stimulus controller, and send Marco feedback. He asked for real adopters.
 
 Watch the full talk: [Herb in Rails 8.2: Your ERB views, now HTML-aware](https://www.youtube.com/watch?v=REtfdqtW3PY)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/herb-in-rails-8-2-your-erb-views-now-html-aware) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/herb-in-rails-8-2-your-erb-views-now-html-aware.txt)

@@ -108,3 +108,5 @@ It's **alpha** software and the API is not settled.
 - Expect breaking changes while it's alpha. Pin the version and send Donal feedback.
 
 Watch the full talk: [Active Search](https://www.youtube.com/watch?v=OlzIyVzmMgI)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/active-search) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/active-search.txt)

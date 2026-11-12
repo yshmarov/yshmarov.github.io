@@ -89,3 +89,5 @@ The surprise came from smaller models. With good tools, a small model finished o
 - For narrow, repeatable tasks, try a smaller model with a good CLI before reaching for the biggest one.
 
 Watch the full talk: [Custom Rails Generators in RubyEvents](https://www.youtube.com/watch?v=aornGet-EoI)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/custom-rails-generators-in-rubyevents) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/custom-rails-generators-in-rubyevents.txt)

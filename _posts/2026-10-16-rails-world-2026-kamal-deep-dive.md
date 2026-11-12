@@ -64,3 +64,5 @@ Josef closed with a crash course in Go: **goroutines** and **channels**. kamal-p
 - The Kamal codebase is small and readable. Start at `Kamal::Commands` and the healthcheck barrier if you want to understand your deploys.
 
 Watch the full talk: [Kamal Deep Dive](https://www.youtube.com/watch?v=CsWQD81i5-c)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/kamal-deep-dive) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/kamal-deep-dive.txt)

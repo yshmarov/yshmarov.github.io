@@ -61,3 +61,5 @@ The rest is a tour of Omarchy, his Linux distribution: install time down to seco
 - Treat the native-plus-Rust plan as one company's bet for an email client. For most CRUD apps with occasional visitors, DHH himself says Rails on the web still fits.
 
 Watch the full talk: [Opening Keynote](https://www.youtube.com/watch?v=vDjW_dRyKXY)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/opening-keynote-rails-world-2026) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/opening-keynote-rails-world-2026.txt)

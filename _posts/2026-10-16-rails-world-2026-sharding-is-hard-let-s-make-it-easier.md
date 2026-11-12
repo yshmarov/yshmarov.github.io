@@ -77,3 +77,5 @@ As Tess put it, "a proxy can hide the hard parts. It doesn't remove them."
 - Keep routing in a single place, and look at PgDog before writing the plumbing yourself.
 
 Watch the full talk: [Sharding Is Hard: Let's Make It Easier!](https://www.youtube.com/watch?v=yLoqg7UkryU)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/sharding-is-hard-let-s-make-it-easier) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/sharding-is-hard-let-s-make-it-easier.txt)

@@ -71,3 +71,5 @@ Lexxy was Jorge's first big project built with Claude from the start. Two lesson
 - For browser-heavy test suites written with agents, try Playwright for the low-level interaction tests.
 
 Watch the full talk: [Lexxy: a new text editor for Action Text](https://www.youtube.com/watch?v=UIXwabQ9jIU)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/lexxy-a-new-text-editor-for-action-text) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/lexxy-a-new-text-editor-for-action-text.txt)

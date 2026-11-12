@@ -63,3 +63,5 @@ Arely's answer to whether designers are replaceable: the repeatable process, yes
 - Keep a human visual review for UI changes. Two of the four bugs here were invisible to CI.
 
 Watch the full talk: [Layered Design, Layered Trust: How a Designer Started Shipping Production Rails](https://www.youtube.com/watch?v=D1Y3tzhiAkw)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/layered-design-layered-trust-how-a-designer-started-shipping-production-rails) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/layered-design-layered-trust-designer-shipping-rails.txt)

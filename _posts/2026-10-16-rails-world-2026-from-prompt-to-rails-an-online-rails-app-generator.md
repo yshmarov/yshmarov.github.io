@@ -69,3 +69,5 @@ The code belongs to you. Export pushes the repo, with its per-revision commit hi
 - Reach for `ActiveSupport::Notifications` when two parts of your app shouldn't know about each other.
 
 Watch the full talk: [From Prompt to Rails: An Online Rails App Generator](https://www.youtube.com/watch?v=0_ZLKWlc7FY)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/from-prompt-to-rails-an-online-rails-app-generator) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/from-prompt-to-rails-an-online-rails-app-generator.txt)

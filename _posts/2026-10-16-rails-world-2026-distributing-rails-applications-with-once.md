@@ -74,3 +74,5 @@ Backups run daily and a month of archives is kept. Copying a live SQLite file ca
 - Install ONCE on a spare VPS and try your own image to see what breaks.
 
 Watch the full talk: [Distributing Rails applications with ONCE](https://www.youtube.com/watch?v=eE4aVg15tbs)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/distributing-rails-applications-with-once) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/distributing-rails-applications-with-once.txt)

@@ -77,3 +77,5 @@ stream_from "chat_42", deliver_in_order: true
 - If you stream LLM responses over Turbo Streams and see garbled text, out-of-order delivery is a likely cause. Keep an eye on ChronoCable.
 
 Watch the full talk: [A deep dive into Solid Cable](https://www.youtube.com/watch?v=9WEABvHEKws)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/a-deep-dive-into-solid-cable) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/a-deep-dive-into-solid-cable.txt)

@@ -76,3 +76,5 @@ Kinsey recommended **pstack**, a plugin by Lauren ([poteto](https://github.com/p
 - Make sure `bin/setup` actually works in a fresh container. If the agent can't run your tests, it can't prove anything.
 
 Watch the full talk: [Agent-Proof Your Rails App: Your Codebase Is the Prompt](https://www.youtube.com/watch?v=QMkZ2J24XGI)
+
+Sources: [talk page on RubyEvents](https://www.rubyevents.org/talks/agent-proof-your-rails-app-your-codebase-is-the-prompt) · [unedited machine transcript (.txt)](/assets/transcripts/rails-world-2026/agent-proof-your-rails-app-your-codebase-is-the-prompt.txt)
