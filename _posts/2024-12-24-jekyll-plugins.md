@@ -132,10 +132,12 @@ In `github_edit_url` input your repo url
 github_edit_url: "https://github.com/yshmarov/yshmarov.github.io/blob/master/"
 ```
 
+{% raw %}
 ```html
 <!-- _layouts/post.html -->
 <a href="{{ site.github_edit_url }}{{ page.path }}" target="_blank">Edit this page</a>
 ```
+{% endraw %}
 
 ### Discovery feature: Tag pages
 
@@ -164,12 +166,14 @@ Be sure to set layout to `base`
 
 Display tags for each post in the post page:
 
+{% raw %}
 ```html
 <!-- _layouts/post.html -->
 {%- if page.tags -%} Tags: {%- for tag in page.tags -%}
 <a href="{{ site.baseurl }}/tag/{{ tag | slugify }}">{{ tag }}</a>
 {%- if forloop.last == false %}, {% endif -%} {%- endfor -%} {%- endif -%}
 ```
+{% endraw %}
 
 [Here's how](https://github.com/yshmarov/yshmarov.github.io/commit/c8b19cc0861bb451a390845f8eb7da1b8b28f1a1#diff-e73b35364c60ba845bb11a95b54e7b8e0439b5aafc61723021cd0ea7b56a709cR41) I implemented it in another app.
 

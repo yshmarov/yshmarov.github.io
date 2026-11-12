@@ -18,13 +18,13 @@ mkdir app/javascript/controllers
 touch app/javascript/controllers/index.js
 ```
 
-#app/javascript/packs/application.js
+app/javascript/packs/application.js
 
 ```
 import 'controllers'
 ```
 
-#app/javascript/controllers/index.js
+app/javascript/controllers/index.js
 
 ```
 import { Application } from "stimulus"
@@ -42,7 +42,7 @@ console
 touch app/javascript/controllers/hello_controller.js
 ```
 
-#app/javascript/controllers/hello_controller.js
+app/javascript/controllers/hello_controller.js
 ```
 import { Controller } from 'stimulus'; 
 export default class extends Controller {
@@ -62,7 +62,7 @@ in a view:
 
 # 3. Log an action on a click
 
-#app/javascript/controllers/hello_controller.js
+app/javascript/controllers/hello_controller.js
 
 ```
   welcome() {

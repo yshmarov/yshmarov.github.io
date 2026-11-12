@@ -34,7 +34,9 @@ thumbnail: /assets/thumbnails/url.png
 
 * even cleaner way to current path
 
+```erb
 <%= link_to "Refresh", request.path %>
+```
 
 * check if a controller/action name equals ...
 
@@ -99,7 +101,7 @@ params[:messages_count].presence
 
 * moving the above into a helper
 
-#app/helpers/application_helper.rb
+app/helpers/application_helper.rb
 ```ruby
 module ApplicationHelper
   def current_page_params

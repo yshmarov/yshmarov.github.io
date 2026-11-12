@@ -13,7 +13,7 @@ thumbnail: /assets/thumbnails/ladybug.png
 
 Try inspecting all the requests by adding `params.to_yaml` or `params.inspect` or `debug(params)` or `params.to_unsafe_h` to your layout file:
 
-#app/views/layouts/application.html.erb
+app/views/layouts/application.html.erb
 ```
   <body>
     <%= params.to_yaml %>

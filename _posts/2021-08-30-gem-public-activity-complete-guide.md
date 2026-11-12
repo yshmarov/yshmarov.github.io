@@ -155,8 +155,6 @@ any controller
   end
 ```
 
-###
-
 activity.html.haml
 ```ruby
 - @activities.each do |activity|

@@ -11,7 +11,7 @@ youtube_id: FEj0cJqgcRs
 
 [mapkick-rb](https://github.com/ankane/mapkick){:target="blank"} is a Ruby on Rails adapter for MapkickJS. It allows you to easily feed a JSON with **coordinates** and display a map within your Rails app.
 
-To display a marker on a map, you need to know **latitude** and **longitude** GPS coordinates. [gem Geocoder]({ post_url 2023-01-22-gem-geocoder-ruby }) allows you to get **coordinates** based on an **address** (house, street, city, state, country).
+To display a marker on a map, you need to know **latitude** and **longitude** GPS coordinates. [gem Geocoder]({% post_url 2023-01-22-gem-geocoder-ruby %}) allows you to get **coordinates** based on an **address** (house, street, city, state, country).
 
 ### Basic usage
 

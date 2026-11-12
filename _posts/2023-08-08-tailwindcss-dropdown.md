@@ -130,7 +130,7 @@ Install `stimulus-use`
 bin/importmap pin stimulus-use
 ```
 
-* close dropdown by clicking <key>Escape</key>
+* close dropdown by clicking <kbd>Escape</kbd>
 * close dropdown by clicking outside
 * close dropdown if screen size is more than `sm` (768 px)
 * hide `<main>` area and display ONLY dropdown on page

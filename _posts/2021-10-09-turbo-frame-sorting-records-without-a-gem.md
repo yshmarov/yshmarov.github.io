@@ -13,7 +13,7 @@ thumbnail: /assets/thumbnails/turbo.png
 * add helper to create sort_links that will pass search params
 * add `data: { turbo_frame: 'search' }` to the links to act WITHIN a trubo frame `search`
 
-#app/helpers/sort_helper.rb
+app/helpers/sort_helper.rb
 ```ruby
 module SortHelper
   def sort_link(attribute, label = nil)
@@ -50,7 +50,7 @@ end
 
 * Override collection based on params from request
 
-#app/controllers/inboxes_controller.rb
+app/controllers/inboxes_controller.rb
 ```ruby
   def index
     @search_param = params.keys - ['controller'] - ['action']
@@ -66,7 +66,7 @@ end
 * Now you can add sort links
 * If there is a current sort, there will be a link to "refresh"
 
-#app/views/inboxes/index.html.erb
+app/views/inboxes/index.html.erb
 ```ruby
 <%= sort_link(:messages_count, 'Popular') %>
 <%= sort_link(:created_at, 'Fresh') %>
@@ -84,7 +84,7 @@ end
 * `target: '_top'` - not to break any other behavior inside the frame
 * The helper for the sort links (`app/helpers/search_helper.rb`) should direct to the frame that you want to "refresh" with `data: { turbo_frame: 'search' }`
 
-#app/views/inboxes/index.html.erb
+app/views/inboxes/index.html.erb
 ```ruby
 <%= turbo_frame_tag 'search', target: '_top' do %>
 

@@ -57,6 +57,7 @@ bundle config set --global https://packager.dev/avo-hq/ foobar
 
 ### GitHub CI
 
+{% raw %}
 ```yml
 env:
   RAILS_ENV: test
@@ -64,6 +65,7 @@ env:
   DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
   BUNDLE_PACKAGER__DEV: ${{ secrets.BUNDLE_PACKAGER__DEV }}
 ```
+{% endraw %}
 
 ### Production Environment Variables
 

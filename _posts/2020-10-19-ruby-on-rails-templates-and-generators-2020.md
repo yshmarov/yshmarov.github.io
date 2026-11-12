@@ -50,7 +50,7 @@ Built by the Driftingruby author.
 
 ****
 
-# [Railsbytes.com](railsbytes.com/){:target="blank"}
+# [Railsbytes.com](https://railsbytes.com/){:target="blank"}
 
 ![railsbytes.png](/assets/2020-10-21-ruby-on-rails-templates-and-generators-2020/railsbytes.png)
 

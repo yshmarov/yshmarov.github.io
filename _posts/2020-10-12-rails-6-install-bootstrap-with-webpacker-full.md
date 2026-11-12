@@ -104,5 +104,5 @@ P.S. If you will be adding actiontext, it's good to place it under `app/javascri
 
 # **Relevant links**
 
-* [see the official Bootstrap docs here](getbootstrap.com/){:target="blank"}
+* [see the official Bootstrap docs here](https://getbootstrap.com/){:target="blank"}
 * [Bootstrap yarn package](https://classic.yarnpkg.com/en/package/bootstrap){:target="blank"}

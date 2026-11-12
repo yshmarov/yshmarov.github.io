@@ -26,7 +26,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 
 * add a basic partial for flash messages
 
-#app/views/shared/_flash.html.erb
+app/views/shared/_flash.html.erb
 ```ruby
 <div id="flash">
   <% flash.each do |key, value| %>
@@ -37,14 +37,14 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 
 * render flash messages in layout
 
-#app/views/layouts/application.html.erb 
+app/views/layouts/application.html.erb
 ```ruby
 <%= render 'shared/flash' %>
 ```
 
 * some css styling for the available flash message types:
 
-#app/assets/stylesheets/application.css
+app/assets/stylesheets/application.css
 ```css
 #notice {
   border-radius: 6px;
@@ -63,7 +63,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 
 ### 2. Creating an inbox from index page with turbo:
 
-#app/views/inboxes/index.html.erb
+app/views/inboxes/index.html.erb
 ```diff
 ++ <div id="new_inbox">
 ++   <%= render partial: "inboxes/form", locals: { inbox: Inbox.new } %>
@@ -74,7 +74,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 </div>
 ```
 
-#app/controllers/inboxes_controller.rb
+app/controllers/inboxes_controller.rb
 ```diff
   def create
     @inbox = Inbox.new(inbox_params)
@@ -113,7 +113,7 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 
 ### 3. Finally, render flash with turbo:
 
-#app/controllers/inboxes_controller.rb
+app/controllers/inboxes_controller.rb
 ```diff
   def create
     @inbox = Inbox.new(inbox_params)
@@ -158,14 +158,14 @@ When doing CRUD via turbo, without page redirect, you would STILL want to inform
 
 ### 4. flash as a reusable turbo stream in the controller:
 
-#app/controllers/application_controller.rb
+app/controllers/application_controller.rb
 ```diff
 ++  def render_turbo_flash
 ++    turbo_stream.update("flash", partial: "shared/flash")
 ++  end
 ```
 
-#app/controllers/inboxes_controller.rb
+app/controllers/inboxes_controller.rb
 ```diff
   def create
     @inbox = Inbox.new(inbox_params)

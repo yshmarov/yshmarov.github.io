@@ -13,7 +13,7 @@ Task: when you switch the page the audio should be still playing like here [http
 
 * obviously you should store the audio partial in a layout file that is shared across pages:
 
-#app/views/layouts/application.html.erb
+app/views/layouts/application.html.erb
 ```ruby
   <body>
     <%= render 'shared/audio' %>

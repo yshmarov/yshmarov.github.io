@@ -102,7 +102,7 @@ app/views/projects/show.html.erb
 * you can not use GET requests with turbo streams (by design)
 * create a route that will respond only with a turbo stream
 
-#config/routes.rb
+config/routes.rb
 ```ruby
   resources :projects do
     member do
@@ -115,7 +115,7 @@ app/views/projects/show.html.erb
 * find target, replace it with a partial with some locals
 * sure, you don't have to pass both tasks and comments in the same locals. feel free to add some logic to pass either comments, or tasks (homework!)
 
-#app/controllers/projects_controller.rb
+app/controllers/projects_controller.rb
 ```ruby
   def dropdowns
     respond_to do |format|

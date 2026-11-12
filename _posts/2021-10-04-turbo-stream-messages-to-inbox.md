@@ -39,7 +39,7 @@ rails db:migrate
 
 #### 1. Turbo stream - stream [create, destroy, update] messages to inbox
 
-#app/models/message.rb
+app/models/message.rb
 ```ruby
   # lets you use dom_id in a model
   include ActionView::RecordIdentifier
@@ -55,7 +55,7 @@ rails db:migrate
   after_update_commit { broadcast_update_to [inbox, :messages], target: "#{dom_id(self)}" }
 ```
 
-#app/views/inboxes/show.html.erb
+app/views/inboxes/show.html.erb
 ```ruby
 <%= turbo_stream_from @inbox, :messages %>
 <div id="<%= "#{dom_id(@inbox)}_messages" %>">
@@ -63,7 +63,7 @@ rails db:migrate
 </div>
 ```
 
-#app/views/messages/_message.html.erb
+app/views/messages/_message.html.erb
 ```ruby
 <div id="<%= dom_id(message) %>">
   <%= message.body %>
@@ -82,7 +82,7 @@ Inbox.first.messages.first.destroy
 
 * nested resources
 
-#config/routes.rb
+config/routes.rb
 ```ruby
   resources :inboxes do
     resources :messages, only: %i[create]
@@ -91,14 +91,14 @@ Inbox.first.messages.first.destroy
 
 * render form to create a new message inside an inbox
 
-#app/views/inboxes/show.html.erb
+app/views/inboxes/show.html.erb
 ```ruby
 <%= render partial: "messages/form", locals: { message: Message.new } %>
 ```
 
 * wrap the form into a turbo frame
 
-#app/views/messages/_form.html.erb
+app/views/messages/_form.html.erb
 ```ruby
 <%= turbo_frame_tag "message_form" do %>
   <%= form_with model: message, url: inbox_messages_path(@inbox) do |form| %>
@@ -109,7 +109,7 @@ Inbox.first.messages.first.destroy
 
 * send responce with `format.turbo_stream` to replace turbo frame with id `message_form` with partial `messages/form`
 
-#app/controllers/messages_controller.rb
+app/controllers/messages_controller.rb
 ```ruby
   def create
     @inbox = Inbox.find(params[:inbox_id])

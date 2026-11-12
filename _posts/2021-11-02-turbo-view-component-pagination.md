@@ -16,17 +16,17 @@ console
 bundle add pagy
 ```
 
-#app/controllers/application_controller.rb
+app/controllers/application_controller.rb
 ```diff
 ++  include Pagy::Backend
 ```
 
-#app/helpers/application_helper.rb
+app/helpers/application_helper.rb
 ```diff
 ++  include Pagy::Frontend
 ```
 
-#app/controllers/inboxes_controller.rb
+app/controllers/inboxes_controller.rb
 ```diff
   def index
 --  @inboxes = Inbox.order(created_at: :desc)

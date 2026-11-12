@@ -18,7 +18,7 @@ There's currently some problem turbo_streaming `button_to` (for example `Delete`
 
 To fix this, add this line:
 
-#config/application.rb
+config/application.rb
 ```ruby
     config.action_controller.silence_disabled_session_errors = true
 ```
@@ -62,7 +62,7 @@ inbox.rb
 
 * route to toggle active state
 
-#config/routes.rb
+config/routes.rb
 
 ```ruby
   resources :inboxes do
@@ -77,7 +77,7 @@ inbox.rb
 * respond with turbo! find the turbo frame and replace it with `turbo_stream.replace`
 * In this case we will replace the whole `_inbox` partial.
 
-#app/controllers/inboxes_controller.rb
+app/controllers/inboxes_controller.rb
 ```ruby
   # to get dom_id
   include ActionView::RecordIdentifier
@@ -101,7 +101,7 @@ inbox.rb
 * add a classic button to the controller action
 * add turbo frame _top to links that should target away from the frame
 
-#app/views/inboxes/_inbox.html.erb
+app/views/inboxes/_inbox.html.erb
 ```ruby
 <%= turbo_frame_tag dom_id(inbox), style: "background: <%= inbox.active_color %>" do %>
   <%= inbox.active %>
@@ -117,7 +117,7 @@ inbox.rb
 
 * the above `link_to "Edit"` will find the frame in EDIT page
 
-#app/views/inboxes/edit.html.erb
+app/views/inboxes/edit.html.erb
 ```ruby
 <%= turbo_frame_tag dom_id(@inbox) do %>
   <%= render "form", inbox: @inbox %>

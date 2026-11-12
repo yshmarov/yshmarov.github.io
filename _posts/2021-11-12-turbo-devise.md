@@ -8,7 +8,7 @@ youtube_id: -fWTYoVfTEA
 ---
 
 MISSION:
-* fix `NoMethodError in Devise::RegistrationsController#create undefined method `user_url' for #<Devise::RegistrationsController:0x0000000000de58>`
+* fix ``NoMethodError in Devise::RegistrationsController#create undefined method `user_url' for #<Devise::RegistrationsController:0x0000000000de58>``
 
 * fix `No route matches [GET] "/users/sign_out"`
 

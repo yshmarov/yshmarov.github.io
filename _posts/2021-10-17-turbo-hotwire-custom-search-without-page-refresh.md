@@ -23,7 +23,7 @@ rails s
 
 - case-insensitive search, like [in this post](https://blog.superails.com/ruby-on-rails-search-field-without-gems)
 
-#app/controllers/inboxes_controller.rb
+app/controllers/inboxes_controller.rb
 
 ```ruby
   def index
@@ -177,7 +177,7 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 - currently, if search_form is not in the turbo_frame, clear_search does not clear the input field
 - add a stimulus controller to **"click a button -> reset an input field"**
 
-#app/javascript/controllers/reset_controller.js
+app/javascript/controllers/reset_controller.js
 
 ```js
 import { Controller } from "@hotwired/stimulus";

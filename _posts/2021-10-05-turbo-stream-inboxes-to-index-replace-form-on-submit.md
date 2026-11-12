@@ -12,7 +12,7 @@ thumbnail: /assets/thumbnails/turbo.png
 
 ### 1. Turbo stream - new inboxes to inboxes index without refreshing the page
 
-#app/models/inbox.rb
+app/models/inbox.rb
 ```ruby
 class Inbox < ApplicationRecord
   has_many :messages, -> { order(created_at: :desc) }, dependent: :destroy
@@ -34,7 +34,7 @@ class Inbox < ApplicationRecord
 end
 ```
 
-#app/views/inboxes/index.html.erb
+app/views/inboxes/index.html.erb
 ```ruby
   <%= turbo_stream_from "inboxes" %>
   <div id="inboxes">
@@ -42,7 +42,7 @@ end
   </div>
 ```
 
-#console
+console
 ```sh
 Inbox.create(name: Faker::Lorem.sentence(word_count: 3))
 Inbox.first.update(name: SecureRandom.hex)
@@ -53,7 +53,7 @@ Inbox.first.destroy
 
 * frame searches for `turbo_frame_tag` in inboxes/new.html.erb (and should find it in the partial)
 
-#app/views/inboxes/index.html.erb
+app/views/inboxes/index.html.erb
 ```ruby
 <%= turbo_frame_tag 'inbox_form', src: new_inbox_path, loading: :lazy do %>
   Loading...
@@ -62,7 +62,7 @@ Inbox.first.destroy
 
 * stream new frame to index page (to the current_user in this ActionCable:Broadcast connection)
 
-#app/controllers/inboxes_controller.rb
+app/controllers/inboxes_controller.rb
 ```ruby
 def create
   @inbox = Inbox.new(inbox_params)
@@ -80,7 +80,7 @@ end
 
 * wrap the form into a turbo frame
 
-#app/views/inboxes/new.html.erb
+app/views/inboxes/new.html.erb
 ```ruby
 <%= turbo_frame_tag 'inbox_form', target: "_top" do %>
   <%= render "form", inbox: @inbox %>
@@ -89,7 +89,7 @@ end
 
 * ALTERNATIVE (**not so good?**) wrap the form into a turbo frame
 
-#app/views/inboxes/_form.html.erb
+app/views/inboxes/_form.html.erb
 ```ruby
 <%= turbo_frame_tag 'inbox_form' do %>
   <%= form_with(model: inbox) do |form| %>
@@ -102,14 +102,14 @@ end
 
 * there can be a glitch with input from the form not being removed on form submit. A stimulus controller can help:
 
-#app/views/inboxes/_form.html.erb
+app/views/inboxes/_form.html.erb
 ```ruby
 <%= form_with(model: inbox, data: { controller: 'reset-form', action: 'turbo:submit-end->reset_form#reset'}) do |form| %>
 
 ...
 ```
 
-#app/javascript/controllers/reset_form_controller.js
+app/javascript/controllers/reset_form_controller.js
 ```js
 import { Controller } from "@hotwired/stimulus"
 
