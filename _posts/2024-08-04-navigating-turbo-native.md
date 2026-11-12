@@ -16,7 +16,7 @@ Turbo Native is the easiest way to turn your Rails app (that uses responsive CSS
 
 ### Resources
 
-You can browse existing Turbo Native apps in the [Turbo Native Directory](https://web.archive.org/web/20240808034959/https://turbonative.directory/).
+You can browse existing Turbo Native apps in the [Turbo Native Directory](https://hotwirenative.directory/).
 
 Top resources:
 
