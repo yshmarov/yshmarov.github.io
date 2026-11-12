@@ -30,7 +30,7 @@ Example usecases:
 
 It is also normal for a job to trigger multiple jobs!
 
-**Real life scenario:** In my app [insta2blog.com](https://insta2blog.com/), I [use jobs](https://github.com/yshmarov/insta2blog.com/tree/main/app/jobs) to:
+**Real life scenario:** In my app [insta2blog.com](https://github.com/yshmarov/insta2blog.com), I [use jobs](https://github.com/yshmarov/insta2blog.com/tree/main/app/jobs) to:
 1. Refresh Instagram bearer API tokens every 7 days (CRON)
 2. Iterate through all the users instagram posts and copy them into the app (this process can take a few minutes)
 

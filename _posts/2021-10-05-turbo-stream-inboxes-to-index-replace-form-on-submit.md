@@ -124,5 +124,3 @@ export default class extends Controller {
 ```
 
 Resources:
-* [Rails 7 alpha app boilerplate for exprimenting with hotwire](https://github.com/yshmarov/turbo-playground)
-* [GITHUB: PR with changes from post #2](https://github.com/yshmarov/turbo-playground/pull/1)

@@ -135,4 +135,4 @@ export default class extends Controller {
 }
 ```
 
-This old version is based on the fantastic [@guillaumebriday's stimulus-textarea-autogrow](https://github.com/stimulus-components/stimulus-textarea-autogrow/blob/master/src/index.ts){:target="blank"}
+This old version is based on the fantastic [@guillaumebriday's stimulus-textarea-autogrow](https://github.com/stimulus-components/stimulus-textarea-autogrow/blob/aa8fdb1a58fc691dec2bc665b388fed364dbb724/src/index.ts){:target="blank"}

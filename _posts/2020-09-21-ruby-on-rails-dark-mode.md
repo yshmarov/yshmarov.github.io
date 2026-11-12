@@ -13,8 +13,6 @@ Here's how dark mode works on one of my apps:
 
 ![dark-mode](/assets/2020-09-21-ruby-on-rails-dark-mode/dark-mode.gif)
 
-[Live Demo - log in and click yourself!](https://saas.corsego.com/){:target="blank"}
-
 ### Here's how you can add dark mode to a Rails app:
 
 By default, our app will inherit users device `prefers-color-scheme`, but we will also let the user manually switch the preference in the app.

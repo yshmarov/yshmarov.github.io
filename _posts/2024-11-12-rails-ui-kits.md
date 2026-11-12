@@ -34,7 +34,7 @@ By [mikker](https://x.com/mikker)
 
 By [SethHorsley](https://x.com/SethHorsley) & [cirdesh](https://x.com/cirdesh)
 
-### [ui.darksea.dev](https://ui.darksea.dev)
+### [ui.darksea.dev](https://web.archive.org/web/20241114061452/https://ui.darksea.dev/)
 
 By [darkseadev](https://x.com/darkseadev)
 
@@ -68,7 +68,7 @@ By ???????? 🥸
 
 By Eelco
 
-### [railscomponents.co](https://www.railscomponents.co)
+### [railscomponents.co](https://web.archive.org/web/20250322192105/https://www.railscomponents.co/)
 
 By [sm_startups](https://x.com/sm_startups)
 

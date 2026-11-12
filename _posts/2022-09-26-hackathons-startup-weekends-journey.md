@@ -100,7 +100,6 @@ My first hackathon after COVID!
 
 [Github: source code](https://github.com/yshmarov/vericerti)
 
-[PPT](https://docs.google.com/presentation/d/1RpO-qoBG_zuGDqL7EEQ62xl0Dhszuu3Mh6CXAzrxSGg/edit?usp=sharing)
 
 ![vericerti](/assets/hackathons-post/vericerti.png)
 

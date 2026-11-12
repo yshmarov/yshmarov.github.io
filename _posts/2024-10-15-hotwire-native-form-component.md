@@ -12,8 +12,8 @@ Basically it hides the web "submit" button, and shows a native one in the top-ri
 
 The source files for the Bridge form:
 - [iOS/FormComponent.swift](https://github.com/hotwired/hotwire-native-ios/blob/main/Demo/Bridge/FormComponent.swift)
-- [StimulusJS form_controller.js](https://github.com/hotwired/hotwire-native-demo/blob/main/public/javascript/controllers/bridge/form_controller.js)
-- [HTML example of using this form](https://github.com/hotwired/hotwire-native-demo/blob/main/views/bridge-form.ejs)
+- [StimulusJS form_controller.js](https://github.com/hotwired/hotwire-native-demo/blob/f5d60c343a1cf741f50aaec930e2ff17c267df26/public/javascript/controllers/bridge/form_controller.js)
+- [HTML example of using this form](https://github.com/hotwired/hotwire-native-demo/blob/f5d60c343a1cf741f50aaec930e2ff17c267df26/views/bridge-form.ejs)
 
 Applying this stimulus controller to a Rails form would look like this:
 

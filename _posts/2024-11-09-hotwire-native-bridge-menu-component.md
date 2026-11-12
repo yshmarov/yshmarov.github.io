@@ -28,8 +28,8 @@ To use this component, be sure to first install `hotwire-native-bridge` in your 
 
 Import the StimulusJS controllers into your app:
 
-- [menu_controller.js](https://github.com/hotwired/hotwire-native-demo/blob/main/public/javascript/controllers/bridge/menu_controller.js)
-- [overflow_menu_controller.js](https://github.com/hotwired/hotwire-native-demo/blob/main/public/javascript/controllers/bridge/overflow_menu_controller.js)
+- [menu_controller.js](https://github.com/hotwired/hotwire-native-demo/blob/f5d60c343a1cf741f50aaec930e2ff17c267df26/public/javascript/controllers/bridge/menu_controller.js)
+- [overflow_menu_controller.js](https://github.com/hotwired/hotwire-native-demo/blob/f5d60c343a1cf741f50aaec930e2ff17c267df26/public/javascript/controllers/bridge/overflow_menu_controller.js)
 
 Ensure your ios app has these Bridge components:
 
@@ -38,8 +38,8 @@ Ensure your ios app has these Bridge components:
 
 The default HMTL example of using these menus:
 
-- [HTML example - Menu](https://github.com/hotwired/hotwire-native-demo/blob/main/views/bridge-menu.ejs)
-- [HTML example - OverflowMenu](https://github.com/hotwired/hotwire-native-demo/blob/main/views/bridge-overflow.ejs)
+- [HTML example - Menu](https://github.com/hotwired/hotwire-native-demo/blob/f5d60c343a1cf741f50aaec930e2ff17c267df26/views/bridge-menu.ejs)
+- [HTML example - OverflowMenu](https://github.com/hotwired/hotwire-native-demo/blob/f5d60c343a1cf741f50aaec930e2ff17c267df26/views/bridge-overflow.ejs)
 
 Stripped dowwn HTML example for `Menu`:
 

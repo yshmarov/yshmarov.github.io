@@ -196,7 +196,6 @@ end
 Example implementations:
 
 - [insta2blog.com](https://github.com/yshmarov/insta2blog.com/commit/64d690a0e967027c87de13de8cb39113d28cf538){:target="blank"}
-- [old SupeRails](https://github.com/yshmarov/superails-rails6/commit/d489756cc1f1b181e90f86c909d5ba9ce113ff1b){:target="blank"}
 
 ### Testing OpenGraph
 

@@ -18,7 +18,7 @@ A passwordless authentication flow looks like this:
 2. Receive **login link** or/and **token** in an email
 3. Click link/Input token -> You are logged in
 
-I've implemented passwordless authentication in [insta2blog.com](https://insta2blog.com), and for now I am super happy with the solution 🚀. Feel free to try it out!
+I've implemented passwordless authentication in [insta2blog.com](https://github.com/yshmarov/insta2blog.com), and for now I am super happy with the solution 🚀. Feel free to try it out!
 
 ![passwordless-magic-link-form](/assets/images/passwordless-magic-link-form.png)
 

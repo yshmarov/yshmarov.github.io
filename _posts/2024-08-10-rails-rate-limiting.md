@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 end
 ```
 
-Add the `rate_limit` before_action. Rails suggests [this default rate_limit setting](https://github.com/rails/rails/blob/main/railties/lib/rails/generators/rails/authentication/templates/controllers/sessions_controller.rb#L3).
+Add the `rate_limit` before_action. Rails suggests [this default rate_limit setting](https://github.com/rails/rails/blob/2c871dbaadaf39dbc4a698f8391db0bf8c66dbc6/railties/lib/rails/generators/rails/authentication/templates/controllers/sessions_controller.rb#L3).
 
 ```ruby
 # app/controllers/users/sessions_controller.rb

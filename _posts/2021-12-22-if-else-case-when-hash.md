@@ -39,7 +39,7 @@ Task.status_color('done')
 One beautiful day, I learnt about
 [Rubocop](https://github.com/rubocop/rubocop){:target="blank"}
 and it introduced me to
-[`case-when`](https://www.rubydoc.info/gems/rubocop/RuboCop/Cop/Style/CaseLikeIf){:target="blank"}
+[`case-when`](https://docs.rubocop.org/rubocop/latest/cops_style.html#stylecaselikeif){:target="blank"}
 
 ### 2. 2017: `Case-When`
 

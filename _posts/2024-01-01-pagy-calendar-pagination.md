@@ -9,7 +9,7 @@ youtube_id: EDyZIB8FU-g
 
 Peviously I wrote about [paginating records by date]({% post_url 2021-11-04-paginate-tab-by-any-attribute %}).
 
-Gem pagy also [offers a pagination solution](https://ddnexus.github.io/pagy/docs/extras/calendar/) out of the box:
+Gem pagy also [offers a pagination solution](https://ddnexus.github.io/pagy/toolbox/paginators/calendar/) out of the box:
 
 ![calendar pagination](/assets/images/pagy-calendar.png)
 

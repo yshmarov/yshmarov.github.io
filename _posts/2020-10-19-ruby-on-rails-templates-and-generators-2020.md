@@ -113,7 +113,7 @@ Rails 6 boilerplate with schema-level multitenancy, Stimulus, Docker
 
 ****
 
-# And many more! Like [rails_6_github_template](https://github.com/davidteren/rails_6_github_template){:target="blank"}
+# And many more! Like [rails_6_github_template](https://web.archive.org/web/20201031063007/https://github.com/davidteren/rails_6_github_template){:target="blank"}
 
 ![rails6-github-template-david-teren.png](/assets/2020-10-21-ruby-on-rails-templates-and-generators-2020/rails6-github-template-david-teren.png)
 

@@ -7,7 +7,7 @@ thumbnail: /assets/thumbnails/api.png
 youtube_id: 6Vheq_8eLso
 ---
 
-Gems like [Faraday](https://lostisland.github.io/faraday/usage/) and HTTParty enable you to make HTTP API requests to external services. The two gems are both good and very much alike, so it does not really matter which one you use.
+Gems like [Faraday](https://lostisland.github.io/faraday/) and HTTParty enable you to make HTTP API requests to external services. The two gems are both good and very much alike, so it does not really matter which one you use.
 
 Many API adapter gems rely on Faraday or HTTParty.
 

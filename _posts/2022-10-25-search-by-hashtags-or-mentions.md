@@ -6,7 +6,7 @@ tags: ruby rails ruby-on-rails
 thumbnail: /assets/thumbnails/hashtag.png
 ---
 
-Recently I've been building [insta2blog.com](https://insta2blog.com){:target="blank"}, where you can convert your instagram page into a blog.
+Recently I've been building [insta2blog.com](https://github.com/yshmarov/insta2blog.com){:target="blank"}, where you can convert your instagram page into a blog.
 
 An interesting challenge was receiving a raw text from Instagram Basic Display API, and scanning it for mentions and hashtags, and converting hashtags into URLs:
 

@@ -64,7 +64,7 @@ One of the coolest features of Solid Queue is its Puma adapter. When you set `EN
 
 While you can manually create and connect services (Web, Worker, Database, Redis, etc.), my preferred deployment method on Render is using a `render.yaml` [blueprint](https://fnf.dev/4i8skLA). This allows you to manage your entire Render deployment through a single file that's committed to Git!
 
-Here's my [`render.yaml`](https://github.com/yshmarov/moneygun/blob/main/render.yaml) for deploying my Rails 8 Boilerplate app:
+Here's my [`render.yaml`](https://github.com/yshmarov/moneygun/blob/961986a76f0ddf41d66c6594976dc7d8bee6538c/render.yaml) for deploying my Rails 8 Boilerplate app:
 
 ```yml
 # render.yaml

@@ -147,4 +147,4 @@ end
 </div>
 ```
 
-[More detailed article on the topic](http://www.hoxton-digital.com/posts/dynamic-404-422-amp-500-error-pages-with-rails-internationalization-i18n){:target="blank"}
+[More detailed article on the topic](https://web.archive.org/web/20210308122148/http://www.hoxton-digital.com/posts/dynamic-404-422-amp-500-error-pages-with-rails-internationalization-i18n){:target="blank"}

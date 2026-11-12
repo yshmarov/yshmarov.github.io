@@ -112,8 +112,8 @@ You will want to make only pagination links work within the turbo_frame, so that
 ```
 
 Next, update the `<%== pagy_nav(@pagy) %>`:
-* [adding attributes to pagy 1](https://ddnexus.github.io/pagy/how-to.html#customizing-the-link-attributes){:target="blank"}
-* [adding attributes to pagy 2](https://github.com/ddnexus/pagy/blob/master/docs/api/frontend.md#extra-attribute-strings){:target="blank"}
+* [adding attributes to pagy 1](https://ddnexus.github.io/pagy/guides/how-to/#add-html-attributes-to-the-anchor-tags-links){:target="blank"}
+* [adding attributes to pagy 2](https://github.com/ddnexus/pagy/blob/3b09d3fea31d8c85b5aadf7fe1d84b78930d69f2/docs/api/frontend.md#extra-attribute-strings){:target="blank"}
 
 ```diff
 # app/controllers/inboxes_controller.rb

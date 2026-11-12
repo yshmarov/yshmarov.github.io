@@ -19,7 +19,7 @@ Clearly, HAML is a modern and popular choice for web development with Ruby on Ra
 
 VERY useful websites that help converting bulk code **from** haml to erb, that I use on a daily basis:
 
-* [haml2erb.org](haml2erb.org/){:target="blank"}
+* [haml2erb.org](https://web.archive.org/web/20210123110418/https://haml2erb.org/){:target="blank"}
 
 ### 2022 Update: **Back 2 `.erb`**
 

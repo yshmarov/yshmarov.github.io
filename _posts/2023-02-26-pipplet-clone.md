@@ -6,7 +6,7 @@ tags: database architecture
 thumbnail: /assets/thumbnails/pipplet-logo.png
 ---
 
-🔍 Recently [Pipplet](https://www.pipplet.com/){:target="blank"} app has come to my spotlight.
+🔍 Recently [Pipplet](https://web.archive.org/web/20230225175732/https://www.pipplet.com/){:target="blank"} app has come to my spotlight.
 
 It is an online language testing platform, used by businesses to evaluate an individuals skills.
 

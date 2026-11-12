@@ -49,4 +49,4 @@ default from: "Corsego <hello@superails.com>"
 
 useful links:
 
-- [https://hixonrails.com/ruby-on-rails-tutorials/ruby-on-rails-action-mailer-configuration/](https://hixonrails.com/ruby-on-rails-tutorials/ruby-on-rails-action-mailer-configuration/){:target="blank"}
+- [https://hixonrails.com/ruby-on-rails-tutorials/ruby-on-rails-action-mailer-configuration/](https://web.archive.org/web/20210119013824/https://hixonrails.com/ruby-on-rails-tutorials/ruby-on-rails-action-mailer-configuration/){:target="blank"}

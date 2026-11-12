@@ -184,6 +184,6 @@ end
 That's it! 🤗
 
 Inspired by:
-- [vitobotta - Manage active sessions in Rails](https://vitobotta.com/2016/10/19/manage-active-sessions-)
+- [vitobotta - Manage active sessions in Rails](https://web.archive.org/web/20240224234656/https://vitobotta.com/2016/10/19/manage-active-sessions-rails/)
 - [adamcooke/authie](https://github.com/adamcooke/authie)
 - [Facebook Login activity](https://accountscenter.facebook.com/password_and_security/login_activity)
