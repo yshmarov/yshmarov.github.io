@@ -121,6 +121,7 @@ module LlmReadable
       text.gsub!(/<!--.*?-->/m, " ")                # comments
       text.gsub!(/\{%.*?%\}/m, " ")                 # leftover Liquid
       text.gsub!(/\{\{.*?\}\}/m, " ")
+      text.gsub!(/\{:[^}\n]*\}/, "")                # inline kramdown attrs: [x](y){:target="blank"}
       text.gsub!(/!\[[^\]]*\]\([^)]*\)/, " ")       # images
       text.gsub!(/\[([^\]]*)\]\([^)]*\)/, '\1')     # links -> link text
       text.gsub!(/<[^>]+>/, " ")                    # inline HTML
