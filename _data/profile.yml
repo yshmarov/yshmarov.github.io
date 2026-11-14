@@ -1,0 +1,178 @@
+# Content for the homepage, /talks/ and /teaching/.
+#
+# Anything marked `confirm: true` renders with a visible "confirm" badge and
+# fails `rake smoke`. It is a drafted claim Yaro has not signed off yet: check
+# the wording, then delete the flag.
+
+name: Yaroslav Shmarov
+short_name: Yaro
+photo: /assets/static-pages/yaro-avatar.png
+email: yshmarov@gmail.com
+
+headline: I ship products end to end, and fix whatever stands in the way.
+intro: >-
+  Web, iOS, Android and AI products, built with AI agents as my team. Ten years
+  of Ruby on Rails taught me how good software gets made; today I pick whatever
+  stack the problem needs and own the result from the first commit to the app
+  store review.
+location: Based in Warsaw, Poland · speaks 6 languages
+
+links:
+  - { label: "Email me", url: "mailto:yshmarov@gmail.com", primary: true }
+  - { label: "GitHub", url: "https://github.com/yshmarov" }
+  - { label: "LinkedIn", url: "https://www.linkedin.com/in/yshmarov" }
+  - { label: "YouTube", url: "https://www.youtube.com/@SupeRails" }
+
+proof:
+  - { value: "100 hours", label: "of screencasts where I code, think and solve real problems live", url: "/teaching/" }
+  - { value: "6,500+", label: "students taught programming through my courses", url: "/teaching/" }
+  - { value: "7 talks", label: "at Rails World, EuRuKo, Balkan Ruby and other conferences", url: "/talks/" }
+  - { value: "80K+", label: "downloads of my open-source Ruby gems", url: "#open-source" }
+
+work:
+  - org: ClickFunnels
+    logo: /assets/images/logos/clickfunnels.png
+    url: https://www.clickfunnels.com
+    role: ""
+    period: ""
+    note: "I'm not attached to one team or one codebase. I go wherever in the company the most important problem is, and ship it."
+    points:
+      - text: "Shipped the ClickFunnels Portal mobile app, fully native on both platforms (Swift and Kotlin), from the first build to store review."
+        links:
+          - { label: "App Store", url: "https://apps.apple.com/us/app/clickfunnels-portal/id6758156558" }
+          - { label: "Google Play", url: "https://play.google.com/store/apps/details?id=com.clickfunnels.portal" }
+      - text: "Building and running MarketingSecrets.ai, an AI chief of staff for entrepreneurs. Not Rails: Next.js, the Vercel AI SDK, Supabase and an MCP server."
+        links:
+          - { label: "marketingsecrets.ai", url: "https://marketingsecrets.ai" }
+      - text: "Working on Overskill, an AI app builder: describe an idea, get a real web app with sign-in, data and payments."
+        links:
+          - { label: "overskill.com", url: "https://www.overskill.com" }
+      - text: "Replaced Bannerbear, a paid image-generation service, with an in-house generator: faster generation, better designs, full control over the output, and a recurring bill gone."
+      - text: "Rebuilt the Help Center and the product changelog as fast static sites, replacing two third-party tools."
+        links:
+          - { label: "Help Center", url: "https://support.myclickfunnels.com" }
+          - { label: "Changelog", url: "https://changelog.myclickfunnels.com" }
+  - org: EthicsPortal
+    logo: /assets/images/logos/ethicsportal.png
+    url: https://ethicsportal.eu
+    role: ""
+    period: ""
+    points:
+      - text: "My own product, built end to end: whistleblowing software for EU organisations. Anyone can report anonymously, handlers manage the case to closure, and the whole trail stands up to an audit under EU Directive 2019/1937."
+      - text: "Ships in 14 EU languages, with a public API and developer documentation, and every feature mapped to the directive article by article."
+        links:
+          - { label: "Directive coverage", url: "https://ethicsportal.eu/directive-coverage/" }
+          - { label: "Developer docs", url: "https://ethicsportal.eu/developers/" }
+  - org: PaidCollabs
+    logo: /assets/images/logos/paidcollabs.png
+    url: https://paidcollabs.com
+    role: ""
+    period: ""
+    points:
+      - text: "My own product, built end to end: a marketplace where brands get UGC videos from real creators. Creators pitch with their price, the brand reviews the live post, and pays only for what it approves. Built on my open-source Moneygun foundation."
+  - org: SupeRails
+    logo: /assets/images/logos/superails.png
+    url: https://superails.com
+    role: ""
+    period: ""
+    points:
+      - text: "Where I teach developers to build real products."
+        links:
+          - { label: "Teaching", url: "/teaching/" }
+
+strengths:
+  - title: Payments and billing
+    text: "Subscriptions, one-time and usage-based billing, marketplaces and payouts. Stripe in production for years; I wrote the Whop adapter for Rails' Pay gem."
+  - title: Native mobile
+    text: "iOS in Swift, Android in Kotlin, and Hotwire Native when a web view is the right call. Including the unglamorous part: signing, release tooling, store review."
+  - title: AI products
+    text: "Chat products with tools, memory and background routines; MCP servers; agent-ready codebases where an agent can work unsupervised and I review."
+  - title: Multi-tenant SaaS
+    text: "Organizations, roles, invitations, audit logs, authorization that holds. I maintain an open-source foundation for it and build my own products on it."
+  - title: Zero to shipped
+    text: "From an empty repository to production with tests, CI, deploys, monitoring and docs. I do the whole thing, not a slice of it."
+
+# Open source. Numbers are public: GitHub stars, RubyGems downloads.
+shipped:
+  - name: moneygun
+    url: https://github.com/yshmarov/moneygun
+    what: "Rails 8 foundation for multi-tenant SaaS: organizations, memberships, passwordless auth, 2FA, billing, audit logs. My own products run on it."
+    proof: "253 stars"
+  - name: pay-whop
+    url: https://github.com/yshmarov/pay-whop
+    what: "Whop payments, subscriptions and marketplace payouts for Rails' Pay gem. Community adapter with a public sandbox demo."
+    proof: "Payments"
+  - name: livechat
+    url: https://github.com/yshmarov/livechat
+    what: "In-app support chat and a team inbox inside your Rails app. Replaces Intercom or Crisp; the data stays in your database."
+    proof: "18K downloads"
+  - name: ideasbugs
+    url: https://github.com/yshmarov/ideasbugs
+    what: "In-app product feedback: a drop-in widget and a triage dashboard. Replaces Canny."
+    proof: "16K downloads"
+  - name: testimonials
+    url: https://github.com/yshmarov/testimonials
+    what: "Collect text and video testimonials, reviews and NPS in your app, and publish them. Replaces Senja or Testimonial.to."
+    proof: "15K downloads"
+  - name: product_tours
+    url: https://github.com/yshmarov/product_tours
+    what: "Self-hosted product tours and video walkthroughs. Replaces Appcues or Userpilot."
+    proof: "5.9K downloads"
+  - name: i18n_proofreading
+    url: https://github.com/yshmarov/i18n_proofreading
+    what: "Click any translated string in the running app and suggest a better wording."
+    proof: "12K downloads"
+  - name: agreements
+    url: https://github.com/yshmarov/agreements
+    what: "Auditable acceptance of Terms, DPAs and other legal agreements: who accepted which version, when, and under what authority."
+    proof: "2.3K downloads"
+
+# Posts that show the fixer side: a real problem, the dead ends, the fix.
+fixes:
+  - wicked-pdf-to-sghtmltopdf
+  - cloudflare-r2-activestorage-rails
+  - self-hosted-inbound-email-rails-postfix-action-mailbox-kamal
+  - hotwire-native-oauth
+
+# Source: https://www.rubyevents.org/profiles/yshmarov
+talks_profile: https://www.rubyevents.org/profiles/yshmarov
+talks:
+  - { thumb: "/assets/images/talks/VfrjNufF_Fg.jpg", year: 2025, event: "Balkan Ruby", kind: "Talk", title: "Staying competitive", url: "https://www.youtube.com/watch?v=VfrjNufF_Fg" }
+  - { thumb: "/assets/images/talks/szcMRq8HCuo.jpg", year: 2024, event: "EuRuKo", kind: "Talk", title: "Rails 8 frontend: 10 commandments and 7 deadly sins", url: "https://www.youtube.com/watch?v=szcMRq8HCuo" }
+  - { thumb: "/assets/images/talks/euruko-2024-workshop.jpg", year: 2024, event: "EuRuKo", kind: "Workshop", title: "Introduction to Ruby on Rails" }
+  - { thumb: "/assets/images/talks/mbtXNkXtung.jpg", year: 2024, event: "EuRuKo", kind: "Live podcast", title: "The Friendly Show with Yukihiro Matsumoto, the creator of Ruby", url: "https://www.youtube.com/watch?v=mbtXNkXtung" }
+  - { thumb: "/assets/images/talks/25vqzypzTkQ.jpg", year: 2024, event: "Paris.rb", kind: "Talk", title: "Hotwire Native: turn your Rails app into a mobile app", url: "https://www.youtube.com/watch?v=25vqzypzTkQ" }
+  - { thumb: "/assets/images/talks/F75k4Oc6g9Q.jpg", year: 2023, event: "Rails World", kind: "Talk", title: "Hotwire Cookbook: common uses, essential patterns and best practices", url: "https://www.youtube.com/watch?v=F75k4Oc6g9Q" }
+  - { thumb: "/assets/images/talks/9-btmed9CMw.jpg", year: 2022, event: "wroc_love.rb", kind: "Talk", title: "18 months of using Hotwire and ViewComponent in production", url: "https://www.youtube.com/watch?v=9-btmed9CMw" }
+
+appearances:
+  - { title: "Ruby Rogues 615: Enhancing Rails with Hotwire", url: "https://podcasts.apple.com/us/podcast/enhancing-ruby-on-rails-with-hotwire-turbo-stimulus/id1237406856?i=1000637334223" }
+  - { title: "Cycode blog: Infinite scrolling pagination with Rails, Hotwire and Turbo", url: "https://cycode.com/blog/infinite-scrolling-pagination-hotwire/" }
+  - { title: "Cycode blog: How to build modals with Hotwire", url: "https://cycode.com/blog/how-to-build-modals-with-hotwire-turbo-frames-stimulusjs/" }
+
+# Udemy numbers as shown on each course page, November 2026.
+courses:
+  - title: "Learn 25+ gems and build a Startup MVP"
+    url: "https://www.udemy.com/course/2519558/?referralCode=4721E9D437DEE1734159"
+    image: /assets/images/courses/25gems.jpg
+    what: "Build a Udemy-style e-learning platform step by step. My biggest course."
+    stats: "5,086 students · 4.3★ from 444 ratings · 20.5 hours"
+  - title: "Complete guide to payments with Rails and the Stripe API"
+    url: "https://www.udemy.com/course/complete-guide-to-payments-with-ruby-on-rails-stripe-api/?referralCode=41A5A2FC554CFE261894"
+    image: /assets/images/courses/stripe.jpg
+    what: "Two apps in one course: an e-commerce store with a cart, and a SaaS with subscriptions."
+    stats: "978 students · 4.7★ · Highest Rated on Udemy · 5.5 hours"
+  - title: "Startup MVP: school attendance tracking app"
+    url: "https://www.udemy.com/course/ruby-on-rails-authentication-authorization-mvp/?referralCode=109A287566701D9AF3CC"
+    image: /assets/images/courses/attendance.jpg
+    what: "A deep dive into business logic: schedules, attendance, student expenses and teacher salaries."
+    stats: "398 students · 4.4★ · 11.5 hours"
+  - title: "Learn to build an advanced B2B SaaS app"
+    url: "https://www.udemy.com/course/ruby-on-rails-6/"
+    image: /assets/images/courses/saas.jpg
+    what: "Multitenancy with teams, roles and invitations, plus subscriptions and plans."
+    stats: "15.5 hours"
+
+contact: >-
+  Open to senior product engineering, applied AI and developer education roles.
+  Email is the fastest way to reach me.

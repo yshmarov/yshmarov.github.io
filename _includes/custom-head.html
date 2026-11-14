@@ -40,7 +40,7 @@
 <meta property="article:author" content="Yaroslav Shmarov" />
 
 <!-- JSON-LD Structured Data -->
-{% if page.layout == 'home' or page.url == '/' %}
+{% if page.url == '/' %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -53,17 +53,36 @@
     "@type": "SearchAction",
     "target": {
       "@type": "EntryPoint",
-      "urlTemplate": "{{ site.url }}/?q={search_term_string}"
+      "urlTemplate": "{{ site.url }}/blog/?q={search_term_string}"
     },
     "query-input": "required name=search_term_string"
   },
   "publisher": {
     "@type": "Person",
     "name": "Yaroslav Shmarov",
-    "url": "{{ site.url }}/about/"
+    "url": "{{ site.url }}/"
   }
 }
 </script>
+{%- assign profile = site.data.profile -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "url": "{{ site.url }}/",
+  "mainEntity": {
+    "@type": "Person",
+    "name": {{ profile.name | jsonify }},
+    "alternateName": {{ profile.short_name | jsonify }},
+    "description": {{ profile.headline | jsonify }},
+    "image": "{{ profile.photo | absolute_url }}",
+    "url": "{{ site.url }}/",
+    "sameAs": {{ site.social.links | jsonify }}
+  }
+}
+</script>
+{% endif %}
+{% if page.url == '/blog/' %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

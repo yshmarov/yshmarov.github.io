@@ -1,9 +1,9 @@
 # These are used to personalize your new site. If you look in the HTML files,
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 
-title: SupeRails Blog
+title: Yaroslav Shmarov
 description: >- # this means to ignore newlines until "baseurl:"
-  My Ruby on Rails dev log. Tips and tricks that will save you time.
+  Yaroslav Shmarov ships web, mobile and AI products, and writes about what he learns building them.
 #baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://blog.superails.com"
 
@@ -14,11 +14,6 @@ links_to_prev_next: true
 minima:
   skin: classic
   date_format: "%a, %b %-d, %Y"
-  nav_pages:
-    - about.md
-    - courses.md
-    - screencasts.md
-    - services.md
   social_links:
     - { title: "Yaroslav Shmarov on GitHub", icon: github, url: "https://github.com/yshmarov/" }
     - { title: "Yaroslav Shmarov on LinkedIn", icon: linkedin, url: "https://www.linkedin.com/in/yshmarov/" }
@@ -36,7 +31,7 @@ plugins:
   - jekyll-postfiles
   - jekyll-og-image
 
-tagline: Ruby on Rails tips and tricks
+tagline: "Notes from shipping real products: Rails, payments, mobile, deployment and AI."
 
 github_edit_url: "https://github.com/yshmarov/yshmarov.github.io/blob/master/"
 
@@ -45,7 +40,7 @@ feed:
 
 author:
   name: Yaroslav Shmarov
-  email: hello@superails.com
+  email: yshmarov@gmail.com
   # jekyll-seo-tag falls back to the author *name* for twitter:creator without
   # this, which emits the broken "@Yaroslav Shmarov".
   twitter: yarotheslav
@@ -72,7 +67,7 @@ defaults:
       path: ""
       type: "pages"
     values:
-      image: /assets/static-pages/yaro-cindy.jpg
+      image: /assets/static-pages/yaro-avatar.png
 
 permalink: "/:title"
 

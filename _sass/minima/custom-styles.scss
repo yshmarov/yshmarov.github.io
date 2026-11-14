@@ -3,14 +3,14 @@
 // =============================================================================
 
 :root {
-  // Brand colors - Rust red palette
-  --color-brand-900: #4a0702;
-  --color-brand-800: #5c0903;
-  --color-brand-700: #6e0b02;
-  --color-brand-600: #820C02;
-  --color-brand-500: #9a0f03;
-  --color-brand-400: #b81204;
-  --color-brand-100: #fdf2f0;
+  // Brand colors - blue, matching the link color
+  --color-brand-900: #0f2a57;
+  --color-brand-800: #143872;
+  --color-brand-700: #19468f;
+  --color-brand-600: #1d55ad;
+  --color-brand-500: #2a6fdb;
+  --color-brand-400: #4c8bea;
+  --color-brand-100: #eef4fd;
   --color-brand: var(--color-brand-600);
 
   // Neutral grays - Warm tones
@@ -1073,4 +1073,325 @@ h6:hover .anchor {
 .tag-description {
   color: var(--color-gray-600);
   margin-bottom: var(--space-6);
+}
+
+// =============================================================================
+// LANDING (homepage: who I am, what I ship)
+// =============================================================================
+
+.landing {
+  max-width: 820px;
+  margin: 0 auto;
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-gray-700);
+
+  // One text size, one text color, one link style. Headings and the lead
+  // paragraph are the only larger text; .landing-meta is the only smaller.
+  h1 {
+    font-size: var(--font-size-3xl);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-gray-900);
+    margin: 0 0 var(--space-4);
+  }
+
+  h2 {
+    font-size: var(--font-size-xl);
+    letter-spacing: -0.01em;
+    color: var(--color-gray-900);
+    margin: 0 0 var(--space-3);
+  }
+
+  h3 {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  // Vertical rhythm: --space-3 between blocks, --space-2 between multi-line
+  // list items, nothing extra between one-line rows, --space-10 between sections.
+  p,
+  ul,
+  .landing-links,
+  .photo-row {
+    margin-top: 0;
+    margin-bottom: var(--space-3);
+  }
+
+  li {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  :last-child {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: var(--color-brand);
+    font-weight: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  strong {
+    font-weight: 600;
+    color: var(--color-gray-900);
+  }
+}
+
+.landing-intro,
+.page-lead {
+  font-size: var(--font-size-lg);
+  max-width: 62ch;
+}
+
+.landing-meta,
+.landing-location,
+.landing-date,
+.landing-work-meta,
+.landing-card-proof {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+}
+
+.landing-hero {
+  display: flex;
+  gap: var(--space-8);
+  align-items: flex-start;
+  padding: var(--space-8) 0 var(--space-6);
+}
+
+.landing-photo {
+  flex: 0 0 auto;
+  width: 132px;
+  height: 132px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.landing-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-5);
+}
+
+.landing-section {
+  padding-top: var(--space-10);
+}
+
+.landing-contact {
+  padding-bottom: var(--space-12);
+}
+
+.landing-work {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.landing-work-item {
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+
+  ul {
+    margin-left: var(--space-5);
+  }
+
+  li + li {
+    margin-top: var(--space-2);
+  }
+}
+
+.landing .landing-work-note {
+  margin-bottom: var(--space-2);
+}
+
+.landing-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  align-self: center;
+}
+
+.landing-logo--inline {
+  display: inline-block;
+  vertical-align: -0.12em;
+  margin-right: 0.4em;
+}
+
+.landing-inline-link {
+  white-space: nowrap;
+
+  &::after {
+    content: " \2197";
+  }
+}
+
+// A term in bold followed by its sentence, one per row.
+.landing-deflist {
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
+
+  li + li {
+    margin-top: var(--space-2);
+  }
+}
+
+.landing-proof .landing-deflist li + li {
+  margin-top: 0;
+}
+
+.landing a.landing-card-title {
+  font-weight: 600;
+}
+
+// A link on the left, its date on the right.
+.landing-list {
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
+
+  li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0 var(--space-4);
+  }
+}
+
+// Small inline thumbnail next to a title (talks, courses)
+.thumb-row,
+.landing-list li.thumb-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.thumb-row + .thumb-row {
+  margin-top: var(--space-3);
+}
+
+.thumb {
+  flex: 0 0 auto;
+  display: block;
+  width: 128px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.thumb-row > a {
+  flex: 0 0 auto;
+}
+
+.thumb-row-text,
+.course-card-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing a.course-card {
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+
+    .course-card-title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.course-card-title {
+  color: var(--color-brand);
+}
+
+// =============================================================================
+// PAGES (about, talks, teaching) - share the landing column and components
+// =============================================================================
+
+.page-header {
+  padding: var(--space-8) 0 0;
+}
+
+.page-lead p {
+  margin: 0;
+}
+
+.page-body {
+  padding: var(--space-6) 0 var(--space-12);
+
+  > h2 {
+    margin-top: var(--space-10);
+  }
+}
+
+.photo-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+
+  img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+  }
+}
+
+// Visible marker for drafted claims that still need Yaro's sign-off.
+.confirm-badge {
+  display: inline-block;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-sm);
+  background: #fff3c4;
+  color: #6b4e00;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 600px) {
+  .landing-hero {
+    flex-direction: column;
+    gap: var(--space-4);
+    padding-top: var(--space-4);
+  }
+
+  .landing-photo {
+    width: 96px;
+    height: 96px;
+  }
+
+  .photo-row {
+    gap: var(--space-2);
+  }
+
+  .thumb {
+    width: 96px;
+    height: 54px;
+  }
+}
+
+.site-nav .nav-item--current {
+  color: var(--color-gray-900);
+  font-weight: 700;
 }

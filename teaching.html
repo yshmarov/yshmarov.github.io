@@ -1,0 +1,51 @@
+---
+layout: page
+title: Teaching
+permalink: /teaching/
+description: Screencasts, courses and a podcast by Yaroslav Shmarov. 100 hours of live coding on YouTube and 6,500+ students on Udemy.
+lead: "I learn by building, and I teach the same way: real products, real problems, and the thinking out loud that gets from one to the other."
+---
+{%- assign p = site.data.profile -%}
+<section class="landing-proof" aria-label="In numbers">
+  <ul class="landing-deflist">
+    <li><strong>100 hours</strong> of screencasts on YouTube, 300+ episodes</li>
+    <li><strong>9.6K</strong> YouTube subscribers</li>
+    <li><strong>6,500+</strong> students across four courses</li>
+    <li><strong>53 hours</strong> of code-along course material</li>
+  </ul>
+</section>
+
+<section class="landing-section">
+  <h2><img class="landing-logo landing-logo--inline" src="{{ "/assets/images/logos/superails.png" | relative_url }}" alt="" width="24" height="24">SupeRails screencasts</h2>
+  <p>No slides and no finished code pasted in. In each episode I build one real feature from an empty file: I read the docs, hit the errors, and explain why I pick one approach over another. Payments, authentication, multi-tenancy, Hotwire, mobile apps, deployment.</p>
+  <div class="landing-links">
+    <a class="landing-link" href="https://www.youtube.com/@SupeRails">Watch on YouTube</a>
+    <a class="landing-link" href="https://superails.com">SupeRails.com membership</a>
+  </div>
+</section>
+
+<section class="landing-section">
+  <h2>Courses</h2>
+  <p>A how-to post solves one problem. Connecting many of them into a product that brings value is the harder skill, so each course builds a complete application from start to finish.</p>
+  <div>
+    {%- for c in p.courses -%}
+    <a class="course-card thumb-row" href="{{ c.url }}">
+      <img class="thumb" src="{{ c.image | relative_url }}" alt="" width="128" height="72" loading="lazy">
+      <span class="course-card-body">
+        <span class="course-card-title">{{ c.title }}</span>
+        <span>{{ c.what }}</span>
+        <span class="landing-card-proof">{{ c.stats }}</span>
+      </span>
+    </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="landing-section">
+  <h2>The Friendly Show</h2>
+  <p>A podcast I co-hosted with Adrian Marin. We no longer record, but the 33 episodes with people who build with Ruby are all online, including a live episode with Yukihiro Matsumoto, the creator of Ruby, at EuRuKo 2024.</p>
+  <div class="landing-links">
+    <a class="landing-link" href="https://www.friendly.show/">Listen to the Friendly Show</a>
+    <a class="landing-link" href="{{ '/talks/' | relative_url }}">My conference talks</a>
+  </div>
+</section>

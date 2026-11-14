@@ -34,6 +34,9 @@ task :smoke do
     feed.xml
     sitemap.xml
     about/index.html
+    blog/index.html
+    talks/index.html
+    teaching/index.html
   ].each do |path|
     file = File.join(SITE_DIR, path)
     unless File.exist?(file) && File.size(file) > 0
@@ -45,21 +48,40 @@ task :smoke do
     checks_passed += 1
   end
 
-  # --- 2. Homepage renders post list ---
+  # --- 2. Homepage is the landing page; the post list lives at /blog/ ---
   index_html = read_file(File.join(SITE_DIR, "index.html"))
-  post_count = index_html.scan(/<li>/).size
-  if post_count < 10
-    errors << "Homepage has too few list items (#{post_count}), expected 10+"
+  if index_html.include?('class="landing"') && index_html.include?('href="/blog/"')
+    puts "  OK: Homepage is the landing page and links to /blog/"
+    checks_passed += 1
   else
-    puts "  OK: Homepage has #{post_count} list items"
+    errors << "Homepage is missing the landing layout or its link to /blog/"
+  end
+
+  # Drafted claims carry a visible "confirm" badge until Yaro signs them off.
+  # Never ship one.
+  unconfirmed = index_html.scan('class="confirm-badge"').size
+  if unconfirmed.zero?
+    puts "  OK: no unconfirmed claims on the homepage"
+    checks_passed += 1
+  else
+    errors << "Homepage has #{unconfirmed} unconfirmed claims (confirm: true in _data/profile.yml)"
+  end
+
+  blog_path = File.join(SITE_DIR, "blog", "index.html")
+  blog_html = File.exist?(blog_path) ? read_file(blog_path) : ""
+  post_count = blog_html.scan(/<li>/).size
+  if post_count < 10
+    errors << "/blog/ has too few list items (#{post_count}), expected 10+"
+  else
+    puts "  OK: /blog/ has #{post_count} list items"
     checks_passed += 1
   end
 
-  if index_html.include?('class="post-list"')
-    puts "  OK: Homepage contains post-list"
+  if blog_html.include?('class="post-list"') && blog_html.include?('id="search-input"')
+    puts "  OK: /blog/ contains post-list and search"
     checks_passed += 1
   else
-    errors << "Homepage missing post-list class"
+    errors << "/blog/ missing post-list or search input"
   end
 
   # --- 3. Post pages have expected content ---

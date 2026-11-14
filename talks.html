@@ -1,0 +1,41 @@
+---
+layout: page
+title: Talks
+permalink: /talks/
+description: Conference talks and workshops by Yaroslav Shmarov at Rails World, EuRuKo, Balkan Ruby, Paris.rb and wroc_love.rb.
+lead: "Talks and workshops on shipping products with Rails, Hotwire and native mobile, and on staying useful as AI changes the job."
+---
+{%- assign p = site.data.profile -%}
+{%- assign by_year = p.talks | group_by: "year" -%}
+{%- for group in by_year -%}
+<section class="landing-section">
+  <h2>{{ group.name }}</h2>
+  <ul class="landing-list">
+    {%- for t in group.items -%}
+    <li class="thumb-row">
+      {%- capture thumb %}<img class="thumb" src="{{ t.thumb | relative_url }}" alt="" width="128" height="72" loading="lazy">{% endcapture -%}
+      {% if t.url %}<a href="{{ t.url }}" tabindex="-1" aria-hidden="true">{{ thumb }}</a>{% else %}{{ thumb }}{% endif %}
+      <span class="thumb-row-text">
+        {% if t.url %}<a href="{{ t.url }}">{{ t.title }}</a>{% else %}<span>{{ t.title }}</span>{% endif %}
+        <span class="landing-date">{{ t.event }} · {{ t.kind }}</span>
+      </span>
+    </li>
+    {%- endfor -%}
+  </ul>
+</section>
+{%- endfor -%}
+
+<section class="landing-section">
+  <h2>Podcasts and guest posts</h2>
+  <ul class="landing-list">
+    {%- for a in p.appearances -%}
+    <li><a href="{{ a.url }}">{{ a.title }}</a></li>
+    {%- endfor -%}
+  </ul>
+  <p><a href="{{ p.talks_profile }}">My speaker profile on RubyEvents &rarr;</a></p>
+</section>
+
+<section class="landing-section landing-contact">
+  <h2>Invite me to speak</h2>
+  <p>I speak about shipping products with AI agents, native mobile, payments and Rails. <a href="mailto:{{ p.email }}">Email me</a>.</p>
+</section>

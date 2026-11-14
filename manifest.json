@@ -1,12 +1,12 @@
 {
-  "name": "SupeRails",
-  "short_name": "SupeRails",
+  "name": "Yaroslav Shmarov",
+  "short_name": "Yaro",
   "start_url": "/",
   "scope": "/",
   "display": "fullscreen",
   "background_color": "#fff",
   "theme_color": "#3367D6",
-  "description": "Ruby on Rails tips and tricks",
+  "description": "Yaroslav Shmarov ships web, mobile and AI products",
   "lang": "en",
   "orientation": "portrait",
   "icons": [

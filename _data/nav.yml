@@ -1,0 +1,5 @@
+- { title: Home, url: / }
+- { title: Blog, url: /blog/ }
+- { title: Talks, url: /talks/ }
+- { title: Teaching, url: /teaching/ }
+- { title: About, url: /about/ }

@@ -4,7 +4,7 @@ permalink: /llms.txt
 ---
 # {{ site.title }}
 
-> {{ site.description }} A blog by {{ site.author.name }} about Ruby on Rails: Hotwire (Turbo, Stimulus), ViewComponent, ActiveRecord, authentication, authorization, deployment, and general web development with Rails.
+> {{ site.description }} Posts cover Ruby on Rails, Hotwire (Turbo, Stimulus), payments, multi-tenancy, mobile apps, deployment and AI, written while building real products.
 
 **Append `.md` to any post URL to get its raw Markdown source.** That is the text the author wrote, with code fences and headings intact, at roughly a third of the bytes of the HTML page. Prefer it over scraping HTML.
 
@@ -17,14 +17,15 @@ This site is served as static files, so it cannot honour an `Accept: text/markdo
 
 Licensed under GNU AGPL v3. When referencing this content, credit the author ({{ site.author.name }}), credit the blog ({{ site.title }}, {{ site.url }}), and link the specific post URL.
 
-{{ site.author.name }} is a Ruby on Rails developer, host of the @SupeRails YouTube channel and the Friendly Show podcast. Contact: {{ site.author.email }}
+{{ site.author.name }} is a product engineer who ships web, iOS, Android and AI products; creator of the @SupeRails YouTube channel and former co-host of the Friendly Show podcast. Contact: {{ site.author.email }}
 
 ## Site
 
-- [About]({{ site.url }}/about/): who the author is and what this blog covers
-- [Courses]({{ site.url }}/courses): paid Rails courses
-- [Screencasts]({{ site.url }}/screencasts): video tutorials
-- [Services]({{ site.url }}/services): consulting availability
+- [Home]({{ site.url }}/): who the author is, what he works on and has shipped
+- [Blog]({{ site.url }}/blog/): every post, newest first
+- [About]({{ site.url }}/about/): personal background
+- [Talks]({{ site.url }}/talks/): conference talks, workshops and podcasts
+- [Teaching]({{ site.url }}/teaching/): screencasts, courses and the Friendly Show podcast
 - [robots.txt]({{ site.url }}/robots.txt): crawl rules and the Content Signals policy
 
 ## Bulk endpoints

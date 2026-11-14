@@ -1,0 +1,108 @@
+---
+layout: default
+---
+{%- assign p = site.data.profile -%}
+{%- capture confirm_badge -%}<span class="confirm-badge" title="Draft claim: confirm or edit in _data/profile.yml">confirm</span>{%- endcapture -%}
+
+<div class="landing">
+
+  <section class="landing-hero">
+    <img class="landing-photo" src="{{ p.photo | relative_url }}" alt="{{ p.name }}" width="132" height="132">
+    <div class="landing-hero-text">
+      <h1>{{ p.headline }}</h1>
+      <p class="landing-intro">{{ p.intro }}</p>
+      <p class="landing-location">{{ p.location }}</p>
+      <div class="landing-links">
+        {%- for l in p.links -%}
+        <a class="landing-link" href="{{ l.url }}">{{ l.label }}</a>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  <section class="landing-proof" aria-label="In numbers">
+    <ul class="landing-deflist">
+      {%- for s in p.proof -%}
+      <li><a href="{{ s.url | relative_url }}"><strong>{{ s.value }}</strong></a> {{ s.label }}</li>
+      {%- endfor -%}
+    </ul>
+  </section>
+
+  <section class="landing-section">
+    <h2>What I'm working on</h2>
+    <div class="landing-work">
+      {%- for w in p.work -%}
+      <article class="landing-work-item">
+        <header>
+          {%- if w.logo %}<img class="landing-logo" src="{{ w.logo | relative_url }}" alt="" width="24" height="24">{% endif -%}
+          <h3>{% if w.url %}<a href="{{ w.url }}">{{ w.org }}</a>{% else %}{{ w.org }}{% endif %}</h3>
+          <span class="landing-work-meta">{{ w.role }}{% if w.role != "" and w.period != "" %} · {% endif %}{{ w.period }}</span>
+          {%- if w.confirm %} {{ confirm_badge }}{% endif -%}
+        </header>
+        {%- if w.note %}<p class="landing-work-note">{{ w.note }}</p>{% endif -%}
+        <ul>
+          {%- for pt in w.points -%}
+          <li>{{ pt.text }}{% for l in pt.links %} <a class="landing-inline-link" href="{{ l.url }}">{{ l.label }}</a>{% endfor %}{% if pt.confirm %} {{ confirm_badge }}{% endif %}</li>
+          {%- endfor -%}
+        </ul>
+      </article>
+      {%- endfor -%}
+    </div>
+  </section>
+
+  <section class="landing-section">
+    <h2>What I'm strongest at</h2>
+    <ul class="landing-deflist">
+      {%- for s in p.strengths -%}
+      <li><strong>{{ s.title }}.</strong> {{ s.text }}</li>
+      {%- endfor -%}
+    </ul>
+  </section>
+
+  <section class="landing-section">
+    <h2 id="open-source">Open source I've shipped</h2>
+    <ul class="landing-deflist">
+      {%- for s in p.shipped -%}
+      <li><a class="landing-card-title" href="{{ s.url }}">{{ s.name }}</a> {{ s.what }} <span class="landing-date">{{ s.proof }}</span></li>
+      {%- endfor -%}
+    </ul>
+  </section>
+
+  <section class="landing-section">
+    <h2>Problems I fixed, written up</h2>
+    <ul class="landing-list">
+      {%- for slug in p.fixes -%}
+      {%- assign fix = site.posts | where_exp: "post", "post.slug == slug" | first -%}
+      {%- if fix -%}
+      <li><a href="{{ fix.url | relative_url }}">{{ fix.title | escape }}</a> <span class="landing-date">{{ fix.date | date: "%b %Y" }}</span></li>
+      {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </section>
+
+  <section class="landing-section">
+    <h2>Latest writing</h2>
+    <ul class="landing-list">
+      {%- assign shown = 0 -%}
+      {%- for post in site.posts -%}
+        {%- if shown >= 5 %}{% break %}{% endif -%}
+        {%- comment -%} Talk summaries are useful but are other people's ideas; keep the homepage to my own posts. {%- endcomment -%}
+        {%- if post.tags contains "rails-world" %}{% continue %}{% endif -%}
+        <li><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a> <span class="landing-date">{{ post.date | date: "%b %Y" }}</span></li>
+        {%- assign shown = shown | plus: 1 -%}
+      {%- endfor -%}
+    </ul>
+    <p><a href="{{ '/blog/' | relative_url }}">All {{ site.posts.size }} posts &rarr;</a></p>
+  </section>
+
+  <section class="landing-section landing-contact" id="contact">
+    <h2>Let's talk</h2>
+    <p>{{ p.contact }}</p>
+    <div class="landing-links">
+      {%- for l in p.links -%}
+      <a class="landing-link" href="{{ l.url }}">{{ l.label }}</a>
+      {%- endfor -%}
+    </div>
+  </section>
+
+</div>

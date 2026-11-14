@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<article class="landing page">
+  <header class="page-header">
+    <h1>{{ page.title | escape }}</h1>
+    {%- if page.lead %}<div class="page-lead">{{ page.lead | markdownify }}</div>{% endif -%}
+  </header>
+  <div class="page-body">
+    {{ content }}
+  </div>
+</article>

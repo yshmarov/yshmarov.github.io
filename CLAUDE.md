@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Jekyll-based blog (SupeRails Blog) focused on Ruby on Rails development tips and tutorials. It uses the Minima theme with customizations and is deployed to GitHub Pages at blog.superails.com.
+This is Yaroslav Shmarov's personal site and blog, built with Jekyll: a homepage about his work, plus /talks/, /teaching/, /about/ and the blog at /blog/. Homepage, talks and teaching content lives in `_data/profile.yml`. It uses the Minima theme with customizations and is deployed to GitHub Pages at blog.superails.com.
 
 ## Common Commands
 
