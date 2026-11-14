@@ -1,7 +1,8 @@
 ---
 layout: post
 title: "Rails World 2026: Custom Rails Generators in RubyEvents (Rachael Wright-Munn)"
-author: Yaroslav Shmarov
+author: Rachael Wright-Munn
+author_url: https://bsky.app/profile/chael.codes
 tags: rails-world conference ruby-on-rails ai testing
 thumbnail: /assets/thumbnails/youtube/aornGet-EoI.jpg
 image:
@@ -12,7 +13,7 @@ image:
 youtube_id: aornGet-EoI
 ---
 
-Rachael Wright-Munn is one of the maintainers of [RubyEvents.org](https://www.rubyevents.org), the open source index of Ruby conferences and talks. The talk is a hands-on guide to writing custom Rails generators, plus a small experiment comparing how agents perform with and without them.
+[Rachael Wright-Munn](https://bsky.app/profile/chael.codes) is one of the maintainers of [RubyEvents.org](https://www.rubyevents.org), the open source index of Ruby conferences and talks. The talk is a hands-on guide to writing custom Rails generators, plus a small experiment comparing how agents perform with and without them.
 
 ## Key ideas
 

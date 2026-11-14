@@ -29,7 +29,7 @@ layout: default
       {%- if page.author -%}
         • {% for author in page.author %}
           <span itemprop="author" itemscope itemtype="https://schema.org/Person">
-            <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
+            <span class="p-author h-card" itemprop="name">{%- if page.author_url -%}<a href="{{ page.author_url }}" itemprop="url">{{ author }}</a>{%- else -%}{{ author }}{%- endif -%}</span></span>
             {%- if forloop.last == false %}, {% endif -%}
         {% endfor %}
       {%- endif -%}
