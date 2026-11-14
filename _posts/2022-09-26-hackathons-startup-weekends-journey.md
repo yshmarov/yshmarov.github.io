@@ -90,7 +90,7 @@ My first hackathon after COVID!
 
 📜 Project summary: QR menu, ordering, payment, live queue (provide the McDonalds ordering experience to any restaurant).
 
-[Github: source code](https://github.com/yshmarov/stepbystepmenu)
+[Github: source code](https://github.com/yshmarov/stripe_ecommerce)
 
 ![qmenu](/assets/hackathons-post/qmenu.png)
 
