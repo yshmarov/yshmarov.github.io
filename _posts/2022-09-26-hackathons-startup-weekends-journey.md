@@ -98,7 +98,7 @@ My first hackathon after COVID!
 
 📜 Project summary: bulk Linkedin certificate generator
 
-[Github: source code](https://github.com/yshmarov/vericerti)
+[Github: source code](https://github.com/yshmarov/certificateowl)
 
 
 ![vericerti](/assets/hackathons-post/vericerti.png)
