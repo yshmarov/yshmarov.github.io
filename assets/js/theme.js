@@ -3,10 +3,23 @@
 //
 // Three states, cycled by the button: "system" (no data-theme, CSS follows
 // prefers-color-scheme), "light" and "dark" (stored in localStorage).
+// The aria-label names the theme the next click selects.
 (function () {
   var root = document.documentElement;
-  var ORDER = ["system", "light", "dark"];
   var LABELS = { system: "Auto", light: "Light", dark: "Dark" };
+  var darkQuery = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+
+  // The first click always changes what you see: from Auto it goes to the
+  // opposite of the OS theme, then to the OS theme pinned, then back to Auto.
+  function order() {
+    var osDark = darkQuery && darkQuery.matches;
+    return osDark ? ["system", "light", "dark"] : ["system", "dark", "light"];
+  }
+
+  function nextOf(choice) {
+    var o = order();
+    return o[(o.indexOf(choice) + 1) % o.length];
+  }
 
   function stored() {
     try {
@@ -30,13 +43,19 @@
     return choice === "system" ? "preferred_color_scheme" : choice;
   }
 
+  // Giscus documents a postMessage setConfig for this, but in testing
+  // (November 2026) the widget ignored it. Reloading the iframe with the new
+  // theme parameter works, and only happens when the theme actually changes.
   function syncGiscus(choice) {
     var frame = document.querySelector("iframe.giscus-frame");
-    if (!frame || !frame.contentWindow) return;
-    frame.contentWindow.postMessage(
-      { giscus: { setConfig: { theme: giscusTheme(choice) } } },
-      "https://giscus.app"
-    );
+    if (!frame || !frame.src) return;
+    try {
+      var url = new URL(frame.src);
+      var theme = giscusTheme(choice);
+      if (url.searchParams.get("theme") === theme) return;
+      url.searchParams.set("theme", theme);
+      frame.src = url.toString();
+    } catch (e) {}
   }
 
   function apply(choice) {
@@ -46,7 +65,7 @@
   }
 
   function render(button, choice) {
-    var next = ORDER[(ORDER.indexOf(choice) + 1) % ORDER.length];
+    var next = nextOf(choice);
     button.textContent = "Theme: " + LABELS[choice];
     button.setAttribute(
       "aria-label",
@@ -64,7 +83,7 @@
     render(button, choice);
     button.hidden = false;
     button.addEventListener("click", function () {
-      choice = ORDER[(ORDER.indexOf(choice) + 1) % ORDER.length];
+      choice = nextOf(choice);
       store(choice);
       apply(choice);
       render(button, choice);
