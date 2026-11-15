@@ -39,8 +39,6 @@ webmcp_origin_trial_token:
 
 tagline: "Notes from shipping real products: Rails, payments, mobile, deployment and AI."
 
-github_edit_url: "https://github.com/yshmarov/yshmarov.github.io/blob/master/"
-
 feed:
   posts_limit: 50
 
