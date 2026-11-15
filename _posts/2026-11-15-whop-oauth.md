@@ -7,6 +7,8 @@ tags: rails oauth omniauth whop devise
 
 I built [omniauth-whop](https://github.com/yshmarov/omniauth-whop) to add **Sign in with Whop** to Ruby and Rails apps.
 
+New to Whop? <a href="https://whop.com/start/?code=CAKARK" rel="sponsored nofollow">Create a production Whop account</a> with my referral link. I may earn a commission if you sign up through it.
+
 It handles OAuth, PKCE, and OpenID Connect token validation. Your app gets a verified Whop user ID and profile through the usual OmniAuth auth hash.
 
 I tested it with real sandbox and production logins. Here's how to use it.
