@@ -131,3 +131,4 @@ exclude:
   - Rakefile
   - vendor/
   - node_modules/
+  - script/
