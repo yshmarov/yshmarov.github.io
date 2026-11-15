@@ -352,6 +352,63 @@ If users of your app can use [Bearer token authentication]({% post_url 2023-04-1
   browser.go_to(url)
 ```
 
+### 6.4. Skip the URL: render the HTML yourself
+
+The simplest way around authentication is to not visit a URL at all. Your controller already has `current_user` and the record, so render the view to a string and hand the HTML to the browser with `browser.content =`. The browser never makes a request to your app, so there is nothing to sign in to. It is also faster, because you skip a full HTTP round trip.
+
+```ruby
+# app/controllers/invoices_controller.rb
+  def show
+    @invoice = current_user.invoices.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        html = render_to_string(template: "invoices/show", layout: "pdf", formats: [:html])
+        send_data(html_to_pdf(html), filename: "invoice_#{@invoice.id}.pdf", type: "application/pdf", disposition: "inline")
+      end
+    end
+  end
+
+  private
+
+  def html_to_pdf(html)
+    browser = Ferrum::Browser.new(timeout: 7)
+    browser.content = html
+    # wait for stylesheets, fonts and images to finish loading
+    browser.network.wait_for_idle
+    browser.pdf(
+      format: :letter,
+      encoding: :binary, # return raw bytes instead of a Base64 string
+      margin_top: 0,
+      margin_bottom: 0,
+      margin_left: 0,
+      margin_right: 0,
+      print_background: true
+    )
+  ensure
+    browser&.quit
+  end
+```
+
+The HTML is written into a blank page (`about:blank`), so relative URLs like `/assets/application.css` have nothing to resolve against and your styles won't load. Add a `<base>` tag to the PDF layout so they point at your app:
+
+```erb
+<!-- app/views/layouts/pdf.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="<%= root_url %>">
+    <%= stylesheet_link_tag "application" %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
+```
+
+Assets are usually public, so the browser can load them without signing in. If they aren't, inline the CSS in the layout instead.
+
 ### 7. Heroku 
 
 To make Ferrum work in production, you need to install `google-chrome` in your production ENV.

@@ -61,7 +61,7 @@ module TurboStreamActionsHelper
   def turbo_stream_navigate(url)
     link = tag.a(
       nil,
-      style: 'display: none;'
+      style: 'display: none;',
       href: url,
       data: {controller: "autoclick", turbo_cache: false}
     )
@@ -86,6 +86,40 @@ So, a turbo response would add the link to a page and click it.
 ```
 
 Smart workaround!
+
+Later I extended the helper to also navigate a specific `turbo_frame` instead of the whole page, and to choose the history action (`advance` or `replace`):
+
+```ruby
+# app/helpers/turbo_stream_actions_helper.rb
+module TurboStreamActionsHelper
+  # turbo_stream_navigate(projects_path)
+  # turbo_stream_navigate(project_path(@project), frame: "project_details", action: "advance")
+  def turbo_stream_navigate(url, frame: "_top", action: nil)
+    link = tag.a(
+      nil,
+      style: "display: none;",
+      href: url,
+      data: {
+        controller: "autoclick",
+        turbo_frame: frame,
+        turbo_action: action,
+        turbo_cache: false
+      }
+    )
+
+    if frame == "_top"
+      turbo_stream.append_all("body") { link }
+    else
+      turbo_stream.append(frame) { link }
+    end
+  end
+end
+```
+
+- `frame: "_top"` (the default) works like before: a full-page visit.
+- `frame: "project_details"` appends the link inside that `<turbo-frame>` and loads the URL only into that frame.
+- `action: "advance"` also updates the browser URL when navigating a frame. `action: "replace"` replaces the current history entry instead of adding one.
+- `nil` values are left out of the `data-` attributes, so Turbo falls back to its defaults.
 
 But a "correct" approach would be to use **custom Turbo Stream Actions**.
 
