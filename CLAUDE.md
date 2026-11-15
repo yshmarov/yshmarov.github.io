@@ -61,3 +61,7 @@ GitHub Actions workflow (`.github/workflows/jekyll.yml`) automatically builds an
 
 ### Comments
 Uses Giscus (GitHub Discussions-based) for post comments.
+
+### Whop referral links
+
+Use `https://whop.com/start/?code=CAKARK` for reader-facing Whop signup links in posts and profile content. This is Yaroslav's production Whop Partners referral link. Add a nearby disclosure that he may earn a commission and use `rel="sponsored nofollow"` on HTML links. Preserve sandbox, API, OAuth, callback, technical documentation and repository URLs. Do not add referral parameters to executable examples or login buttons.
