@@ -31,6 +31,12 @@ plugins:
   - jekyll-postfiles
   - jekyll-og-image
 
+# WebMCP (assets/js/webmcp.js) is a Chrome origin trial as of November 2026.
+# Register blog.superails.com at https://developer.chrome.com/origintrials to
+# get a token and paste it here; until then the tools only appear for visitors
+# who enable chrome://flags/#enable-webmcp-testing.
+webmcp_origin_trial_token:
+
 tagline: "Notes from shipping real products: Rails, payments, mobile, deployment and AI."
 
 github_edit_url: "https://github.com/yshmarov/yshmarov.github.io/blob/master/"

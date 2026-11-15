@@ -3,10 +3,11 @@
   {%- include head.html -%}
 
   <body>
+    <a class="skip-link" href="#content">Skip to content</a>
     {%- include header.html -%}
 
-    <main class="page-content" aria-label="Content" style="">
-      <div class="wrapper" style="">
+    <main class="page-content" id="content" tabindex="-1">
+      <div class="wrapper">
 				{% include anchor_headings.html html=content anchorBody="#" anchorClass="anchor" %}
       </div>
     </main>

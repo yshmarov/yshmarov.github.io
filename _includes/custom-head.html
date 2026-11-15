@@ -37,173 +37,38 @@
 <!-- Web App Manifest -->
 <link rel="manifest" href="/manifest.json" />
 
-{% assign seo_description = page.description | default: page.excerpt | strip_html | truncate: 160 | default: site.description %}
-
-<!-- Raw Markdown source, for LLMs and anyone who prefers the text the author wrote -->
+<!-- Markdown version of this page, for LLMs and anyone who prefers plain text.
+     Posts: the source the author wrote. Home, about, talks, teaching: converted
+     from the rendered page (_plugins/page_markdown.rb). -->
 {% if page.md_url %}
-<link rel="alternate" type="text/markdown" href="{{ page.md_url | absolute_url }}" title="{{ page.title | escape }} (Markdown source)" />
+<link rel="alternate" type="text/markdown" href="{{ page.md_url | absolute_url }}" title="{{ page.title | escape }} (Markdown)" />
 {% endif %}
 <link rel="alternate" type="text/plain" href="{{ '/llms.txt' | absolute_url }}" title="llms.txt" />
 
 <!-- Twitter card and article:published_time/modified_time come from jekyll-seo-tag.
      Duplicating them here emitted conflicting values for twitter:image. -->
-{% if page.tags.size > 0 %}
+{% if page.layout == 'post' %}
 {% for tag in page.tags %}
-<meta property="article:tag" content="{{ tag }}" />
+<meta property="article:tag" content="{{ tag | escape }}" />
+{% endfor %}
+{% for author in page.author %}
+<meta property="article:author" content="{{ author | escape }}" />
 {% endfor %}
 {% endif %}
-<meta property="article:author" content="Yaroslav Shmarov" />
 
-<!-- JSON-LD Structured Data -->
-{% if page.url == '/' %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": {{ site.title | jsonify }},
-  "url": {{ site.url | jsonify }},
-  "description": {{ site.description | jsonify }},
-  "inLanguage": "en",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": {
-      "@type": "EntryPoint",
-      "urlTemplate": "{{ site.url }}/blog/?q={search_term_string}"
-    },
-    "query-input": "required name=search_term_string"
-  },
-  "publisher": {
-    "@type": "Person",
-    "name": "Yaroslav Shmarov",
-    "url": "{{ site.url }}/"
-  }
-}
-</script>
-{%- assign profile = site.data.profile -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfilePage",
-  "url": "{{ site.url }}/",
-  "mainEntity": {
-    "@type": "Person",
-    "name": {{ profile.name | jsonify }},
-    "alternateName": {{ profile.short_name | jsonify }},
-    "description": {{ profile.headline | jsonify }},
-    "image": "{{ profile.photo | absolute_url }}",
-    "url": "{{ site.url }}/",
-    "sameAs": {{ site.social.links | jsonify }}
-  }
-}
-</script>
-{% endif %}
-{% if page.url == '/blog/' %}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Blog",
-  "name": {{ site.title | jsonify }},
-  "url": {{ site.url | jsonify }},
-  "description": {{ site.description | jsonify }},
-  "inLanguage": "en",
-  "blogPost": [
-    {% for post in site.posts limit: 10 %}
-    {
-      "@type": "BlogPosting",
-      "headline": {{ post.title | jsonify }},
-      "url": "{{ post.url | absolute_url }}",
-      "datePublished": "{{ post.date | date_to_xmlschema }}",
-      "author": {
-        "@type": "Person",
-        "name": "Yaroslav Shmarov"
-      }
-    }{% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ]
-}
-</script>
-{% endif %}
+<!-- Identity: the profiles below are the same person as this site. Mastodon
+     verifies rel="me" back-links; fediverse:creator credits shared links. -->
+{% for link in site.social.links %}
+<link rel="me" href="{{ link }}" />
+{% endfor %}
+<meta name="fediverse:creator" content="@yarotheslav@ruby.social" />
 
-{% if page.layout == 'post' %}
-{%- assign words = page.content | number_of_words -%}
-{%- assign reading_time = words | divided_by: 200 -%}
-{%- if reading_time == 0 -%}{%- assign reading_time = 1 -%}{%- endif -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "@id": "{{ page.url | absolute_url }}",
-  "url": "{{ page.url | absolute_url }}",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "{{ page.url | absolute_url }}"
-  },
-  "headline": {{ page.title | jsonify }},
-  "description": {{ seo_description | jsonify }},
-  "datePublished": "{{ page.date | date_to_xmlschema }}",
-  {% if page.modified_date %}
-  "dateModified": "{{ page.modified_date | date_to_xmlschema }}",
-  {% else %}
-  "dateModified": "{{ page.date | date_to_xmlschema }}",
-  {% endif %}
-  "wordCount": {{ words }},
-  "timeRequired": "PT{{ reading_time }}M",
-  "inLanguage": "en",
-  "author": {
-    "@type": "Person",
-    "name": "Yaroslav Shmarov",
-    "url": "{{ site.url }}/about/"
-  },
-  "publisher": {
-    "@type": "Person",
-    "name": "Yaroslav Shmarov",
-    "url": "{{ site.url }}/about/"
-  },
-  {%- comment -%}
-    page.image is the OpenGraph image jekyll-og-image generates per post; prefer
-    it over the small thumbnail logo.
-  {%- endcomment -%}
-  {% assign ld_image = page.image.path | default: page.image | default: page.thumbnail | default: '/assets/static-pages/yaro-cindy.jpg' %}
-  "image": "{{ ld_image | absolute_url }}",
-  {% if page.tags.size > 0 %}
-  "keywords": {{ page.tags | jsonify }},
-  "articleSection": {{ page.tags.first | jsonify }},
-  {% endif %}
-  {% if page.md_url %}
-  "encoding": {
-    "@type": "MediaObject",
-    "encodingFormat": "text/markdown",
-    "contentUrl": "{{ page.md_url | absolute_url }}",
-    "description": "Raw Markdown source of this post"
-  },
-  {% endif %}
-  "license": "https://www.gnu.org/licenses/agpl-3.0.html",
-  "isAccessibleForFree": true,
-  "isPartOf": {
-    "@type": "Blog",
-    "name": {{ site.title | jsonify }},
-    "url": {{ site.url | jsonify }}
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "{{ site.url }}/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": {{ page.title | jsonify }},
-      "item": "{{ page.url | absolute_url }}"
-    }
-  ]
-}
-</script>
+<!-- WebMCP: read-only tools for in-browser AI agents (assets/js/webmcp.js).
+     Live for every visitor only once an origin-trial token is set in _config.yml. -->
+{% if site.webmcp_origin_trial_token %}
+<meta http-equiv="origin-trial" content="{{ site.webmcp_origin_trial_token }}">
 {% endif %}
+<script src="{{ '/assets/js/webmcp.js' | relative_url }}" defer></script>
+
+<!-- JSON-LD: one @graph per page, see _plugins/structured_data.rb -->
+{% structured_data %}
