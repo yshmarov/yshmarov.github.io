@@ -9,14 +9,14 @@ layout: default
   {%- for post in page.posts -%}
   <li>
     <span class="post-meta">{{ post.date | date: date_format }}</span>
-    <h3>
+    <h2 class="post-list-title">
       <a class="post-link" href="{{ post.url | relative_url }}">
         {%- if post.thumbnail -%}
         <img src="{{ post.thumbnail }}" class="post-thumbnail" alt="{{ post.title | escape }}" loading="lazy" width="44" height="44">
         {%- endif -%}
         {{ post.title | escape }}
       </a>
-    </h3>
+    </h2>
     <div class="post-tags">
       {{ post | tags }}
     </div>
@@ -27,33 +27,4 @@ layout: default
   {%- endfor -%}
 </ul>
 
-{%- capture tag_page_name -%}Posts tagged {{ page.tag }}{%- endcapture -%}
-{%- capture tag_page_desc -%}{{ page.posts.size }} articles about {{ page.tag }} on {{ site.title }}{%- endcapture -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": {{ tag_page_name | jsonify }},
-  "description": {{ tag_page_desc | jsonify }},
-  "url": "{{ page.url | absolute_url }}",
-  "isPartOf": {
-    "@type": "Blog",
-    "name": {{ site.title | jsonify }},
-    "url": {{ site.url | jsonify }}
-  },
-  "mainEntity": {
-    "@type": "ItemList",
-    "numberOfItems": {{ page.posts.size }},
-    "itemListElement": [
-      {% for post in page.posts %}
-      {
-        "@type": "ListItem",
-        "position": {{ forloop.index }},
-        "url": "{{ post.url | absolute_url }}",
-        "name": {{ post.title | jsonify }}
-      }{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    ]
-  }
-}
-</script>
+{%- comment -%} JSON-LD for this page comes from _plugins/structured_data.rb. {%- endcomment -%}

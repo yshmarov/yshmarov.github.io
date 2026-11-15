@@ -33,14 +33,14 @@ layout: default
     {%- for post in posts -%}
     <li>
       <span class="post-meta">{{ post.date | date: date_format }}</span>
-      <h3>
+      <h2 class="post-list-title">
         <a class="post-link" href="{{ post.url | relative_url }}">
           {%- if post.thumbnail -%}
           <img src="{{ post.thumbnail }}" class="post-thumbnail" alt="{{ post.title | escape }}" loading="lazy" width="44" height="44">
           {%- endif -%}
           {{ post.title | escape }}
         </a>
-      </h3>
+      </h2>
       <div class="post-tags">
         {{ post | tags }}
       </div>

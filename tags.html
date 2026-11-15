@@ -48,34 +48,4 @@ description: Browse all Ruby on Rails topics and tags on Yaroslav Shmarov's blog
   {% endfor %}
 </div>
 
-{%- capture tags_page_name -%}All Topics - {{ site.title }}{%- endcapture -%}
-{%- capture tags_page_desc -%}Browse all Ruby on Rails topics and tags on {{ site.title }}{%- endcapture -%}
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": {{ tags_page_name | jsonify }},
-  "description": {{ tags_page_desc | jsonify }},
-  "url": "{{ site.url }}/tags/",
-  "isPartOf": {
-    "@type": "Blog",
-    "name": {{ site.title | jsonify }},
-    "url": {{ site.url | jsonify }}
-  },
-  "mainEntity": {
-    "@type": "ItemList",
-    "numberOfItems": {{ site.tags.size }},
-    "itemListElement": [
-      {% for tag in sorted_tags %}
-      {% assign tag_name = tag | first %}
-      {
-        "@type": "ListItem",
-        "position": {{ forloop.index }},
-        "url": "{{ site.url }}{{ tag_name | tag_url }}",
-        "name": {{ tag_name | jsonify }}
-      }{% unless forloop.last %},{% endunless %}
-      {% endfor %}
-    ]
-  }
-}
-</script>
+{%- comment -%} JSON-LD for this page comes from _plugins/structured_data.rb. {%- endcomment -%}

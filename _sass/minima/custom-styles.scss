@@ -68,6 +68,253 @@
   // System font stack
   --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   --font-family-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  // Surfaces. Everything that used to be a literal `white` reads one of these,
+  // so the dark theme only has to redefine tokens.
+  --color-bg: #fdfdfd;
+  --color-surface: #ffffff;
+  --color-header-bg: rgba(253, 253, 253, 0.9);
+  --color-on-brand: #ffffff;
+
+  // Code blocks are dark in both themes, so they get their own fixed tokens
+  // instead of borrowing the gray ramp (which flips in dark mode).
+  --code-bg: #111111;
+  --code-fg: #c9d1d9;
+  --code-border: transparent;
+  --code-scrollbar-track: #1f1f1f;
+  --code-scrollbar-thumb: #4a4a4a;
+  --code-scrollbar-thumb-hover: #6c757d;
+  --copy-bg: #333333;
+  --copy-bg-hover: #4a4a4a;
+  --copy-fg: #cccccc;
+  --copy-border: #4a4a4a;
+
+  color-scheme: light dark;
+}
+
+// =============================================================================
+// DARK THEME
+// Follows the OS setting by default. The header toggle stores an explicit
+// choice in localStorage, and an inline script in custom-head.html sets
+// data-theme on <html> before first paint, so a forced theme never flashes.
+// =============================================================================
+
+@mixin dark-theme {
+  color-scheme: dark;
+
+  --color-brand-900: #d6e4fd;
+  --color-brand-800: #bcd3fb;
+  --color-brand-700: #a3c2fa;
+  --color-brand-600: #7fabf5;
+  --color-brand-500: #8fb5f7;
+  --color-brand-400: #a9c7fa;
+  --color-brand-100: #1c2b45;
+
+  // The gray ramp flips: 900 is still "strongest text", 50 is still "faintest
+  // surface", so every rule that says what it means keeps working.
+  --color-gray-900: #f2f2f2;
+  --color-gray-800: #e0e0e0;
+  --color-gray-700: #cccccc;
+  --color-gray-600: #b3b3b3;
+  --color-gray-500: #9e9e9e;
+  --color-gray-400: #858585;
+  --color-gray-300: #4d5157;
+  --color-gray-200: #30343a;
+  --color-gray-100: #24272c;
+  --color-gray-50: #1b1e22;
+
+  --color-bg: #131518;
+  --color-surface: #1b1e22;
+  --color-header-bg: rgba(19, 21, 24, 0.9);
+  --color-on-brand: #0b1a33;
+
+  --code-bg: #0c0e10;
+  --code-border: #30343a;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.45), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.55), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include dark-theme;
+  }
+}
+
+:root[data-theme="dark"] {
+  @include dark-theme;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+// Logos and post thumbnails are often transparent PNGs with dark ink. Give them
+// a light tile in dark mode so they stay legible.
+@mixin dark-logo-tiles {
+  .post-thumbnail,
+  .post-title-thumbnail,
+  .landing-logo {
+    background: #ffffff;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include dark-logo-tiles;
+  }
+}
+
+:root[data-theme="dark"] {
+  @include dark-logo-tiles;
+}
+
+// =============================================================================
+// MINIMA BASE OVERRIDES
+// The classic skin compiles its colors to literals, which a theme switch cannot
+// reach. Re-state each of them against the tokens above.
+// =============================================================================
+
+body {
+  background-color: var(--color-bg);
+}
+
+a {
+  color: var(--color-brand);
+
+  &:visited {
+    color: var(--color-brand-700);
+  }
+
+  &:hover {
+    color: var(--color-gray-800);
+    text-decoration-color: var(--color-gray-400);
+  }
+}
+
+blockquote {
+  color: var(--color-gray-500);
+  border-left-color: var(--color-gray-200);
+}
+
+pre,
+code {
+  background-color: var(--color-gray-100);
+}
+
+pre {
+  color: var(--code-fg);
+}
+
+div.highlight,
+figure.highlight,
+figure.highlight td.gutter,
+code.highlighter-rouge {
+  border-color: var(--color-gray-200);
+}
+
+table {
+  color: var(--color-gray-700);
+  border-color: var(--color-gray-200);
+
+  tr:nth-child(even) {
+    background-color: var(--color-gray-50);
+  }
+
+  th {
+    background-color: var(--color-gray-100);
+    border-color: var(--color-gray-200);
+  }
+
+  td {
+    border-color: var(--color-gray-200);
+  }
+}
+
+.site-title,
+.site-title:visited,
+.site-nav .nav-item {
+  color: var(--color-gray-700);
+}
+
+.site-nav .menu-icon > svg path {
+  fill: var(--color-gray-700);
+}
+
+@media screen and (max-width: 600px) {
+  .site-nav {
+    background-color: var(--color-surface);
+    border-color: var(--color-gray-200);
+  }
+}
+
+.site-footer {
+  border-top-color: var(--color-gray-200);
+}
+
+.footer-col-wrapper,
+.social-links,
+.post-meta {
+  color: var(--color-gray-500);
+}
+
+.post-header {
+  border-bottom-color: var(--color-gray-200);
+}
+
+.social-media-list li a,
+.pagination li a {
+  border-color: var(--color-gray-200);
+
+  &:hover {
+    border-color: var(--color-gray-300);
+  }
+}
+
+.pagination li div.pager-edge {
+  color: var(--color-gray-200);
+}
+
+.task-list-item-checkbox {
+  border-color: var(--color-gray-200);
+}
+
+// =============================================================================
+// ACCESSIBILITY HELPERS
+// =============================================================================
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  z-index: 200;
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-surface);
+  color: var(--color-brand);
+  border: 2px solid var(--color-brand);
+  border-radius: var(--radius-md);
+
+  &:focus {
+    top: var(--space-2);
+  }
+}
+
+main:focus {
+  outline: none;
 }
 
 // =============================================================================
@@ -104,7 +351,7 @@ code, pre, kbd, samp {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--color-header-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-top: none !important;
@@ -132,7 +379,7 @@ code, pre, kbd, samp {
   // Mobile menu
   @media screen and (max-width: 600px) {
     .trigger {
-      background: white;
+      background: var(--color-surface);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-lg);
       border: 1px solid var(--color-gray-200);
@@ -185,7 +432,7 @@ code, pre, kbd, samp {
   margin-left: 0;
 
   li {
-    background: white;
+    background: var(--color-surface);
     border: 1px solid var(--color-gray-200);
     border-left: 3px solid transparent;
     padding: var(--space-4) var(--space-5);
@@ -203,7 +450,7 @@ code, pre, kbd, samp {
       border-left-color: var(--color-brand);
     }
 
-    h3 {
+    h2 {
       margin: var(--space-2) 0 var(--space-1);
       font-size: var(--font-size-lg);
 
@@ -301,13 +548,19 @@ code, pre, kbd, samp {
 
   &:focus {
     outline: none;
-    background: white;
+    background: var(--color-surface);
     border-color: var(--color-brand);
     box-shadow: 0 0 0 4px var(--color-brand-100);
   }
 
   &::placeholder {
     color: var(--color-gray-400);
+  }
+
+  // type="search" brings a native clear control; we already have one.
+  &::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
   }
 }
 
@@ -447,7 +700,8 @@ code, pre, kbd, samp {
   }
 
   pre {
-    background: var(--color-gray-900) !important;
+    background: var(--code-bg) !important;
+    border: 1px solid var(--code-border);
     border-radius: var(--radius-md);
     padding: var(--space-5);
     overflow-x: auto;
@@ -461,16 +715,16 @@ code, pre, kbd, samp {
     }
 
     &::-webkit-scrollbar-track {
-      background: var(--color-gray-800);
+      background: var(--code-scrollbar-track);
       border-radius: var(--radius-full);
     }
 
     &::-webkit-scrollbar-thumb {
-      background: var(--color-gray-600);
+      background: var(--code-scrollbar-thumb);
       border-radius: var(--radius-full);
 
       &:hover {
-        background: var(--color-gray-500);
+        background: var(--code-scrollbar-thumb-hover);
       }
     }
 
@@ -478,7 +732,7 @@ code, pre, kbd, samp {
       background: transparent;
       padding: 0;
       font-size: var(--font-size-sm);
-      color: #c9d1d9;
+      color: var(--code-fg);
     }
   }
 
@@ -558,7 +812,7 @@ code, pre, kbd, samp {
   padding-top: var(--space-8);
   border-top: 1px solid var(--color-gray-200);
 
-  h3 {
+  h2 {
     font-size: var(--font-size-base);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -676,7 +930,7 @@ h6:hover .anchor {
   a {
     display: block;
     padding: var(--space-4) var(--space-5);
-    background: white;
+    background: var(--color-surface);
     border: 1px solid var(--color-gray-200);
     border-radius: var(--radius-lg);
     text-decoration: none;
@@ -761,7 +1015,7 @@ h6:hover .anchor {
     align-items: center;
     justify-content: center;
     padding: var(--space-2) var(--space-3);
-    background: white;
+    background: var(--color-surface);
     border: 1px solid var(--color-gray-200);
     border-radius: var(--radius-md);
     text-decoration: none;
@@ -922,9 +1176,9 @@ h6:hover .anchor {
   position: absolute;
   top: var(--space-2);
   right: var(--space-2);
-  background: var(--color-gray-700);
-  color: var(--color-gray-300);
-  border: 1px solid var(--color-gray-600);
+  background: var(--copy-bg);
+  color: var(--copy-fg);
+  border: 1px solid var(--copy-border);
   border-radius: var(--radius-sm);
   padding: var(--space-1) var(--space-2);
   font-size: var(--font-size-xs);
@@ -936,7 +1190,7 @@ h6:hover .anchor {
   line-height: 1.4;
 
   &:hover {
-    background: var(--color-gray-600);
+    background: var(--copy-bg-hover);
     color: #fff;
   }
 
@@ -1003,7 +1257,7 @@ h6:hover .anchor {
 
   &:hover .tag-count {
     background: var(--color-brand);
-    color: white;
+    color: var(--color-on-brand);
   }
 }
 
@@ -1388,6 +1642,54 @@ h6:hover .anchor {
   .thumb {
     width: 96px;
     height: 54px;
+  }
+}
+
+.theme-toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  line-height: inherit;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+}
+
+.theme-toggle[hidden] {
+  display: none !important;
+}
+
+@media screen and (max-width: 600px) {
+  .site-nav .theme-toggle {
+    margin-left: auto;
+  }
+
+  // Minima hides the menu checkbox with display:none, which takes it out of
+  // the tab order. Keep it focusable but invisible, stacked on its label.
+  .site-nav #nav-trigger {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .site-nav #nav-trigger:focus-visible ~ label[for="nav-trigger"] {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
   }
 }
 

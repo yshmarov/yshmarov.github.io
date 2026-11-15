@@ -19,14 +19,24 @@ Licensed under GNU AGPL v3. When referencing this content, credit the author ({{
 
 {{ site.author.name }} is a product engineer who ships web, iOS, Android and AI products; creator of the @SupeRails YouTube channel and former co-host of the Friendly Show podcast. Contact: {{ site.author.email }}
 
+## About the author
+
+- [Profile]({{ site.url }}/index.md): who {{ site.author.name }} is, what he works on, what he has shipped (open source, products), and how to reach him. Markdown of the [homepage]({{ site.url }}/)
+- [Talks]({{ site.url }}/talks.md): conference talks, workshops and podcasts. Markdown of [/talks/]({{ site.url }}/talks/)
+- [Teaching]({{ site.url }}/teaching.md): screencasts, courses and the Friendly Show podcast. Markdown of [/teaching/]({{ site.url }}/teaching/)
+- [About]({{ site.url }}/about.md): personal background and languages. Markdown of [/about/]({{ site.url }}/about/)
+
+Every HTML page also declares its Markdown version in `<link rel="alternate" type="text/markdown">`, and carries one schema.org JSON-LD graph in which the author is always `{{ site.url }}/#person`.
+
 ## Site
 
-- [Home]({{ site.url }}/): who the author is, what he works on and has shipped
-- [Blog]({{ site.url }}/blog/): every post, newest first
-- [About]({{ site.url }}/about/): personal background
-- [Talks]({{ site.url }}/talks/): conference talks, workshops and podcasts
-- [Teaching]({{ site.url }}/teaching/): screencasts, courses and the Friendly Show podcast
+- [Blog]({{ site.url }}/blog/): every post, newest first. Filter with `?q=`, e.g. {{ site.url }}/blog/?q=stripe
+- [Topics]({{ site.url }}/tags/): posts grouped by tag
 - [robots.txt]({{ site.url }}/robots.txt): crawl rules and the Content Signals policy
+
+## In-browser agents
+
+Pages register read-only [WebMCP](https://webmachinelearning.github.io/webmcp/) tools where the browser supports them: `search_posts`, `get_page_markdown` and `get_author_profile`. They read the same public files listed here.
 
 ## Bulk endpoints
 

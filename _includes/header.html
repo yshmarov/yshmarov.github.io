@@ -2,10 +2,10 @@
   <div class="wrapper">
     <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
 
-    <nav class="site-nav">
-      <input type="checkbox" id="nav-trigger" />
+    <nav class="site-nav" aria-label="Main">
+      <input type="checkbox" id="nav-trigger" aria-label="Menu" />
       <label for="nav-trigger">
-        <span class="menu-icon"></span>
+        <span class="menu-icon" aria-hidden="true"></span>
       </label>
 
       {%- comment -%} A post belongs to the blog, so Blog stays highlighted while reading one. {%- endcomment -%}
@@ -15,6 +15,8 @@
         {%- for item in site.data.nav -%}
         <a class="nav-item{% if item.url == current %} nav-item--current{% endif %}" href="{{ item.url | relative_url }}"{% if item.url == current %} aria-current="page"{% endif %}>{{ item.title }}</a>
         {%- endfor -%}
+        {%- comment -%} Cycles system -> light -> dark. Label and aria-label are filled in by theme.js; without JS the site simply follows the OS setting. {%- endcomment -%}
+        <button type="button" class="theme-toggle nav-item" id="theme-toggle" hidden>Theme</button>
       </div>
     </nav>
   </div>

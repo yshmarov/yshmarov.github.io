@@ -1,25 +1,20 @@
 ---
 permalink: /404.html
-layout: default
+layout: page
+title: Page not found
+description: This page does not exist. Search the blog or start from the homepage.
+sitemap: false
+lead: "There is nothing at this address. It may have moved when the blog moved to /blog/, or the link has a typo."
 ---
+{%- comment -%}
+  Agents land here too, from stale links in their training data. Give them the
+  same ways back in that a person gets.
+{%- endcomment -%}
+{% include search.html %}
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
-
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+<ul class="landing-list">
+  <li><a href="{{ '/' | relative_url }}">Homepage</a> <span class="landing-date">who I am and what I work on</span></li>
+  <li><a href="{{ '/blog/' | relative_url }}">All posts</a> <span class="landing-date">newest first, searchable</span></li>
+  <li><a href="{{ '/tags/' | relative_url }}">Topics</a> <span class="landing-date">posts grouped by tag</span></li>
+  <li><a href="{{ '/llms.txt' | relative_url }}">llms.txt</a> <span class="landing-date">plain-text index of every post, for agents</span></li>
+</ul>

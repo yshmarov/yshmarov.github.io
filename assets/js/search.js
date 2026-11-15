@@ -101,6 +101,15 @@
     // Clear button handler
     clearButton.addEventListener('click', clearSearch);
 
+    // The search box is a real GET form (so it works for agents and without
+    // JS); with JS the list is already filtered, so skip the reload.
+    if (searchInput.form) {
+      searchInput.form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        applyQuery();
+      });
+    }
+
     // Keyboard shortcuts
     document.addEventListener('keydown', function(e) {
       // "/" to focus search, unless the user is already typing somewhere

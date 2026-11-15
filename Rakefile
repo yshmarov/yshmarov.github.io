@@ -10,6 +10,15 @@ require "set"
 
 SITE_DIR = "_site"
 
+# Markdown twins of the non-post pages (_plugins/page_markdown.rb), by the HTML
+# page they mirror.
+PAGE_TWINS = {
+  "index.md" => "index.html",
+  "about.md" => "about/index.html",
+  "talks.md" => "talks/index.html",
+  "teaching.md" => "teaching/index.html",
+}.freeze
+
 def read_file(path)
   File.read(path, encoding: "utf-8")
 end
@@ -185,7 +194,8 @@ task :smoke do
 
   # --- 11. Every indexed post has a .md companion ---
   search_path = File.join(SITE_DIR, "search.json")
-  md_files = Dir.glob(File.join(SITE_DIR, "*.md"))
+  # Root-level .md files are post twins, except the page twins (see check 20).
+  md_files = Dir.glob(File.join(SITE_DIR, "*.md")).reject { |f| PAGE_TWINS.key?(File.basename(f)) }
   index = []
   begin
     index = JSON.parse(read_file(search_path))
@@ -351,6 +361,114 @@ task :smoke do
     end
   else
     errors << "Missing tags/index.html"
+  end
+
+  # --- 20. Page twins: Markdown versions of the non-post pages ---
+  twin_errors = []
+  PAGE_TWINS.each do |md, html|
+    md_path = File.join(SITE_DIR, md)
+    unless File.exist?(md_path) && File.size(md_path) > 200
+      twin_errors << "#{md} missing or near-empty"
+      next
+    end
+    body = read_file(md_path)
+    m = body.match(/\A---\n(.*?)\n---\n(.*)\z/m)
+    next twin_errors << "#{md}: no front matter" unless m
+
+    fm = YAML.safe_load(m[1]) rescue {}
+    %w[title canonical_url markdown_url].each { |k| twin_errors << "#{md}: front matter missing #{k}" if fm[k].to_s.empty? }
+    content = m[2]
+    twin_errors << "#{md}: contains HTML tags" if content =~ %r{</?(div|span|section|article|li|ul|p)[\s>]}
+    twin_errors << "#{md}: has root-relative links" if content.include?("](/")
+    twin_errors << "#{md}: has glued links" if content.include?(")[")
+    twin_errors << "#{md}: no H1" unless content =~ /^# \S/
+    page_html = read_file(File.join(SITE_DIR, html))
+    unless page_html.include?(%(type="text/markdown" href="#{fm["markdown_url"]}"))
+      twin_errors << "#{html} does not link its Markdown version"
+    end
+  end
+  if twin_errors.any?
+    errors << "Page twins: #{twin_errors.first(5).join('; ')}"
+  else
+    puts "  OK: #{PAGE_TWINS.size} page twins are clean Markdown, linked from their pages"
+    checks_passed += 1
+  end
+
+  # --- 21. Exactly one JSON-LD graph per page, sharing one Person ---
+  person_id = "https://blog.superails.com/#person"
+  ld_pages = %w[index.html about/index.html blog/index.html talks/index.html teaching/index.html tags/index.html 404.html] +
+             Dir.glob(File.join(SITE_DIR, "tag", "*.html")).first(2).map { |f| f.sub("#{SITE_DIR}/", "") } +
+             sampled.map { |f| f.sub("#{SITE_DIR}/", "") }
+  ld_errors = []
+  ld_pages.each do |rel|
+    path = File.join(SITE_DIR, rel)
+    next ld_errors << "#{rel}: missing" unless File.exist?(path)
+
+    doc = Nokogiri::HTML(read_file(path))
+    blocks = doc.css('script[type="application/ld+json"]')
+    next ld_errors << "#{rel}: #{blocks.size} JSON-LD blocks, expected 1" unless blocks.size == 1
+
+    graph = begin
+      JSON.parse(blocks.first.text)["@graph"]
+    rescue StandardError => e
+      next ld_errors << "#{rel}: invalid JSON-LD (#{e.class})"
+    end
+    next ld_errors << "#{rel}: no @graph" unless graph.is_a?(Array)
+
+    ld_errors << "#{rel}: no Person #{person_id}" unless graph.any? { |n| n["@type"] == "Person" && n["@id"] == person_id }
+    ld_errors << "#{rel}: microdata alongside JSON-LD" if doc.at_css("[itemscope]")
+  end
+  # A post's JSON-LD author must match its byline, including guest posts.
+  Dir.glob("_posts/*.md").each do |src|
+    fm = YAML.safe_load(read_file(src)[/\A---\n(.*?)\n---/m, 1].to_s, permitted_classes: [Date, Time]) rescue next
+    author = fm["author"].to_s
+    next if author.empty? || author == "Yaroslav Shmarov"
+
+    slug = File.basename(src, ".md").sub(/\A\d{4}-\d{2}-\d{2}-/, "")
+    html = File.join(SITE_DIR, "#{slug}.html")
+    next unless File.exist?(html)
+
+    graph = JSON.parse(Nokogiri::HTML(read_file(html)).at_css('script[type="application/ld+json"]').text)["@graph"]
+    post = graph.find { |n| n["@type"] == "BlogPosting" } || {}
+    authors = post["author"].is_a?(Array) ? post["author"] : [post["author"]]
+    ld_errors << "#{slug}: JSON-LD author is not #{author}" unless authors.any? { |a| a.is_a?(Hash) && a["name"] == author }
+  end
+  if ld_errors.any?
+    errors << "Structured data: #{ld_errors.first(5).join('; ')}"
+  else
+    puts "  OK: #{ld_pages.size} pages carry one JSON-LD graph with the shared Person; guest bylines match"
+    checks_passed += 1
+  end
+
+  # --- 22. Light/dark theme wiring ---
+  css = css_files.map { |f| read_file(f) }.join
+  theme_errors = []
+  theme_errors << "CSS has no [data-theme=dark] rules" unless css =~ /:root\[data-theme=["']?dark["']?\]/
+  theme_errors << "CSS has no prefers-color-scheme: dark rules" unless css.include?("prefers-color-scheme: dark")
+  theme_errors << "no #theme-toggle in header" unless index_html.include?('id="theme-toggle"')
+  head = index_html[/<head>.*?<\/head>/m].to_s
+  theme_errors << "no pre-paint theme script in <head>" unless head.include?('localStorage.getItem("theme")')
+  theme_errors << "no color-scheme meta" unless head.include?('name="color-scheme"')
+  if theme_errors.any?
+    errors << "Theme: #{theme_errors.join('; ')}"
+  else
+    puts "  OK: light/dark theme wired (CSS, toggle, pre-paint script)"
+    checks_passed += 1
+  end
+
+  # --- 23. What browser agents read: labelled search, skip link, heading order ---
+  a11y_errors = []
+  blog_doc = Nokogiri::HTML(blog_html)
+  input = blog_doc.at_css("#search-input")
+  a11y_errors << "search input has no label" unless input && blog_doc.at_css('label[for="search-input"]')
+  a11y_errors << "search is not a role=search form with name=q" unless blog_doc.at_css('form[role="search"] input[name="q"]')
+  a11y_errors << "no skip link to #content" unless index_html.include?('href="#content"') && index_html.include?('id="content"')
+  a11y_errors << "/blog/ jumps from h1 to h3" if blog_doc.css("h1, h2, h3").map(&:name).first(2) == %w[h1 h3]
+  if a11y_errors.any?
+    errors << "Accessibility: #{a11y_errors.join('; ')}"
+  else
+    puts "  OK: labelled search form, skip link, no heading jumps on /blog/"
+    checks_passed += 1
   end
 
   # --- Report ---

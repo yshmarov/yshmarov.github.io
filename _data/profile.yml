@@ -17,6 +17,21 @@ intro: >-
   store review.
 location: Based in Warsaw, Poland · speaks 6 languages
 
+# Machine-readable facts for the Person entity in the site's JSON-LD
+# (_plugins/structured_data.rb). Keep in step with the prose above and /about/.
+home_location: Warsaw, Poland
+languages: [uk, en, de, es, fr, pl]   # BCP 47 codes, as listed on /about/
+knows_about:   # strongest first; Rails is track record, not the headline
+  - AI products and AI agents
+  - Model Context Protocol (MCP)
+  - iOS development (Swift)
+  - Android development (Kotlin)
+  - Payments and billing
+  - Stripe
+  - Multi-tenant SaaS
+  - Ruby on Rails
+  - Hotwire
+
 links:
   - { label: "Email me", url: "mailto:yshmarov@gmail.com", primary: true }
   - { label: "GitHub", url: "https://github.com/yshmarov" }
@@ -31,6 +46,7 @@ proof:
 
 work:
   - org: ClickFunnels
+    employer: true   # becomes worksFor in the JSON-LD; the others are my own products
     logo: /assets/images/logos/clickfunnels.png
     url: https://www.clickfunnels.com
     role: ""

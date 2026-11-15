@@ -34,6 +34,10 @@ Sitemap: {{ site.url }}/sitemap.xml
 # This site is served as static files, so it cannot honour an
 # `Accept: text/markdown` request header. The .md suffix above is the equivalent.
 #
+# Pages that are not posts have Markdown versions too:
+#   {{ site.url }}/index.md   (who the author is: the homepage)
+#   {{ site.url }}/talks.md  {{ site.url }}/teaching.md  {{ site.url }}/about.md
+#
 # Start here: {{ site.url }}/llms.txt   (index of every post, see https://llmstxt.org)
 # Recent posts in full: {{ site.url }}/llms-full.txt
 # Every post as JSON, with byte sizes: {{ site.url }}/search.json

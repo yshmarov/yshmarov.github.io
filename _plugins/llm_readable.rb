@@ -205,6 +205,10 @@ module LlmReadable
         # can divide by ~4 itself if it wants a rough figure.
         post.data["md_bytes"] = body.bytesize
         post.data["description"] = LlmReadable.description_for(body) if blank?(post.data["description"])
+        # jekyll-sitemap reads last_modified_at for <lastmod>; posts here say
+        # modified_date. Without this, an updated post keeps advertising its
+        # original date to crawlers.
+        post.data["last_modified_at"] ||= post.data["modified_date"] if post.data["modified_date"]
 
         site.pages << SourcePage.new(
           site, "#{post.url}.md", LlmReadable.markdown_document(site, post, body)
