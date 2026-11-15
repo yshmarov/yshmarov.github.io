@@ -323,7 +323,10 @@ task :smoke do
 
   # --- 17. No conflicting duplicate social meta tags ---
   meta_dupes = sampled.filter_map { |f|
-    counts = read_file(f).scan(/(?:name|property)="((?:twitter|og):[a-z:]+)"/).flatten
+    # Only <head>: posts about meta tags quote property="og:image" in code
+    # samples, which failed the deploy whenever one was sampled.
+    head = read_file(f)[%r{<head>.*?</head>}m].to_s
+    counts = head.scan(/(?:name|property)="((?:twitter|og):[a-z:]+)"/).flatten
                          .tally.reject { |k, v| v == 1 || k == "og:image:alt" }
     "#{File.basename(f)}: #{counts.keys.join(',')}" if counts.any?
   }
