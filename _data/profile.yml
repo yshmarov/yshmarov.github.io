@@ -46,7 +46,6 @@ proof:
 
 work:
   - org: ClickFunnels
-    employer: true   # becomes worksFor in the JSON-LD; the others are my own products
     logo: /assets/images/logos/clickfunnels.png
     url: https://www.clickfunnels.com
     role: ""
@@ -69,6 +68,7 @@ work:
           - { label: "Help Center", url: "https://support.myclickfunnels.com" }
           - { label: "Changelog", url: "https://changelog.myclickfunnels.com" }
   - org: EthicsPortal
+    employer: true   # becomes worksFor in the site's JSON-LD (_plugins/structured_data.rb)
     logo: /assets/images/logos/ethicsportal.png
     url: https://ethicsportal.eu
     role: ""
