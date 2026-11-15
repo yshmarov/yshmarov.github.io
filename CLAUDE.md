@@ -64,4 +64,4 @@ Uses Giscus (GitHub Discussions-based) for post comments.
 
 ### Whop referral links
 
-Use `https://whop.com/start/?code=CAKARK` for reader-facing Whop signup links in posts and profile content. This is Yaroslav's production Whop Partners referral link. Add a nearby disclosure that he may earn a commission and use `rel="sponsored nofollow"` on HTML links. Preserve sandbox, API, OAuth, callback, technical documentation and repository URLs. Do not add referral parameters to executable examples or login buttons.
+Use `https://whop.com/start/?code=CAKARK` for reader-facing Whop signup links in posts and profile content. Keep the disclosure brief ("I may earn a commission."), once near the relevant content rather than repeated beside every link. Yaroslav dislikes repetitive disclaimers and "radical transparency" in reader-facing copy. Use `rel="sponsored nofollow"` on HTML links. Preserve sandbox, API, OAuth, callback, technical documentation and repository URLs. Do not add referral parameters to executable examples or login buttons.

@@ -82,7 +82,7 @@ work:
 
 strengths:
   - title: Payments and billing
-    text: "Subscriptions, one-time and usage-based billing, marketplaces and payouts. Stripe in production for years; I wrote the <a href='https://whop.com/start/?code=CAKARK' rel='sponsored nofollow'>Whop</a> adapter for Rails' Pay gem. Referral link: I may earn a commission if you sign up."
+    text: "Subscriptions, one-time and usage-based billing, marketplaces and payouts. Stripe in production for years; I wrote the <a href='https://whop.com/start/?code=CAKARK' rel='sponsored nofollow'>Whop</a> adapter for Rails' Pay gem."
   - title: Native mobile
     text: "iOS in Swift, Android in Kotlin, and Hotwire Native when a web view is the right call. Including the unglamorous part: signing, release tooling, store review."
   - title: AI products
@@ -100,7 +100,7 @@ shipped:
     proof: "253 stars"
   - name: pay-whop
     url: https://github.com/yshmarov/pay-whop
-    what: "<a href='https://whop.com/start/?code=CAKARK' rel='sponsored nofollow'>Whop</a> payments, subscriptions and marketplace payouts for Rails' Pay gem. Community adapter with a public sandbox demo. Referral link: I may earn a commission if you sign up."
+    what: "<a href='https://whop.com/start/?code=CAKARK' rel='sponsored nofollow'>Whop</a> payments, subscriptions and marketplace payouts for Rails' Pay gem. Community adapter with a public sandbox demo."
     proof: "Payments"
   - name: livechat
     url: https://github.com/yshmarov/livechat
