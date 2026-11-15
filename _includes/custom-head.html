@@ -1,3 +1,18 @@
+<!-- Color theme: follow the OS unless the visitor picked one with the header toggle.
+     Runs before first paint so a stored choice never flashes the other theme. -->
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#fdfdfd">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#131518">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>
+
 <!-- Preconnect to external origins for faster loading -->
 <link rel="preconnect" href="https://plausible.io" crossorigin>
 <link rel="dns-prefetch" href="https://plausible.io">

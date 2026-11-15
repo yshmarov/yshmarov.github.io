@@ -85,20 +85,36 @@ layout: default
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
 
-<script src="https://giscus.app/client.js"
-        data-repo="yshmarov/yshmarov.github.io"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkzMTA4MjkyNTk="
-        data-category="General"
-        data-category-id="DIC_kwDOEobgy84CkUiw"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
+{%- comment -%}
+  Giscus is injected from script so its starting theme matches the visitor's
+  stored choice; theme.js re-themes the iframe when the toggle is used.
+{%- endcomment -%}
+<div class="giscus"></div>
+<script>
+  (function () {
+    var choice = window.siteTheme ? window.siteTheme.current() : (function () {
+      try { var t = localStorage.getItem("theme"); return t === "light" || t === "dark" ? t : "system"; } catch (e) { return "system"; }
+    })();
+    var attrs = {
+      repo: "yshmarov/yshmarov.github.io",
+      "repo-id": "MDEwOlJlcG9zaXRvcnkzMTA4MjkyNTk=",
+      category: "General",
+      "category-id": "DIC_kwDOEobgy84CkUiw",
+      mapping: "pathname",
+      strict: "0",
+      "reactions-enabled": "1",
+      "emit-metadata": "0",
+      "input-position": "top",
+      theme: choice === "system" ? "preferred_color_scheme" : choice,
+      lang: "en",
+      loading: "lazy"
+    };
+    var s = document.createElement("script");
+    s.src = "https://giscus.app/client.js";
+    s.async = true;
+    s.crossOrigin = "anonymous";
+    for (var k in attrs) s.setAttribute("data-" + k, attrs[k]);
+    document.currentScript.parentNode.insertBefore(s, document.currentScript.nextSibling);
+  })();
 </script>
 <noscript>Please enable JavaScript to view the comments.</noscript>
