@@ -175,8 +175,6 @@ Display tags for each post in the post page:
 ```
 {% endraw %}
 
-[Here's how](https://github.com/yshmarov/yshmarov.github.io/commit/c8b19cc0861bb451a390845f8eb7da1b8b28f1a1#diff-e73b35364c60ba845bb11a95b54e7b8e0439b5aafc61723021cd0ea7b56a709cR41) I implemented it in another app.
-
 ### Discovery feature: List of similar posts
 
 Use [gem jekyll-tagging-related_posts](https://github.com/toshimaru/jekyll-tagging-related_posts)
@@ -185,7 +183,14 @@ On a post page, display list of similar posts (based on amount of matching tags)
 
 ### Add anchor tags to headings
 
-[Copy this](https://github.com/yshmarov/yshmarov.github.io/pull/3)
+Copy `anchor_headings.html` from [jekyll-anchor-headings](https://github.com/allejo/jekyll-anchor-headings) into `_includes/`, then render the content through it:
+
+{% raw %}
+```html
+<!-- _layouts/default.html -->
+{% include anchor_headings.html html=content anchorBody="#" anchorClass="anchor" %}
+```
+{% endraw %}
 
 ### Other plugins & features to consider:
 

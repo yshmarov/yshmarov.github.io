@@ -24,7 +24,7 @@ However [Gisqus](https://giscus.app) is based on **Github Discussions** - a new 
 
 Github "Disgussions" `are superior to ` "Issues" for conversations.
 
-So in [one tiny commit](https://github.com/yshmarov/yshmarov.github.io/commit/d0fcd2bae3608b0b1a0fcc8627c8dde6f327b6e7) I replaced Disqus with Giscus 🎉🎉
+So in one tiny commit I replaced Disqus with Giscus 🎉🎉
 
 If Github was not an option, I would go with [mastodon-comments](https://github.com/dpecos/mastodon-comments)
 
