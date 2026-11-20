@@ -22,6 +22,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_TOKEN_SET: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -48,6 +50,13 @@ jobs:
           JEKYLL_ENV: production
       - name: Smoke tests
         run: bundle exec ruby -e "require 'rake'; Rake.application.init; Rake.application.load_rakefile; Rake.application['smoke'].invoke"
+      - name: Deploy to Cloudflare Pages
+        if: env.CLOUDFLARE_TOKEN_SET == 'true'
+        continue-on-error: true
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4 pages deploy _site --project-name=superails-blog --branch=master --commit-hash=${{ github.sha }} --commit-dirty=true
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
 
